@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3afdf524_b4a9e160",
+        "filename": "update-makefiles.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2017-03-02T22:12:42Z",
+      "side": 1,
+      "message": "not android.system?\n\nIs there a documentation for all the package roots? android.system.hardware seems redundant...",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "858c506dcab8291279e8d4494faef48778c08cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
