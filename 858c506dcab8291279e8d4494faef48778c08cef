@@ -22,6 +22,30 @@
       "revId": "858c506dcab8291279e8d4494faef48778c08cef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7d6838c_12efe9b2",
+        "filename": "update-makefiles.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2017-03-03T00:28:17Z",
+      "side": 1,
+      "message": "I couldn\u0027t find any documentation on this. I like android.system too, changed it in next PS.",
+      "parentUuid": "3afdf524_b4a9e160",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "858c506dcab8291279e8d4494faef48778c08cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
