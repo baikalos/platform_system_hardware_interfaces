@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce84f2b7_6e3fed59",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-12T23:23:11Z",
+      "side": 1,
+      "message": "Conflicts with INetd.aidl binder service in the same namespace.",
+      "parentUuid": "f3eccdc7_0b0a3e67",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0cba89_8f8cfd7b",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fd40f1a2_567aceab",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-12T23:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e0cba89_8f8cfd7b",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "381a44da_a7478658",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-12T23:13:55Z",
       "side": 1,
       "message": "do these indicate other errors? Unspecified errno is explicitly disallowed",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 78
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e3788c9_7f680664",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-12T23:23:11Z",
+      "side": 1,
+      "message": "actually zero should suffice to indicate failure, in which case this can be modified to uint64_t. There are no other errors.\n\nwill fix this",
+      "parentUuid": "381a44da_a7478658",
       "range": {
         "startLine": 27,
         "startChar": 64,
@@ -105,6 +177,30 @@
       "writtenOn": "2017-07-12T23:13:55Z",
       "side": 1,
       "message": "edit: why not an int64_t?",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de829a0e_791b691c",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-12T23:23:11Z",
+      "side": 1,
+      "message": "very well can be. uint64_t, is what we will go with.",
+      "parentUuid": "5b860dd2_e70d1512",
       "range": {
         "startLine": 31,
         "startChar": 32,
