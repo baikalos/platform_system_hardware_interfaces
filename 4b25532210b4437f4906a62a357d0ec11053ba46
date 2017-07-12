@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3eccdc7_0b0a3e67",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-12T23:13:55Z",
+      "side": 1,
+      "message": "How about just \"INetd\"? Being hidl, it is already Hw and a service",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0cba89_8f8cfd7b",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-12T23:13:55Z",
+      "side": 1,
+      "message": "4 spaces (there is an internal style doc, you may have access to it, should be released soon)",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "381a44da_a7478658",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-12T23:13:55Z",
+      "side": 1,
+      "message": "do these indicate other errors? Unspecified errno is explicitly disallowed",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 78
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cec7617_8e03120c",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-12T23:13:55Z",
+      "side": 1,
+      "message": "YES! YES! YES! I like it. Much better than having the client pass in the id.",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b860dd2_e70d1512",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-12T23:13:55Z",
+      "side": 1,
+      "message": "edit: why not an int64_t?",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "416b032b_fb61a361",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-12T23:13:55Z",
+      "side": 1,
+      "message": "are you planning on adding tests?",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
