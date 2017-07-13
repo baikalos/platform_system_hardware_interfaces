@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "43205883_3c5c93e1",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-13T17:52:36Z",
+      "side": 1,
+      "message": "Just make sure that whenever the networkId is passed in, that it is verified as being valid. Also, we\u0027ll have to ping someone for a security review of the implementation.",
+      "parentUuid": "8bd57457_d61231ac",
+      "range": {
+        "startLine": 31,
+        "startChar": 43,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b84a0217_e405a92f",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 3
@@ -89,6 +113,75 @@
         "startChar": 53,
         "endLine": 39,
         "endChar": 65
+      },
+      "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e6a865f_5d0eca0d",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-13T17:52:36Z",
+      "side": 1,
+      "message": "you could avoid this dependency by using ALOGE and log/log.h instead",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57605c37_438e6505",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-13T17:52:36Z",
+      "side": 1,
+      "message": "you don\u0027t appear to be using this dependency",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74454d0a_43ed8d24",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-13T17:52:36Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 24
       },
       "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
