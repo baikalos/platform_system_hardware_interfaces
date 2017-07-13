@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "005987db_5eacd87e",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-13T21:37:15Z",
+      "side": 1,
+      "message": "client is receiving networkId back from the server, and not the other way around.",
+      "parentUuid": "43205883_3c5c93e1",
+      "range": {
+        "startLine": 31,
+        "startChar": 43,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b84a0217_e405a92f",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 3
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "31823eee_e334b740",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-13T21:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6a865f_5d0eca0d",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57605c37_438e6505",
         "filename": "net/netd/1.0/vts/functional/Android.bp",
         "patchSetId": 3
@@ -166,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "7cefa612_a0a6b62b",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-13T21:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57605c37_438e6505",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74454d0a_43ed8d24",
         "filename": "net/netd/1.0/vts/functional/Android.bp",
         "patchSetId": 3
@@ -177,6 +249,30 @@
       "writtenOn": "2017-07-13T17:52:36Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "1d51a9ab3c19e7bd4ddae523aaf15e00e9ab2fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e77cbb6e_7efcee5f",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-13T21:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74454d0a_43ed8d24",
       "range": {
         "startLine": 12,
         "startChar": 9,
