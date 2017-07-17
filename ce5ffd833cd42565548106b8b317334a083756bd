@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a546871e_1af5acd6",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-17T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c408219_01db7c92",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "ce5ffd833cd42565548106b8b317334a083756bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e3ff747_7100dd31",
         "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-17T16:28:29Z",
       "side": 1,
       "message": "expected, actual\n\n(gtest will make you use netd.get())",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "ce5ffd833cd42565548106b8b317334a083756bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5d58213_79b3537d",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-17T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e3ff747_7100dd31",
       "range": {
         "startLine": 32,
         "startChar": 18,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f4d6c704_3f652a9a",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-17T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc17742f_39845b6e",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "ce5ffd833cd42565548106b8b317334a083756bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac99128b_79aa92d2",
         "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2017-07-17T16:28:29Z",
       "side": 1,
       "message": "nit: don\u0027t specify global on these",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "ce5ffd833cd42565548106b8b317334a083756bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "257d9697_7b2cbbdb",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-17T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac99128b_79aa92d2",
       "range": {
         "startLine": 42,
         "startChar": 4,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "f60d9e27_5ce44f5b",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-17T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fe220b1_bff4fa37",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "ce5ffd833cd42565548106b8b317334a083756bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "473ce6c7_a223f905",
         "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
         "patchSetId": 6
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "4e58684b_16992ccb",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-17T17:44:04Z",
+      "side": 1,
+      "message": "No access to netd inside of async callback.",
+      "parentUuid": "473ce6c7_a223f905",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 61
+      },
+      "revId": "ce5ffd833cd42565548106b8b317334a083756bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cf213e1_23d00383",
         "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
         "patchSetId": 6
@@ -174,6 +318,30 @@
       "writtenOn": "2017-07-17T16:28:29Z",
       "side": 1,
       "message": "delete extra indentation",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "ce5ffd833cd42565548106b8b317334a083756bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bde594d9_184c3fc9",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-17T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cf213e1_23d00383",
       "range": {
         "startLine": 60,
         "startChar": 4,
