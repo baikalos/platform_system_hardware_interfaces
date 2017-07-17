@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a28b0279_4c21435b",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-17T21:29:47Z",
+      "side": 1,
+      "message": "it\u0027s not clear what this does. Is this opaque to the Android framework? How is it supposed to be used?",
+      "range": {
+        "startLine": 40,
+        "startChar": 29,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "6cc648f628ed6880e34039445d2946664e10e5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f547597b_c67f9304",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 7
@@ -41,6 +64,52 @@
         "startChar": 31,
         "endLine": 56,
         "endChar": 40
+      },
+      "revId": "6cc648f628ed6880e34039445d2946664e10e5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a15cc9cd_0f2a3caf",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-17T21:29:47Z",
+      "side": 1,
+      "message": "nit: please use consistent naming (networkHandle or netHandle)",
+      "range": {
+        "startLine": 56,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 40
+      },
+      "revId": "6cc648f628ed6880e34039445d2946664e10e5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "011baf44_4895dcec",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-17T21:29:47Z",
+      "side": 1,
+      "message": "nit: you could just do this (instead of having value + comment)",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 35
       },
       "revId": "6cc648f628ed6880e34039445d2946664e10e5ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
