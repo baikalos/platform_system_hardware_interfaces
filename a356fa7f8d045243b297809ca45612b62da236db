@@ -93,6 +93,30 @@
       "revId": "a356fa7f8d045243b297809ca45612b62da236db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d787340e_eaddf9d2",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-18T15:27:47Z",
+      "side": 1,
+      "message": "Correct. NO_NETWORK if system can\u0027t create a network for the client. Or potentially NOT_ALLOWED if client doesn\u0027t have appropriate permission. UNKNOWN_ERROR for something unexpected in the system probably irrecoverable.",
+      "parentUuid": "7cc82d81_add38b48",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "a356fa7f8d045243b297809ca45612b62da236db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
