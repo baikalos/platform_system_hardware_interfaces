@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "975a98b3_cf5184d9",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-18T01:53:09Z",
+      "side": 1,
+      "message": "Yes, but this name is still long and redundant. Why does it conflict with the binder service? It\u0027s in the android.net namespace, and this is in the android.system.net.netd namespace",
+      "parentUuid": "ce84f2b7_6e3fed59",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "4b25532210b4437f4906a62a357d0ec11053ba46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0cba89_8f8cfd7b",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 2
