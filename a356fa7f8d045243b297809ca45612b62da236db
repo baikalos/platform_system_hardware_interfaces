@@ -117,6 +117,30 @@
       "revId": "a356fa7f8d045243b297809ca45612b62da236db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b055b423_789415f2",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1121516
+      },
+      "writtenOn": "2017-07-18T16:11:13Z",
+      "side": 1,
+      "message": "Just wanted to make sure that none of those status codes are acceptable when creating the network before we enforce that the service must always produce StatusCode::OK in order to pass. LGTM as is.",
+      "parentUuid": "d787340e_eaddf9d2",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "a356fa7f8d045243b297809ca45612b62da236db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
