@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "de144a91_e44a0cc0",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-18T01:30:15Z",
+      "side": 1,
+      "message": "We need this for 1.0 until ver 1.1 where all of netutils-wrapper usage should move to hidl instead. With 1.0, we need both to work coherently.",
+      "parentUuid": "463b023f_5d2a8659",
+      "range": {
+        "startLine": 40,
+        "startChar": 29,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "6cc648f628ed6880e34039445d2946664e10e5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f547597b_c67f9304",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 7
