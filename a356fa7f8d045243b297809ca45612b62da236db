@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7188f0cb_de761c49",
+        "filename": "net/netd/1.0/INetd.hal",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-18T17:18:44Z",
+      "side": 1,
+      "message": "Per comments in other CL, I\u0027d prefer this to be PERMISSION_DENIED unless Steven has other objections.\n\nAlso, can you add a code that corresponds to EEXIST? Could just be ALREADY_EXISTS.",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "a356fa7f8d045243b297809ca45612b62da236db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58552e83_22e23e2a",
         "filename": "net/netd/1.0/INetd.hal",
         "patchSetId": 9
@@ -66,6 +89,53 @@
         "startChar": 37,
         "endLine": 41,
         "endChar": 55
+      },
+      "revId": "a356fa7f8d045243b297809ca45612b62da236db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4c332bc_ec9f92e4",
+        "filename": "net/netd/1.0/INetd.hal",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-18T17:18:44Z",
+      "side": 1,
+      "message": "Steven, does the following work as an explanation?\n\nThe packet mark that vendor network stack configuration code should use in order to route packets to this network. No applications should use this mark,; the should instead pass the networkHandle to the android_set*network NDK APIs. This is expected to be removed in a future version of this HAL.",
+      "parentUuid": "54f8646d_2bcc2e28",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "a356fa7f8d045243b297809ca45612b62da236db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11008e08_6f89afac",
+        "filename": "net/netd/1.0/INetd.hal",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-18T17:18:44Z",
+      "side": 1,
+      "message": "Socket marks are 32 bits. Can you change this to uint32_t?",
+      "range": {
+        "startLine": 47,
+        "startChar": 58,
+        "endLine": 47,
+        "endChar": 77
       },
       "revId": "a356fa7f8d045243b297809ca45612b62da236db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
