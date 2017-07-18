@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be582966_59ae56c3",
+        "filename": "net/netd/1.0/INetd.hal",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-18T18:11:03Z",
+      "side": 1,
+      "message": "You can\u0027t change the hal once it is frozen. Please either explain what this is or remove it. Lorenzo?\n\n\"To be set as packet \u0027mark\u0027 field on all packets sent to through the OEM network\" ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 76
+      },
+      "revId": "b4f65b1fa591f95727a01b85ea5b4e94b0ac576b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
