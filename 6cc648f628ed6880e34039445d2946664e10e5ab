@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "463b023f_5d2a8659",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-07-18T01:11:04Z",
+      "side": 1,
+      "message": "That\u0027s mixing data from HIDL communication with netutils-wrappers. That seems like an implicit contract. Do we need to mix data between the two?",
+      "parentUuid": "7db6e687_fc3e0a1a",
+      "range": {
+        "startLine": 40,
+        "startChar": 29,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "6cc648f628ed6880e34039445d2946664e10e5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f547597b_c67f9304",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 7
