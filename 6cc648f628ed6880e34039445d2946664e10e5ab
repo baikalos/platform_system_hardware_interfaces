@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "4faa432a_406f96f1",
+        "filename": "net/netd/1.0/INetdHwService.hal",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-07-18T17:03:19Z",
+      "side": 1,
+      "message": "I think what would be nice is to add a comment somewhere (here or in the service code in netd) to mention what you said in one of the comments here about the \"invisible\" contract and a TODO next to it which talks about moving things to HIDL completely.\n\nOther than that, it LGTM overall. I\u0027ll let Steven approve this for merge if / when he is ok.",
+      "parentUuid": "d66143a5_f1cb030c",
+      "range": {
+        "startLine": 40,
+        "startChar": 29,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "6cc648f628ed6880e34039445d2946664e10e5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f547597b_c67f9304",
         "filename": "net/netd/1.0/INetdHwService.hal",
         "patchSetId": 7
