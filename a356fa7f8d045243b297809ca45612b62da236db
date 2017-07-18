@@ -46,6 +46,30 @@
       "revId": "a356fa7f8d045243b297809ca45612b62da236db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54f8646d_2bcc2e28",
+        "filename": "net/netd/1.0/INetd.hal",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2017-07-18T06:34:45Z",
+      "side": 1,
+      "message": "lorenzo requested this and I agreed. @lorenzo, care to add your two cents here? Please see my comments on p#7 for the same.",
+      "parentUuid": "d2caf906_dfe208ad",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "a356fa7f8d045243b297809ca45612b62da236db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
