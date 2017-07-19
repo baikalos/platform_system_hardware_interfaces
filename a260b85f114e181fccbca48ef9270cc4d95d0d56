@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cf35041_986b0e94",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-07-19T15:53:49Z",
+      "side": 1,
+      "message": "A second possible test might be to destroy a net_handle_t of 0ULL and make sure we get the expected error.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "a260b85f114e181fccbca48ef9270cc4d95d0d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
