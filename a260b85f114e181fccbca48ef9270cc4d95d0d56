@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4112f6ca_825c5534",
+        "filename": "Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-07-27T00:24:51Z",
+      "side": 1,
+      "message": "But \"*\" is actually better for avoiding conflicts in future.  If every subdirectly has an Android.bp file then the conflict at the top level won\u0027t happen.\n\nSomething for later on...",
+      "parentUuid": "786d7b76_f5f6f57d",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 7
+      },
+      "revId": "a260b85f114e181fccbca48ef9270cc4d95d0d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cf35041_986b0e94",
         "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
         "patchSetId": 12
