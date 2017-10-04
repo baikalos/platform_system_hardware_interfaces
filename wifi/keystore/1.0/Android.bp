@@ -125,13 +125,16 @@ genrule {
 cc_test {
     name: "android.system.wifi.keystore@1.0-adapter",
     defaults: ["hidl-module-defaults"],
+    static_libs: [
+        "android.system.wifi.keystore@1.0",
+        "android.system.wifi.keystore@1.0-adapter-helper",
+    ],
     shared_libs: [
         "libhidladapter",
         "libhidlbase",
         "libhidltransport",
+        "libhwbinder",
         "libutils",
-        "android.system.wifi.keystore@1.0",
-        "android.system.wifi.keystore@1.0-adapter-helper",
     ],
     generated_sources: ["android.system.wifi.keystore@1.0-adapter_genc++"],
 }
