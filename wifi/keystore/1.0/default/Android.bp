@@ -18,4 +18,9 @@ cc_library_shared {
         "libutils",
     ],
     export_include_dirs: ["include"],
+    product_variables: {
+        pdk: {
+            enabled: false,
+        },
+    },
 }
