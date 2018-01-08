@@ -1,0 +1,99 @@
+/*
+ * Copyright 2018 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package android.system.net.netd@1.1;
+
+import @1.0::INetd;
+
+/**
+ * This is the root of the HAL module and is the interface returned when
+ * loading an implementation of the INetd HAL.
+ */
+interface INetd extends @1.0::INetd {
+    /**
+     * Add route to a specified OEM network
+     *
+     * @param networkHandle a handle to the OEM network.
+     * @param ifname interface name to apply the new route to.
+     * @param destination target host ip address.
+     * @param nexthop the immediate destination or gateway for the route.
+     *
+     * @return status operation status @1.0::StatusCode
+     */
+    @callflow(next={"*"})
+    addRouteToOemNetwork(uint64_t networkHandle, string ifname, string destination, string nexthop)
+    generates (StatusCode status);
+
+    /**
+     * Remove route from a specified OEM network
+     *
+     * @param networkHandle a handle to the OEM network.
+     * @param ifname interface name to remove the route from.
+     * @param destination target host ip address.
+     * @param nexthop the immediate destination or gateway for the route.
+     *
+     * @return status operation status @1.0::StatusCode
+     */
+    @callflow(next={"*"})
+    removeRouteFromOemNetwork(uint64_t networkHandle, string ifname, string destination, string nexthop)
+    generates (StatusCode status);
+
+    /**
+     * Add interface to a specified OEM network
+     *
+     * @param networkHandle a handle to the OEM network.
+     * @param ifname interface name to add to the OEM network.
+     *
+     * @return status operation status @1.0::StatusCode
+     */
+    @callflow(next={"*"})
+    addInterfaceToOemNetwork(uint64_t networkHandle, string ifname) generates (StatusCode status);
+
+    /**
+     * Remove interface from a specified OEM network
+     *
+     * @param networkHandle a handle to the OEM network.
+     * @param ifname interface name to remove from the OEM network.
+     *
+     * @return status operation status @1.0::StatusCode
+     */
+    @callflow(next={"*"})
+    removeInterfaceFromOemNetwork(uint64_t networkHandle, string ifname) generates (StatusCode status);
+
+    /**
+     * Enable forwarding on a specified OEM network
+     *
+     * @param networkHandle a handle to the OEM network.
+     * @param enable bool to enable or disable forwarding.
+     *
+     * @return status operation status @1.0::StatusCode
+     */
+    @callflow(next={"*"})
+    setIPForwardEnable(uint64_t networkHandle, bool enable) generates (StatusCode status);
+
+    /**
+     * Enables forwarding between two interfaces
+     *
+     * @param inputIfName input interface.
+     * @param outputIfName output interface.
+     * @param enable bool to enable or disable forwarding between the two interfaces.
+     *
+     * @return status operation status @1.0::StatusCode
+     */
+    @callflow(next={"*"})
+    setForwardingBetweenInterfaces(string inputIfName, string outputIfName, bool enable)
+    generates (StatusCode status);
+};
