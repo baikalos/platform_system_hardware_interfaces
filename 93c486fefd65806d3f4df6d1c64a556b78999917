@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "129e80b9_3c59d2d6",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-01T06:59:10Z",
+      "side": 1,
+      "message": "Fix long line.",
+      "range": {
+        "startLine": 51,
+        "startChar": 96,
+        "endLine": 51,
+        "endChar": 103
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6532f33f_9d061df5",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-01T06:59:10Z",
+      "side": 1,
+      "message": "Fix long line",
+      "range": {
+        "startLine": 74,
+        "startChar": 100,
+        "endLine": 74,
+        "endChar": 103
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66002c70_644ca985",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-01T06:59:10Z",
+      "side": 1,
+      "message": "What does this do? There is no concept of enabling forwarding on a specific network. There is a concept of enabling forwarding between interfaces, but you do that below.\n\nThere is also a concept of enabling forwarding globally, as implemented by TetherController::enableForwarding. Is that what this function does? If so, you\u0027d need to remove the networkHandle parameter and possibly add a \"string requester\" parameter.",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb974675_101619d4",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-01T06:59:10Z",
+      "side": 1,
+      "message": "... of which one must be in an OEM network.\n\nright?",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
