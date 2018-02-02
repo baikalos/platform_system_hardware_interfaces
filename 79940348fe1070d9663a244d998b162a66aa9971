@@ -81,6 +81,24 @@
       "revId": "79940348fe1070d9663a244d998b162a66aa9971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb55c441_c3618a97",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-02T19:09:24Z",
+      "side": 1,
+      "message": "That needs to be specified here. How about instead of using something like this, you use an interface.\n\nsetIpForwardEnable(IForwardClient client, bool enable). This allows you to attribute ip forward enables in a way that can\u0027t be faked to the kernel without processes passing these tokens around. IForwardClient would be an empty interface that just serves to satisfy this refcount.\n\nHowever, that raises another question, why is this a global setting? Shouldn\u0027t it be specific to each client?",
+      "parentUuid": "9dde9f3d_65ac6bbd",
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
