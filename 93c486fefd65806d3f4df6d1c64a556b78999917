@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9aa64fed_cd6acc96",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:20:24Z",
+      "side": 1,
+      "message": "\u003e Would suggest splitting this into two parameters, an interface name (string) and an IP address (also string). At least one would be required.\n\nIs the server expected to stitch two interfaces (ifname and nexthop) together if the nexthop is an interface on the same device? Unsure how this route will be constructed and it\u0027s lookup work.",
+      "parentUuid": "8f82baf2_26c1f0ba",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40e0fde6_b91d30a4",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 1
