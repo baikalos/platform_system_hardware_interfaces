@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22e0e23e_d1bc0aeb",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T19:03:02Z",
+      "side": 1,
+      "message": "Yes, specific is also supported. Range is described by the prefix length or the subnet \"/\"",
+      "parentUuid": "b2f33d67_71572f31",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e363a0d_e56b4daa",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-02-02T18:44:07Z",
       "side": 1,
       "message": "to be used in what way?",
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dde9f3d_65ac6bbd",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T19:03:02Z",
+      "side": 1,
+      "message": "basically a refcount of requestors. System also enables this for it\u0027s own features. As long as their is at least one requestor, this stays enabled, or else it gets disabled. Currently via netutils-wrapper, a feature tag is used, e.g. \"iWLAN\".",
+      "parentUuid": "7e363a0d_e56b4daa",
       "revId": "79940348fe1070d9663a244d998b162a66aa9971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
