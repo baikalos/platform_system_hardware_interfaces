@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d4b60b5_f10ab27c",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41671c91_61386959",
+      "range": {
+        "startLine": 31,
+        "startChar": 14,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "051073c7_c5a2255b",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 1
@@ -118,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "7d499f16_6307ebfd",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "Ack. Added description in the comment above",
+      "parentUuid": "40e0fde6_b91d30a4",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1962c86_e865426d",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "broadly there are two kinds of networks (perhaps more internal to the system), viz. OEM created and system created. OEM created networks are solely managed by the OEM, and likewise for the system. These API signify which network a HIDL client (OEM/vendor) will be able to manipulate. System clients are AIDL and those don\u0027t have these restrictions. Also vendor modules cannot access those AIDL interfaces. There is a check in server implementation in the system to reject system created networks for these HAL APIs.",
+      "parentUuid": "ec23eb92_2ab7496b",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33dc0720_9454a90d",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 1
@@ -138,6 +210,30 @@
       "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e6d0c3_6bb4ba82",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33dc0720_9454a90d",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 73
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "f6246f5c_b1d544f6",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2c89478_c8026967",
+      "range": {
+        "startLine": 51,
+        "startChar": 96,
+        "endLine": 51,
+        "endChar": 103
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6532f33f_9d061df5",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 1
@@ -208,6 +328,30 @@
       "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12133c43_508fe9e1",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6532f33f_9d061df5",
+      "range": {
+        "startLine": 74,
+        "startChar": 100,
+        "endLine": 74,
+        "endChar": 103
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -257,6 +401,54 @@
     },
     {
       "key": {
+        "uuid": "73cf4915_fe342d4e",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3862d0c5_0850f2f4",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d08020f_1c0a354b",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66002c70_644ca985",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb974675_101619d4",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 1
@@ -277,6 +469,30 @@
       "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a28787_5ccd69c4",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-02T16:13:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb974675_101619d4",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
