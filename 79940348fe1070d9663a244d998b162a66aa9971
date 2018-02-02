@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2f33d67_71572f31",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-02T18:44:07Z",
+      "side": 1,
+      "message": "IPv4/6 range of the target host? is a specific address also supported?",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e363a0d_e56b4daa",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-02T18:44:07Z",
+      "side": 1,
+      "message": "to be used in what way?",
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
