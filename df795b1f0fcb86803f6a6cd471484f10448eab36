@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e366ae8e_dc33ed8a",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-02T04:34:05Z",
+      "side": 1,
+      "message": "This should take a prefix instead, such as 192.0.2.0/24 or 2001:db8:1::/48.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 58
+      },
+      "revId": "df795b1f0fcb86803f6a6cd471484f10448eab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68080eb_050ea4a9",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-02T04:34:05Z",
+      "side": 1,
+      "message": "Ditto, this should take a prefix.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "df795b1f0fcb86803f6a6cd471484f10448eab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
