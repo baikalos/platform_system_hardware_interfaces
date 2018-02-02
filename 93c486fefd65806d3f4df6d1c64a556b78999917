@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8f82baf2_26c1f0ba",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-02T02:27:04Z",
+      "side": 1,
+      "message": "Would suggest splitting this into two parameters, an interface name (string) and an IP address (also string). At least one would be required.",
+      "parentUuid": "051073c7_c5a2255b",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "93c486fefd65806d3f4df6d1c64a556b78999917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40e0fde6_b91d30a4",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 1
