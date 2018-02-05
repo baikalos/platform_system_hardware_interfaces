@@ -117,6 +117,24 @@
       "revId": "79940348fe1070d9663a244d998b162a66aa9971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05f6788a_ab5faba2",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-05T17:56:15Z",
+      "side": 1,
+      "message": "\u003e Ack.\n\u003e \n\u003e \u003eHowever, that raises another question, why is this a global setting? Shouldn\u0027t it be specific to each client?\n\u003e \n\u003e this is a system wide setting, enabled only when there is any feature that needs IP forwarding.\n\n\u003esetIpForwardEnable(IForwardClient client, bool enable). This allows you to attribute ip forward enables in a way that can\u0027t be faked to the kernel without processes passing these tokens around. IForwardClient would be an empty interface that just serves to satisfy this refcount\n\nRevoking the vote upon client disconnect or simply to handle multiple clients may need something like this:\n\nINetd::getIpForwardEnableToken() generates (IForwardClient client, StatusCode status)\n\nclient::setIpForwardEnable(bool enable);\n\nWe can then track unique binderized instance of IForwardClient in the server, and subscribe for death notifications. WDYT?",
+      "parentUuid": "3f6c3ff7_00fe7879",
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
