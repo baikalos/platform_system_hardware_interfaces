@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d86ed7c_d3f5786e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-06T23:57:29Z",
+      "side": 1,
+      "message": "Bug:",
+      "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1754efa7_6da63e46",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-06T23:57:29Z",
+      "side": 1,
+      "message": "how to use/format/etc?",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d3fdaf_ef959054",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-06T23:57:29Z",
+      "side": 1,
+      "message": "reference standard for these? reference standard?",
+      "range": {
+        "startLine": 34,
+        "startChar": 37,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae1ef1c_741e1cea",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-06T23:57:29Z",
+      "side": 1,
+      "message": "this is inherent in the type. What possible values?",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
