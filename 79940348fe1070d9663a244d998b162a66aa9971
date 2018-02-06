@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3d395798_799aa041",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-06T08:30:08Z",
+      "side": 1,
+      "message": "Adding a prefix length does not make sense here. The nexthop must either be empty or an IP address. So this could be \"For example, 10.0.0.1 or 2001:db8:1::cafe\".\n\nAlso say somewhere that at least one of nexthop and ifname must be non-empty.",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2f33d67_71572f31",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 3
@@ -42,6 +65,29 @@
         "startChar": 31,
         "endLine": 52,
         "endChar": 38
+      },
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f05b8f_7160ac84",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-06T08:30:08Z",
+      "side": 1,
+      "message": "Same comments as above.",
+      "range": {
+        "startLine": 57,
+        "startChar": 28,
+        "endLine": 57,
+        "endChar": 69
       },
       "revId": "79940348fe1070d9663a244d998b162a66aa9971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -135,6 +181,24 @@
       "revId": "79940348fe1070d9663a244d998b162a66aa9971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11c53d1a_28a158cd",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-06T08:30:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s a good idea to have death notifications here, for consistency reasons. All the methods in this interface (including the ones that we already released in INetd 1.0) produce effects that persist for as long as netd is running, and the caller(s) are responsible for ensuring they don\u0027t misconfigure the networks they create.\n\n(This is similar, if you will, to the way that the routes added by \"ip route add\" do not go away once the ip binary tetrminates.)\n\nNot sure about the token. Realistically, this HAL is for highly privileged vendor code that knows what it\u0027s doing, and the implementation does not make any attempt to protect said code from itself (but does prevent said code from interfering with the framework and vice versa).\n\nI can see your point that if the vendor code does not disable forwarding with the same token it passed in the first time it will get an error, but I\u0027m not sure we need to do anything to save buggy callers from themselves.\n\nPerhaps easiest is not to have a requester parameter at all. Internally, netd can treat all callers of this HAL as being the same entity - the vendor code - and will keep separate from it all the other callers (which are in the OS itself).",
+      "parentUuid": "05f6788a_ab5faba2",
+      "revId": "79940348fe1070d9663a244d998b162a66aa9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
