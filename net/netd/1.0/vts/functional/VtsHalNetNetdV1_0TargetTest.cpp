@@ -20,6 +20,8 @@
 #include <android/system/net/netd/1.0/INetd.h>
 #include <log/log.h>
 
+#include "VtsHalNetNetdTestUtils.h"
+
 using ::android::system::net::netd::V1_0::INetd;
 using ::android::hardware::Return;
 using ::android::sp;
@@ -36,17 +38,28 @@ class NetdHidlTest : public ::testing::VtsHalHidlTargetTestBase {
 
 // positive test. Ensure netd creates an oem network and returns valid netHandle, and destroys it.
 TEST_F(NetdHidlTest, TestCreateAndDestroyOemNetworkOk) {
-    auto cb = [this](uint64_t netHandle, uint32_t packetMark, INetd::StatusCode status) {
-        ASSERT_EQ(INetd::StatusCode::OK, status);
-        ASSERT_NE((uint64_t)0, netHandle);
-        ASSERT_NE((uint32_t)0, packetMark);
+    net_handle_t netHandle;
+    uint32_t packetMark;
+    INetd::StatusCode status;
 
-        Return<INetd::StatusCode> retStatus = netd->destroyOemNetwork(netHandle);
-        ASSERT_EQ(INetd::StatusCode::OK, retStatus);
-    };
+    Return<void> ret = netd->createOemNetwork([&](net_handle_t n, uint32_t p, INetd::StatusCode s) {
+        status = s;
+        netHandle = n;
+        packetMark = p;
+    });
 
-    Return<void> ret = netd->createOemNetwork(cb);
     ASSERT_TRUE(ret.isOk());
+    ASSERT_EQ(INetd::StatusCode::OK, status);
+    ASSERT_NE(NETWORK_UNSPECIFIED, netHandle);
+    ASSERT_NE((uint32_t)0, packetMark);
+
+    ASSERT_EQ(0, checkNetworkExists(netHandle));
+    ASSERT_EQ(0, countRulesForFwmark(packetMark));
+
+    Return<INetd::StatusCode> retStatus = netd->destroyOemNetwork(netHandle);
+    ASSERT_EQ(INetd::StatusCode::OK, retStatus);
+
+    ASSERT_EQ(-ENONET, checkNetworkExists(netHandle));
 }
 
 // negative test. Ensure destroy for invalid OEM network fails appropriately
