@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "65ba6c7b_80ce8e05",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-07T00:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1754efa7_6da63e46",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57d3fdaf_ef959054",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 4
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "871f556a_19b2d8c4",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-07T00:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57d3fdaf_ef959054",
+      "range": {
+        "startLine": 34,
+        "startChar": 37,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fae1ef1c_741e1cea",
         "filename": "net/netd/1.1/INetd.hal",
         "patchSetId": 4
@@ -76,6 +124,30 @@
       "writtenOn": "2018-02-06T23:57:29Z",
       "side": 1,
       "message": "this is inherent in the type. What possible values?",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a82e8bb_b023778c",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1062130
+      },
+      "writtenOn": "2018-02-07T00:07:56Z",
+      "side": 1,
+      "message": "All of the values from @1.0::StatusCode are possible. Is there better way to describe this? please help!",
+      "parentUuid": "fae1ef1c_741e1cea",
       "range": {
         "startLine": 40,
         "startChar": 28,
