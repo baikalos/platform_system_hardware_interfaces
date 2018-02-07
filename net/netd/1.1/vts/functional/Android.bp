@@ -14,17 +14,16 @@
 // limitations under the License.
 
 cc_test {
-    name: "VtsHalNetNetdV1_0TargetTest",
+    name: "VtsHalNetNetdV1_1TargetTest",
     srcs: [
-        "VtsHalNetNetdV1_0TargetTest.cpp",
+        "VtsHalNetNetdV1_1TargetTest.cpp",
     ],
     defaults: ["VtsHalNetNetdTestDefaults"],
+    static_libs: [
+        "libnetd_test_tun_interface",
+    ],
     shared_libs: [
-        "android.system.net.netd@1.0",
-        "libandroid_net",
-        "libbase",
-        "libhidlbase",
-        "liblog",
-        "libutils",
+        "android.system.net.netd@1.1",
+        "libnetutils",
     ],
 }
