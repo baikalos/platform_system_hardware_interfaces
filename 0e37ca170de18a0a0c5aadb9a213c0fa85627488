@@ -157,6 +157,30 @@
       "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0f461b_b9a6e189",
+        "filename": "net/netd/1.1/INetd.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-07T00:16:43Z",
+      "side": 1,
+      "message": "Delete comments which don\u0027t do anything other than specify type information or maybe say something like \u0027X for success\u0027.",
+      "parentUuid": "9a82e8bb_b023778c",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "0e37ca170de18a0a0c5aadb9a213c0fa85627488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
