@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72a01dc6_e97bdb46",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-02-08T22:09:59Z",
+      "side": 1,
+      "message": "Idly wondering if we should have this in a namespace...",
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
