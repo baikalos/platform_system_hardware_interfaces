@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "ef695337_8e513622",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-08T22:57:53Z",
+      "side": 1,
+      "message": "Is stderr logged? Or do we need ALOG?",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "679b90a4_fa776557",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-08T22:57:53Z",
+      "side": 1,
+      "message": "It\u0027s more efficient to free() only once at the end of the loop.\ngetline() will reuse the existing buffer and extend it with realloc() when it\u0027s not large enough.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50606424_b6ae3e59",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-08T22:57:53Z",
+      "side": 1,
+      "message": "We don\u0027t really need the extended syntax here... But maybe it costs nothing.",
+      "range": {
+        "startLine": 75,
+        "startChar": 40,
+        "endLine": 75,
+        "endChar": 70
+      },
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d887956b_2a05c89b",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-08T22:57:53Z",
+      "side": 1,
+      "message": "nit: const char*",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 20
+      },
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde3e9bc_ded16fda",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-08T22:57:53Z",
+      "side": 1,
+      "message": "Missing header guards.",
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72a01dc6_e97bdb46",
         "filename": "net/netd/VtsHalNetNetdTestUtils.h",
         "patchSetId": 2
