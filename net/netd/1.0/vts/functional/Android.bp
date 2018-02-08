@@ -18,6 +18,7 @@ cc_test {
     srcs: [
         "VtsHalNetNetdV1_0TargetTest.cpp",
     ],
+    defaults: ["VtsHalNetNetdTestDefaults"],
     shared_libs: [
         "android.system.net.netd@1.0",
         "libandroid_net",
@@ -25,14 +26,5 @@ cc_test {
         "libhidlbase",
         "liblog",
         "libutils",
-    ],
-    static_libs: [
-        "VtsHalHidlTargetTestBase",
-        "VtsHalNetNetdTestUtils",
-    ],
-    cflags: [
-        "-Og",
-        "-Wall",
-        "-Werror",
     ],
 }
