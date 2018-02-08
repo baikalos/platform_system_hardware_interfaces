@@ -71,7 +71,7 @@ static std::vector<std::string> listIpRules(const char* ipVersion) {
     return runCommand(command);
 }
 
-static int countMatchingIpRules(const std::string& regexString) {
+int countMatchingIpRules(const std::string& regexString) {
     const std::regex regex(regexString, std::regex_constants::extended);
     int matches = 0;
 
@@ -88,6 +88,30 @@ static int countMatchingIpRules(const std::string& regexString) {
 }
 
 int countRulesForFwmark(const uint32_t fwmark) {
-    std::string regex = StringPrintf("from all fwmark 0x%x/.* lookup ", fwmark);
+    // Skip top nibble, which differs between rules.
+    std::string regex = StringPrintf("from all fwmark 0x[0-9a-f]+%x/.* lookup ", fwmark);
     return countMatchingIpRules(regex);
+}
+
+int checkReachability(net_handle_t netHandle, const char* addrStr) {
+    addrinfo *ai, hints = {.ai_flags = AI_NUMERICHOST | AI_NUMERICSERV};
+    int ret = getaddrinfo(addrStr, "53", &hints, &ai);
+    if (ret) {
+        return -EINVAL;
+    }
+
+    int sock = socket(ai->ai_family, SOCK_DGRAM, 0);
+    if (sock == -1 || android_setsocknetwork(netHandle, sock) == -1) {
+        ret = -errno;
+        freeaddrinfo(ai);
+        return ret;
+    }
+
+    ret = connect(sock, ai->ai_addr, ai->ai_addrlen);
+    close(sock);
+    if (ret == -1) {
+        ret = -errno;
+    }
+    freeaddrinfo(ai);
+    return ret;
 }
