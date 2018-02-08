@@ -19,9 +19,11 @@
 
 #include <android/multinetwork.h>
 
-#define IP_PATH "/system/bin/ip"
+constexpr const char* IP_PATH = "/system/bin/ip";
 
 int checkNetworkExists(net_handle_t netHandle);
+int checkReachability(net_handle_t netHandle, const char* addrStr);
+int countMatchingIpRules(const std::string& regexString);
 int countRulesForFwmark(const uint32_t fwmark);
 
 #endif
