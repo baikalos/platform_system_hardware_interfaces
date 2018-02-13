@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0456f7c_c647031e",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-13T07:01:35Z",
+      "side": 1,
+      "message": "Confirmed that this does what we want, i.e., data written to stderr appears in the test output.",
+      "parentUuid": "ef695337_8e513622",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "679b90a4_fa776557",
         "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-08T22:57:53Z",
       "side": 1,
       "message": "It\u0027s more efficient to free() only once at the end of the loop.\ngetline() will reuse the existing buffer and extend it with realloc() when it\u0027s not large enough.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add1c7fb_747e3c56",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-13T07:01:35Z",
+      "side": 1,
+      "message": "Done. This is not relevant to test code but it\u0027s a good idea to fix it in case it inspires production code.",
+      "parentUuid": "679b90a4_fa776557",
       "range": {
         "startLine": 61,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d660fcd4_c015009c",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-13T07:01:35Z",
+      "side": 1,
+      "message": "Not in this CL, but we might in the future.",
+      "parentUuid": "50606424_b6ae3e59",
+      "range": {
+        "startLine": 75,
+        "startChar": 40,
+        "endLine": 75,
+        "endChar": 70
+      },
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d887956b_2a05c89b",
         "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "50a8aba6_56a98387",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-13T07:01:35Z",
+      "side": 1,
+      "message": "Done, but why? Generally I\u0027m not a fan of \"auto\" used like this because it makes it non-obvious what type |version| is. However, here it\u0027s pretty clear what type it is: both \"-4\" and \"-6\" have type const char *.",
+      "parentUuid": "d887956b_2a05c89b",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 20
+      },
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cde3e9bc_ded16fda",
         "filename": "net/netd/VtsHalNetNetdTestUtils.h",
         "patchSetId": 2
@@ -108,6 +204,24 @@
       "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c652b4_5fe93bff",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-13T07:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cde3e9bc_ded16fda",
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
