@@ -239,6 +239,24 @@
       "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c8326d_6b212e9f",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-13T07:02:46Z",
+      "side": 1,
+      "message": "I was wondering whether you\u0027d say that. :-)\n\nSuggest a namespace name and I\u0027ll use it.",
+      "parentUuid": "72a01dc6_e97bdb46",
+      "revId": "9000a37c406f4d57f4a61540915abbd7b3f0610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
