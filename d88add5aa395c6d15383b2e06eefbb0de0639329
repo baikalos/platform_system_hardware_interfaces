@@ -45,6 +45,29 @@
       "revId": "d88add5aa395c6d15383b2e06eefbb0de0639329",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea9c30a8_5b2c61bd",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-14T04:26:39Z",
+      "side": 1,
+      "message": "Nit: here it says header guards should have no underscores prefixes:\n\n  https://docs.google.com/document/d/1QivJI_03TcfRAyMGWkTNHEdiQh8h_F-rYGup9soSeLA/edit#",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "d88add5aa395c6d15383b2e06eefbb0de0639329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
