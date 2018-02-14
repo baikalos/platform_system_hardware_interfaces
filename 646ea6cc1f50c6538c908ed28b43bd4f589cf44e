@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cdb5527_84fe5401",
+        "filename": "net/netd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-14T00:47:53Z",
+      "side": 1,
+      "message": "delete comment, same below",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "646ea6cc1f50c6538c908ed28b43bd4f589cf44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "414689cf_0532e9af",
+        "filename": "net/netd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-14T00:47:53Z",
+      "side": 1,
+      "message": "this should already include some of the above libraries",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "646ea6cc1f50c6538c908ed28b43bd4f589cf44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
