@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c1ca41e_8f4ec21f",
+        "filename": "net/netd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-14T05:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cdb5527_84fe5401",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "646ea6cc1f50c6538c908ed28b43bd4f589cf44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "414689cf_0532e9af",
         "filename": "net/netd/Android.bp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-14T00:47:53Z",
       "side": 1,
       "message": "this should already include some of the above libraries",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "646ea6cc1f50c6538c908ed28b43bd4f589cf44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f43c710_72ed2563",
+        "filename": "net/netd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-14T05:33:39Z",
+      "side": 1,
+      "message": "I removed libhidltransport, but the others all seem to be required. Even removing libbase from the shared_libs section of this cc_defaults target retuls in undefined references to StringPrintf, even though libbase is present in the shared_libs section of the VtsHalNetNetdTestUtils and the 1.1 test depends on VtsHalNetNetdTestUtils.\n\nsystem/hardware/interfaces/net/netd/VtsHalNetNetdTestUtils.cpp:69: error: undefined reference to \u0027android::base::StringPrintf(char const*, ...)\u0027\nsystem/hardware/interfaces/net/netd/VtsHalNetNetdTestUtils.cpp:91: error: undefined reference to \u0027android::base::StringPrintf(char const*, ...)\u0027\nsystem/netd/tests/tun_interface.cpp:63: error: undefined reference to \u0027android::base::StringPrintf(char const*, ...)\u0027\nsystem/hardware/interfaces/net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp:274: error: undefined reference to \u0027android::base::StringPrintf(char const*, ...)\u0027\n\nNot sure what I\u0027m doing wrong here. Perhaps it\u0027s because VtsHalHidlTargetTestBase and VtsHalNetNetdTestUtils here are static libraries instead of shared?",
+      "parentUuid": "414689cf_0532e9af",
       "range": {
         "startLine": 53,
         "startChar": 9,
