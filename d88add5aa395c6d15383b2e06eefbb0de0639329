@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf1c3e4c_a59b355e",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-14T05:33:47Z",
+      "side": 1,
+      "message": "I thought it would be useful to humans to have it here too. It was definitely useful for me so I could figure out which of these needed to be static (i.e., brought in by the tests) and which could be shared (i.e., possibly modified by the OEM). But perhaps the build system already takes care of all of this. Removed.",
+      "parentUuid": "aa589d9e_c2d1c276",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "d88add5aa395c6d15383b2e06eefbb0de0639329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "958277f8_9f5ac0ad",
         "filename": "net/netd/1.0/vts/functional/Android.bp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-14T00:48:53Z",
       "side": 1,
       "message": "should already be in defaults",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "d88add5aa395c6d15383b2e06eefbb0de0639329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99107b6d_09b84bb4",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-14T05:33:47Z",
+      "side": 1,
+      "message": "I removed libhidltransport, but all the others are necessary to link successfully. Is there a defaults target elsewhere that I should be importing? In any case, these are all gone in the subsequent CL that defines a defaults target for these tests.",
+      "parentUuid": "958277f8_9f5ac0ad",
       "range": {
         "startLine": 23,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "35ac6454_45f4e05b",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-14T05:33:47Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d5a604a0_5c6d9a94",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "d88add5aa395c6d15383b2e06eefbb0de0639329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea9c30a8_5b2c61bd",
         "filename": "net/netd/VtsHalNetNetdTestUtils.h",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "d88add5aa395c6d15383b2e06eefbb0de0639329",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dba1d89_357f39a2",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-14T05:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea9c30a8_5b2c61bd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "d88add5aa395c6d15383b2e06eefbb0de0639329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
