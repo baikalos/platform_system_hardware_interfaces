@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "50cd7c1b_58e9b007",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-19T04:57:09Z",
+      "side": 1,
+      "message": "Either remove the leading \"::\" from the first three, or add them to the last two.\n\n(,y personal preference is no extra punctuation noise unless there\u0027s a real chance of name collisions between top-level and nested namespaces).",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0e7df4d_fe34ce26",
         "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
         "patchSetId": 4
@@ -18,6 +41,75 @@
         "startChar": 15,
         "endLine": 44,
         "endChar": 16
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5073faf7_50559d6f",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-19T04:57:09Z",
+      "side": 1,
+      "message": "nit: this could just be vector\u003cconst char*\u003e.",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 23
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61966c79_0b539807",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-19T04:57:09Z",
+      "side": 1,
+      "message": "Not sure if EXPECT_EQ() supports augmenting the error message like this, but in case it does:\n\n  EXPECT_EQ(0, checkReachability(handle, dst)) \u003c\u003c \"Destination: \" \u003c\u003c dst;\n\nAlso, the .c_str() isn\u0027t needed.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 61
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b685ebf8_ab080c1e",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-19T04:57:09Z",
+      "side": 1,
+      "message": "Can we move this to the .cpp file, and turn it into a const char[]?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
       },
       "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
