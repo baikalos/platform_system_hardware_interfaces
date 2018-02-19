@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0e7df4d_fe34ce26",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-02-19T02:28:28Z",
+      "side": 1,
+      "message": "Appending a semicolon here defeats the purpose of the do {...} while(0) idiom.",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
