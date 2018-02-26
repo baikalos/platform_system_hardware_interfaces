@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da15b3b_4387df11",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-02-26T18:41:05Z",
+      "side": 1,
+      "message": "can those test utils be placed under vts dir (okay in a separate dir)?",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "14c18b0ef2336382f4dd1f89b7360c965ced91d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
