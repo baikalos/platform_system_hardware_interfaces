@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d799f387_e9aadcd9",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-05T09:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50cd7c1b_58e9b007",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0e7df4d_fe34ce26",
         "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
         "patchSetId": 4
@@ -201,6 +225,30 @@
       "side": 1,
       "message": "Made a constexpr instead.",
       "parentUuid": "b685ebf8_ab080c1e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653cb643_a95f3f86",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-05T09:10:32Z",
+      "side": 1,
+      "message": "Still, moving IP_PATH to the .cc file would reduce namespace pollution for users of this header.",
+      "parentUuid": "9a8d9ad1_42e31a58",
       "range": {
         "startLine": 22,
         "startChar": 0,
