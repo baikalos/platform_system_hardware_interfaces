@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "590a1927_fbfdfb7f",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-05T16:58:06Z",
+      "side": 1,
+      "message": "isn\u0027t this defined somewhere else? perhaps this can be part of the util?",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e379ae59_b00de5a4",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-05T16:58:06Z",
+      "side": 1,
+      "message": "docstring for variable?",
+      "range": {
+        "startLine": 116,
+        "startChar": 13,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3f1e0ac_d2a815ce",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-05T16:58:06Z",
+      "side": 1,
+      "message": "docstring for every test case?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 6
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b87f532d_e447fc03",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-05T16:58:06Z",
+      "side": 1,
+      "message": "if namespace is used, use named ones e.g., \n\nnamespace android {\nnamespace vts {\n...\n}  // vts\n}  // android\n\n?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a397778_bd0ee17f",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-05T16:58:06Z",
+      "side": 1,
+      "message": "can all such be placed before the class\n\nthen class\n\nthen all test cases\n\n?",
+      "range": {
+        "startLine": 201,
+        "startChar": 19,
+        "endLine": 209,
+        "endChar": 18
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08a4d018_35a7f38f",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-05T16:58:06Z",
+      "side": 1,
+      "message": "i think it\u0027s better to move this to 1.0\u0027s vts dir (perhaps by creating a utils dir) or separate dir under netd (e.g., common/utils) to make it easy to classify what belong to test?",
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deb6ec12_406c0993",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-05T16:58:06Z",
+      "side": 1,
+      "message": "docstring for each method?",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
