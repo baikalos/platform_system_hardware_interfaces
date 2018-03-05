@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9cb59cf0_eb2ee190",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-05T03:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e7df4d_fe34ce26",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5073faf7_50559d6f",
         "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
         "patchSetId": 4
@@ -68,6 +92,30 @@
       "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb524bf_e68a133f",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-05T03:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5073faf7_50559d6f",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 23
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ff94c9bd_219ee668",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-05T03:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61966c79_0b539807",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 61
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b685ebf8_ab080c1e",
         "filename": "net/netd/VtsHalNetNetdTestUtils.h",
         "patchSetId": 4
@@ -105,6 +177,30 @@
       "writtenOn": "2018-02-19T04:57:09Z",
       "side": 1,
       "message": "Can we move this to the .cpp file, and turn it into a const char[]?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "ecd3b10f562720c44c0ecbbc1c76e3060d141d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8d9ad1_42e31a58",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-05T03:27:31Z",
+      "side": 1,
+      "message": "Made a constexpr instead.",
+      "parentUuid": "b685ebf8_ab080c1e",
       "range": {
         "startLine": 22,
         "startChar": 0,
