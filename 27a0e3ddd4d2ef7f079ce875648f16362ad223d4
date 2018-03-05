@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bc32a5d_88ab1b77",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-03-05T05:44:29Z",
+      "side": 1,
+      "message": "8",
+      "range": {
+        "startLine": 2,
+        "startChar": 16,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "27a0e3ddd4d2ef7f079ce875648f16362ad223d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
