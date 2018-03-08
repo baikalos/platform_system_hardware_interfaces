@@ -272,6 +272,24 @@
     },
     {
       "key": {
+        "uuid": "aac1be6e_48fb5b8c",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T17:07:51Z",
+      "side": 1,
+      "message": "Moved.",
+      "parentUuid": "77a379a1_ba4bcd63",
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "deb6ec12_406c0993",
         "filename": "net/netd/VtsHalNetNetdTestUtils.h",
         "patchSetId": 6
