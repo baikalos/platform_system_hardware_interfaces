@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e60ec35_37656d06",
+        "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-08T17:04:57Z",
+      "side": 1,
+      "message": "are those a move (instead of add)?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "def1addac5d07fbfcf1bf3c0bcad7493ab76837a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
