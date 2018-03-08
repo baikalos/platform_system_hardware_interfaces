@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82d6646e_4288af19",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T16:45:05Z",
+      "side": 1,
+      "message": "Moved to the common .h file.",
+      "parentUuid": "590a1927_fbfdfb7f",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e379ae59_b00de5a4",
         "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-05T16:58:06Z",
       "side": 1,
       "message": "docstring for variable?",
+      "range": {
+        "startLine": 116,
+        "startChar": 13,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61536f21_edb73e9d",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T16:45:05Z",
+      "side": 1,
+      "message": "These are just the storage declarations for the statics defined in the class. Added above.",
+      "parentUuid": "e379ae59_b00de5a4",
       "range": {
         "startLine": 116,
         "startChar": 13,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6359d9e1_4fc5dfcb",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T16:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3f1e0ac_d2a815ce",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 6
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b87f532d_e447fc03",
         "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2018-03-05T16:58:06Z",
       "side": 1,
       "message": "if namespace is used, use named ones e.g., \n\nnamespace android {\nnamespace vts {\n...\n}  // vts\n}  // android\n\n?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5be95fc_564feb7d",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T16:45:05Z",
+      "side": 1,
+      "message": "These are anonymous namespaces for the purpose of declaring functions that should not be used outside this file. See:\n\nhttps://google.github.io/styleguide/cppguide.html#Unnamed_Namespaces_and_Static_Variables",
+      "parentUuid": "b87f532d_e447fc03",
       "range": {
         "startLine": 179,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d5b7d301_76b803ac",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T16:45:05Z",
+      "side": 1,
+      "message": "They were placed closest to the tests that need them for ease of readability. Moved.",
+      "parentUuid": "4a397778_bd0ee17f",
+      "range": {
+        "startLine": 201,
+        "startChar": 19,
+        "endLine": 209,
+        "endChar": 18
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08a4d018_35a7f38f",
         "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
         "patchSetId": 6
@@ -134,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "77a379a1_ba4bcd63",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T16:45:05Z",
+      "side": 1,
+      "message": "Why should this be in the 1.0 dir? This method isn\u0027t specific to 1.0 or 1.1. Are you saying this file should not be in system/hardware/interfaces/net/netd/ but in a new directory such as system/hardware/interfaces/net/netd/testutils/",
+      "parentUuid": "08a4d018_35a7f38f",
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "deb6ec12_406c0993",
         "filename": "net/netd/VtsHalNetNetdTestUtils.h",
         "patchSetId": 6
@@ -145,6 +283,30 @@
       "writtenOn": "2018-03-05T16:58:06Z",
       "side": 1,
       "message": "docstring for each method?",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "c0d100076cb805ef0d0caffc348b30ea696b9fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d088ed21_0997712b",
+        "filename": "net/netd/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T16:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deb6ec12_406c0993",
       "range": {
         "startLine": 25,
         "startChar": 4,
