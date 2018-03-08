@@ -22,6 +22,30 @@
       "revId": "def1addac5d07fbfcf1bf3c0bcad7493ab76837a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21a75b9a_64f0d6a0",
+        "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-08T17:08:58Z",
+      "side": 1,
+      "message": "They are added in this change. You asked me to move them in the change after this, so I moved them in this change.",
+      "parentUuid": "0e60ec35_37656d06",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "def1addac5d07fbfcf1bf3c0bcad7493ab76837a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
