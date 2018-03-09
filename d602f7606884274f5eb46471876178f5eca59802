@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f25d93d7_b8f8bb0d",
+        "filename": "net/netd/1.1/vts/functional/VtsHalNetNetdV1_1TargetTest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2018-03-09T02:05:43Z",
+      "side": 1,
+      "message": "Need to add the testEnv to make it work, check https://cs.corp.google.com/android/hardware/interfaces/light/2.0/vts/functional/VtsHalLightV2_0TargetTest.cpp?rcl\u003dd074ac4024545852dce7e0cb754d2b59e7587f3c\u0026l\u003d168",
+      "range": {
+        "startLine": 339,
+        "startChar": 4,
+        "endLine": 339,
+        "endChar": 43
+      },
+      "revId": "d602f7606884274f5eb46471876178f5eca59802",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
