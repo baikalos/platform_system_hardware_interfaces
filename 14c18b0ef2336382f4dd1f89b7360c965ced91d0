@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6dab9fff_04aac01c",
+        "filename": "net/netd/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-12T05:22:40Z",
+      "side": 1,
+      "message": "Not sure if it matters, but there\u0027s a new -Og flag which means \"whatever optimization level works best with debugging\":\n\n  https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#Optimize-Options\n\n(also supported by clang since 4.0)",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "14c18b0ef2336382f4dd1f89b7360c965ced91d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4da15b3b_4387df11",
         "filename": "net/netd/VtsHalNetNetdTestUtils.cpp",
         "patchSetId": 4

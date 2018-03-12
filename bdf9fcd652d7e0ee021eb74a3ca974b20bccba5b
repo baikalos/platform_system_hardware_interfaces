@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a09e390_3ded6f32",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-12T05:22:40Z",
+      "side": 1,
+      "message": "nit: lowercase i in instance().",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f0dde91_b23f4cf9",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-12T05:22:40Z",
+      "side": 1,
+      "message": "*instance\n\nReturning the instance by reference seems more idiomatic (see for instance https://cs.corp.google.com/piper///depot/google3/util/gtl/singleton.h?l\u003d12).",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f5da0cd_41b25eca",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-12T05:22:40Z",
+      "side": 1,
+      "message": "Why not std::unique_ptr?",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c756dd_e0cc6c37",
+        "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-12T05:22:40Z",
+      "side": 1,
+      "message": "system/netd/tests/binder_test.cpp",
+      "range": {
+        "startLine": 46,
+        "startChar": 31,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b980ca9c_d530e05c",
+        "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-12T05:22:40Z",
+      "side": 1,
+      "message": "Move it to the .cpp file and change it to a constant.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
