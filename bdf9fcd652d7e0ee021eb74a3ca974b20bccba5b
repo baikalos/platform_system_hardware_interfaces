@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "8db60118_bade7f26",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-03-12T05:31:10Z",
+      "side": 1,
+      "message": "I think main() isn\u0027t needed: if omitted, the default main() will be pulled from the gtest library.\n\nI tried deleting main() from another test, and got a working binary.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37c756dd_e0cc6c37",
         "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.cpp",
         "patchSetId": 8
