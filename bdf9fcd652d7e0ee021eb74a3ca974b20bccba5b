@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d179bebc_9b3493a0",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-12T12:27:58Z",
+      "side": 1,
+      "message": "Other tests use this pattern, see e.g., https://cs.corp.google.com/android/hardware/interfaces/light/2.0/vts/functional/VtsHalLightV2_0TargetTest.cpp",
+      "parentUuid": "3f0dde91_b23f4cf9",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f5da0cd_41b25eca",
         "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
         "patchSetId": 8
@@ -59,6 +83,30 @@
       "writtenOn": "2018-03-12T05:22:40Z",
       "side": 1,
       "message": "Why not std::unique_ptr?",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d651cb_302b0e08",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-12T12:27:58Z",
+      "side": 1,
+      "message": "I think getService returns android::sp?",
+      "parentUuid": "2f5da0cd_41b25eca",
       "range": {
         "startLine": 52,
         "startChar": 4,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "c6f5321c_ae7bc628",
+        "filename": "net/netd/1.0/vts/functional/VtsHalNetNetdV1_0TargetTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-12T12:27:58Z",
+      "side": 1,
+      "message": "Made consistent with the other HAL tests per VTS team comments.",
+      "parentUuid": "8db60118_bade7f26",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37c756dd_e0cc6c37",
         "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.cpp",
         "patchSetId": 8
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "b98a51aa_e458466f",
+        "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-12T12:27:58Z",
+      "side": 1,
+      "message": "Oops. Done.",
+      "parentUuid": "37c756dd_e0cc6c37",
+      "range": {
+        "startLine": 46,
+        "startChar": 31,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b980ca9c_d530e05c",
         "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.h",
         "patchSetId": 8
@@ -128,6 +224,30 @@
       "writtenOn": "2018-03-12T05:22:40Z",
       "side": 1,
       "message": "Move it to the .cpp file and change it to a constant.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "bdf9fcd652d7e0ee021eb74a3ca974b20bccba5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78aa9ec8_5240d13d",
+        "filename": "net/netd/testutils/VtsHalNetNetdTestUtils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-12T12:27:58Z",
+      "side": 1,
+      "message": "Made a constexpr instead.",
+      "parentUuid": "b980ca9c_d530e05c",
       "range": {
         "startLine": 22,
         "startChar": 0,
