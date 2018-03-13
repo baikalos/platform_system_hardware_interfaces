@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "682c60d9_3592466e",
+        "filename": "net/netd/1.0/vts/functional/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2018-03-13T02:30:33Z",
+      "side": 1,
+      "message": "assuming those are updated by \nhttps://android-review.googlesource.com/#/c/platform/system/hardware/interfaces/+/612526/",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "79f693702c35dca81f7390d1619736a204e61a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
