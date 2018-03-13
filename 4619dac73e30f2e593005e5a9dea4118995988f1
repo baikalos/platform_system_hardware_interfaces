@@ -22,6 +22,30 @@
       "revId": "4619dac73e30f2e593005e5a9dea4118995988f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c05432e_df5f73d6",
+        "filename": "net/netd/1.1/vts/functional/Android.bp",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-13T02:36:56Z",
+      "side": 1,
+      "message": "That fails to build with 143 kB of error messages. https://paste.googleplex.com/4580746727522304",
+      "parentUuid": "df474511_c947e76e",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "4619dac73e30f2e593005e5a9dea4118995988f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
