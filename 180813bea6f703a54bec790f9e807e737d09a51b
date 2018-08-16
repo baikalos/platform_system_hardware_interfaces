@@ -1,0 +1,9 @@
+Verified+1: Tri Vo <trong@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Daniel Colascione <dancol@google.com>
+Code-Review+1: Steven Moreland <smoreland@google.com>
+Submitted-by: Tri Vo <trong@google.com>
+Submitted-at: Thu, 16 Aug 2018 17:10:29 +0000
+Reviewed-on: https://android-review.googlesource.com/733039
+Project: platform/system/hardware/interfaces
+Branch: refs/heads/master
