@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "413728f0_737a6b1c",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-28T23:29:17Z",
+      "side": 1,
+      "message": "no comma",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "9bdabdaf09ebff4d832ffe2fe06bec5e68344ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c355e6ed_b8e0bc2e",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-28T23:29:17Z",
+      "side": 1,
+      "message": "four spaces",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "9bdabdaf09ebff4d832ffe2fe06bec5e68344ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd068a7_819e444e",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-28T23:29:17Z",
+      "side": 1,
+      "message": "nit: debugName",
+      "range": {
+        "startLine": 39,
+        "startChar": 27,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "9bdabdaf09ebff4d832ffe2fe06bec5e68344ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
