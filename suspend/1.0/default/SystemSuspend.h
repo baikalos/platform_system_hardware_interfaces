@@ -19,6 +19,7 @@
 
 #include <android-base/unique_fd.h>
 #include <android/system/suspend/1.0/ISystemSuspend.h>
+#include <system/hardware/interfaces/suspend/1.0/default/SystemSuspendStats.pb.h>
 
 #include <condition_variable>
 #include <mutex>
@@ -52,10 +53,11 @@ class SystemSuspend : public ISystemSuspend {
    public:
     SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd);
     Return<bool> enableAutosuspend() override;
-    Return<sp<IWakeLock>> acquireWakeLock() override;
+    Return<sp<IWakeLock>> acquireWakeLock(const hidl_string& name) override;
     Return<void> debug(const hidl_handle& handle, const hidl_vec<hidl_string>& options) override;
     void incSuspendCounter();
     void decSuspendCounter();
+    void deleteWakeLockStatsEntry(uint64_t id);
 
    private:
     void initAutosuspend();
@@ -65,6 +67,10 @@ class SystemSuspend : public ISystemSuspend {
     uint32_t mSuspendCounter;
     unique_fd mWakeupCountFd;
     unique_fd mStateFd;
+
+    // We don't protect this data structure with a lock because only the binder thread should
+    // at any point be touching this.
+    SystemSuspendStats mStats;
 };
 
 }  // namespace V1_0
