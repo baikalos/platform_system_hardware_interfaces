@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cee6e0a_5480e458",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T05:53:04Z",
+      "side": 1,
+      "message": "are we sure it\u0027s safe to send this out?",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 37
+      },
+      "revId": "3615a5160607b5dd796ae7a2a7474a9cb087b1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64907bff_a6a7b1df",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T05:53:04Z",
+      "side": 1,
+      "message": "the wake lock can be destructed, so this isn\u0027t guaranteed to be unique\n\nShouldn\u0027t the destructor of the wake lock clear this?",
+      "range": {
+        "startLine": 95,
+        "startChar": 35,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "3615a5160607b5dd796ae7a2a7474a9cb087b1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714acec5_bb6f2b86",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-08-29T05:53:04Z",
+      "side": 1,
+      "message": "nit: creating a protobuf just for the ToString method seems like overkill?",
+      "revId": "3615a5160607b5dd796ae7a2a7474a9cb087b1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
