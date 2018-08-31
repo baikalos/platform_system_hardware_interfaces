@@ -16,9 +16,18 @@
 
 package android.system.suspend@1.0;
 
+import ISystemSuspendCallback;
 import IWakeLock;
 
 interface ISystemSuspend {
+    /**
+     * Registers a callback for system suspend events.
+     *
+     * @param callback the callback to register
+     * @return status true on success, false otherwise.
+     */
+    registerCallback(ISystemSuspendCallback callback) generates (bool success);
+
     /**
      * Starts automatic system suspension.
      *

@@ -19,6 +19,7 @@
 
 #include <android-base/unique_fd.h>
 #include <android/system/suspend/1.0/ISystemSuspend.h>
+#include <android/system/suspend/1.0/ISystemSuspendCallback.h>
 #include <system/hardware/interfaces/suspend/1.0/default/SystemSuspendStats.pb.h>
 
 #include <condition_variable>
@@ -59,6 +60,7 @@ class SystemSuspend : public ISystemSuspend {
     SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd);
     Return<bool> enableAutosuspend() override;
     Return<sp<IWakeLock>> acquireWakeLock(const hidl_string& name) override;
+    Return<bool> registerCallback(const sp<ISystemSuspendCallback>& callback) override;
     Return<void> debug(const hidl_handle& handle, const hidl_vec<hidl_string>& options) override;
     void incSuspendCounter();
     void decSuspendCounter();
@@ -78,6 +80,9 @@ class SystemSuspend : public ISystemSuspend {
     // Never hold both locks at the same time to avoid deadlock.
     std::mutex mStatsLock;
     SystemSuspendStats mStats;
+
+    std::mutex mCallbackLock;
+    sp<ISystemSuspendCallback> mCallback;
 };
 
 }  // namespace V1_0

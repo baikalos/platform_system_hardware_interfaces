@@ -83,7 +83,8 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd)
       mSuspendCounter(0),
       mWakeupCountFd(std::move(wakeupCountFd)),
       mStateFd(std::move(stateFd)),
-      mStats() {}
+      mStats(),
+      mCallback(nullptr) {}
 
 Return<bool> SystemSuspend::enableAutosuspend() {
     static bool initialized = false;
@@ -108,6 +109,15 @@ Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(const hidl_string& name) {
         (*mStats.mutable_wake_lock_stats())[reinterpret_cast<uint64_t>(wl)] = wlStats;
     }
     return wl;
+}
+
+Return<bool> SystemSuspend::registerCallback(const sp<ISystemSuspendCallback>& callback) {
+    auto l = std::lock_guard(mCallbackLock);
+    if (!mCallback) {
+        mCallback = callback;
+        return true;
+    }
+    return false;
 }
 
 Return<void> SystemSuspend::debug(const hidl_handle& handle,
@@ -154,18 +164,25 @@ void SystemSuspend::initAutosuspend() {
                 continue;
             }
 
-            auto l = std::unique_lock(mCounterLock);
-            mCounterCondVar.wait(l, [this] { return mSuspendCounter == 0; });
-            // The mutex is locked and *MUST* remain locked until the end of the scope. Otherwise,
-            // a WakeLock might be acquired after we check mSuspendCounter and before we write to
-            // /sys/power/state.
+            auto counterLock = std::unique_lock(mCounterLock);
+            mCounterCondVar.wait(counterLock, [this] { return mSuspendCounter == 0; });
+            // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
+            // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before we
+            // write to /sys/power/state.
 
             if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
                 PLOG(VERBOSE) << "error writing from /sys/power/wakeup_count";
                 continue;
             }
-            if (!WriteStringToFd(kSleepState, mStateFd)) {
+            bool success = WriteStringToFd(kSleepState, mStateFd);
+            counterLock.unlock();
+
+            if (!success) {
                 PLOG(VERBOSE) << "error writing to /sys/power/state";
+            }
+            auto callbackLock = std::lock_guard(mCallbackLock);
+            if (mCallback) {
+                mCallback->notifyWakeup(success);
             }
         }
     });

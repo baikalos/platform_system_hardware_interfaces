@@ -20,6 +20,7 @@
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
 #include <cutils/native_handle.h>
+#include <gmock/gmock.h>
 #include <google/protobuf/text_format.h>
 #include <gtest/gtest.h>
 #include <hidl/HidlTransportSupport.h>
@@ -44,6 +45,7 @@ using android::hardware::joinRpcThreadpool;
 using android::hardware::Return;
 using android::hardware::Void;
 using android::system::suspend::V1_0::ISystemSuspend;
+using android::system::suspend::V1_0::ISystemSuspendCallback;
 using android::system::suspend::V1_0::IWakeLock;
 using android::system::suspend::V1_0::readFd;
 using android::system::suspend::V1_0::SystemSuspend;
@@ -270,11 +272,31 @@ TEST_F(SystemSuspendTest, WakeLockStressTest) {
     ASSERT_EQ(getWakeLockCount(), 0);
 }
 
+class MockSystemSuspendCallback : public ISystemSuspendCallback {
+   public:
+    MOCK_METHOD1(notifyWakeup, Return<void>(bool));
+};
+
+// Tests that SystemSuspend HAL notifies client of wakeup after suspend attempt.
+TEST_F(SystemSuspendTest, CallbackNotifyWakeup) {
+    constexpr int numWakeups = 5;
+    MockSystemSuspendCallback callback;
+    EXPECT_CALL(callback, notifyWakeup).Times(numWakeups);
+
+    suspendService->registerCallback(&callback);
+    for (int i = 0; i < numWakeups; i++) {
+        std::string wakeupCount = std::to_string(rand());
+        ASSERT_TRUE(WriteStringToFd(wakeupCount, wakeupCountFd));
+        ASSERT_FALSE(isSystemSuspendBlocked());
+    }
+}
+
 }  // namespace android
 
 int main(int argc, char** argv) {
     setenv("TREBLE_TESTING_OVERRIDE", "true", true);
     ::testing::AddGlobalTestEnvironment(android::SystemSuspendTestEnvironment::Instance());
+    ::testing::InitGoogleMock(&argc, argv);
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
