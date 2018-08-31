@@ -19,11 +19,13 @@
 
 #include <android-base/unique_fd.h>
 #include <android/system/suspend/1.0/ISystemSuspend.h>
+#include <android/system/suspend/1.0/ISystemSuspendCallback.h>
 #include <system/hardware/interfaces/suspend/1.0/default/SystemSuspendStats.pb.h>
 
 #include <condition_variable>
 #include <mutex>
 #include <string>
+#include <unordered_map>
 
 namespace android {
 namespace system {
@@ -31,10 +33,14 @@ namespace suspend {
 namespace V1_0 {
 
 using ::android::base::unique_fd;
+using ::android::hardware::hidl_death_recipient;
 using ::android::hardware::hidl_handle;
 using ::android::hardware::hidl_string;
 using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
+
+using PidType = uint64_t;
+using WakeLockIdType = uint64_t;
 
 class SystemSuspend;
 
@@ -54,15 +60,17 @@ class WakeLock : public IWakeLock {
     SystemSuspend* mSystemSuspend;
 };
 
-class SystemSuspend : public ISystemSuspend {
+class SystemSuspend : public ISystemSuspend, public hidl_death_recipient {
    public:
     SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd);
     Return<bool> enableAutosuspend() override;
     Return<sp<IWakeLock>> acquireWakeLock(const hidl_string& name) override;
+    Return<bool> registerCallback(const sp<ISystemSuspendCallback>& cb) override;
     Return<void> debug(const hidl_handle& handle, const hidl_vec<hidl_string>& options) override;
+    void serviceDied(PidType pid, const wp<IBase>& /* service */);
     void incSuspendCounter();
     void decSuspendCounter();
-    void deleteWakeLockStatsEntry(uint64_t id);
+    void deleteWakeLockStatsEntry(WakeLockIdType id);
 
    private:
     void initAutosuspend();
@@ -78,6 +86,9 @@ class SystemSuspend : public ISystemSuspend {
     // Never hold both locks at the same time to avoid deadlock.
     std::mutex mStatsLock;
     SystemSuspendStats mStats;
+
+    std::mutex mCallbackLock;
+    std::unordered_map<PidType, sp<ISystemSuspendCallback>> mCallbacks;
 };
 
 }  // namespace V1_0

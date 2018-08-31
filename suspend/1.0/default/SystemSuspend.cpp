@@ -53,8 +53,8 @@ string readFd(int fd) {
     return string{buf, static_cast<size_t>(n)};
 }
 
-static inline int getCallingPid() {
-    return IPCThreadState::self()->getCallingPid();
+static inline PidType getCallingPid() {
+    return static_cast<PidType>(IPCThreadState::self()->getCallingPid());
 }
 
 WakeLock::WakeLock(SystemSuspend* systemSuspend) : mReleased(), mSystemSuspend(systemSuspend) {
@@ -73,7 +73,7 @@ Return<void> WakeLock::release() {
 void WakeLock::releaseOnce() {
     std::call_once(mReleased, [this]() {
         mSystemSuspend->decSuspendCounter();
-        mSystemSuspend->deleteWakeLockStatsEntry(reinterpret_cast<uint64_t>(this));
+        mSystemSuspend->deleteWakeLockStatsEntry(reinterpret_cast<WakeLockIdType>(this));
     });
 }
 
@@ -83,7 +83,8 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd)
       mSuspendCounter(0),
       mWakeupCountFd(std::move(wakeupCountFd)),
       mStateFd(std::move(stateFd)),
-      mStats() {}
+      mStats(),
+      mCallbacks() {}
 
 Return<bool> SystemSuspend::enableAutosuspend() {
     static bool initialized = false;
@@ -105,9 +106,34 @@ Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(const hidl_string& name) {
         wlStats.set_name(name);
         wlStats.set_pid(getCallingPid());
         // Use WakeLock's address as a unique identifier.
-        (*mStats.mutable_wake_lock_stats())[reinterpret_cast<uint64_t>(wl)] = wlStats;
+        (*mStats.mutable_wake_lock_stats())[reinterpret_cast<WakeLockIdType>(wl)] = wlStats;
     }
     return wl;
+}
+
+Return<bool> SystemSuspend::registerCallback(const sp<ISystemSuspendCallback>& cb) {
+    if (!cb) {
+        return false;
+    }
+    auto pid = getCallingPid();
+    auto l = std::lock_guard(mCallbackLock);
+    auto oldCb = mCallbacks[pid];
+    if (oldCb) {
+        oldCb->unlinkToDeath(this).isOk();  // ignore errors
+    }
+    mCallbacks[pid] = cb;
+    auto linkRet = cb->linkToDeath(this, pid);
+    if (!linkRet.withDefault(false)) {
+        LOG(WARNING) << __func__ << "Cannot link to death: "
+                     << (linkRet.isOk() ? "linkToDeath returns false" : linkRet.description());
+        // ignore the error
+    }
+    return true;
+}
+
+void SystemSuspend::serviceDied(PidType pid, const wp<IBase>& /* service */) {
+    auto l = std::lock_guard(mCallbackLock);
+    mCallbacks.erase(pid);
 }
 
 Return<void> SystemSuspend::debug(const hidl_handle& handle,
@@ -139,7 +165,7 @@ void SystemSuspend::decSuspendCounter() {
     }
 }
 
-void SystemSuspend::deleteWakeLockStatsEntry(uint64_t id) {
+void SystemSuspend::deleteWakeLockStatsEntry(WakeLockIdType id) {
     auto l = std::lock_guard(mStatsLock);
     mStats.mutable_wake_lock_stats()->erase(id);
 }
@@ -154,18 +180,25 @@ void SystemSuspend::initAutosuspend() {
                 continue;
             }
 
-            auto l = std::unique_lock(mCounterLock);
-            mCounterCondVar.wait(l, [this] { return mSuspendCounter == 0; });
-            // The mutex is locked and *MUST* remain locked until the end of the scope. Otherwise,
-            // a WakeLock might be acquired after we check mSuspendCounter and before we write to
-            // /sys/power/state.
+            auto counterLock = std::unique_lock(mCounterLock);
+            mCounterCondVar.wait(counterLock, [this] { return mSuspendCounter == 0; });
+            // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
+            // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before we
+            // write to /sys/power/state.
 
             if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
                 PLOG(VERBOSE) << "error writing from /sys/power/wakeup_count";
                 continue;
             }
-            if (!WriteStringToFd(kSleepState, mStateFd)) {
+            bool success = WriteStringToFd(kSleepState, mStateFd);
+            counterLock.unlock();
+
+            if (!success) {
                 PLOG(VERBOSE) << "error writing to /sys/power/state";
+            }
+            auto callbackLock = std::lock_guard(mCallbackLock);
+            for (const auto& callback : mCallbacks) {
+                callback.second->notifyWakeup(success).isOk();  // ignore errors
             }
         }
     });
