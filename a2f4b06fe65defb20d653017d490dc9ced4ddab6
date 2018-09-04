@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a05f8e6_d6d90566",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-04T15:24:52Z",
+      "side": 1,
+      "message": "In the implementation, it looks like only one callback at a time is supported? Usually, when that is the case, we restrict the HAL to having only one client so that the different clients can\u0027t modify each others\u0027 states.\n\nProbably best to allow multiple and specify that here as well?",
+      "revId": "a2f4b06fe65defb20d653017d490dc9ced4ddab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
