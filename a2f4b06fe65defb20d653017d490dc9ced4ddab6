@@ -34,6 +34,24 @@
       "revId": "a2f4b06fe65defb20d653017d490dc9ced4ddab6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8d849f_fadba712",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-04T20:09:59Z",
+      "side": 1,
+      "message": "Sounds like potential DOS if an arbitrary process is allowed to override this. How about we just isolate clients from each other? That sounds the best to me.",
+      "parentUuid": "7e3e4f1d_a0c5a34a",
+      "revId": "a2f4b06fe65defb20d653017d490dc9ced4ddab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
