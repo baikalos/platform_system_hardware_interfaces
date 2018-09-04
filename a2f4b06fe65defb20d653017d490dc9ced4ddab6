@@ -16,6 +16,24 @@
       "revId": "a2f4b06fe65defb20d653017d490dc9ced4ddab6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3e4f1d_a0c5a34a",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-04T16:53:39Z",
+      "side": 1,
+      "message": "This callback is only meant for PowerManager service. Implementation in this patch only allows one callback to be registered. That\u0027s doesn\u0027t guarantee that the desired callback is registered, but the hal will have consistent state. This is not the cleanest approach. So if you prefer multi-client approach, I can change this.",
+      "parentUuid": "4a05f8e6_d6d90566",
+      "revId": "a2f4b06fe65defb20d653017d490dc9ced4ddab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
