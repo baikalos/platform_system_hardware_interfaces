@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c751f4ad_9d7638d0",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2018-09-05T18:14:59Z",
+      "side": 1,
+      "message": "I think this is safe. There is a limited set of system components which are allowed to hold wakelocks. This does not include third party apps.",
+      "parentUuid": "452fa9fa_82166c8b",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 37
+      },
+      "revId": "3615a5160607b5dd796ae7a2a7474a9cb087b1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64907bff_a6a7b1df",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 4
