@@ -52,6 +52,24 @@
       "revId": "a2f4b06fe65defb20d653017d490dc9ced4ddab6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99f61af_5ac9f85e",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-06T05:55:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d8d849f_fadba712",
+      "revId": "a2f4b06fe65defb20d653017d490dc9ced4ddab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
