@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "962c5848_1b3177e5",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "don\u0027t forget to update this as well",
+      "range": {
+        "startLine": 26,
+        "startChar": 61,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e1fcc8f_19f79fb8",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "nit: consistency: end with period",
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e895345_0bcfd700",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "see below",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a18b3af6_3a10a839",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "why do you do this btw but not init the callbacks? why not just let their default constructors run?",
+      "range": {
+        "startLine": 86,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3445f095_3f928c6a",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "nit: pid_t is only one more character...",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43222c7c_7e220155",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "you can compare these using their binder to see if they are the same callback (see interfacesEqual in libhidl). See vts_ibase_test for a map that does this.\n\nThe same process should be able to register a callback multiple times (you would need this for instance if the callbacks were implementation details of different libraries)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 5
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "421786c5_6b7691f1",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "there is a race here, if a new callback is registered by a pid that is started in place of the process (could only be hit by a possible \u0027cycle to pid\u0027 attack). Generally, you shouldn\u0027t use getCallingPid unless you also listen for process deaths (I recently learned there are cases of people doing this for this) or are only using it for logging.",
+      "range": {
+        "startLine": 136,
+        "startChar": 21,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984b5901_3c898916",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "style nit: use a lock_guard and put this in a separate scope. It helps to visualize when the lock is being held.",
+      "range": {
+        "startLine": 194,
+        "startChar": 12,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a4f586_9530e283",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "You might comment that you don\u0027t remove and unlinkToDeath since you are guaranteed to get a death notification if that happens. I had to think about this for a minute.",
+      "range": {
+        "startLine": 201,
+        "startChar": 55,
+        "endLine": 201,
+        "endChar": 61
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9d60e0_56af95a6",
+        "filename": "suspend/1.0/default/SystemSuspendStats.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T00:48:57Z",
+      "side": 1,
+      "message": "pids are uint32?",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
