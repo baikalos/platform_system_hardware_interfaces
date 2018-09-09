@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1745e4a4_ae6c5f7f",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-09T19:01:19Z",
+      "side": 1,
+      "message": "this will link the same cb to death multiple times",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "e5d53eefb348e9cc82d6ff39e3d73ba00ead9b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a75e16_01794d49",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-09T19:01:19Z",
+      "side": 1,
+      "message": "this is a leak (so, don\u0027t add and return false?)",
+      "range": {
+        "startLine": 120,
+        "startChar": 8,
+        "endLine": 120,
+        "endChar": 27
+      },
+      "revId": "e5d53eefb348e9cc82d6ff39e3d73ba00ead9b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

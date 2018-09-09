@@ -389,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "3cd4813b_18682882",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-09T19:01:19Z",
+      "side": 1,
+      "message": "If the callback is dead, you want to remove it (vs. leaving them around), but the death notifications will handle this.",
+      "parentUuid": "57b169ca_572d645a",
+      "range": {
+        "startLine": 201,
+        "startChar": 55,
+        "endLine": 201,
+        "endChar": 61
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb9d60e0_56af95a6",
         "filename": "suspend/1.0/default/SystemSuspendStats.proto",
         "patchSetId": 2
