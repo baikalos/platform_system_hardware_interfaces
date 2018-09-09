@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "93a670f4_bc0a42f2",
+        "filename": "suspend/1.0/ISystemSuspend.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e1fcc8f_19f79fb8",
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e895345_0bcfd700",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 2
@@ -62,6 +80,30 @@
       "revId": "447f7b176776f18de8673ac424275d913ebf021e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269fcfa1_4520d01e",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e895345_0bcfd700",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "4ec20616_a1aad50e",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18b3af6_3a10a839",
+      "range": {
+        "startLine": 86,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3445f095_3f928c6a",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 2
@@ -108,6 +174,30 @@
       "revId": "447f7b176776f18de8673ac424275d913ebf021e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519866aa_33c5a73b",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "It\u0027s not pid_t though, it\u0027s uint64_t :)",
+      "parentUuid": "3445f095_3f928c6a",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "b7e3a20f_3e92f3a3",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "OK, interfacesEqual approach is much cleaner and correct.",
+      "parentUuid": "43222c7c_7e220155",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 5
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "421786c5_6b7691f1",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 2
@@ -157,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "c0f40670_d0af9851",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "removed pids and went with the above suggestion",
+      "parentUuid": "421786c5_6b7691f1",
+      "range": {
+        "startLine": 136,
+        "startChar": 21,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "984b5901_3c898916",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 2
@@ -168,6 +306,30 @@
       "writtenOn": "2018-09-07T00:48:57Z",
       "side": 1,
       "message": "style nit: use a lock_guard and put this in a separate scope. It helps to visualize when the lock is being held.",
+      "range": {
+        "startLine": 194,
+        "startChar": 12,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc8bec3_36ce7eeb",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "I thought about it, but too much indentation.",
+      "parentUuid": "984b5901_3c898916",
       "range": {
         "startLine": 194,
         "startChar": 12,
@@ -203,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "57b169ca_572d645a",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "What you said is true, but I\u0027m not sure how it\u0027s related to this isOk() call.",
+      "parentUuid": "17a4f586_9530e283",
+      "range": {
+        "startLine": 201,
+        "startChar": 55,
+        "endLine": 201,
+        "endChar": 61
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb9d60e0_56af95a6",
         "filename": "suspend/1.0/default/SystemSuspendStats.proto",
         "patchSetId": 2
@@ -223,6 +409,30 @@
       "revId": "447f7b176776f18de8673ac424275d913ebf021e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "257d6bc0_b0258985",
+        "filename": "suspend/1.0/default/SystemSuspendStats.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-09T00:11:31Z",
+      "side": 1,
+      "message": "pid_t is same as int. I was thinking of using uint64 everywhere to avoid casting things 32\u003c-\u003e64 back and forth. I\u0027ll revert this line since we\u0027re not using pids.",
+      "parentUuid": "fb9d60e0_56af95a6",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "447f7b176776f18de8673ac424275d913ebf021e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
