@@ -16,6 +16,24 @@
       "revId": "25e829c73d35d8163c1db4bcba0dcbf8f255f290",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d62b93_3a03d96a",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-25T18:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a522132b_1f1ca869",
+      "revId": "25e829c73d35d8163c1db4bcba0dcbf8f255f290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
