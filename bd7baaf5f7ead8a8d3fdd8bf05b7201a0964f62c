@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6f4c516_0b731cdf",
+        "filename": "suspend/1.0/vts/AndroidTest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132849
+      },
+      "writtenOn": "2018-10-11T18:26:22Z",
+      "side": 1,
+      "message": "this doesn\u0027t work with vts-library yet as vts-library plan is still using include-filter mode. Add to https:/test/vts/tools/vts-tradefed/res/config/vts-library.xml?",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "bd7baaf5f7ead8a8d3fdd8bf05b7201a0964f62c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
