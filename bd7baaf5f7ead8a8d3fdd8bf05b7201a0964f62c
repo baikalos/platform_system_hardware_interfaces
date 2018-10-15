@@ -46,6 +46,30 @@
       "revId": "bd7baaf5f7ead8a8d3fdd8bf05b7201a0964f62c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78420c6a_1b812d34",
+        "filename": "suspend/1.0/vts/AndroidTest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132849
+      },
+      "writtenOn": "2018-10-15T17:40:24Z",
+      "side": 1,
+      "message": "vts-tradefed run commandAndExit vts-library -m SystemSuspendV1_0TargetUnitTest\nThis works either both vts-library.xml and here have used metadata, or vts-library.xml uses include filter for this module. Let\u0027s use vts-library for now and decide in the future when there\u0027re more such test modules?",
+      "parentUuid": "51e13858_ab8ac7d0",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "bd7baaf5f7ead8a8d3fdd8bf05b7201a0964f62c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
