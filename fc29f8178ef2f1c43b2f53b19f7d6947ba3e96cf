@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab1119e_948fe702",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115498
+      },
+      "writtenOn": "2018-10-23T19:48:53Z",
+      "side": 1,
+      "message": "Nit: Should a constant like this be all caps?",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "fc29f8178ef2f1c43b2f53b19f7d6947ba3e96cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a110e9_d568e50e",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115498
+      },
+      "writtenOn": "2018-10-23T19:48:53Z",
+      "side": 1,
+      "message": "Would it be a good idea for the future to actually indicate what the result code means rather than returning just the integer?",
+      "range": {
+        "startLine": 92,
+        "startChar": 52,
+        "endLine": 92,
+        "endChar": 78
+      },
+      "revId": "fc29f8178ef2f1c43b2f53b19f7d6947ba3e96cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6b8b6a_f4371681",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115498
+      },
+      "writtenOn": "2018-10-23T19:48:53Z",
+      "side": 1,
+      "message": "Nit: Why use the fully qualified namespace here?",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 42
+      },
+      "revId": "fc29f8178ef2f1c43b2f53b19f7d6947ba3e96cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
