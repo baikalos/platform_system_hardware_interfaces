@@ -1,5 +1,7 @@
 #include <android-base/logging.h>
-#include <android/security/IKeystoreService.h>
+#include <android/security/keystore/IKeystoreService.h>
+#include <android/security/keystore/BnKeystoreOperationResultCallback.h>
+#include <android/security/keystore/BnKeystoreResponseCallback.h>
 #include <binder/IServiceManager.h>
 #include <private/android_filesystem_config.h>
 
@@ -11,8 +13,10 @@
 #include <keystore/keystore.h>
 #include <keystore/keystore_hidl_support.h>
 #include <keystore/keystore_return_types.h>
+#include <keystore/KeystoreResponse.h>
 
 #include <vector>
+#include <future>
 #include "include/wifikeystorehal/keystore.h"
 
 using android::hardware::keymaster::V4_0::Algorithm;
@@ -37,6 +41,26 @@ using KSReturn = keystore::KeyStoreNativeReturnCode;
 namespace {
 const char keystore_service_name[] = "android.security.keystore";
 constexpr int32_t UID_SELF = -1;
+
+template <typename BnInterface, typename Result>
+class CallbackPromise :
+        public BnInterface,
+        public std::promise<Result> {
+public:
+    ::android::binder::Status onFinished(const Result& result) override {
+        this->set_value(result);
+        return ::android::binder::Status::ok();
+    }
+};
+
+using OperationResultPromise =
+        CallbackPromise<::android::security::keystore::BnKeystoreOperationResultCallback,
+                        ::android::security::keymaster::OperationResult>;
+
+using KeystoreResponsePromise =
+        CallbackPromise<::android::security::keystore::BnKeystoreResponseCallback,
+                        ::android::security::keystore::KeystoreResponse>;
+
 };  // namespace
 
 #define AT __func__ << ":" << __LINE__ << " "
@@ -48,7 +72,7 @@ namespace keystore {
 namespace V1_0 {
 namespace implementation {
 
-using security::IKeystoreService;
+using security::keystore::IKeystoreService;
 // Methods from ::android::hardware::wifi::keystore::V1_0::IKeystore follow.
 Return<void> Keystore::getBlob(const hidl_string& key, getBlob_cb _hidl_cb) {
     sp<IKeystoreService> service = interface_cast<IKeystoreService>(
@@ -149,16 +173,27 @@ Return<void> Keystore::sign(const hidl_string& keyId, const hidl_vec<uint8_t>& d
     params[1] = Authorization(TAG_PADDING, PaddingMode::NONE);
     params[2] = Authorization(TAG_ALGORITHM, algorithm.value());
 
+    int32_t error_code;
     android::sp<android::IBinder> token(new android::BBinder);
-    OperationResult result;
-    binder_result = service->begin(token, key_name16, (int)KeyPurpose::SIGN, true /*pruneable*/,
+    sp<OperationResultPromise> promise(new OperationResultPromise());
+    auto future = promise->get_future();
+    binder_result = service->begin(promise, token, key_name16, (int)KeyPurpose::SIGN, true /*pruneable*/,
                                    KeymasterArguments(params), std::vector<uint8_t>() /* entropy */,
-                                   UID_SELF, &result);
+                                   UID_SELF, &error_code);
     if (!binder_result.isOk()) {
         LOG(ERROR) << AT << "communication error while calling keystore";
         _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
         return Void();
     }
+
+    auto rc = KSReturn(error_code);
+    if (!rc.isOk()) {
+        LOG(ERROR) << AT << "Keystore begin returned: " << int32_t(rc);
+        _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
+        return Void();
+    }
+
+    OperationResult result = future.get();
     if (!result.resultCode.isOk()) {
         LOG(ERROR) << AT << "begin failed: " << int32_t(result.resultCode);
         _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
@@ -169,13 +204,24 @@ Return<void> Keystore::sign(const hidl_string& keyId, const hidl_vec<uint8_t>& d
     const uint8_t* in = dataToSign.data();
     size_t len = dataToSign.size();
     do {
-        binder_result = service->update(handle, KeymasterArguments(params),
-                                        std::vector<uint8_t>(in, in + len), &result);
+        future = {};
+        binder_result = service->update(promise, handle, KeymasterArguments(params),
+                                        std::vector<uint8_t>(in, in + len), &error_code);
         if (!binder_result.isOk()) {
             LOG(ERROR) << AT << "communication error while calling keystore";
             _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
             return Void();
         }
+
+        rc = KSReturn(error_code);
+        if (!rc.isOk()) {
+            LOG(ERROR) << AT << "Keystore update returned: " << int32_t(rc);
+            _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
+            return Void();
+        }
+
+        result = future.get();
+
         if (!result.resultCode.isOk()) {
             LOG(ERROR) << AT << "update failed: " << int32_t(result.resultCode);
             _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
@@ -183,7 +229,22 @@ Return<void> Keystore::sign(const hidl_string& keyId, const hidl_vec<uint8_t>& d
         }
         if ((size_t)result.inputConsumed > len) {
             LOG(ERROR) << AT << "update consumed more data than provided";
-            service->abort(handle, &aidl_result);
+            sp<KeystoreResponsePromise> abortPromise(new KeystoreResponsePromise);
+            auto abortFuture = abortPromise->get_future();
+            binder_result = service->abort(abortPromise, handle, &aidl_result);
+            if (!binder_result.isOk()) {
+                LOG(ERROR) << AT << "communication error while calling keystore";
+                _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
+                return Void();
+            }
+            // This is mainly for logging since we already failed.
+            // But if abort returned OK we have to wait untill abort calls the callback
+            // hence the call to abortFuture.get().
+            if (!KSReturn(aidl_result).isOk()) {
+                LOG(ERROR) << AT << "abort failed: " << aidl_result;
+            } else if (!(rc = KSReturn(abortFuture.get().response_code())).isOk()) {
+                LOG(ERROR) << AT << "abort failed: " << int32_t(rc);
+            }
             _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
             return Void();
         }
@@ -191,14 +252,28 @@ Return<void> Keystore::sign(const hidl_string& keyId, const hidl_vec<uint8_t>& d
         in += result.inputConsumed;
     } while (len > 0);
 
+    future = {};
+    promise = new OperationResultPromise();
+    future = promise->get_future();
+
     binder_result =
-        service->finish(handle, KeymasterArguments(params), std::vector<uint8_t>() /* signature */,
-                        std::vector<uint8_t>() /* entropy */, &result);
+        service->finish(promise, handle, KeymasterArguments(params), std::vector<uint8_t>() /* signature */,
+                        std::vector<uint8_t>() /* entropy */, &error_code);
     if (!binder_result.isOk()) {
         LOG(ERROR) << AT << "communication error while calling keystore";
         _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
         return Void();
     }
+
+    rc = KSReturn(error_code);
+    if (!rc.isOk()) {
+        LOG(ERROR) << AT << "Keystore finish returned: " << int32_t(rc);
+        _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
+        return Void();
+    }
+
+    result = future.get();
+
     if (!result.resultCode.isOk()) {
         LOG(ERROR) << AT << "finish failed: " << int32_t(result.resultCode);
         _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
