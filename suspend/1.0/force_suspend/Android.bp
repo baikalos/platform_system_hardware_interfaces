@@ -12,20 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-hidl_interface {
-    name: "android.system.suspend@1.0",
-    root: "android.system",
-    vndk: {
-        enabled: true,
-    },
-    srcs: [
-        "ISystemSuspend.hal",
-        "ISystemSuspendCallback.hal",
-        "IWakeLock.hal",
-        "IWakeupSource.hal",
-    ],
-    interfaces: [
-        "android.hidl.base@1.0",
-    ],
-    gen_java: false,
+cc_binary {
+    name: "wakeupsourced",
+    defaults: ["system_suspend_defaults"],
+    shared_libs: ["android.system.suspend@1.0"],
+    srcs: ["wakeupsourced.cpp"],
+}
+
+cc_test {
+    name: "force_suspend",
+    defaults: ["system_suspend_defaults"],
+    shared_libs: ["android.system.suspend@1.0"],
+    srcs: ["force_suspend.cpp"],
+    gtest: false,
 }

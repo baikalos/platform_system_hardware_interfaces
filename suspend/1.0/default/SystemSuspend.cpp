@@ -167,6 +167,31 @@ void SystemSuspend::deleteWakeLockStatsEntry(WakeLockIdType id) {
     mStats.mutable_wake_lock_stats()->erase(id);
 }
 
+Return<bool> SystemSuspend::registerWakeupSource(const sp<IWakeupSource>& wakeupSource) {
+    if (!wakeupSource) {
+        return false;
+    }
+    auto l = std::lock_guard(mWakeupSourceLock);
+    mWakeupSources.push_back(wakeupSource);
+    return true;
+}
+
+Return<bool> SystemSuspend::forceSuspend() {
+    // Block suspend loop and all wake lock requests.
+    auto counterLock = std::lock_guard(mCounterLock);
+
+    // TODO: account for possible wakeup source death while we hold an sp<> to it.
+    auto wakeupSourceLock = std::lock_guard(mWakeupSourceLock);
+    for (const auto& wakeupSource : mWakeupSources) {
+        wakeupSource->disable().isOk();  // ignore errors
+    }
+    bool success = WriteStringToFd(kSleepState, mStateFd);
+    for (const auto& wakeupSource : mWakeupSources) {
+        wakeupSource->enable().isOk();  // ignore errors
+    }
+    return success;
+}
+
 void SystemSuspend::initAutosuspend() {
     std::thread autosuspendThread([this] {
         while (true) {

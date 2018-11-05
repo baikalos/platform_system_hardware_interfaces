@@ -75,6 +75,9 @@ class SystemSuspend : public ISystemSuspend, public hidl_death_recipient {
     void decSuspendCounter();
     void deleteWakeLockStatsEntry(WakeLockIdType id);
 
+    Return<bool> registerWakeupSource(const sp<IWakeupSource>& wakeupSource) override;
+    Return<bool> forceSuspend() override;
+
    private:
     void initAutosuspend();
 
@@ -103,6 +106,9 @@ class SystemSuspend : public ISystemSuspend, public hidl_death_recipient {
     std::chrono::milliseconds mSleepTime;
     // Updates sleep time depending on the result of suspend attempt.
     void updateSleepTime(bool success);
+
+    std::mutex mWakeupSourceLock;
+    std::vector<sp<IWakeupSource>> mWakeupSources;
 };
 
 }  // namespace V1_0

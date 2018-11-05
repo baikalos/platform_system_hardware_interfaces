@@ -18,6 +18,7 @@ package android.system.suspend@1.0;
 
 import ISystemSuspendCallback;
 import IWakeLock;
+import IWakeupSource;
 
 interface ISystemSuspend {
     /**
@@ -50,4 +51,23 @@ interface ISystemSuspend {
      */
     acquireWakeLock(WakeLockType type, string debugName)
         generates (IWakeLock lock);
+
+    /**
+     * Registers an IWakeupSource instance used to control the state of wakeup
+     * sources (most importantly, enable and disable).
+     *
+     * @param wakeupSource wakeup source to register.
+     * @return status true on success, false otherwise.
+     */
+    registerWakeupSource(IWakeupSource wakeupSource)
+        generates (bool success);
+
+    /**
+     * Disables all registered wakeup sources and attempts to suspend the device
+     * disregarding all active wake locks. Re-enables disabled wakeup source
+     * upon return.
+     *
+     * @return status true on success, false otherwise.
+     */
+    forceSuspend() generates (bool success);
 };
