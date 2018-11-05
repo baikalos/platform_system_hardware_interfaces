@@ -16,6 +16,24 @@
       "revId": "67b4a9296307308041df0f625e44a4f37d6a6175",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4a1a67_e6b8c78b",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-05T22:11:39Z",
+      "side": 1,
+      "message": "This would probably be better, yeah.",
+      "parentUuid": "14134fdb_7ed46aa5",
+      "revId": "67b4a9296307308041df0f625e44a4f37d6a6175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
