@@ -34,6 +34,24 @@
       "revId": "67b4a9296307308041df0f625e44a4f37d6a6175",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d214175_e904c77e",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2018-11-07T19:12:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e4a1a67_e6b8c78b",
+      "revId": "67b4a9296307308041df0f625e44a4f37d6a6175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
