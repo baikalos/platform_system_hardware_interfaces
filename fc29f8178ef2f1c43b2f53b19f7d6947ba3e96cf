@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42eddf7c_fbdd5138",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2018-11-08T21:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ab1119e_948fe702",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "fc29f8178ef2f1c43b2f53b19f7d6947ba3e96cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96a110e9_d568e50e",
         "filename": "wifi/keystore/1.0/default/keystore.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "86ca2223_0bff5613",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2018-11-08T21:02:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96a110e9_d568e50e",
+      "range": {
+        "startLine": 92,
+        "startChar": 52,
+        "endLine": 92,
+        "endChar": 78
+      },
+      "revId": "fc29f8178ef2f1c43b2f53b19f7d6947ba3e96cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc6b8b6a_f4371681",
         "filename": "wifi/keystore/1.0/default/keystore.cpp",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "fc29f8178ef2f1c43b2f53b19f7d6947ba3e96cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c758f9_6ba5ef38",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2018-11-08T21:02:14Z",
+      "side": 1,
+      "message": "Distinguish from the HAL KeyCharacteristics.",
+      "parentUuid": "dc6b8b6a_f4371681",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 42
+      },
+      "revId": "fc29f8178ef2f1c43b2f53b19f7d6947ba3e96cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
