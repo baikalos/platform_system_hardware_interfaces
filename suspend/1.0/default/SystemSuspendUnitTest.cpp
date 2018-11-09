@@ -155,7 +155,7 @@ class SystemSuspendTest : public ::testing::Test {
         return stats;
     }
 
-    size_t getWakeLockCount() { return getDebugDump().wake_lock_stats().size(); }
+    size_t getWakeLockCount() { return getDebugDump().active_wl_stats().size(); }
 
     void checkLoop(int numIter) {
         for (int i = 0; i < numIter; i++) {
@@ -248,15 +248,36 @@ TEST_F(SystemSuspendTest, CleanupOnAbort) {
     ASSERT_FALSE(isSystemSuspendBlocked());
 }
 
-// Test that debug dump has correct information about acquired WakeLocks.
-TEST_F(SystemSuspendTest, DebugDump) {
+// Test that debug dump has correct information about currently active WakeLocks.
+TEST_F(SystemSuspendTest, DebugDumpActiveWakeLocks) {
     {
         sp<IWakeLock> wl = acquireWakeLock();
         SystemSuspendStats debugDump = getDebugDump();
-        ASSERT_EQ(debugDump.wake_lock_stats().size(), 1);
-        ASSERT_EQ(debugDump.wake_lock_stats().begin()->second.name(), "TestLock");
+        auto wlStats = debugDump.active_wl_stats();
+        ASSERT_EQ(wlStats.size(), 1);
+        ASSERT_EQ(wlStats.begin()->second.name(), "TestLock");
     }
     ASSERT_EQ(getWakeLockCount(), 0);
+}
+
+// Test that debug dump has correct per-process WakeLock information.
+TEST_F(SystemSuspendTest, DebugDumpPerProcessWlStats) {
+    {
+        sp<IWakeLock> wl = acquireWakeLock();
+        SystemSuspendStats debugDump = getDebugDump();
+
+        auto pidStatMap = debugDump.pid_wl_stats();
+        ASSERT_EQ(pidStatMap.size(), 1);
+        ASSERT_EQ(pidStatMap.at(getpid()).wl_state().at("TestLock"), true);
+    }
+    sp<IWakeLock> wl = suspendService->acquireWakeLock(WakeLockType::PARTIAL, "AnotherTestLock");
+    SystemSuspendStats debugDump = getDebugDump();
+    auto pidStatMap = debugDump.pid_wl_stats();
+    auto wlNameStateMap = pidStatMap.at(getpid()).wl_state();
+
+    ASSERT_EQ(wlNameStateMap.size(), 2);
+    ASSERT_EQ(wlNameStateMap.at("TestLock"), false);
+    ASSERT_EQ(wlNameStateMap.at("AnotherTestLock"), true);
 }
 
 // Stress test acquiring/releasing WakeLocks.

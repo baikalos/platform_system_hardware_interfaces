@@ -88,6 +88,10 @@ class SystemSuspend : public ISystemSuspend, public hidl_death_recipient {
     // protect these. However, since mStats is only for debugging we prioritize performance.
     // Never hold both locks at the same time to avoid deadlock.
     std::mutex mStatsLock;
+    //  We don't want mStats to grow unboundedly in memory. These constants limit amount of
+    //  information mStats can collect on the device.
+    static constexpr size_t kMaxPids = 1000;
+    static constexpr size_t kMaxWlPerPid = 50;
     SystemSuspendStats mStats;
 
     using CbType = sp<ISystemSuspendCallback>;

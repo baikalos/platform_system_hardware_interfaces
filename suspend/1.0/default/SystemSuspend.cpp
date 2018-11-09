@@ -102,11 +102,26 @@ Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
     IWakeLock* wl = new WakeLock{this};
     {
         auto l = std::lock_guard(mStatsLock);
+        auto pid = getCallingPid();
         WakeLockStats wlStats{};
         wlStats.set_name(name);
-        wlStats.set_pid(getCallingPid());
+        wlStats.set_pid(pid);
         // Use WakeLock's address as a unique identifier.
-        (*mStats.mutable_wake_lock_stats())[reinterpret_cast<WakeLockIdType>(wl)] = wlStats;
+        (*mStats.mutable_active_wl_stats())[reinterpret_cast<WakeLockIdType>(wl)] = wlStats;
+
+        auto* pidStatMap = mStats.mutable_pid_wl_stats();
+        if (pidStatMap->size() < kMaxPids || pidStatMap->count(pid) != 0) {
+            auto* wlNameStateMap = (*pidStatMap)[pid].mutable_wl_state();
+            if (wlNameStateMap->size() < kMaxWlPerPid || wlNameStateMap->count(name) != 0) {
+                (*wlNameStateMap)[name] = true;
+            } else {
+                LOG(ERROR) << "SystemSuspend has reach the maximum number wake locks per process "
+                           << "it can keep track of: " << kMaxPids << " for process: " << pid;
+            }
+        } else {
+            LOG(ERROR) << "SystemSuspend has reach the maximum number of client processes it can "
+                       << "keep track of: " << kMaxPids;
+        }
     }
     return wl;
 }
@@ -164,7 +179,13 @@ void SystemSuspend::decSuspendCounter() {
 
 void SystemSuspend::deleteWakeLockStatsEntry(WakeLockIdType id) {
     auto l = std::lock_guard(mStatsLock);
-    mStats.mutable_wake_lock_stats()->erase(id);
+
+    const auto& wlStats = mStats.active_wl_stats().at(id);
+    auto pid = wlStats.pid();
+    auto name = wlStats.name();
+    mStats.mutable_pid_wl_stats()->at(pid).mutable_wl_state()->at(name) = false;
+
+    mStats.mutable_active_wl_stats()->erase(id);
 }
 
 void SystemSuspend::initAutosuspend() {
