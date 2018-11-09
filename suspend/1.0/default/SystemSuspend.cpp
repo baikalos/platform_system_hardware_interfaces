@@ -27,6 +27,7 @@
 #include <sys/types.h>
 
 #include <fcntl.h>
+#include <ctime>
 #include <string>
 #include <thread>
 
@@ -57,7 +58,17 @@ static inline int getCallingPid() {
     return IPCThreadState::self()->getCallingPid();
 }
 
-WakeLock::WakeLock(SystemSuspend* systemSuspend) : mReleased(), mSystemSuspend(systemSuspend) {
+static inline WakeLockIdType getWakeLockId(int pid, const string& name) {
+    // Doesn't guarantee unique ids, but for debuging purposes this is adequate.
+    return std::to_string(pid) + "/" + name;
+}
+
+static inline TimestampType getEpochTimeNow() {
+    return static_cast<TimestampType>(std::time(nullptr));
+}
+
+WakeLock::WakeLock(SystemSuspend* systemSuspend, const WakeLockIdType& id)
+    : mReleased(), mSystemSuspend(systemSuspend), mId(id) {
     mSystemSuspend->incSuspendCounter();
 }
 
@@ -73,15 +84,16 @@ Return<void> WakeLock::release() {
 void WakeLock::releaseOnce() {
     std::call_once(mReleased, [this]() {
         mSystemSuspend->decSuspendCounter();
-        mSystemSuspend->deleteWakeLockStatsEntry(reinterpret_cast<WakeLockIdType>(this));
+        mSystemSuspend->deleteWakeLockStatsEntry(mId);
     });
 }
 
-SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd,
+SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, size_t maxStatsEntries,
                              std::chrono::milliseconds baseSleepTime)
     : mSuspendCounter(0),
       mWakeupCountFd(std::move(wakeupCountFd)),
       mStateFd(std::move(stateFd)),
+      mMaxStatsEntries(maxStatsEntries),
       mBaseSleepTime(baseSleepTime),
       mSleepTime(baseSleepTime) {}
 
@@ -97,16 +109,37 @@ Return<bool> SystemSuspend::enableAutosuspend() {
     return true;
 }
 
+void SystemSuspend::evictLruWakeLockStatsEntry() {
+    if (!mLruWakeLockId.empty()) {
+        auto lruWakeLockId = mLruWakeLockId.begin()->second;
+        mStats.mutable_wl_stats()->erase(lruWakeLockId);
+        mLruWakeLockId.erase(mLruWakeLockId.begin());
+    }
+}
+
 Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
                                                      const hidl_string& name) {
-    IWakeLock* wl = new WakeLock{this};
+    auto pid = getCallingPid();
+    auto wlId = getWakeLockId(pid, name);
+    IWakeLock* wl = new WakeLock{this, wlId};
     {
         auto l = std::lock_guard(mStatsLock);
-        WakeLockStats wlStats{};
-        wlStats.set_name(name);
-        wlStats.set_pid(getCallingPid());
-        // Use WakeLock's address as a unique identifier.
-        (*mStats.mutable_wake_lock_stats())[reinterpret_cast<WakeLockIdType>(wl)] = wlStats;
+        auto& wlStatsEntry = (*mStats.mutable_wl_stats())[wlId];
+        auto lastUpdated = wlStatsEntry.last_updated();
+        auto timeNow = getEpochTimeNow();
+        if (lastUpdated) {
+            mLruWakeLockId.erase(lastUpdated);
+        } else {
+            if (mStats.wl_stats().size() >= mMaxStatsEntries) {
+                evictLruWakeLockStatsEntry();
+            }
+        }
+        mLruWakeLockId[timeNow] = wlId;
+
+        wlStatsEntry.set_name(name);
+        wlStatsEntry.set_pid(pid);
+        wlStatsEntry.set_active(true);
+        wlStatsEntry.set_last_updated(timeNow);
     }
     return wl;
 }
@@ -164,7 +197,12 @@ void SystemSuspend::decSuspendCounter() {
 
 void SystemSuspend::deleteWakeLockStatsEntry(WakeLockIdType id) {
     auto l = std::lock_guard(mStatsLock);
-    mStats.mutable_wake_lock_stats()->erase(id);
+    auto* wlStats = mStats.mutable_wl_stats();
+    if (wlStats->find(id) != wlStats->end()) {
+        auto& wlStatsEntry = (*wlStats)[id];
+        wlStatsEntry.set_active(false);
+        wlStatsEntry.set_last_updated(getEpochTimeNow());
+    }
 }
 
 void SystemSuspend::initAutosuspend() {

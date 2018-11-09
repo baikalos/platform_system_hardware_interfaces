@@ -40,7 +40,8 @@ using ::android::hardware::hidl_vec;
 using ::android::hardware::interfacesEqual;
 using ::android::hardware::Return;
 
-using WakeLockIdType = uint64_t;
+using TimestampType = uint64_t;
+using WakeLockIdType = std::string;
 
 using namespace std::chrono_literals;
 
@@ -50,7 +51,7 @@ std::string readFd(int fd);
 
 class WakeLock : public IWakeLock {
    public:
-    WakeLock(SystemSuspend* systemSuspend);
+    WakeLock(SystemSuspend* systemSuspend, const WakeLockIdType& id);
     ~WakeLock();
 
     Return<void> release();
@@ -60,11 +61,12 @@ class WakeLock : public IWakeLock {
     std::once_flag mReleased;
 
     SystemSuspend* mSystemSuspend;
+    WakeLockIdType mId;
 };
 
 class SystemSuspend : public ISystemSuspend, public hidl_death_recipient {
    public:
-    SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd,
+    SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, size_t maxStatsEntries,
                   std::chrono::milliseconds baseSleepTime);
     Return<bool> enableAutosuspend() override;
     Return<sp<IWakeLock>> acquireWakeLock(WakeLockType type, const hidl_string& name) override;
@@ -88,7 +90,14 @@ class SystemSuspend : public ISystemSuspend, public hidl_death_recipient {
     // protect these. However, since mStats is only for debugging we prioritize performance.
     // Never hold both locks at the same time to avoid deadlock.
     std::mutex mStatsLock;
+    //  We don't want mStats to grow unboundedly in memory. This constant limits amount of
+    //  information mStats can collect on the device.
+    size_t mMaxStatsEntries;
+    // Used to evict the least recently used wake lock stats entry in case mMaxStatsEntries is
+    // reached.
+    std::map<TimestampType, WakeLockIdType> mLruWakeLockId;
     SystemSuspendStats mStats;
+    void evictLruWakeLockStatsEntry();
 
     using CbType = sp<ISystemSuspendCallback>;
     std::mutex mCallbackLock;
