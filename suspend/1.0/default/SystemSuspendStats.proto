@@ -20,7 +20,15 @@ message WakeLockStats {
     int32 pid = 2;
 }
 
+// Collects wake lock information of a process.
+message PidWakeLockStats {
+    // Maps WakeLock name to its current state: active or inactive.
+    map<string, bool> wl_state = 1;
+}
+
 message SystemSuspendStats {
     // Maps a unique id of a WakeLock instance to the corresponding WakeLockStats message.
-    map<uint64, WakeLockStats> wake_lock_stats = 1;
+    map<uint64, WakeLockStats> wl_stats = 1;
+    // Maps pid of a process to the corresponding PidWakeLockStats message.
+    map<uint32, PidWakeLockStats> pid_wl_stats = 2;
 }

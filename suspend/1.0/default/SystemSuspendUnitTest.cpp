@@ -155,7 +155,7 @@ class SystemSuspendTest : public ::testing::Test {
         return stats;
     }
 
-    size_t getWakeLockCount() { return getDebugDump().wake_lock_stats().size(); }
+    size_t getWakeLockCount() { return getDebugDump().wl_stats().size(); }
 
     void checkLoop(int numIter) {
         for (int i = 0; i < numIter; i++) {
@@ -253,10 +253,19 @@ TEST_F(SystemSuspendTest, DebugDump) {
     {
         sp<IWakeLock> wl = acquireWakeLock();
         SystemSuspendStats debugDump = getDebugDump();
-        ASSERT_EQ(debugDump.wake_lock_stats().size(), 1);
-        ASSERT_EQ(debugDump.wake_lock_stats().begin()->second.name(), "TestLock");
+
+        ASSERT_EQ(debugDump.wl_stats().size(), 1);
+        ASSERT_EQ(debugDump.wl_stats().begin()->second.name(), "TestLock");
+
+        ASSERT_EQ(debugDump.pid_wl_stats().size(), 1);
+        ASSERT_EQ(debugDump.pid_wl_stats().at(getpid()).wl_state().at("TestLock"), true);
     }
-    ASSERT_EQ(getWakeLockCount(), 0);
+    SystemSuspendStats debugDump = getDebugDump();
+
+    ASSERT_EQ(debugDump.wl_stats().size(), 0);
+
+    ASSERT_EQ(debugDump.pid_wl_stats().size(), 1);
+    ASSERT_EQ(debugDump.pid_wl_stats().at(getpid()).wl_state().at("TestLock"), false);
 }
 
 // Stress test acquiring/releasing WakeLocks.

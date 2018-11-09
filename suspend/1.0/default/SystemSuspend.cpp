@@ -102,11 +102,16 @@ Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
     IWakeLock* wl = new WakeLock{this};
     {
         auto l = std::lock_guard(mStatsLock);
+        auto pid = getCallingPid();
         WakeLockStats wlStats{};
         wlStats.set_name(name);
-        wlStats.set_pid(getCallingPid());
+        wlStats.set_pid(pid);
         // Use WakeLock's address as a unique identifier.
-        (*mStats.mutable_wake_lock_stats())[reinterpret_cast<WakeLockIdType>(wl)] = wlStats;
+        (*mStats.mutable_wl_stats())[reinterpret_cast<WakeLockIdType>(wl)] = wlStats;
+
+        PidWakeLockStats pidWlStats{};
+        (*pidWlStats.mutable_wl_state())[name] = true;
+        (*mStats.mutable_pid_wl_stats())[pid] = pidWlStats;
     }
     return wl;
 }
@@ -164,7 +169,13 @@ void SystemSuspend::decSuspendCounter() {
 
 void SystemSuspend::deleteWakeLockStatsEntry(WakeLockIdType id) {
     auto l = std::lock_guard(mStatsLock);
-    mStats.mutable_wake_lock_stats()->erase(id);
+
+    const auto& wlStats = mStats.wl_stats().at(id);
+    auto pid = wlStats.pid();
+    auto name = wlStats.name();
+    mStats.mutable_pid_wl_stats()->at(pid).mutable_wl_state()->at(name) = false;
+
+    mStats.mutable_wl_stats()->erase(id);
 }
 
 void SystemSuspend::initAutosuspend() {
