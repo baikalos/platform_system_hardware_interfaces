@@ -93,6 +93,30 @@
       "revId": "7e7d44ede4591790efa3503cfbf55d132dcf6701",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eb0c878_e57e8fe8",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-12T23:12:57Z",
+      "side": 1,
+      "message": "Can you turn it into a buffer which only keeps up to the last N results? Having a leak just on userdebug will still be problematic.",
+      "parentUuid": "23bf4523_7bd38360",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 80
+      },
+      "revId": "7e7d44ede4591790efa3503cfbf55d132dcf6701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
