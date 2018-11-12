@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52f024fd_580e0962",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-11-12T20:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e0b91ee_158cc5a1",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 40
+      },
+      "revId": "7e7d44ede4591790efa3503cfbf55d132dcf6701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce7efbea_34c4b91d",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-12T19:11:29Z",
       "side": 1,
       "message": "isn\u0027t this technically a leak? shouldn\u0027t we just delete this so it isn\u0027t confusing wrt re-used process ids?",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 80
+      },
+      "revId": "7e7d44ede4591790efa3503cfbf55d132dcf6701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23bf4523_7bd38360",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-11-12T20:00:07Z",
+      "side": 1,
+      "message": "Good catch, but imo it\u0027s good enough for debug purposes though. There are within ~30 processes (all persistent services) that acquire native wake locks. Pids being reused isn\u0027t too big of a problem.\n\nIf you are concerned about potentially unbounded heap growth, I could wrap this in ifdef\u0027s to make this behavior userdebug-only at build time. WDYT?",
+      "parentUuid": "ce7efbea_34c4b91d",
       "range": {
         "startLine": 175,
         "startChar": 4,
