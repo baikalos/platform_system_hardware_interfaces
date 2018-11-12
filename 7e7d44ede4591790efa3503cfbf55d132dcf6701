@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e0b91ee_158cc5a1",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-12T19:11:29Z",
+      "side": 1,
+      "message": "nit: (slightly) inefficient to retrieve this twice?",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 40
+      },
+      "revId": "7e7d44ede4591790efa3503cfbf55d132dcf6701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce7efbea_34c4b91d",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-12T19:11:29Z",
+      "side": 1,
+      "message": "isn\u0027t this technically a leak? shouldn\u0027t we just delete this so it isn\u0027t confusing wrt re-used process ids?",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 80
+      },
+      "revId": "7e7d44ede4591790efa3503cfbf55d132dcf6701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
