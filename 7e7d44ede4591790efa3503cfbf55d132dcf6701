@@ -117,6 +117,30 @@
       "revId": "7e7d44ede4591790efa3503cfbf55d132dcf6701",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a740167_6431efaf",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-11-13T23:47:42Z",
+      "side": 1,
+      "message": "Yes, I like this suggestion.",
+      "parentUuid": "5eb0c878_e57e8fe8",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 80
+      },
+      "revId": "7e7d44ede4591790efa3503cfbf55d132dcf6701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
