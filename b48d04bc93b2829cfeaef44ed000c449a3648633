@@ -16,6 +16,24 @@
       "revId": "b48d04bc93b2829cfeaef44ed000c449a3648633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86819d4_258fdbdb",
+        "filename": "suspend/1.0/vts/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-11-14T01:05:02Z",
+      "side": 1,
+      "message": "yim@ is added through the global OWNERS",
+      "parentUuid": "05b44c12_6d281b71",
+      "revId": "b48d04bc93b2829cfeaef44ed000c449a3648633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
