@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f38d0a40_602ec41d",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-11-14T02:20:41Z",
+      "side": 1,
+      "message": "Hitting the limit is an indicator that something\u0027s terribly wrong, so it should also be fine to not keep track of new wake locks.",
+      "parentUuid": "87e7514c_c5dc2be1",
+      "range": {
+        "startLine": 118,
+        "startChar": 16,
+        "endLine": 119,
+        "endChar": 94
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6379dcdc_3b6f760e",
         "filename": "suspend/1.0/default/SystemSuspend.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-14T02:04:52Z",
       "side": 1,
       "message": "also, this is a lot, is this ever hit?",
+      "range": {
+        "startLine": 93,
+        "startChar": 39,
+        "endLine": 93,
+        "endChar": 43
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf98f97_750ed314",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-11-14T02:20:41Z",
+      "side": 1,
+      "message": "No, device shouldn\u0027t be able to hit this value unless it\u0027s in a really broken state.",
+      "parentUuid": "6379dcdc_3b6f760e",
       "range": {
         "startLine": 93,
         "startChar": 39,
