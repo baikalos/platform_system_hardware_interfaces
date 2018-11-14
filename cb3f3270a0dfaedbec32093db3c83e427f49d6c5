@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cff6e553_e0fbcbce",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-11-14T02:23:39Z",
+      "side": 1,
+      "message": "Actually, let me take that back. You\u0027re right, being robust is nicer. And this HAL will have to keep track of timestamps anyways, so I might as well make an LRU mechanism.",
+      "parentUuid": "f38d0a40_602ec41d",
+      "range": {
+        "startLine": 118,
+        "startChar": 16,
+        "endLine": 119,
+        "endChar": 94
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6379dcdc_3b6f760e",
         "filename": "suspend/1.0/default/SystemSuspend.h",
         "patchSetId": 3
