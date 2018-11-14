@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05b44c12_6d281b71",
+        "filename": "suspend/1.0/vts/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-11-14T01:02:06Z",
+      "side": 1,
+      "message": "also VTS team?",
+      "revId": "b48d04bc93b2829cfeaef44ed000c449a3648633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
