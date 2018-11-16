@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dfc9e2f5_55b47650",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-16T22:38:04Z",
+      "side": 1,
+      "message": "reached",
+      "range": {
+        "startLine": 118,
+        "startChar": 49,
+        "endLine": 118,
+        "endChar": 54
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87e7514c_c5dc2be1",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 3
@@ -73,6 +96,52 @@
     },
     {
       "key": {
+        "uuid": "8c29ae0d_041c1a80",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-16T22:38:04Z",
+      "side": 1,
+      "message": "this is not an error, its a warning?",
+      "range": {
+        "startLine": 122,
+        "startChar": 16,
+        "endLine": 122,
+        "endChar": 21
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e258448f_7eafe676",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-16T22:38:04Z",
+      "side": 1,
+      "message": "or, \"Can\u0027t keep track of more than \u0027kMaxPids\u0027 client processes\"",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 41
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6379dcdc_3b6f760e",
         "filename": "suspend/1.0/default/SystemSuspend.h",
         "patchSetId": 3
@@ -113,6 +182,53 @@
         "startChar": 39,
         "endLine": 93,
         "endChar": 43
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5988d872_9a7b24c6",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-16T22:38:04Z",
+      "side": 1,
+      "message": "I actually would like to have the system print out a big warning when wakelocks are being abused instead of catastrophically failing suddenly. Are we doing that?\n\nAlso, 1000 sure is a lot, but .. may be we have a watermark instead of max? i.e. decide how many is \"bad\" and then print out warning. That\u0027s much more helpful imo.",
+      "parentUuid": "abf98f97_750ed314",
+      "range": {
+        "startLine": 93,
+        "startChar": 39,
+        "endLine": 93,
+        "endChar": 43
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b1b67c_cbfa48ee",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-16T22:38:04Z",
+      "side": 1,
+      "message": "spell it out? kPidWakeLocksMax?",
+      "range": {
+        "startLine": 94,
+        "startChar": 28,
+        "endLine": 94,
+        "endChar": 40
       },
       "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
