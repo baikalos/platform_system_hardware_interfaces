@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "32f44cbc_3d555f5d",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-12-06T23:12:01Z",
+      "side": 1,
+      "message": "I changed the layout of data in the .proto. Now we evict least recently used stats record.",
+      "parentUuid": "cff6e553_e0fbcbce",
+      "range": {
+        "startLine": 118,
+        "startChar": 16,
+        "endLine": 119,
+        "endChar": 94
+      },
+      "revId": "cb3f3270a0dfaedbec32093db3c83e427f49d6c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c29ae0d_041c1a80",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 3
