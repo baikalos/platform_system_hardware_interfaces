@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4acbf33e_25b3af1a",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-12-07T00:07:10Z",
+      "side": 1,
+      "message": "nit: evictLruWakeLockStatsEntryLocked (since it has to be called with the lock)",
+      "range": {
+        "startLine": 112,
+        "startChar": 41,
+        "endLine": 112,
+        "endChar": 46
+      },
+      "revId": "550a349f528400c9a8cf2b521b889999dd4e989c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a188e39f_6df4408c",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-12-07T00:07:10Z",
+      "side": 1,
+      "message": "nit: this means that a client always has to check what the size is and then call this function. You can remove that assumption by having something like \u0027while (size \u003e threshold) { remove }\u0027 instead\n\nEven better, move the LRU to a class but it starts to be overkill",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 5
+      },
+      "revId": "550a349f528400c9a8cf2b521b889999dd4e989c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
