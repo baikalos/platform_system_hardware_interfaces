@@ -7,5 +7,9 @@
             <name>ISystemSuspend</name>
             <instance>default</instance>
         </interface>
+        <interface>
+            <name>ISystemSuspendControl</name>
+            <instance>default</instance>
+        </interface>
     </hal>
 </manifest>

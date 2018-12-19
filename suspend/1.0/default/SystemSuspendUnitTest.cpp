@@ -47,6 +47,7 @@ using android::hardware::Void;
 using android::system::suspend::V1_0::getEpochTimeNow;
 using android::system::suspend::V1_0::ISystemSuspend;
 using android::system::suspend::V1_0::ISystemSuspendCallback;
+using android::system::suspend::V1_0::ISystemSuspendControl;
 using android::system::suspend::V1_0::IWakeLock;
 using android::system::suspend::V1_0::readFd;
 using android::system::suspend::V1_0::SystemSuspend;
@@ -81,13 +82,14 @@ class SystemSuspendTestEnvironment : public ::testing::Environment {
     void registerTestService() {
         std::thread testService([this] {
             configureRpcThreadpool(1, true /* callerWillJoin */);
-            sp<ISystemSuspend> suspend =
+            sp<SystemSuspend> suspend =
                 new SystemSuspend(std::move(wakeupCountFds[1]), std::move(stateFds[1]),
                                   1 /* maxStatsEntries */, 0ms /* baseSleepTime */);
-            status_t status = suspend->registerAsService(kServiceName);
-            if (android::OK != status) {
-                LOG(FATAL) << "Unable to register service: " << status;
-            }
+            ASSERT_EQ(android::OK, suspend->ISystemSuspend::registerAsService(kServiceName))
+                << "Unable to register service.";
+            ASSERT_EQ(android::OK, suspend->ISystemSuspendControl::registerAsService(kServiceName))
+                << "Unable to register suspend control service.";
+
             joinRpcThreadpool();
         });
         testService.detach();
@@ -98,7 +100,10 @@ class SystemSuspendTestEnvironment : public ::testing::Environment {
         ::android::hardware::details::waitForHwService(ISystemSuspend::descriptor, kServiceName);
         sp<ISystemSuspend> suspendService = ISystemSuspend::getService(kServiceName);
         ASSERT_NE(suspendService, nullptr) << "failed to get suspend service";
-        ASSERT_EQ(suspendService->enableAutosuspend(), true) << "failed to start autosuspend";
+
+        sp<ISystemSuspendControl> suspendControl = ISystemSuspendControl::getService(kServiceName);
+        ASSERT_NE(suspendControl, nullptr) << "failed to get suspend control service";
+        ASSERT_EQ(suspendControl->enableAutosuspend(), true) << "failed to start autosuspend";
     }
 
     unique_fd wakeupCountFds[2];
@@ -111,6 +116,8 @@ class SystemSuspendTest : public ::testing::Test {
         ::android::hardware::details::waitForHwService(ISystemSuspend::descriptor, kServiceName);
         suspendService = ISystemSuspend::getService(kServiceName);
         ASSERT_NE(suspendService, nullptr) << "failed to get suspend service";
+        suspendControl = ISystemSuspendControl::getService(kServiceName);
+        ASSERT_NE(suspendControl, nullptr) << "failed to get suspend control service";
 
         auto* environment = SystemSuspendTestEnvironment::Instance();
         wakeupCountFd = environment->wakeupCountFds[0];
@@ -175,13 +182,14 @@ class SystemSuspendTest : public ::testing::Test {
     }
 
     sp<ISystemSuspend> suspendService;
+    sp<ISystemSuspendControl> suspendControl;
     int stateFd;
     int wakeupCountFd;
 };
 
 // Tests that autosuspend thread can only be enabled once.
 TEST_F(SystemSuspendTest, OnlyOneEnableAutosuspend) {
-    ASSERT_EQ(suspendService->enableAutosuspend(), false);
+    ASSERT_EQ(suspendControl->enableAutosuspend(), false);
 }
 
 TEST_F(SystemSuspendTest, AutosuspendLoop) {
@@ -337,7 +345,7 @@ class MockCallback : public ISystemSuspendCallback {
 
 // Tests that nullptr can't be registered as callbacks.
 TEST_F(SystemSuspendTest, RegisterInvalidCallback) {
-    ASSERT_FALSE(suspendService->registerCallback(nullptr));
+    ASSERT_FALSE(suspendControl->registerCallback(nullptr));
 }
 
 // Tests that SystemSuspend HAL correctly notifies wakeup events.
@@ -349,7 +357,7 @@ TEST_F(SystemSuspendTest, CallbackNotifyWakeup) {
     // finished by the time last notification completes.
     EXPECT_CALL(impl, notifyWakeup).Times(testing::AtLeast(numWakeups));
     sp<MockCallback> cb = new MockCallback(&impl);
-    ASSERT_TRUE(suspendService->registerCallback(cb));
+    ASSERT_TRUE(suspendControl->registerCallback(cb));
     checkLoop(numWakeups + 1);
     cb->disable();
 }
@@ -359,7 +367,7 @@ TEST_F(SystemSuspendTest, DeadCallback) {
     ASSERT_EXIT(
         {
             sp<MockCallback> cb = new MockCallback(nullptr);
-            ASSERT_TRUE(suspendService->registerCallback(cb));
+            ASSERT_TRUE(suspendControl->registerCallback(cb));
             std::exit(0);
         },
         ::testing::ExitedWithCode(0), "");
@@ -372,22 +380,22 @@ TEST_F(SystemSuspendTest, DeadCallback) {
 // Callback that registers another callback.
 class CbRegisteringCb : public ISystemSuspendCallback {
    public:
-    CbRegisteringCb(sp<ISystemSuspend> suspendService) : mSuspendService(suspendService) {}
+    CbRegisteringCb(sp<ISystemSuspendControl> suspendControl) : mSuspendControl(suspendControl) {}
     Return<void> notifyWakeup(bool x) {
         sp<MockCallback> cb = new MockCallback(nullptr);
         cb->disable();
-        mSuspendService->registerCallback(cb);
+        mSuspendControl->registerCallback(cb);
         return Void();
     }
 
    private:
-    sp<ISystemSuspend> mSuspendService;
+    sp<ISystemSuspendControl> mSuspendControl;
 };
 
 // Tests that callback registering another callback doesn't result in a deadlock.
 TEST_F(SystemSuspendTest, CallbackRegisterCallbackNoDeadlock) {
-    sp<CbRegisteringCb> cb = new CbRegisteringCb(suspendService);
-    ASSERT_TRUE(suspendService->registerCallback(cb));
+    sp<CbRegisteringCb> cb = new CbRegisteringCb(suspendControl);
+    ASSERT_TRUE(suspendControl->registerCallback(cb));
     checkLoop(3);
 }
 

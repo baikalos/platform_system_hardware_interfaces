@@ -35,12 +35,16 @@ int main() {
     }
 
     configureRpcThreadpool(1, true /* callerWillJoin */);
-    sp<ISystemSuspend> suspend =
+    sp<SystemSuspend> suspend =
         new SystemSuspend(std::move(wakeupCountFd), std::move(stateFd), 100 /* maxStatsEntries */,
                           100ms /* baseSleepTime */);
-    status_t status = suspend->registerAsService();
+    status_t status = suspend->ISystemSuspend::registerAsService();
     if (android::OK != status) {
-        LOG(FATAL) << "Unable to register service: " << status;
+        LOG(FATAL) << "Unable to register suspend service: " << status;
+    }
+    status = suspend->ISystemSuspendControl::registerAsService();
+    if (android::OK != status) {
+        LOG(FATAL) << "Unable to register suspend control service: " << status;
     }
     joinRpcThreadpool();
     std::abort(); /* unreachable */

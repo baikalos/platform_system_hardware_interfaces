@@ -20,6 +20,7 @@
 #include <android-base/unique_fd.h>
 #include <android/system/suspend/1.0/ISystemSuspend.h>
 #include <android/system/suspend/1.0/ISystemSuspendCallback.h>
+#include <android/system/suspend/1.0/ISystemSuspendControl.h>
 #include <hidl/HidlTransportSupport.h>
 #include <system/hardware/interfaces/suspend/1.0/default/SystemSuspendStats.pb.h>
 
@@ -65,7 +66,9 @@ class WakeLock : public IWakeLock {
     WakeLockIdType mId;
 };
 
-class SystemSuspend : public ISystemSuspend, public hidl_death_recipient {
+class SystemSuspend : public ISystemSuspend,
+                      public ISystemSuspendControl,
+                      public hidl_death_recipient {
    public:
     SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, size_t maxStatsEntries,
                   std::chrono::milliseconds baseSleepTime);
