@@ -214,6 +214,8 @@ Return<void> Keystore::sign(const hidl_string& keyId, const hidl_vec<uint8_t>& d
     size_t len = dataToSign.size();
     do {
         future = {};
+        promise = new OperationResultPromise();
+        future = promise->get_future();
         binder_result = service->update(promise, handle, KeymasterArguments(params),
                                         std::vector<uint8_t>(in, in + len), &error_code);
         if (!binder_result.isOk()) {
