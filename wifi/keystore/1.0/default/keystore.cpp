@@ -213,7 +213,10 @@ Return<void> Keystore::sign(const hidl_string& keyId, const hidl_vec<uint8_t>& d
     const uint8_t* in = dataToSign.data();
     size_t len = dataToSign.size();
     do {
+        LOG(DEBUG) << AT << "Starting update with " << len << " bytes";
         future = {};
+        promise = new OperationResultPromise();
+        future = promise->get_future();
         binder_result = service->update(promise, handle, KeymasterArguments(params),
                                         std::vector<uint8_t>(in, in + len), &error_code);
         if (!binder_result.isOk()) {
@@ -229,6 +232,8 @@ Return<void> Keystore::sign(const hidl_string& keyId, const hidl_vec<uint8_t>& d
             return Void();
         }
 
+        LOG(DEBUG) << AT << "Return code OK, grabbing result";
+
         result = future.get();
 
         if (!result.resultCode.isOk()) {
@@ -236,6 +241,9 @@ Return<void> Keystore::sign(const hidl_string& keyId, const hidl_vec<uint8_t>& d
             _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
             return Void();
         }
+
+        LOG(DEBUG) << AT << "Result from update OK";
+
         if ((size_t)result.inputConsumed > len) {
             LOG(ERROR) << AT << "update consumed more data than provided";
             sp<KeystoreResponsePromise> abortPromise(new KeystoreResponsePromise);
