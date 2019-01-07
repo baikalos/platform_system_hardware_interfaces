@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1aebe1d_9b20ac1b",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115498
+      },
+      "writtenOn": "2019-01-07T18:27:42Z",
+      "side": 1,
+      "message": "if future is immediately reassigned to promise-\u003eget_future() then do we still need this assignment here?",
+      "range": {
+        "startLine": 216,
+        "startChar": 8,
+        "endLine": 216,
+        "endChar": 20
+      },
+      "revId": "4e1399559644517d1dd9a9c7f6526f0493adba8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
