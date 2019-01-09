@@ -3,6 +3,7 @@ hidl_interface {
     root: "android.system",
     vndk: {
         enabled: true,
+        must_use_vendor_variant: true,
     },
     srcs: [
         "ISystemSuspend.hal",
