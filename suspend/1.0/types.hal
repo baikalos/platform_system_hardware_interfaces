@@ -17,15 +17,13 @@
 package android.system.suspend@1.0;
 
 /**
- * Allocating an IWakeLock instance must block system suspend. Deallocating an
- * IWakeLock must unblock system suspend in a manner equivalent to calling
- * IWakeLock::release().
+ * Blocking CPU suspend is the only constraint that must be respected by all
+ * wake lock types. E.g. a request for a full wake lock must block CPU suspend,
+ * but not necessarily keep the screen alive.
  */
-interface IWakeLock {
-    /**
-     *  Releases IWakeLock instance. This method only has effect first time its
-     *  called. Subsequent calls must result in no-ops. If no unreleased wake
-     *  lock is present, system is allowed to suspend.
-     */
-    oneway release();
+enum WakeLockType : uint32_t {
+    /* CPU stays on. */
+    PARTIAL,
+    /* CPU and the screen stay on. */
+    FULL
 };
