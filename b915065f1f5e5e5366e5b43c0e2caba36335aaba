@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "068869e6_6bec6427",
+        "filename": "wifi/keystore/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1043663
+      },
+      "writtenOn": "2019-01-18T11:57:11Z",
+      "side": 1,
+      "message": "Should be the Wifi team.  Do you need help figuring out who that is?",
+      "range": {
+        "startLine": 1,
+        "startChar": 39,
+        "endLine": 1,
+        "endChar": 96
+      },
+      "revId": "b915065f1f5e5e5366e5b43c0e2caba36335aaba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
