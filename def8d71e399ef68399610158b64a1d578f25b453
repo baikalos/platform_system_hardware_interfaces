@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "321267c2_751d813b",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1162799
+      },
+      "writtenOn": "2019-02-03T02:06:06Z",
+      "side": 1,
+      "message": "\"future\" in here is still a blank object({}), it will get an error when try to invoke get() function",
+      "revId": "def8d71e399ef68399610158b64a1d578f25b453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
