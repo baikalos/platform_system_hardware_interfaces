@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "19fd48cb_1cd6a8ab",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-02-05T03:15:03Z",
+      "side": 1,
+      "message": "Only the binder thread can reach this function, so it\u0027s thread-safe.",
+      "parentUuid": "311991fa_20b63184",
+      "range": {
+        "startLine": 40,
+        "startChar": 62,
+        "endLine": 40,
+        "endChar": 79
+      },
+      "revId": "3ac6f326f60167a17e08ad65986831cc3601b164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c12a1d14_68c6a7a9",
         "filename": "suspend/1.0/default/main.cpp",
         "patchSetId": 2
