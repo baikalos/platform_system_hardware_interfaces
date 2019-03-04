@@ -22,6 +22,30 @@
       "revId": "872fa528a0ee4b64e312db8867fc20e5f6b11c7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a14289_9cf486d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-03-04T19:13:31Z",
+      "side": 1,
+      "message": "I opened another bug for that (above in the commit msg).",
+      "parentUuid": "5c7a18dd_e3d418d7",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "872fa528a0ee4b64e312db8867fc20e5f6b11c7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
