@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b269e968_db0b9a37",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1015328
+      },
+      "writtenOn": "2019-03-20T11:04:20Z",
+      "side": 1,
+      "message": "Can we combine mId \u0026 mName to eliminate potential collisions?",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "aa2aba69bdd877c744facf99fdfaa34f36aaf40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
