@@ -33,6 +33,7 @@
 
 using ::android::base::ReadFdToString;
 using ::android::base::WriteStringToFd;
+using ::android::base::WriteStringToFile;
 using ::android::hardware::Void;
 using ::std::string;
 
@@ -42,6 +43,13 @@ namespace suspend {
 namespace V1_0 {
 
 static const char kSleepState[] = "mem";
+// TODO(b/128923994): we only need /sys/power/wake_[un]lock to export debugging info via
+// /sys/kernel/debug/wakeup_sources. To ensure correctness of behavior:
+// 1. write to /sys/power/wake_lock after incrementing the suspend counter.
+// 2. write to /sys/power/wake_unlock before decrementing the suspend counter.
+// This way /sys/power/wake_[un]lock operations have no effect w.r.t device suspend behavior.
+static constexpr char kSysPowerWakeLock[] = "/sys/power/wake_lock";
+static constexpr char kSysPowerWakeUnlock[] = "/sys/power/wake_unlock";
 
 // This function assumes that data in fd is small enough that it can be read in one go.
 // We use this function instead of the ones available in libbase because it doesn't block
@@ -67,9 +75,12 @@ TimestampType getEpochTimeNow() {
     return std::chrono::duration_cast<std::chrono::microseconds>(timeSinceEpoch).count();
 }
 
-WakeLock::WakeLock(SystemSuspend* systemSuspend, const WakeLockIdType& id)
-    : mReleased(), mSystemSuspend(systemSuspend), mId(id) {
+WakeLock::WakeLock(SystemSuspend* systemSuspend, const WakeLockIdType& id, const string& name)
+    : mReleased(), mSystemSuspend(systemSuspend), mId(id), mName(name) {
     mSystemSuspend->incSuspendCounter();
+    if (!WriteStringToFile(mName, kSysPowerWakeLock)) {
+        PLOG(ERROR) << "error writing " << mName << " to " << kSysPowerWakeLock;
+    }
 }
 
 WakeLock::~WakeLock() {
@@ -83,6 +94,9 @@ Return<void> WakeLock::release() {
 
 void WakeLock::releaseOnce() {
     std::call_once(mReleased, [this]() {
+        if (!WriteStringToFile(mName, kSysPowerWakeUnlock)) {
+            PLOG(ERROR) << "error writing " << mName << " to " << kSysPowerWakeUnlock;
+        }
         mSystemSuspend->decSuspendCounter();
         mSystemSuspend->deleteWakeLockStatsEntry(mId);
     });
@@ -117,7 +131,7 @@ Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
                                                      const hidl_string& name) {
     auto pid = getCallingPid();
     auto wlId = getWakeLockId(pid, name);
-    IWakeLock* wl = new WakeLock{this, wlId};
+    IWakeLock* wl = new WakeLock{this, wlId, name};
     {
         auto l = std::lock_guard(mStatsLock);
 

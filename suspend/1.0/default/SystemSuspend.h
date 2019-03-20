@@ -53,7 +53,7 @@ TimestampType getEpochTimeNow();
 
 class WakeLock : public IWakeLock {
    public:
-    WakeLock(SystemSuspend* systemSuspend, const WakeLockIdType& id);
+    WakeLock(SystemSuspend* systemSuspend, const WakeLockIdType& id, const std::string& name);
     ~WakeLock();
 
     Return<void> release();
@@ -64,6 +64,7 @@ class WakeLock : public IWakeLock {
 
     SystemSuspend* mSystemSuspend;
     WakeLockIdType mId;
+    std::string mName;
 };
 
 class SystemSuspend : public ISystemSuspend {
