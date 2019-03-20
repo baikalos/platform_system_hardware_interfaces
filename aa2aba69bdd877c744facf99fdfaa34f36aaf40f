@@ -22,6 +22,30 @@
       "revId": "aa2aba69bdd877c744facf99fdfaa34f36aaf40f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a55cd7e_24f554ff",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-03-20T18:18:44Z",
+      "side": 1,
+      "message": "Our tools collect debug info across different devices. So I\u0027m not sure they will work as expected if we mangle the names of the wake locks.\n\nKelly, do you know if it\u0027s OK for us to mangle the wake lock names?",
+      "parentUuid": "b269e968_db0b9a37",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "aa2aba69bdd877c744facf99fdfaa34f36aaf40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
