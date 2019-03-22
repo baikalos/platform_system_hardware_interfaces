@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53c01a0b_c24b9a71",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2019-03-22T01:52:28Z",
+      "side": 1,
+      "message": "This comment isn\u0027t related to the changes under review, and it\u0027s just a question from curiosity so please feel free to disregard:\nWould it be worth a test here to verify that mSuspendCounter hasn\u0027t gone negative?  I know it never will if the code is correct, but if somebody else comes along someday and breaks the code in a way that leads to imbalanced inc/dec calls, there\u0027s nothing here to catch and flag the problem.",
+      "range": {
+        "startLine": 194,
+        "startChar": 8,
+        "endLine": 194,
+        "endChar": 37
+      },
+      "revId": "a833d47822343c18d398e464dac1b0f7b09b5643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
