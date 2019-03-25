@@ -46,6 +46,29 @@
       "revId": "a833d47822343c18d398e464dac1b0f7b09b5643",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e23691b_6b9e586a",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-03-25T23:11:09Z",
+      "side": 1,
+      "message": "nit: Only use wakeup_count interface",
+      "range": {
+        "startLine": 113,
+        "startChar": 26,
+        "endLine": 113,
+        "endChar": 78
+      },
+      "revId": "a833d47822343c18d398e464dac1b0f7b09b5643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
