@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2ecad22_bbf6fb86",
+        "filename": "wifi/keystore/1.0/vts/functional/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2019-04-15T17:39:09Z",
+      "side": 1,
+      "message": "drop this",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "317497a9688f49a73efb5b963632e08fdc6c55b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996b32c0_87b45b91",
+        "filename": "wifi/keystore/1.0/vts/functional/VtsHalWifiKeystoreV1_0TargetTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2019-04-15T17:39:09Z",
+      "side": 1,
+      "message": "This is the which constructs the Keystore service implementation which exactly what you DO NOT want.\n\nInstead get the service via: ::android::system::wifi::keystore::V1_0::IKeystore::getService();",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "317497a9688f49a73efb5b963632e08fdc6c55b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
