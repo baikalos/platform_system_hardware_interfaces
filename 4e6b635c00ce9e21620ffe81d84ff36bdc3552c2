@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cd8ae7c_103ab8e3",
+        "filename": "ashmemd/1.0/IAshmemdService.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-05-20T23:48:35Z",
+      "side": 1,
+      "message": "IMO (1) keep it symmetric to the .aidl interface IAshmemDeviceService OR (2) keep it simple IAshmem",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "4e6b635c00ce9e21620ffe81d84ff36bdc3552c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
