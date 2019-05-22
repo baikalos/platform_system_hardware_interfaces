@@ -22,6 +22,30 @@
       "revId": "4e6b635c00ce9e21620ffe81d84ff36bdc3552c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8264569f_118191bf",
+        "filename": "ashmemd/1.0/IAshmemdService.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-05-22T17:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd8ae7c_103ab8e3",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "4e6b635c00ce9e21620ffe81d84ff36bdc3552c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
