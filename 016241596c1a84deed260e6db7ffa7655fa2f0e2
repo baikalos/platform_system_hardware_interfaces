@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3d4eca3_c556acd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-05-24T17:44:22Z",
+      "side": 1,
+      "message": "VTS tests?",
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99fb5d2_a303a5c2",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-05-24T17:44:22Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eca4b87_b097e368",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-05-24T17:44:22Z",
+      "side": 1,
+      "message": "A couple of additional questions:\n- how can this be expected to be used (how to get size/etc..)?\n- should this interface also contain calls which do what the calls in libcutils do?\n- what happens if there is an error?",
+      "range": {
+        "startLine": 22,
+        "startChar": 34,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f7f2b78_7344be25",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-05-24T17:44:22Z",
+      "side": 1,
+      "message": "This is only the type name in C++. Also, \u0027hidl_handle to open fd\u0027 is explicit already from the type in the method (\u0027handle\u0027). What do you think of \u0027handle with exactly 1 ashmem fd and no ints\u0027?",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9c22aa_7a04e95f",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-05-24T17:44:22Z",
+      "side": 1,
+      "message": "nit: more descriptive name",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
