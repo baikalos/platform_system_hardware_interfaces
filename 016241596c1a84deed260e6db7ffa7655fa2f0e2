@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "67dceedc_00c352eb",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-05-28T17:31:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99fb5d2_a303a5c2",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eca4b87_b097e368",
         "filename": "ashmem/1.0/IAshmem.hal",
         "patchSetId": 3
@@ -53,6 +77,30 @@
       "writtenOn": "2019-05-24T17:44:22Z",
       "side": 1,
       "message": "A couple of additional questions:\n- how can this be expected to be used (how to get size/etc..)?\n- should this interface also contain calls which do what the calls in libcutils do?\n- what happens if there is an error?",
+      "range": {
+        "startLine": 22,
+        "startChar": 34,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6ca427_25bda3d9",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-05-28T17:31:44Z",
+      "side": 1,
+      "message": "The plan is to have vendor code not access this interface directly, but rather have them obtain ashmem fds through libcutils which will be routed to this interface.",
+      "parentUuid": "2eca4b87_b097e368",
       "range": {
         "startLine": 22,
         "startChar": 34,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "713bb657_38a2d591",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-05-28T17:31:44Z",
+      "side": 1,
+      "message": "Updated description to \u0027handle with exactly 1 ashmem fd and no ints\u0027",
+      "parentUuid": "2f7f2b78_7344be25",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e9c22aa_7a04e95f",
         "filename": "ashmem/1.0/IAshmem.hal",
         "patchSetId": 3
@@ -99,6 +171,30 @@
       "writtenOn": "2019-05-24T17:44:22Z",
       "side": 1,
       "message": "nit: more descriptive name",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5859061_a2cbe862",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-05-28T17:31:44Z",
+      "side": 1,
+      "message": "Renamed \u0027fdHandle\u0027",
+      "parentUuid": "5e9c22aa_7a04e95f",
       "range": {
         "startLine": 26,
         "startChar": 29,
