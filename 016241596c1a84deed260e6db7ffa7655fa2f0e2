@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "d8111fbe_522e6b58",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-05-28T21:09:45Z",
+      "side": 1,
+      "message": "It\u0027s somewhat out of the ordinary that users of this interface should use it with libcutils. My understanding of the deprecation plan is that we will:\n- use sepolicy to force all users to use IAshmem in order to get a handle to /dev/ashmem\n- change libcutils interface to be backed by a different kind of memory\n\nHowever, I\u0027m curious if there could be other implementations of ashmem user functions elsewhere (e.g. they have their own implementation of ashmem_valid).",
+      "parentUuid": "db6ca427_25bda3d9",
+      "range": {
+        "startLine": 22,
+        "startChar": 34,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "016241596c1a84deed260e6db7ffa7655fa2f0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f7f2b78_7344be25",
         "filename": "ashmem/1.0/IAshmem.hal",
         "patchSetId": 3

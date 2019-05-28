@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fad8e36_8b8164f8",
+        "filename": "ashmem/1.0/IAshmem.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-05-28T21:09:45Z",
+      "side": 1,
+      "message": "IIRC, HIDL will reject FDs when -1 is used (instead the handle should be null).",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "8abd4603ee00b41d9cde07f298ff9b63fe9adb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
