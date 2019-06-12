@@ -18,6 +18,7 @@
 #define ANDROID_SYSTEM_SYSTEM_SUSPEND_V1_0_H
 
 #include "SuspendControlService.h"
+#include "WakeLockEntryList.h"
 
 #include <android-base/unique_fd.h>
 #include <android/system/suspend/1.0/ISystemSuspend.h>
@@ -79,6 +80,9 @@ class SystemSuspend : public ISystemSuspend {
     void deleteWakeLockStatsEntry(WakeLockIdType id);
     bool enableAutosuspend();
 
+    void getWakeLockStats(std::vector<WakeLockInfo>* aidl_return);
+    void updateWakeLockStatOnRelease(std::string name, long epochTimeNow);
+
    private:
     void initAutosuspend();
 
@@ -114,6 +118,8 @@ class SystemSuspend : public ISystemSuspend {
     bool mUseSuspendCounter;
     unique_fd mWakeLockFd;
     unique_fd mWakeUnlockFd;
+
+    WakeLockEntryList mStatsList;
 };
 
 }  // namespace V1_0

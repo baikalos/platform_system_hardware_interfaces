@@ -63,7 +63,7 @@ static inline int getCallingPid() {
 
 static inline WakeLockIdType getWakeLockId(int pid, const string& name) {
     // Doesn't guarantee unique ids, but for debuging purposes this is adequate.
-    return std::to_string(pid) + "/" + name;
+    return name + "/" + std::to_string(pid);
 }
 
 TimestampType getEpochTimeNow() {
@@ -89,6 +89,7 @@ void WakeLock::releaseOnce() {
     std::call_once(mReleased, [this]() {
         mSystemSuspend->decSuspendCounter(mName);
         mSystemSuspend->deleteWakeLockStatsEntry(mId);
+        mSystemSuspend->updateWakeLockStatOnRelease(mId, getEpochTimeNow());
     });
 }
 
@@ -107,6 +108,7 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, size_t 
       mWakeLockFd(-1),
       mWakeUnlockFd(-1) {
     mControlService->setSuspendService(this);
+    mStatsList.setCapacity(maxStatsEntries);
 
     if (!mUseSuspendCounter) {
         mWakeLockFd.reset(TEMP_FAILURE_RETRY(open(kSysPowerWakeLock, O_CLOEXEC | O_RDWR)));
@@ -136,13 +138,13 @@ Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
                                                      const hidl_string& name) {
     auto pid = getCallingPid();
     auto wlId = getWakeLockId(pid, name);
+    auto timeNow = getEpochTimeNow();
     IWakeLock* wl = new WakeLock{this, wlId, name};
     {
         auto l = std::lock_guard(mStatsLock);
 
         auto& wlStatsEntry = (*mStats.mutable_wl_stats())[wlId];
         auto lastUpdated = wlStatsEntry.last_updated();
-        auto timeNow = getEpochTimeNow();
         mLruWakeLockId.erase(lastUpdated);
         mLruWakeLockId[timeNow] = wlId;
 
@@ -157,6 +159,9 @@ Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
             mStats.mutable_wl_stats()->erase(lruWakeLockId);
         }
     }
+
+    mStatsList.updateOnAcquire(wlId, pid, timeNow);
+
     return wl;
 }
 
@@ -260,6 +265,14 @@ void SystemSuspend::updateSleepTime(bool success) {
     }
     // Double sleep time after each failure up to one minute.
     mSleepTime = std::min(mSleepTime * 2, kMaxSleepTime);
+}
+
+void SystemSuspend::updateWakeLockStatOnRelease(std::string name, long epochTimeNow) {
+    mStatsList.updateOnRelease(name, epochTimeNow);
+}
+
+void SystemSuspend::getWakeLockStats(std::vector<WakeLockInfo>* aidl_return) {
+    mStatsList.getWakeLockStats(aidl_return);
 }
 
 }  // namespace V1_0
