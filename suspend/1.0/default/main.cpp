@@ -43,6 +43,8 @@ using android::system::suspend::V1_0::SuspendControlService;
 using android::system::suspend::V1_0::SystemSuspend;
 using namespace std::chrono_literals;
 
+#define WAKE_LOCK_STATS_CAP 1000
+
 static constexpr char kSysPowerWakeupCount[] = "/sys/power/wakeup_count";
 static constexpr char kSysPowerState[] = "/sys/power/state";
 
@@ -79,9 +81,9 @@ int main() {
     sp<android::ProcessState> ps{android::ProcessState::self()};
     ps->startThreadPool();
 
-    sp<SystemSuspend> suspend =
-        new SystemSuspend(std::move(wakeupCountFd), std::move(stateFd), 100 /* maxStatsEntries */,
-                          100ms /* baseSleepTime */, suspendControl, false /* mUseSuspendCounter*/);
+    sp<SystemSuspend> suspend = new SystemSuspend(
+        std::move(wakeupCountFd), std::move(stateFd), WAKE_LOCK_STATS_CAP /* maxStatsEntries */,
+        100ms /* baseSleepTime */, suspendControl, false /* mUseSuspendCounter*/);
     status_t status = suspend->registerAsService();
     if (android::OK != status) {
         LOG(FATAL) << "Unable to register system-suspend service: " << status;

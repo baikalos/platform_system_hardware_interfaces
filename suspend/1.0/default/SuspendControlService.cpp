@@ -80,6 +80,16 @@ void SuspendControlService::notifyWakeup(bool success) {
     }
 }
 
+binder::Status SuspendControlService::getWakeLockStats(std::vector<WakeLockInfo>* _aidl_return) {
+    const auto suspendService = mSuspend.promote();
+    if (suspendService == nullptr) {
+        return binder::Status::fromExceptionCode(binder::Status::Exception::EX_NULL_POINTER,
+                                                 String8("Null reference to suspendService"));
+    }
+    suspendService->getWakeLockStats(_aidl_return);
+    return binder::Status::ok();
+}
+
 }  // namespace V1_0
 }  // namespace suspend
 }  // namespace system

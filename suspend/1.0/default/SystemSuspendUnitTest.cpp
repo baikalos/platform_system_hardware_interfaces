@@ -51,6 +51,7 @@ using android::hardware::Return;
 using android::hardware::Void;
 using android::system::suspend::BnSuspendCallback;
 using android::system::suspend::ISuspendControlService;
+using android::system::suspend::WakeLockInfo;
 using android::system::suspend::V1_0::getEpochTimeNow;
 using android::system::suspend::V1_0::ISystemSuspend;
 using android::system::suspend::V1_0::IWakeLock;
@@ -70,6 +71,14 @@ static bool isReadBlocked(int fd, int timeout_ms = 20) {
         .fd = fd, .events = POLLIN,
     };
     return poll(&pfd, 1, timeout_ms) == 0;
+}
+
+inline static uint64_t abs(const uint64_t& value) {
+    return value < 0 ? -value : value;
+}
+
+inline static bool startsWith(const std::string& str, const std::string& prefix) {
+    return str.find(prefix) == 0;
 }
 
 class SystemSuspendTestEnvironment : public ::testing::Environment {
@@ -329,6 +338,65 @@ TEST_F(SystemSuspendTest, LruWakeLockStatsEviction) {
     ASSERT_EQ(wlStats.size(), 1);
     ASSERT_EQ(wlStats.begin()->second.name(), "baz");
     ASSERT_EQ(wlStats.begin()->second.active(), false);
+}
+
+// Test that getWakeLockStats has correct information about WakeLocks.
+TEST_F(SystemSuspendTest, GetWakeLockStats) {
+    uint64_t acquireTime = getEpochTimeNow();
+    uint64_t releaseTime;
+    std::string fakeWlName = "FakeLock";
+    {
+        sp<IWakeLock> wl = suspendService->acquireWakeLock(WakeLockType::PARTIAL, fakeWlName);
+        std::vector<WakeLockInfo> wlStats;
+        controlService->getWakeLockStats(&wlStats);
+        ASSERT_EQ(wlStats.size(), 1);
+        ASSERT_TRUE(startsWith(wlStats.begin()->name, fakeWlName));
+        ASSERT_EQ(wlStats.begin()->pid, getpid());
+        ASSERT_GT(wlStats.begin()->activeSince, acquireTime);
+        ASSERT_EQ(wlStats.begin()->activeCount, 1);
+        ASSERT_GT(wlStats.begin()->lastChange, acquireTime);
+        ASSERT_EQ(wlStats.begin()->maxTime, 0);
+        ASSERT_EQ(wlStats.begin()->totalTime, 0);
+        ASSERT_EQ(wlStats.begin()->isActive, true);
+        // We sleep so that the wake lock stats entry get updated with a different timestamp.
+        std::this_thread::sleep_for(1s);
+        releaseTime = getEpochTimeNow();
+    }
+    std::vector<WakeLockInfo> wlStats;
+    controlService->getWakeLockStats(&wlStats);
+    ASSERT_EQ(wlStats.size(), 1);
+    ASSERT_TRUE(startsWith(wlStats.begin()->name, fakeWlName));
+    ASSERT_EQ(wlStats.begin()->pid, getpid());
+    ASSERT_GT(wlStats.begin()->activeSince, acquireTime);
+    ASSERT_EQ(wlStats.begin()->activeCount, 1);
+    ASSERT_GT(wlStats.begin()->lastChange, releaseTime);
+
+    // The updated timestamp is not deterministic.
+    // Expected maxTime == releaseTime - acquireTime
+    ASSERT_LT(abs(wlStats.begin()->maxTime - (releaseTime - acquireTime)), 1000);
+    // Expected totalTime == releaseTime - acquireTime
+    ASSERT_LT(abs(wlStats.begin()->totalTime - (releaseTime - acquireTime)), 1000);
+
+    ASSERT_EQ(wlStats.begin()->isActive, false);
+}
+
+// Test that the least recently used wake lock stats entry is evicted after a given threshold.
+TEST_F(SystemSuspendTest, WakeLockStatsLruEviction) {
+    std::string fakeWlName1 = "FakeLock1";
+    std::string fakeWlName2 = "FakeLock2";
+
+    suspendService->acquireWakeLock(WakeLockType::PARTIAL, fakeWlName1);
+    suspendService->acquireWakeLock(WakeLockType::PARTIAL, fakeWlName2);
+
+    std::vector<WakeLockInfo> wlStats;
+    controlService->getWakeLockStats(&wlStats);
+
+    // Max number of stats entries was set to 1 in SystemSuspend constructor.
+    ASSERT_EQ(wlStats.size(), 1);
+    ASSERT_TRUE(startsWith(wlStats.begin()->name, fakeWlName2));
+    ASSERT_EQ(wlStats.begin()->pid, getpid());
+    ASSERT_EQ(wlStats.begin()->activeCount, 1);
+    ASSERT_EQ(wlStats.begin()->isActive, false);
 }
 
 // Stress test acquiring/releasing WakeLocks.

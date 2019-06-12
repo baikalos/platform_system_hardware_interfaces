@@ -78,6 +78,8 @@ cc_binary {
         "main.cpp",
         "SuspendControlService.cpp",
         "SystemSuspend.cpp",
+        "WakeLockEntry.cpp",
+        "WakeLockEntryList.cpp",
     ],
 }
 
@@ -97,7 +99,9 @@ cc_test {
     srcs: [
         "SuspendControlService.cpp",
         "SystemSuspend.cpp",
-        "SystemSuspendUnitTest.cpp"
+        "SystemSuspendUnitTest.cpp",
+        "WakeLockEntry.cpp",
+        "WakeLockEntryList.cpp",
     ],
     test_suites: ["device-tests"],
 }
