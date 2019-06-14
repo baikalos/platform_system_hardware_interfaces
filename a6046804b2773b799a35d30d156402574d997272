@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d1d5abe_b82ab1bb",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "This is type is only used to propagate the result to the client. Let\u0027s not expose it to SystemSuspend.",
+      "range": {
+        "startLine": 83,
+        "startChar": 55,
+        "endLine": 83,
+        "endChar": 81
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90fd39a5_5f283e37",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "getWakeLockStats() could return a const pointer to WakeLockEntryList here. That way the aidl type is hidden from SystemSuspend.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 51
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c96edb5_13445c92",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "use std::pair",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 44
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24eb8325_33bec23c",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "setCapacity() is only used once. Why not construct mStatsList with capacity?",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 26
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6f4d84_d540fb79",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "feel free to replace the old debug info with what you\u0027re implementing right now",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f1f312_232c154c",
+        "filename": "suspend/1.0/default/WakeLockEntry.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "if you\u0027re copying anyways, pass const reference.",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4fe3706_f3747f22",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "Just fyi, the stats are not tied to the version of the hidl interface, i.e. WakeLockEntry doesn\u0027t have to be under 1.0/ directory. \nI\u0027m OK leaving as is though, since the current layout is simple and we don\u0027t have any other versions of the interface.",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32d93f1_afbd2322",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "Embed microsecond units in the name \"epochTimeNowUs\".\nAlso, why not use TimestampType? I\u0027m not sure if knowing about microsecond units is necessary here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 74
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d48e4d2_2f7160fe",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1656554_05600df8",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "consistent naming style with the rest of this project \ngo/droidcppstyle",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c0c73a_0590a1c9",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "Merge WakeLockEntryList.h and WakeLockEntry.h into 1 file. Same for .cpp.",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a10599a8_415c4e5f",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "ditto: naming",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81215f41_16b5e28d",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "use constexpr in cpp code",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1565701a_9c4415d7",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-14T01:07:03Z",
+      "side": 1,
+      "message": "let\u0027s not add the ones that are not used yet",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
