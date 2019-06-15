@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7bed97cd_46e45b19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "please provide description here. Downstream/other contributors can\u0027t see the contents of this link",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d1d5abe_b82ab1bb",
         "filename": "suspend/1.0/default/SuspendControlService.cpp",
         "patchSetId": 2
@@ -117,6 +134,75 @@
     },
     {
       "key": {
+        "uuid": "e2309a3d_2a4fea7a",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "const\u0026",
+      "range": {
+        "startLine": 84,
+        "startChar": 37,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36954df_b8239d74",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "always \u003e\u003d 0",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef36d035_b46c22d0",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "consider using libbase StartsWith instead. str.find(prefix) isn\u0027t efficient because it will be O(|str|) or more, but only O(min(|str|, |prefix|)) is required\n\n(didn\u0027t realize this was a test, but still)",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2f1f312_232c154c",
         "filename": "suspend/1.0/default/WakeLockEntry.cpp",
         "patchSetId": 2
@@ -203,6 +289,29 @@
     },
     {
       "key": {
+        "uuid": "9f06252a_3348bbf3",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "initial value here for consistency?",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1656554_05600df8",
         "filename": "suspend/1.0/default/WakeLockEntry.h",
         "patchSetId": 2
@@ -226,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "55285f4b_918cab05",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "Just use WakeLockInfo mInfo as member rather than duplicate all these?",
+      "parentUuid": "a1656554_05600df8",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70c0c73a_0590a1c9",
         "filename": "suspend/1.0/default/WakeLockEntryList.h",
         "patchSetId": 2
@@ -237,6 +370,63 @@
       "writtenOn": "2019-06-14T01:07:03Z",
       "side": 1,
       "message": "Merge WakeLockEntryList.h and WakeLockEntry.h into 1 file. Same for .cpp.",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571f1deb_6a9a380c",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "since this is required to be called, why not as part of the constructor?",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "514d002b_9811f501",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "initialize",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a07050b_c6c95a1f",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "consider using GUARDED_BY or similar\n\nBtw, it seems that two datastructures are used here in order to implement LRU? I would consider naming this class WakeLockEntryLru or similar or commenting these fields to explain why they are used.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 84
+      },
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -283,6 +473,23 @@
         "endLine": 46,
         "endChar": 7
       },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a23ec81d_95c994ff",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-15T00:34:56Z",
+      "side": 1,
+      "message": "comment on what these fields mean as well since it is an API",
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
