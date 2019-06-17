@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "351dfd1b_533a69c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bed97cd_46e45b19",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d1d5abe_b82ab1bb",
         "filename": "suspend/1.0/default/SuspendControlService.cpp",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ad03792_d40bf77b",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d1d5abe_b82ab1bb",
+      "range": {
+        "startLine": 83,
+        "startChar": 55,
+        "endLine": 83,
+        "endChar": 81
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1c254603_29b5ddb6",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90fd39a5_5f283e37",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 51
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c96edb5_13445c92",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582c9efc_b3b981a7",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c96edb5_13445c92",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 44
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c4dfc4f7_b2124546",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24eb8325_33bec23c",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 26
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b6f4d84_d540fb79",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 2
@@ -131,6 +245,30 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65dcfdda_2097faa6",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Removed SystemSyspend::debug",
+      "parentUuid": "3b6f4d84_d540fb79",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "0fa5b133_c03ea854",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2309a3d_2a4fea7a",
+      "range": {
+        "startLine": 84,
+        "startChar": 37,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36954df_b8239d74",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 2
@@ -177,6 +339,30 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89497ca1_5109ff40",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f36954df_b8239d74",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "69107b11_9394bb48",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "No longer required. Changed key to std::pair with name and pid.",
+      "parentUuid": "ef36d035_b46c22d0",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2f1f312_232c154c",
         "filename": "suspend/1.0/default/WakeLockEntry.cpp",
         "patchSetId": 2
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "2d16a3e9_67456f75",
+        "filename": "suspend/1.0/default/WakeLockEntry.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2f1f312_232c154c",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4fe3706_f3747f22",
         "filename": "suspend/1.0/default/WakeLockEntry.h",
         "patchSetId": 2
@@ -240,6 +474,24 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c6d034_52cdbd82",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4fe3706_f3747f22",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -266,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "8d556fa1_5cad6166",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Change to TimestampType which is now alias for int64_t. AIDL doesn\u0027t have support for unsigned types but long is guaranteed to be 64 bits by aidl.",
+      "parentUuid": "e32d93f1_afbd2322",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 74
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d48e4d2_2f7160fe",
         "filename": "suspend/1.0/default/WakeLockEntry.h",
         "patchSetId": 2
@@ -289,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "baf92efc_5c64efca",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d48e4d2_2f7160fe",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f06252a_3348bbf3",
         "filename": "suspend/1.0/default/WakeLockEntry.h",
         "patchSetId": 2
@@ -309,6 +609,30 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c1974d_7de83baa",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Replaced with mInfo",
+      "parentUuid": "9f06252a_3348bbf3",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -359,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "59464d21_1efa20f8",
+        "filename": "suspend/1.0/default/WakeLockEntry.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Yeah this is cleaner :)",
+      "parentUuid": "55285f4b_918cab05",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70c0c73a_0590a1c9",
         "filename": "suspend/1.0/default/WakeLockEntryList.h",
         "patchSetId": 2
@@ -373,6 +721,24 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ed35c87_35e2bc0a",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c0c73a_0590a1c9",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +759,24 @@
     },
     {
       "key": {
+        "uuid": "6aa784cb_7a82a59d",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "571f1deb_6a9a380c",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "514d002b_9811f501",
         "filename": "suspend/1.0/default/WakeLockEntryList.h",
         "patchSetId": 2
@@ -410,6 +794,24 @@
     },
     {
       "key": {
+        "uuid": "3e7d1512_0cd2ff91",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "514d002b_9811f501",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07050b_c6c95a1f",
         "filename": "suspend/1.0/default/WakeLockEntryList.h",
         "patchSetId": 2
@@ -421,6 +823,30 @@
       "writtenOn": "2019-06-15T00:34:56Z",
       "side": 1,
       "message": "consider using GUARDED_BY or similar\n\nBtw, it seems that two datastructures are used here in order to implement LRU? I would consider naming this class WakeLockEntryLru or similar or commenting these fields to explain why they are used.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 84
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2281c3fd_5fdb7d6d",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Commented them to clarify. :)",
+      "parentUuid": "2a07050b_c6c95a1f",
       "range": {
         "startLine": 46,
         "startChar": 4,
@@ -456,6 +882,30 @@
     },
     {
       "key": {
+        "uuid": "0451843a_2d319538",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10599a8_415c4e5f",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81215f41_16b5e28d",
         "filename": "suspend/1.0/default/main.cpp",
         "patchSetId": 2
@@ -479,6 +929,30 @@
     },
     {
       "key": {
+        "uuid": "6df3c230_8235eef1",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81215f41_16b5e28d",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a23ec81d_95c994ff",
         "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
         "patchSetId": 2
@@ -493,6 +967,24 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6686fb7_95ba2a6a",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a23ec81d_95c994ff",
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -516,6 +1008,30 @@
       "revId": "a6046804b2773b799a35d30d156402574d997272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b8b45ac_ab8bc512",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1565701a_9c4415d7",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
