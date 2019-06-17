@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d85ade_1d5f1085",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "nit: if (!suspendService)",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37411daf_0270657d",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "no need to copy-paste comments",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 87
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39322748_412f7a3a",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 2
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b90a8c5_7cbb8ebe",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "The number of wake locks on the device shouldn\u0027t grow arbitrarily. We want to log an error if we reach capacity, so that we can adjust.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0caf765_d81f4ae4",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "comment on the direction of the list somewhere\n\"Back of the list contains LRU element.\"",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "980be702_ddb889ea",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "use std::list::back() instead\nhttps://en.cppreference.com/w/cpp/container/list/back",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "690fb111_acf1e0f6",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "emplace_front",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8576991b_005e5622",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 25
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b1f702_037899b9",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 113,
+        "startChar": 15,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6593981_a149464d",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "emplace_back for efficiency",
+      "range": {
+        "startLine": 122,
+        "startChar": 21,
+        "endLine": 122,
+        "endChar": 30
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1b0baa0_f5cdc084",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "Now that WakeLockEntry is a simple wrapper around WakeLockInfo, do we need WakeLockEntry? WakeLockEntryList could work with WakeLockInfo objects directly",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31d5f6a1_3266b02c",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "this type is an implementation detail of WakeLockEntryList, so shouldn\u0027t be exposed publicly",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9811d1_86ce92cd",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "unless negative values mean something here, use size_t or uint32_t",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88a1cbe9_38d548fc",
+        "filename": "suspend/aidl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "nit: empty lines",
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ce061e_7ed6f775",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-17T21:34:21Z",
+      "side": 1,
+      "message": "do mention that time is measured in microseconds",
+      "range": {
+        "startLine": 25,
+        "startChar": 20,
+        "endLine": 25,
+        "endChar": 24
+      },
+      "revId": "bf8740f586dbba5ed964d78f4f45961c8b93b930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
