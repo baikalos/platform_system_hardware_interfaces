@@ -859,6 +859,30 @@
     },
     {
       "key": {
+        "uuid": "749a16f5_fbad6b25",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-17T20:28:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2281c3fd_5fdb7d6d",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 84
+      },
+      "revId": "a6046804b2773b799a35d30d156402574d997272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a10599a8_415c4e5f",
         "filename": "suspend/1.0/default/WakeLockEntryList.h",
         "patchSetId": 2
