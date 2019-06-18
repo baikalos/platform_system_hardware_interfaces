@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b694c2e3_f4036981",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-18T17:03:36Z",
+      "side": 1,
+      "message": "Replaced with std::abs. It\u0027s for checking that recorded and actual time stamps are \"equal\" (that they are within 1ms).",
+      "parentUuid": "f17dc78a_d8fe8321",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 31
+      },
+      "revId": "f2196d2939e2245f7338fb459b4387b72a2eda61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9748266e_2f4dc766",
         "filename": "suspend/1.0/default/WakeLockEntryList.h",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-18T03:30:42Z",
       "side": 1,
       "message": "Why not just use an uint64_t for TimestampType? These timestamp are not going to be from before 1970. \n\nIf it\u0027s just for convenience because of the aidl types, imo it\u0027s OK just assuming that timestamps are positive and dropping abs() checks, since getting the current time of day will always return a positive number.",
+      "range": {
+        "startLine": 34,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "f2196d2939e2245f7338fb459b4387b72a2eda61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7007e6ea_975fbc17",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-18T17:03:36Z",
+      "side": 1,
+      "message": "Yeah its not unsigned for convenience, as aidl doesn\u0027t have unsigned support. \n\nThe reason for the abs check is  for consistency in the testing. For instance, if we recorded acquire time before the actual call to acquireWakeLock, then it makes sense to also record the release time before the wakelock gets destructed. However, since the timestamps are not deterministic, we can\u0027t know for sure whether the recorded interval or the actual interval is larger (in the case of testing duration stats like totalTime or maxTime). It also avoids having to worry about the ordering of the subtraction when checking that recorded times are within 1ms of actual times.\n\nAlthough the consistency here isn\u0027t a big concern, I think this would make it easier for someone adding more tests in the future.\n\nWhat do you think ?",
+      "parentUuid": "9748266e_2f4dc766",
       "range": {
         "startLine": 34,
         "startChar": 22,
