@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f17dc78a_d8fe8321",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-18T03:30:42Z",
+      "side": 1,
+      "message": "std::abs https://en.cppreference.com/w/cpp/numeric/math/abs\nAlso, seems unnecessary since epoch timestamps will always be positive",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 31
+      },
+      "revId": "f2196d2939e2245f7338fb459b4387b72a2eda61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9748266e_2f4dc766",
+        "filename": "suspend/1.0/default/WakeLockEntryList.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-18T03:30:42Z",
+      "side": 1,
+      "message": "Why not just use an uint64_t for TimestampType? These timestamp are not going to be from before 1970. \n\nIf it\u0027s just for convenience because of the aidl types, imo it\u0027s OK just assuming that timestamps are positive and dropping abs() checks, since getting the current time of day will always return a positive number.",
+      "range": {
+        "startLine": 34,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "f2196d2939e2245f7338fb459b4387b72a2eda61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
