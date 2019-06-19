@@ -26,7 +26,6 @@
 #include <sys/types.h>
 
 #include <fcntl.h>
-#include <ctime>
 #include <string>
 #include <thread>
 
@@ -58,11 +57,6 @@ string readFd(int fd) {
 
 static inline int getCallingPid() {
     return ::android::hardware::IPCThreadState::self()->getCallingPid();
-}
-
-TimestampType getEpochTimeNow() {
-    auto timeSinceEpoch = std::chrono::system_clock::now().time_since_epoch();
-    return std::chrono::duration_cast<std::chrono::microseconds>(timeSinceEpoch).count();
 }
 
 WakeLock::WakeLock(SystemSuspend* systemSuspend, const string& name, int pid)
@@ -227,7 +221,7 @@ void SystemSuspend::updateWakeLockStatOnRelease(const std::string& name, int pid
     mStatsList.updateOnRelease(name, pid, epochTimeNow);
 }
 
-const WakeLockEntryList& SystemSuspend::getStatsList() const {
+WakeLockEntryList& SystemSuspend::getStatsList() {
     return mStatsList;
 }
 

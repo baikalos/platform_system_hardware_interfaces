@@ -23,6 +23,11 @@ namespace system {
 namespace suspend {
 namespace V1_0 {
 
+TimestampType getEpochTimeNow() {
+    auto timeSinceEpoch = std::chrono::system_clock::now().time_since_epoch();
+    return std::chrono::duration_cast<std::chrono::microseconds>(timeSinceEpoch).count();
+}
+
 WakeLockEntryList::WakeLockEntryList(size_t capacity) : mCapacity(capacity) {}
 
 void WakeLockEntryList::updateOnAcquire(const std::string& name, int pid,
@@ -75,7 +80,7 @@ void WakeLockEntryList::updateOnRelease(const std::string& name, int pid,
         updatedEntry.isActive = false;
         updatedEntry.maxTime =
             std::max(updatedEntry.maxTime, epochTimeNow - updatedEntry.activeSince);
-        updatedEntry.totalTime += epochTimeNow - updatedEntry.activeSince;
+        updatedEntry.totalTime += epochTimeNow - updatedEntry.lastChange;
         updatedEntry.lastChange = epochTimeNow;
 
         // Make updated entry MRU
@@ -85,11 +90,17 @@ void WakeLockEntryList::updateOnRelease(const std::string& name, int pid,
     }
 }
 
-void WakeLockEntryList::getWakeLockStats(std::vector<WakeLockInfo>* aidl_return) const {
+void WakeLockEntryList::getWakeLockStats(std::vector<WakeLockInfo>* aidl_return) {
     std::lock_guard<std::mutex> lock(mStatsLock);
+    TimestampType epochTimeNow = getEpochTimeNow();
 
-    for (const WakeLockInfo& entry : mStats) {
-        aidl_return->emplace_back(entry);
+    for (std::list<WakeLockInfo>::iterator it = mStats.begin(); it != mStats.end(); ++it) {
+        if (it->isActive) {
+            it->maxTime = std::max(it->maxTime, epochTimeNow - it->activeSince);
+            it->totalTime += epochTimeNow - it->lastChange;
+            it->lastChange = epochTimeNow;
+        }
+        aidl_return->emplace_back(*it);
     }
 }
 

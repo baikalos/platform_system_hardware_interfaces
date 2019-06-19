@@ -86,12 +86,12 @@ void SuspendControlService::notifyWakeup(bool success) {
 }
 
 binder::Status SuspendControlService::getWakeLockStats(std::vector<WakeLockInfo>* _aidl_return) {
-    const auto suspendService = mSuspend.promote();
+    auto suspendService = mSuspend.promote();
     if (!suspendService) {
         return binder::Status::fromExceptionCode(binder::Status::Exception::EX_NULL_POINTER,
                                                  String8("Null reference to suspendService"));
     }
-    suspendService->getStatsList().getWakeLockStats(_aidl_return);
+    const_cast<sp<SystemSuspend>&>(suspendService)->getStatsList().getWakeLockStats(_aidl_return);
 
     return binder::Status::ok();
 }
