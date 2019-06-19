@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa3b4190_c255fb50",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-19T23:09:04Z",
+      "side": 1,
+      "message": "Maybe add a \"refresh\" method. It\u0027ll make it clearer what this code does, and we can keep the getter function const.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 9
+      },
+      "revId": "565627b03eccf30bb558b9e44b20cbc9a2f9bf58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
