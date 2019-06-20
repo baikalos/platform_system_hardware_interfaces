@@ -22,6 +22,30 @@
       "revId": "09d1ca2d1e63e03584ee32250f3b8f5642b7b45c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb1bd07_54918faa",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-06-20T16:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fa152c_011f9e78",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "09d1ca2d1e63e03584ee32250f3b8f5642b7b45c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
