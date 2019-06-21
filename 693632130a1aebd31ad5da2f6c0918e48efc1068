@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b172dd71_a6ce6bc1",
+        "filename": "suspend/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-06-21T01:24:51Z",
+      "side": 1,
+      "message": "I have no clue how this works. Steven?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "693632130a1aebd31ad5da2f6c0918e48efc1068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
