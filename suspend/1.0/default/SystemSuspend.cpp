@@ -29,7 +29,7 @@
 #include <string>
 #include <thread>
 
-using ::android::base::ReadFdToString;
+using ::android::base::ReadFileToString;
 using ::android::base::WriteStringToFd;
 using ::android::hardware::Void;
 using ::std::string;
@@ -227,6 +227,104 @@ const WakeLockEntryList& SystemSuspend::getStatsList() const {
 
 void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
+}
+
+/**
+ * Write SystemSuspend debug info to handle's fd.
+ *
+ * Usage:
+ *    adb shell \
+ *        lshal debug android.system.suspend@1.0::ISystemSuspend/default [options...]
+ *
+ *    Options:
+ *        --wakelocks : return wakelock stats data.
+ *        --traces    : return SystemSuspend kernel stack traces data.
+ *        --all       : return all debug data, regardless of any other option(s)
+ *                      provided. Same as providing no options.
+ */
+Return<void> SystemSuspend::debug(const hidl_handle& handle, const hidl_vec<hidl_string>& options) {
+    if (handle == nullptr || handle->numFds < 1 || handle->data[0] < 0) {
+        LOG(ERROR) << "SystemSuspend::debug: No valid fd.";
+        return Void();
+    }
+    int fd = handle->data[0];
+
+    bool all = true;
+    bool traces = false;
+    bool wakelocks = false;
+
+    // Parse options
+    for (const hidl_string& option : options) {
+        std::string opt(option);
+        if (opt == "--traces") {
+            traces = true;
+            all = false;
+        } else if (opt == "--wakelocks") {
+            wakelocks = true;
+            all = false;
+        } else if (opt == "--all") {
+            all = true;
+        }
+    }
+
+    if (traces || all) {
+        std::string traces = getStackTraces();
+
+        if (!WriteStringToFd(traces, fd)) {
+            LOG(ERROR) << "SystemSuspend::debug: Failed to write traces to fd, errno: " << errno;
+            return Void();
+        }
+    }
+
+    if (wakelocks || all) {
+        // TODO(136689376): Get wake lock stats
+    }
+
+    fsync(fd);
+    return Void();
+}
+
+std::string SystemSuspend::getStackTraces() {
+    std::string header = "SystemSuspend Kernel Stack Traces sysTid=";
+    std::stringstream ss;
+
+    auto tids = getTids();
+    if (tids.empty()) {
+        LOG(ERROR) << "SystemSuspend::getStackTraces: Failed to retrieve tids.";
+        return ss.str();
+    }
+
+    for (int tid : tids) {
+        std::string path = "/proc/self/task/" + std::to_string(tid) + "/stack";
+        string stackStr;
+        if (!ReadFileToString(path, &stackStr, true)) {
+            LOG(ERROR) << "SystemSuspend::getStackTraces: Failed to read \"" << path
+                       << "\", errno: " << errno;
+            return ss.str();
+        }
+
+        ss << header << tid << std::endl;
+        ss << stackStr << std::endl;
+    }
+
+    return ss.str();
+}
+
+std::vector<int> SystemSuspend::getTids() {
+    std::vector<int> tids;
+    DIR* dir = opendir("/proc/self/task");
+    struct dirent* dp;
+    if (dir) {
+        while ((dp = readdir(dir))) {
+            std::string name(dp->d_name);
+            if ((name == ".") || (name == "..")) {
+                continue;
+            }
+            tids.push_back(std::stoi(name));
+        }
+        closedir(dir);
+    }
+    return tids;
 }
 
 }  // namespace V1_0

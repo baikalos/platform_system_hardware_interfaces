@@ -34,7 +34,10 @@ namespace suspend {
 namespace V1_0 {
 
 using ::android::base::unique_fd;
+using ::android::hardware::hidl_death_recipient;
+using ::android::hardware::hidl_handle;
 using ::android::hardware::hidl_string;
+using ::android::hardware::hidl_vec;
 using ::android::hardware::interfacesEqual;
 using ::android::hardware::Return;
 
@@ -77,6 +80,9 @@ class SystemSuspend : public ISystemSuspend {
 
    private:
     void initAutosuspend();
+    Return<void> debug(const hidl_handle& handle, const hidl_vec<hidl_string>& options) override;
+    std::vector<int> getTids();
+    std::string getStackTraces();
 
     std::mutex mCounterLock;
     std::condition_variable mCounterCondVar;
