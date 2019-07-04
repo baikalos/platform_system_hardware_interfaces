@@ -51,4 +51,9 @@ interface ISuspendControlService
      * Returns a list of wake lock stats.
      */
     WakeLockInfo[] getWakeLockStats();
+
+    /**
+     * Returns the kernel stack traces of all SystemSuspend threads.
+     */
+    @utf8InCpp String getWchanData();
 }

@@ -16,9 +16,12 @@
 
 #include "SuspendControlService.h"
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
 
 #include "SystemSuspend.h"
+
+using ::android::base::ReadFdToString;
 
 namespace android {
 namespace system {
@@ -94,6 +97,35 @@ binder::Status SuspendControlService::getWakeLockStats(std::vector<WakeLockInfo>
 
     suspendService->updateStatsNow();
     suspendService->getStatsList().getWakeLockStats(_aidl_return);
+
+    return binder::Status::ok();
+}
+
+binder::Status SuspendControlService::getWchanData(std::string* _aidl_return) {
+    const auto suspendService = mSuspend.promote();
+
+    if (!suspendService) {
+        return binder::Status::fromExceptionCode(binder::Status::Exception::EX_NULL_POINTER,
+                                                 String8("Null reference to suspendService"));
+    }
+
+    // Only wchan
+    std::vector<hidl_string> options;
+    options.emplace_back("--wchan");
+
+    // Index 0 corresponds to the read end of the pipe; 1 to the write end.
+    int fds[2];
+    pipe2(fds, O_NONBLOCK);
+    native_handle_t* handle = native_handle_create(1, 0);
+    handle->data[0] = fds[1];
+
+    suspendService->debug(handle, options);
+
+    ReadFdToString(fds[0], _aidl_return);
+
+    native_handle_delete(handle);
+    close(fds[0]);
+    close(fds[1]);
 
     return binder::Status::ok();
 }

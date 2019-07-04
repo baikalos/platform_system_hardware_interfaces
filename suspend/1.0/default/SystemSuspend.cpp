@@ -25,12 +25,14 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include <ctime>
 #include <string>
 #include <thread>
 
-using ::android::base::ReadFdToString;
+using ::android::base::ReadFileToString;
 using ::android::base::WriteStringToFd;
 using ::android::hardware::Void;
+using ::std::endl;
 using ::std::string;
 
 namespace android {
@@ -56,6 +58,111 @@ string readFd(int fd) {
 
 static inline int getCallingPid() {
     return ::android::hardware::IPCThreadState::self()->getCallingPid();
+}
+
+static inline std::string debugUsage() {
+    std::stringstream ss;
+
+    ss << "Usage: adb shell lshal debug \\" << endl
+       << "           android.system.suspend@1.0::ISystemSuspend/default [options...]" << endl
+       << endl
+       << "   Options:" << endl
+       << "       --wakelocks  : return wakelock stats data." << endl
+       << "       --wchan      : return SystemSuspend threads waiting channel data." << endl
+       << "       --all        : return all debug data, regardless of any other option(s)" << endl
+       << "                      provided. Same as providing no (valid) options." << endl
+       << "       --help or -h : prints this message, regardless of any other option(s)" << endl
+       << "                      provided." << endl
+       << endl;
+
+    return ss.str();
+}
+
+static inline std::string getWchanHeader() {
+    std::stringstream ss;
+
+    struct tm now;
+    time_t t = time(nullptr);
+#if defined(_WIN32)
+    localtime_s(&now, &t);
+#else
+    localtime_r(&t, &now);
+#endif
+    char timestamp[32];
+    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", &now);
+    std::string timeNow(timestamp);
+
+    std::string path = "/proc/" + std::to_string(getpid()) + "/cmdline";
+
+    char procNameBuf[1024];
+    char* procName = nullptr;
+    FILE* fp;
+
+    if ((fp = fopen(path.c_str(), "r"))) {
+        procName = fgets(procNameBuf, sizeof(procNameBuf), fp);
+        fclose(fp);
+    }
+
+    if (!procName) {
+        procName = const_cast<char*>("<unknown> (*suspend@1.0-service*)");
+    }
+
+    std::string cmdline(procName);
+
+    ss << "----- Waiting Channels: pid " << getpid() << " at " << timeNow << " -----" << endl
+       << "Cmd line: " << cmdline << endl;
+    return ss.str();
+}
+
+static inline std::string getWchanFooter() {
+    std::stringstream ss;
+    ss << "----- end " << std::to_string(getpid()) << " -----" << endl << endl;
+    return ss.str();
+}
+
+static inline std::vector<int> getTids() {
+    std::vector<int> tids;
+    DIR* dir = opendir("/proc/self/task");
+    struct dirent* dp;
+    if (dir) {
+        while ((dp = readdir(dir))) {
+            std::string name(dp->d_name);
+            if ((name == ".") || (name == "..")) {
+                continue;
+            }
+            tids.push_back(std::stoi(name));
+        }
+        closedir(dir);
+    }
+    return tids;
+}
+
+static inline std::string getWchanData() {
+    std::stringstream ss;
+
+    auto tids = getTids();
+    if (tids.empty()) {
+        LOG(WARNING) << "SystemSuspend::getWchanData: Failed to retrieve tids.";
+        return ss.str();
+    }
+
+    ss << getWchanHeader() << endl;
+
+    for (int tid : tids) {
+        std::string path = "/proc/self/task/" + std::to_string(tid) + "/wchan";
+        string stackStr;
+        if (!ReadFileToString(path, &stackStr, true)) {
+            LOG(WARNING) << "SystemSuspend::geWchanData: Failed to read \"" << path
+                         << "\", errno: " << errno;
+            return ss.str();
+        }
+
+        ss << "sysTid=" << tid << endl << stackStr << endl << endl;
+    }
+
+    ss << getWchanFooter() << endl;
+
+    return ss.str();
 }
 
 WakeLock::WakeLock(SystemSuspend* systemSuspend, const string& name, int pid)
@@ -226,6 +333,76 @@ const WakeLockEntryList& SystemSuspend::getStatsList() const {
 
 void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
+}
+
+/**
+ * Write SystemSuspend debug info to handle's fd.
+ *
+ * Usage:
+ *    adb shell lshal debug \
+ *        android.system.suspend@1.0::ISystemSuspend/default [options...]
+ *
+ *    Options:
+ *        --wakelocks  : return wakelock stats data.
+ *        --wchan      : return SystemSuspend threads waiting channel data.
+ *        --all        : return all debug data, regardless of any other option(s)
+ *                       provided. Same as providing no (valid) options.
+ *        --help or -h : prints this message, regardless of any other option(s)
+ *                       provided.
+ */
+Return<void> SystemSuspend::debug(const hidl_handle& handle, const hidl_vec<hidl_string>& options) {
+    if (handle == nullptr || handle->numFds < 1 || handle->data[0] < 0) {
+        LOG(ERROR) << "SystemSuspend::debug: No valid fd.";
+        return Void();
+    }
+    int fd = handle->data[0];
+
+    bool all = true;
+    bool wchan = false;
+    bool wakelocks = false;
+    bool help = false;
+
+    // Parse options
+    for (const hidl_string& option : options) {
+        std::string opt(option);
+        if (opt == "--wchan") {
+            wchan = true;
+            all = false;
+        } else if (opt == "--wakelocks") {
+            wakelocks = true;
+            all = false;
+        } else if (opt == "--all") {
+            all = true;
+        } else if (opt == "-h" || opt == "--help") {
+            help = true;
+            break;
+        }
+    }
+
+    if (help) {
+        std::string usage = debugUsage();
+        if (!WriteStringToFd(usage, fd)) {
+            LOG(WARNING) << "SystemSuspend::debug: Failed to write usage to fd, errno: " << errno;
+            return Void();
+        }
+    } else {
+        if (wchan || all) {
+            std::string wchanData = getWchanData();
+
+            if (!WriteStringToFd(wchanData, fd)) {
+                LOG(WARNING) << "SystemSuspend::debug: Failed to write wchan data to fd, errno: "
+                             << errno;
+                return Void();
+            }
+        }
+
+        if (wakelocks || all) {
+            // TODO(136689376): Get wake lock stats
+        }
+    }
+
+    fsync(fd);
+    return Void();
 }
 
 }  // namespace V1_0
