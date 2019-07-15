@@ -33,6 +33,7 @@ cc_defaults {
 
 cc_defaults {
     name: "system_suspend_stats_defaults",
+    shared_libs: ["libsuspendstats"],
     cflags: [
         "-Wall",
         "-Werror",

@@ -18,7 +18,11 @@
 
 #include <android-base/logging.h>
 
+#include <suspendstats.h>
+
 #include "SystemSuspend.h"
+
+using android::bpf::suspendstats::getTimesTrigerred;
 
 namespace android {
 namespace system {
@@ -96,6 +100,12 @@ binder::Status SuspendControlService::getWakeLockStats(std::vector<WakeLockInfo>
     suspendService->getStatsList().getWakeLockStats(_aidl_return);
 
     return binder::Status::ok();
+}
+
+status_t SuspendControlService::dump(int fd, const Vector<String16>& /*args*/) {
+    int triggerCount = getTimesTrigerred();
+    dprintf(fd, "Trigger count:  %d\n", triggerCount);
+    return OK;
 }
 
 }  // namespace V1_0
