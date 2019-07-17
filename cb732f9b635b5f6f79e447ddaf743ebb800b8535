@@ -52,6 +52,24 @@
       "revId": "cb732f9b635b5f6f79e447ddaf743ebb800b8535",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec214d0_6117212b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-17T01:24:36Z",
+      "side": 1,
+      "message": "i mean no, it doesn\u0027t use data :)",
+      "parentUuid": "6a8d45f4_24e667c7",
+      "revId": "cb732f9b635b5f6f79e447ddaf743ebb800b8535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
