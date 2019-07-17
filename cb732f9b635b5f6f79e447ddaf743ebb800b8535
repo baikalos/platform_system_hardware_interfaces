@@ -34,6 +34,24 @@
       "revId": "cb732f9b635b5f6f79e447ddaf743ebb800b8535",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a8d45f4_24e667c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-17T01:09:40Z",
+      "side": 1,
+      "message": "is there a bug to follow it up then?",
+      "parentUuid": "ac3bd3b7_93e8eb6c",
+      "revId": "cb732f9b635b5f6f79e447ddaf743ebb800b8535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
