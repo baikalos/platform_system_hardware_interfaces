@@ -16,9 +16,9 @@
 
 #include "SuspendControlService.h"
 
-#include "SystemSuspend.h"
-
 #include <android-base/logging.h>
+
+#include "SystemSuspend.h"
 
 namespace android {
 namespace system {
@@ -62,6 +62,11 @@ binder::Status SuspendControlService::registerCallback(const sp<ISuspendCallback
     return retOk(true, _aidl_return);
 }
 
+binder::Status SuspendControlService::forceSuspend(bool* _aidl_return) {
+    const auto suspendService = mSuspend.promote();
+    return retOk(suspendService != nullptr && suspendService->forceSuspend(), _aidl_return);
+}
+
 void SuspendControlService::binderDied(const wp<IBinder>& who) {
     auto l = std::lock_guard(mCallbackLock);
     mCallbacks.erase(findCb(who));
@@ -78,6 +83,19 @@ void SuspendControlService::notifyWakeup(bool success) {
     for (const auto& callback : callbacksCopy) {
         callback->notifyWakeup(success).isOk();  // ignore errors
     }
+}
+
+binder::Status SuspendControlService::getWakeLockStats(std::vector<WakeLockInfo>* _aidl_return) {
+    const auto suspendService = mSuspend.promote();
+    if (!suspendService) {
+        return binder::Status::fromExceptionCode(binder::Status::Exception::EX_NULL_POINTER,
+                                                 String8("Null reference to suspendService"));
+    }
+
+    suspendService->updateStatsNow();
+    suspendService->getStatsList().getWakeLockStats(_aidl_return);
+
+    return binder::Status::ok();
 }
 
 }  // namespace V1_0
