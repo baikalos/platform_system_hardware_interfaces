@@ -16,12 +16,101 @@
 
 #include "WakeLockEntryList.h"
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
+
+using android::base::ReadFileToString;
+
+static constexpr char kSysClassWakeup[] = "/sys/class/wakeup/";
 
 namespace android {
 namespace system {
 namespace suspend {
 namespace V1_0 {
+
+static WakeLockInfo createEntry(const std::string& name, bool isKernelWakelock = true, int pid = 0,
+                                TimestampType epochTimeNow = 0) {
+    WakeLockInfo info;
+
+    info.name = name;
+    info.activeCount = (isKernelWakelock) ? 0 : 1;
+    info.lastChange = epochTimeNow;
+    info.maxTime = 0;
+    info.totalTime = 0;
+    info.isActive = (isKernelWakelock) ? false : true;
+    info.isKernelWakelock = isKernelWakelock;
+
+    info.pid = pid;
+    info.activeSince = epochTimeNow;
+
+    info.activeTime = 0;
+    info.eventCount = 0;
+    info.expireCount = 0;
+    info.preventSuspendTime = 0;
+    info.wakeupCount = 0;
+
+    return info;
+}
+
+static void updateKernelEntry(WakeLockInfo& info, const std::string& name) {
+    std::string path = kSysClassWakeup + name;
+    std::unique_ptr<DIR, decltype(&closedir)> dir(opendir(path.c_str()), &closedir);
+    if (dir) {
+        struct dirent* dp;
+        while ((dp = readdir(dir.get()))) {
+            std::string statName(dp->d_name);
+            if ((statName == ".") || (statName == ".." || statName == "power" ||
+                                      statName == "subsystem" || statName == "uevent")) {
+                continue;
+            }
+
+            std::string statPath = path + "/" + statName;
+            std::string valStr;
+            if (!ReadFileToString(statPath, &valStr, true)) {
+                LOG(ERROR) << "SystemSuspend: Failed to read \"" << statPath
+                           << "\", errno: " << errno;
+                continue;
+            }
+            long long statVal = std::stoll(valStr);
+
+            if (statName == "active_count") {
+                info.activeCount = statVal;
+            } else if (statName == "active_time_ms") {
+                info.activeTime = statVal;
+            } else if (statName == "event_count") {
+                info.eventCount = statVal;
+            } else if (statName == "expire_count") {
+                info.expireCount = statVal;
+            } else if (statName == "last_change_ms") {
+                info.lastChange = statVal;
+            } else if (statName == "max_time_ms") {
+                info.maxTime = statVal;
+            } else if (statName == "prevent_suspend_time") {
+                info.preventSuspendTime = statVal;
+            } else if (statName == "total_time_ms") {
+                info.totalTime = statVal;
+            } else if (statName == "wakeup_count") {
+                info.wakeupCount = statVal;
+            }
+        }
+    }
+}
+
+static void updateKernelStats(std::vector<WakeLockInfo>* aidl_return) {
+    std::unique_ptr<DIR, decltype(&closedir)> dir(opendir(kSysClassWakeup), &closedir);
+    struct dirent* dp;
+    if (dir) {
+        while ((dp = readdir(dir.get()))) {
+            std::string kwlName(dp->d_name);
+            if ((kwlName == ".") || (kwlName == "..")) {
+                continue;
+            }
+            WakeLockInfo entry = createEntry(kwlName);
+            updateKernelEntry(entry, kwlName);
+            aidl_return->emplace_back(entry);
+        }
+    }
+}
 
 TimestampType getEpochTimeNow() {
     auto timeSinceEpoch = std::chrono::system_clock::now().time_since_epoch();
@@ -30,6 +119,37 @@ TimestampType getEpochTimeNow() {
 
 WakeLockEntryList::WakeLockEntryList(size_t capacity) : mCapacity(capacity) {}
 
+/**
+ * Evicts LRU from back of list if stats is at capacity.
+ */
+void WakeLockEntryList::evictIfFull() {
+    if (mStats.size() == mCapacity) {
+        auto evictIt = mStats.end();
+        std::advance(evictIt, -1);
+        auto evictKey = std::make_pair(evictIt->name, evictIt->pid);
+        mLookupTable.erase(evictKey);
+        mStats.erase(evictIt);
+        LOG(ERROR) << "WakeLock Stats: Stats capacity met, consider adjusting capacity to "
+                      "avoid stats eviction.";
+    }
+}
+
+/**
+ * Inserts entry as MRU.
+ */
+void WakeLockEntryList::insertEntry(WakeLockInfo entry) {
+    auto key = std::make_pair(entry.name, entry.pid);
+    mStats.emplace_front(entry);
+    mLookupTable[key] = mStats.begin();
+}
+
+/**
+ * Remove entry from the stats list.
+ */
+void WakeLockEntryList::deleteEntry(std::list<WakeLockInfo>::iterator entry) {
+    mStats.erase(entry);
+}
+
 void WakeLockEntryList::updateOnAcquire(const std::string& name, int pid,
                                         TimestampType epochTimeNow) {
     std::lock_guard<std::mutex> lock(mStatsLock);
@@ -37,31 +157,21 @@ void WakeLockEntryList::updateOnAcquire(const std::string& name, int pid,
     auto key = std::make_pair(name, pid);
     auto it = mLookupTable.find(key);
     if (it == mLookupTable.end()) {
-        // Evict LRU from back of list if stats is at capacity
-        if (mStats.size() == mCapacity) {
-            auto evictIt = mStats.end();
-            std::advance(evictIt, -1);
-            auto evictKey = std::make_pair(evictIt->name, evictIt->pid);
-            mLookupTable.erase(evictKey);
-            mStats.erase(evictIt);
-            LOG(ERROR) << "WakeLock Stats: Stats capacity met, consider adjusting capacity to "
-                          "avoid stats eviction.";
-        }
-        // Insert new entry as MRU
-        mStats.emplace_front(createEntry(name, pid, epochTimeNow));
-        mLookupTable[key] = mStats.begin();
+        evictIfFull();
+        WakeLockInfo newEntry = createEntry(name, false /* kernel wl */, pid, epochTimeNow);
+        insertEntry(newEntry);
     } else {
-        // Update existing entry
-        WakeLockInfo updatedEntry = *(it->second);
+        auto staleEntry = it->second;
+        WakeLockInfo updatedEntry = *staleEntry;
+
+        // Update entry
         updatedEntry.isActive = true;
         updatedEntry.activeSince = epochTimeNow;
         updatedEntry.activeCount++;
         updatedEntry.lastChange = epochTimeNow;
 
-        // Make updated entry MRU
-        mStats.erase(it->second);
-        mStats.emplace_front(updatedEntry);
-        mLookupTable[key] = mStats.begin();
+        deleteEntry(staleEntry);
+        insertEntry(updatedEntry);
     }
 }
 
@@ -75,21 +185,23 @@ void WakeLockEntryList::updateOnRelease(const std::string& name, int pid,
         LOG(INFO) << "WakeLock Stats: A stats entry for, \"" << name
                   << "\" was not found. This is most likely due to it being evicted.";
     } else {
-        // Update existing entry
-        WakeLockInfo updatedEntry = *(it->second);
+        auto staleEntry = it->second;
+        WakeLockInfo updatedEntry = *staleEntry;
+
+        // Update entry
         updatedEntry.isActive = false;
         updatedEntry.maxTime =
             std::max(updatedEntry.maxTime, epochTimeNow - updatedEntry.activeSince);
         updatedEntry.totalTime += epochTimeNow - updatedEntry.lastChange;
         updatedEntry.lastChange = epochTimeNow;
 
-        // Make updated entry MRU
-        mStats.erase(it->second);
-        mStats.emplace_front(updatedEntry);
-        mLookupTable[key] = mStats.begin();
+        deleteEntry(staleEntry);
+        insertEntry(updatedEntry);
     }
 }
-
+/**
+ * Updated the native wakelock stats based on the current time.
+ */
 void WakeLockEntryList::updateNow() {
     std::lock_guard<std::mutex> lock(mStatsLock);
 
@@ -110,20 +222,8 @@ void WakeLockEntryList::getWakeLockStats(std::vector<WakeLockInfo>* aidl_return)
     for (const WakeLockInfo& entry : mStats) {
         aidl_return->emplace_back(entry);
     }
-}
 
-WakeLockInfo WakeLockEntryList::createEntry(const std::string& name, int pid,
-                                            TimestampType epochTimeNow) {
-    WakeLockInfo info;
-    info.name = name;
-    info.pid = pid;
-    info.activeCount = 1;
-    info.maxTime = 0;
-    info.totalTime = 0;
-    info.isActive = true;
-    info.activeSince = epochTimeNow;
-    info.lastChange = epochTimeNow;
-    return info;
+    updateKernelStats(aidl_return);
 }
 
 }  // namespace V1_0

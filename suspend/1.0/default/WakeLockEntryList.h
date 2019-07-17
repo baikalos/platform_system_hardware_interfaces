@@ -50,7 +50,9 @@ class WakeLockEntryList {
     void getWakeLockStats(std::vector<WakeLockInfo>* aidl_return) const;
 
    private:
-    WakeLockInfo createEntry(const std::string& name, int pid, TimestampType epochTimeNow);
+    void evictIfFull() REQUIRES(mStatsLock);
+    void insertEntry(WakeLockInfo entry) REQUIRES(mStatsLock);
+    void deleteEntry(std::list<WakeLockInfo>::iterator entry) REQUIRES(mStatsLock);
 
     // Hash for WakeLockEntry key (pair<std::string, int>)
     struct LockHash {

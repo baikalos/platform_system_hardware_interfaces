@@ -285,7 +285,10 @@ TEST_F(SystemSuspendTest, GetWakeLockStats) {
         sp<IWakeLock> fakeLock = acquireWakeLock(fakeWlName);
         std::vector<WakeLockInfo> wlStats;
         controlService->getWakeLockStats(&wlStats);
-        ASSERT_EQ(wlStats.size(), 1);
+        // Size may be greater than 1 because kernel wakelocks are also returned.
+        // These are not managed by the WakeLockEntryList but are read from
+        // sys/class/wakeup.
+        ASSERT_GE(wlStats.size(), 1);
         ASSERT_EQ(wlStats.begin()->name, fakeWlName);
         ASSERT_EQ(wlStats.begin()->pid, getpid());
         ASSERT_EQ(wlStats.begin()->activeCount, 1);
@@ -304,7 +307,7 @@ TEST_F(SystemSuspendTest, GetWakeLockStats) {
     }
     std::vector<WakeLockInfo> wlStats;
     controlService->getWakeLockStats(&wlStats);
-    ASSERT_EQ(wlStats.size(), 1);
+    ASSERT_GE(wlStats.size(), 1);
     ASSERT_EQ(wlStats.begin()->name, fakeWlName);
     ASSERT_EQ(wlStats.begin()->pid, getpid());
     ASSERT_EQ(wlStats.begin()->activeCount, 1);
@@ -327,7 +330,7 @@ TEST_F(SystemSuspendTest, WakeLockStatsLruEviction) {
     controlService->getWakeLockStats(&wlStats);
 
     // Max number of stats entries was set to 1 in SystemSuspend constructor.
-    ASSERT_EQ(wlStats.size(), 1);
+    ASSERT_GE(wlStats.size(), 1);
     ASSERT_EQ(wlStats.begin()->name, fakeWlName2);
     ASSERT_EQ(wlStats.begin()->pid, getpid());
     ASSERT_EQ(wlStats.begin()->activeCount, 1);
