@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb4a4cda_f0b19eed",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-19T01:24:17Z",
+      "side": 1,
+      "message": "Now that there is more than 1, how do you make sure that wlStats.begin() returns the one that\u0027s needed? \n\nMaybe inject /sys/class/wakeup dependency to SystemSuspend via constructor, similar to what we do with /sys/power/state?",
+      "range": {
+        "startLine": 291,
+        "startChar": 15,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f24f6bf_087fe05a",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-19T01:24:17Z",
+      "side": 1,
+      "message": "-1",
+      "range": {
+        "startLine": 31,
+        "startChar": 97,
+        "endLine": 31,
+        "endChar": 98
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3211aca8_89c9288a",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-19T01:24:17Z",
+      "side": 1,
+      "message": "it\u0027s not obvious why the value should be different for kernel wake locks",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dcc5491_29d35e29",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-19T01:24:17Z",
+      "side": 1,
+      "message": "Since you\u0027re overwriting this whole thing, return a new WakeLockInfo instead.",
+      "range": {
+        "startLine": 55,
+        "startChar": 30,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0420243e_22881234",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-19T01:24:17Z",
+      "side": 1,
+      "message": "createEntry and updateKernelEntry could be one function",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 46
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "902e84c5_d3f01f74",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-19T01:24:17Z",
+      "side": 1,
+      "message": "it\u0027s not clear why this function doesn\u0027t also remove from mLookupTable",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 24
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e879b2f0_91e918d0",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-19T01:24:17Z",
+      "side": 1,
+      "message": "I think it\u0027s more readable if you zero-initialize newEntry, then fill out the fields manually. It\u0027s not immediately obvious what comes out of createEntry().",
+      "range": {
+        "startLine": 161,
+        "startChar": 32,
+        "endLine": 161,
+        "endChar": 43
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4bc1eb_9edfa82e",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-19T01:24:17Z",
+      "side": 1,
+      "message": "let\u0027s converge this one with activeTime, since they provide redundant information (in combination with lastChange)",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
