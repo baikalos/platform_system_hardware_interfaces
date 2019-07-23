@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67a9844a_0fd9aeae",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T23:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "286d3034_2b55bb60",
+      "range": {
+        "startLine": 174,
+        "startChar": 46,
+        "endLine": 174,
+        "endChar": 70
+      },
+      "revId": "04101b758ce8304caa9356c3d49b1fc493c4814a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "115f1217_7c5d5bed",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "04101b758ce8304caa9356c3d49b1fc493c4814a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b745417_ce5cd96e",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T23:18:26Z",
+      "side": 1,
+      "message": "I was also worried about the flakiness of these. We don\u0027t necessarily need to check here, as the following checks are enough to ensure correctness. I think it\u0027s best to just remove these.",
+      "parentUuid": "115f1217_7c5d5bed",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 67
+      },
+      "revId": "04101b758ce8304caa9356c3d49b1fc493c4814a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c3b7b64d_fb8896c7",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T23:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "850fa34c_ee47b486",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "04101b758ce8304caa9356c3d49b1fc493c4814a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da3f96e3_d9238269",
         "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "77c09c40_76ec4872",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T23:18:26Z",
+      "side": 1,
+      "message": "Moved",
+      "parentUuid": "da3f96e3_d9238269",
+      "range": {
+        "startLine": 220,
+        "startChar": 20,
+        "endLine": 220,
+        "endChar": 32
+      },
+      "revId": "04101b758ce8304caa9356c3d49b1fc493c4814a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27eeade5_4014d877",
         "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "04101b758ce8304caa9356c3d49b1fc493c4814a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a4005ca_46e3099e",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T23:18:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "27eeade5_4014d877",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "04101b758ce8304caa9356c3d49b1fc493c4814a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
