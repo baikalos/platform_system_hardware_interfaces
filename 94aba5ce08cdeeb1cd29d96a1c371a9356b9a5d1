@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a48258e_cc597c3b",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T01:28:58Z",
+      "side": 1,
+      "message": "Injected as dir fd.",
+      "parentUuid": "bb4a4cda_f0b19eed",
+      "range": {
+        "startLine": 291,
+        "startChar": 15,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f24f6bf_087fe05a",
         "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a954182c_9e6becfd",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T01:28:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3f24f6bf_087fe05a",
+      "range": {
+        "startLine": 31,
+        "startChar": 97,
+        "endLine": 31,
+        "endChar": 98
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "40536098_71eff8c9",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T01:28:58Z",
+      "side": 1,
+      "message": "The intention was to zero initialize for kernel wakelocks in the event that the read from sysfs fail.",
+      "parentUuid": "3211aca8_89c9288a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dcc5491_29d35e29",
         "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b8462a_b854fc7d",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T01:28:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5dcc5491_29d35e29",
+      "range": {
+        "startLine": 55,
+        "startChar": 30,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "582cb3b7_bf609899",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T01:28:58Z",
+      "side": 1,
+      "message": "Ack. createEntry could also be used to create a native entry. Separated these out into kernel and native. That should be more readable :)",
+      "parentUuid": "0420243e_22881234",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 46
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "902e84c5_d3f01f74",
         "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff6fad2_b2d7fc45",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T01:28:58Z",
+      "side": 1,
+      "message": "In our case delete is always followed by an insertion of the same key with the updated stats, but I agree it should be here for completeness :)",
+      "parentUuid": "902e84c5_d3f01f74",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 24
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "ef847899_1adc31b3",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T01:28:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e879b2f0_91e918d0",
+      "range": {
+        "startLine": 161,
+        "startChar": 32,
+        "endLine": 161,
+        "endChar": 43
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed4bc1eb_9edfa82e",
         "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4711d741_f6b9e9ac",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-07-23T01:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed4bc1eb_9edfa82e",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "94aba5ce08cdeeb1cd29d96a1c371a9356b9a5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
