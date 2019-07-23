@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "200f7b33_0e268ada",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-23T23:42:24Z",
+      "side": 1,
+      "message": "nit: this object is not a \"mock\"; it has the real implementation\n\nI think code paths and and use cases for suspendService vs mockStatsSuspendService are different enough that it warrants having a separate test class, something like SystemSuspendSameThreadTest.",
+      "range": {
+        "startLine": 374,
+        "startChar": 23,
+        "endLine": 374,
+        "endChar": 46
+      },
+      "revId": "1e12aaf5efe04d1fc77570d2f057dd3b970a9319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
