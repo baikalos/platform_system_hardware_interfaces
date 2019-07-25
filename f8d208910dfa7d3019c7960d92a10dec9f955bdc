@@ -22,6 +22,29 @@
       "revId": "f8d208910dfa7d3019c7960d92a10dec9f955bdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9587557d_75dba0e8",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-25T23:13:00Z",
+      "side": 1,
+      "message": "also, use cpp library in cpp code if you can\nhttps://en.cppreference.com/w/cpp/chrono/c/timespec_get",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 17
+      },
+      "revId": "f8d208910dfa7d3019c7960d92a10dec9f955bdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
