@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf1767ac_0aeb82d4",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-07-25T23:11:56Z",
+      "side": 1,
+      "message": "i don\u0027t think you need this",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 10
+      },
+      "revId": "f8d208910dfa7d3019c7960d92a10dec9f955bdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
