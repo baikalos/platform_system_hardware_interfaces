@@ -62,8 +62,9 @@ class WakeLock : public IWakeLock {
 
 class SystemSuspend : public ISystemSuspend {
    public:
-    SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, size_t maxNativeStatsEntries,
-                  unique_fd kernelWakelockStatsFd, std::chrono::milliseconds baseSleepTime,
+    SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
+                  size_t maxNativeStatsEntries, unique_fd kernelWakelockStatsFd,
+                  std::chrono::milliseconds baseSleepTime,
                   const sp<SuspendControlService>& controlService, bool useSuspendCounter = true);
     Return<sp<IWakeLock>> acquireWakeLock(WakeLockType type, const hidl_string& name) override;
     void incSuspendCounter(const std::string& name);
@@ -74,6 +75,7 @@ class SystemSuspend : public ISystemSuspend {
     const WakeLockEntryList& getStatsList() const;
     void updateWakeLockStatOnRelease(const std::string& name, int pid, TimestampType timeNow);
     void updateStatsNow();
+    std::string getSuspendStats();
 
    private:
     void initAutosuspend();
@@ -83,6 +85,8 @@ class SystemSuspend : public ISystemSuspend {
     uint32_t mSuspendCounter;
     unique_fd mWakeupCountFd;
     unique_fd mStateFd;
+
+    unique_fd mSuspendStatsFd;
 
     // Amount of sleep time between consecutive iterations of the suspend loop.
     std::chrono::milliseconds mBaseSleepTime;

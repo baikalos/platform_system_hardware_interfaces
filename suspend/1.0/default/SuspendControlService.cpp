@@ -98,18 +98,54 @@ binder::Status SuspendControlService::getWakeLockStats(std::vector<WakeLockInfo>
     return binder::Status::ok();
 }
 
-status_t SuspendControlService::dump(int fd, const Vector<String16>& /*args*/) {
+static std::string dumpUsage() {
+    return "\nUsage: adb shell dumpsys suspend_control [option]\n\n"
+           "   Options:\n"
+           "       --wakelocks      : returns wakelock stats.\n"
+           "       --suspend_stats  : returns suspend stats.\n"
+           "       --all            : returns all stats. Same as providing\n"
+           "                          no (an invalid) option.\n"
+           "       --help or -h     : prints this message.\n\n";
+}
+
+status_t SuspendControlService::dump(int fd, const Vector<String16>& args) {
     const auto suspendService = mSuspend.promote();
     if (!suspendService) {
         return DEAD_OBJECT;
     }
 
-    suspendService->updateStatsNow();
+    bool all = true;
+    bool wakelocks = false;
+    bool suspend_stats = false;
 
-    std::stringstream ss;
-    ss << suspendService->getStatsList();
+    if (args.size() > 0) {
+        std::string arg(String8(args[0]).string());
+        if (arg == "--wakelocks") {
+            wakelocks = true;
+            all = false;
+        } else if (arg == "--suspend_stats") {
+            suspend_stats = true;
+            all = false;
+        } else if (arg == "--all") {
+            all = true;
+        } else if (arg == "-h" || arg == "--help") {
+            std::string usage = dumpUsage();
+            dprintf(fd, "%s\n", usage.c_str());
+            return OK;
+        }
+    }
 
-    dprintf(fd, "%s\n", ss.str().c_str());
+    if (wakelocks || all) {
+        suspendService->updateStatsNow();
+        std::stringstream wlStats;
+        wlStats << suspendService->getStatsList();
+        dprintf(fd, "\n%s\n", wlStats.str().c_str());
+    }
+    if (suspend_stats || all) {
+        std::string ss = suspendService->getSuspendStats();
+        dprintf(fd, "\n%s\n", ss.c_str());
+    }
+
     return OK;
 }
 
