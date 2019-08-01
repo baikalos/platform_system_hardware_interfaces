@@ -18,6 +18,7 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <fcntl.h>
 #include <hidl/Status.h>
@@ -29,6 +30,7 @@
 #include <thread>
 
 using ::android::base::ReadFdToString;
+using ::android::base::StringPrintf;
 using ::android::base::WriteStringToFd;
 using ::android::hardware::Void;
 using ::std::string;
@@ -79,7 +81,7 @@ void WakeLock::releaseOnce() {
     });
 }
 
-SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd,
+SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
                              size_t maxNativeStatsEntries, unique_fd kernelWakelockStatsFd,
                              std::chrono::milliseconds baseSleepTime,
                              const sp<SuspendControlService>& controlService,
@@ -87,6 +89,7 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd,
     : mSuspendCounter(0),
       mWakeupCountFd(std::move(wakeupCountFd)),
       mStateFd(std::move(stateFd)),
+      mSuspendStatsFd(std::move(suspendStatsFd)),
       mBaseSleepTime(baseSleepTime),
       mSleepTime(baseSleepTime),
       mControlService(controlService),
@@ -227,6 +230,117 @@ const WakeLockEntryList& SystemSuspend::getStatsList() const {
 
 void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
+}
+
+std::string SystemSuspend::getSuspendStats() {
+    struct Stats {
+        int success = 0;
+        int fail = 0;
+        int failedFreeze = 0;
+        int failedPrepare = 0;
+        int failedSuspend = 0;
+        int failedSuspendLate = 0;
+        int failedSuspendNoirq = 0;
+        int failedResume = 0;
+        int failedResumeEarly = 0;
+        int failedResumeNoirq = 0;
+        std::string lastFailedDev;
+        int lastFailedErrno = 0;
+        std::string lastFailedStep;
+    };
+    Stats stats;
+
+    std::unique_ptr<DIR, decltype(&closedir)> dp(fdopendir(dup(mSuspendStatsFd.get())), &closedir);
+    if (dp) {
+        // rewinddir, else subsequent calls will not get any suspend_stats
+        rewinddir(dp.get());
+
+        struct dirent* de;
+        while ((de = readdir(dp.get()))) {
+            std::string statName(de->d_name);
+            if ((statName == ".") || (statName == "..")) {
+                continue;
+            }
+
+            unique_fd statFd{TEMP_FAILURE_RETRY(
+                openat(mSuspendStatsFd.get(), statName.c_str(), O_CLOEXEC | O_RDONLY))};
+            if (statFd < 0) {
+                PLOG(ERROR) << "Error opening " << statName;
+                continue;
+            }
+
+            std::string valStr;
+            if (!ReadFdToString(statFd.get(), &valStr)) {
+                PLOG(ERROR) << "Error reading " << statName;
+                continue;
+            }
+
+            // Remove trailing newline
+            valStr.erase(valStr.length() - 1);
+
+            if (statName == "last_failed_dev") {
+                stats.lastFailedDev = valStr;
+            } else if (statName == "last_failed_step") {
+                stats.lastFailedStep = valStr;
+            } else {
+                int statVal = std::stoi(valStr);
+                if (statName == "success") {
+                    stats.success = statVal;
+                } else if (statName == "fail") {
+                    stats.fail = statVal;
+                } else if (statName == "failed_freeze") {
+                    stats.failedFreeze = statVal;
+                } else if (statName == "failed_prepare") {
+                    stats.failedPrepare = statVal;
+                } else if (statName == "failed_suspend") {
+                    stats.failedSuspend = statVal;
+                } else if (statName == "failed_suspend_late") {
+                    stats.failedSuspendLate = statVal;
+                } else if (statName == "failed_suspend_noirq") {
+                    stats.failedSuspendNoirq = statVal;
+                } else if (statName == "failed_resume") {
+                    stats.failedResume = statVal;
+                } else if (statName == "failed_resume_early") {
+                    stats.failedResumeEarly = statVal;
+                } else if (statName == "failed_resume_noirq") {
+                    stats.failedResumeNoirq = statVal;
+                } else if (statName == "last_failed_errno") {
+                    stats.lastFailedErrno = statVal;
+                }
+            }
+        }
+    } else {
+        PLOG(ERROR) << "SystemSuspend: Failed to get directory pointer to suspend_stats dir";
+        return "";
+    }
+
+    // clang-format off
+    std::string statsStr = StringPrintf(
+        "----- Suspend Stats -----\n"
+        "%s: %d\n%s: %d\n%s: %d\n%s: %d\n%s: %d\n"
+        "%s: %d\n%s: %d\n%s: %d\n%s: %d\n%s: %d\n"
+        "\nLast Failures:\n"
+        "    %s: %s\n"
+        "    %s: %d\n"
+        "    %s: %s\n"
+        "----------\n\n",
+
+        "success", stats.success,
+        "fail", stats.fail,
+        "failed_freeze", stats.failedFreeze,
+        "failed_prepare", stats.failedPrepare,
+        "failed_suspend", stats.failedSuspend,
+        "failed_suspend_late", stats.failedSuspendLate,
+        "failed_suspend_noirq", stats.failedSuspendNoirq,
+        "failed_resume", stats.failedResume,
+        "failed_resume_early", stats.failedResumeEarly,
+        "failed_resume_noirq", stats.failedResumeNoirq,
+        "last_failed_dev", stats.lastFailedDev.c_str(),
+        "last_failed_errno", stats.lastFailedErrno,
+        "last_failed_step", stats.lastFailedStep.c_str());
+    // clang-format on
+
+    return statsStr;
 }
 
 }  // namespace V1_0
