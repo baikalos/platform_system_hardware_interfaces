@@ -1,3 +1,14 @@
 hidl_package_root {
     name: "android.system",
 }
+
+genrule {
+    name: "system_hardware_interfaces_current",
+    srcs: [
+        "current.txt",
+    ],
+    out: [
+        "system_hardware_interfaces_current.txt",
+    ],
+    cmd: "cp -f $(in) $(genDir)/system_hardware_interfaces_current.txt",
+}
