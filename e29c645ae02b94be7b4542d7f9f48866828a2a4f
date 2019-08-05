@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1bc2200_c0b62de0",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-05T22:57:21Z",
+      "side": 1,
+      "message": "nit: should these be positional arguments instead for simplicity/not to have to worry about \u0027--all --suspend_stats\u0027 etc",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 23
+      },
+      "revId": "e29c645ae02b94be7b4542d7f9f48866828a2a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e07fa3f0_8fef22a7",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-05T22:57:21Z",
+      "side": 1,
+      "message": "nit: simpler to dump help here?",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 24
+      },
+      "revId": "e29c645ae02b94be7b4542d7f9f48866828a2a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
