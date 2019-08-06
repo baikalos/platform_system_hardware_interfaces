@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e285203c_5cf5a30f",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-08-06T21:47:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e173617_ae0957fe",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "fa97aafa8de890774627de17b4e6cd59793d3dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a36a506d_d46563b5",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "fa97aafa8de890774627de17b4e6cd59793d3dfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa03709_136d08bd",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-08-06T21:47:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a36a506d_d46563b5",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 21
+      },
+      "revId": "fa97aafa8de890774627de17b4e6cd59793d3dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9c7ca4d8_3d153fad",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-08-06T21:47:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06530517_17f80bb2",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "fa97aafa8de890774627de17b4e6cd59793d3dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c532f78f_614b6947",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c6ba20cf_a57341b8",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-08-06T21:47:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c532f78f_614b6947",
+      "range": {
+        "startLine": 565,
+        "startChar": 17,
+        "endLine": 565,
+        "endChar": 39
+      },
+      "revId": "fa97aafa8de890774627de17b4e6cd59793d3dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18529804_3f894a3e",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2019-08-06T18:24:57Z",
       "side": 1,
       "message": "Why are both of these arguments needed? And why won\u0027t TemporaryDir\u0027s destructor suffice here?",
+      "range": {
+        "startLine": 581,
+        "startChar": 35,
+        "endLine": 581,
+        "endChar": 71
+      },
+      "revId": "fa97aafa8de890774627de17b4e6cd59793d3dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af1b0ed3_177f57cc",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-08-06T21:47:34Z",
+      "side": 1,
+      "message": "Removed fd argument. The destructor won\u0027t be called after each test, since suspendStatsDir has global scope in the fixture. Although it wouldn\u0027t really matter here since we only have one test for suspend stats and because addSuspendStats() will overwrite all the suspend stats files, I thought we\u0027d include it here for thorough tear down (In the case that these tests change in the future).",
+      "parentUuid": "18529804_3f894a3e",
       "range": {
         "startLine": 581,
         "startChar": 35,
