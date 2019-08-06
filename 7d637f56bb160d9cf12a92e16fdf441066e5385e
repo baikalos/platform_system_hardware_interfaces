@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c55475e7_79d6cb09",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-08-06T00:07:09Z",
+      "side": 1,
+      "message": "Test pls",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 46
+      },
+      "revId": "7d637f56bb160d9cf12a92e16fdf441066e5385e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
