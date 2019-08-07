@@ -46,6 +46,30 @@
       "revId": "1560db00b4895c600301c6fd1429dc75b214dfb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ef2548_401946c7",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330217
+      },
+      "writtenOn": "2019-08-07T07:08:21Z",
+      "side": 1,
+      "message": "Thanks for the explanation.",
+      "parentUuid": "a6b455df_ec51e9bb",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "1560db00b4895c600301c6fd1429dc75b214dfb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
