@@ -22,6 +22,30 @@
       "revId": "1560db00b4895c600301c6fd1429dc75b214dfb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6b455df_ec51e9bb",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2019-08-07T06:56:03Z",
+      "side": 1,
+      "message": "It\u0027s a necessary variable in genrule.\nI think it\u0027s prevent users to generate anything that unexpected.",
+      "parentUuid": "d7b31e65_ee13e35d",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "1560db00b4895c600301c6fd1429dc75b214dfb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
