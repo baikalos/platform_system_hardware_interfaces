@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7b31e65_ee13e35d",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330217
+      },
+      "writtenOn": "2019-08-07T06:45:51Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar with Soong, could you explain why need this?\nIt looks like no one uses it.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "1560db00b4895c600301c6fd1429dc75b214dfb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
