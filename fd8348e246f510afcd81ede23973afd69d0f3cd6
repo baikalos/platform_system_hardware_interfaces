@@ -22,6 +22,30 @@
       "revId": "fd8348e246f510afcd81ede23973afd69d0f3cd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ceeb95_bf9acc68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2019-08-07T00:52:47Z",
+      "side": 1,
+      "message": "I did. They wouldn\u0027t apply cleanly though. So I had to copy-paste. But it works. :)",
+      "parentUuid": "44165984_9a0d69e9",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "fd8348e246f510afcd81ede23973afd69d0f3cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
