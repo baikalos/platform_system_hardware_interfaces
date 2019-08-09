@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3c08be9_9d2ff0b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-08-09T21:55:12Z",
+      "side": 1,
+      "message": "what is the motivation? in what case does the newline appear? and why do we care? please document in commit message",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "1568296cc1a2fca16172d3cee458c3f2c1a6a874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
