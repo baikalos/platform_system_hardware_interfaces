@@ -28,6 +28,7 @@
 #include <string>
 #include <thread>
 
+using ::android::base::Error;
 using ::android::base::ReadFdToString;
 using ::android::base::WriteStringToFd;
 using ::android::hardware::Void;
@@ -75,21 +76,23 @@ Return<void> WakeLock::release() {
 void WakeLock::releaseOnce() {
     std::call_once(mReleased, [this]() {
         mSystemSuspend->decSuspendCounter(mName);
-        mSystemSuspend->updateWakeLockStatOnRelease(mName, mPid, getEpochTimeNow());
+        mSystemSuspend->updateWakeLockStatOnRelease(mName, mPid, getTimeNow());
     });
 }
 
-SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, size_t maxStatsEntries,
+SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
+                             size_t maxNativeStatsEntries, unique_fd kernelWakelockStatsFd,
                              std::chrono::milliseconds baseSleepTime,
                              const sp<SuspendControlService>& controlService,
                              bool useSuspendCounter)
     : mSuspendCounter(0),
       mWakeupCountFd(std::move(wakeupCountFd)),
       mStateFd(std::move(stateFd)),
+      mSuspendStatsFd(std::move(suspendStatsFd)),
       mBaseSleepTime(baseSleepTime),
       mSleepTime(baseSleepTime),
       mControlService(controlService),
-      mStatsList(maxStatsEntries),
+      mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
       mUseSuspendCounter(useSuspendCounter),
       mWakeLockFd(-1),
       mWakeUnlockFd(-1) {
@@ -138,7 +141,7 @@ bool SystemSuspend::forceSuspend() {
 Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
                                                      const hidl_string& name) {
     auto pid = getCallingPid();
-    auto timeNow = getEpochTimeNow();
+    auto timeNow = getTimeNow();
     IWakeLock* wl = new WakeLock{this, name, pid};
     mStatsList.updateOnAcquire(name, pid, timeNow);
     return wl;
@@ -216,8 +219,8 @@ void SystemSuspend::updateSleepTime(bool success) {
 }
 
 void SystemSuspend::updateWakeLockStatOnRelease(const std::string& name, int pid,
-                                                TimestampType epochTimeNow) {
-    mStatsList.updateOnRelease(name, pid, epochTimeNow);
+                                                TimestampType timeNow) {
+    mStatsList.updateOnRelease(name, pid, timeNow);
 }
 
 const WakeLockEntryList& SystemSuspend::getStatsList() const {
@@ -226,6 +229,81 @@ const WakeLockEntryList& SystemSuspend::getStatsList() const {
 
 void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
+}
+
+/**
+ * Returns suspend stats.
+ */
+Result<SuspendStats> SystemSuspend::getSuspendStats() {
+    std::unique_ptr<DIR, decltype(&closedir)> dp(fdopendir(dup(mSuspendStatsFd.get())), &closedir);
+    if (!dp) {
+        return Error() << "Failed to get directory pointer to suspend_stats dir";
+    }
+
+    SuspendStats stats;
+
+    // rewinddir, else subsequent calls will not get any suspend_stats
+    rewinddir(dp.get());
+
+    struct dirent* de;
+
+    // Grab a wakelock before reading suspend stats,
+    // to ensure a consistent snapshot.
+    sp<IWakeLock> suspendStatsLock = acquireWakeLock(WakeLockType::PARTIAL, "suspend_stats_lock");
+
+    while ((de = readdir(dp.get()))) {
+        std::string statName(de->d_name);
+        if ((statName == ".") || (statName == "..")) {
+            continue;
+        }
+
+        unique_fd statFd{TEMP_FAILURE_RETRY(
+            openat(mSuspendStatsFd.get(), statName.c_str(), O_CLOEXEC | O_RDONLY))};
+        if (statFd < 0) {
+            return Error() << "Failed to open " << statName;
+        }
+
+        std::string valStr;
+        if (!ReadFdToString(statFd.get(), &valStr)) {
+            return Error() << "Failed to read " << statName;
+        }
+
+        // Trim newline
+        valStr.erase(std::remove(valStr.begin(), valStr.end(), '\n'), valStr.end());
+
+        if (statName == "last_failed_dev") {
+            stats.lastFailedDev = valStr;
+        } else if (statName == "last_failed_step") {
+            stats.lastFailedStep = valStr;
+        } else {
+            int statVal = std::stoi(valStr);
+            if (statName == "success") {
+                stats.success = statVal;
+            } else if (statName == "fail") {
+                stats.fail = statVal;
+            } else if (statName == "failed_freeze") {
+                stats.failedFreeze = statVal;
+            } else if (statName == "failed_prepare") {
+                stats.failedPrepare = statVal;
+            } else if (statName == "failed_suspend") {
+                stats.failedSuspend = statVal;
+            } else if (statName == "failed_suspend_late") {
+                stats.failedSuspendLate = statVal;
+            } else if (statName == "failed_suspend_noirq") {
+                stats.failedSuspendNoirq = statVal;
+            } else if (statName == "failed_resume") {
+                stats.failedResume = statVal;
+            } else if (statName == "failed_resume_early") {
+                stats.failedResumeEarly = statVal;
+            } else if (statName == "failed_resume_noirq") {
+                stats.failedResumeNoirq = statVal;
+            } else if (statName == "last_failed_errno") {
+                stats.lastFailedErrno = statVal;
+            }
+        }
+    }
+
+    return stats;
 }
 
 }  // namespace V1_0
