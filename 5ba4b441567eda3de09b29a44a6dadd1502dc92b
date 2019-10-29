@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Etan Cohen <etancohen@google.com>
+Submitted-by: Roshan Pius <rpius@google.com>
+Submitted-at: Tue, 29 Oct 2019 23:09:09 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/system/hardware/interfaces/+/1147318
+Project: platform/system/hardware/interfaces
+Branch: refs/heads/master
