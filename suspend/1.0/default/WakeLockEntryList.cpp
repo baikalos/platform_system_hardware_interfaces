@@ -214,8 +214,8 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
         struct dirent* de;
         while ((de = readdir(wakelockDp.get()))) {
             std::string statName(de->d_name);
-            if ((statName == ".") || (statName == ".." || statName == "power" ||
-                                      statName == "subsystem" || statName == "uevent")) {
+            if (statName == "." || statName == ".." || statName == "power" ||
+                statName == "subsystem" || statName == "uevent" || statName == "device") {
                 continue;
             }
 
