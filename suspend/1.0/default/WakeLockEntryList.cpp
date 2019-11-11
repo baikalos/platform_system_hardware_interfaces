@@ -20,6 +20,7 @@
 #include <android-base/logging.h>
 
 #include <iomanip>
+#include <unordered_set>
 
 using android::base::ReadFdToString;
 
@@ -181,6 +182,19 @@ WakeLockInfo WakeLockEntryList::createNativeEntry(const std::string& name, int p
 
     return info;
 }
+
+/*
+ * Checks whether a given directory entry is a stat file we're interested in.
+ */
+static bool isStatFile(struct dirent* de) {
+    static std::unordered_set<std::string> nonStatFiles = {".",         "..",     "power",
+                                                           "subsystem", "uevent", "device"};
+
+    std::string statName(de->d_name);
+    auto search = nonStatFiles.find(statName);
+    return search == nonStatFiles.end();
+}
+
 /*
  * Creates and returns a kernel wakelock entry with data read from mKernelWakelockStatsFd
  */
@@ -213,12 +227,11 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
     if (wakelockDp) {
         struct dirent* de;
         while ((de = readdir(wakelockDp.get()))) {
-            std::string statName(de->d_name);
-            if ((statName == ".") || (statName == ".." || statName == "power" ||
-                                      statName == "subsystem" || statName == "uevent")) {
+            if (!isStatFile(de)) {
                 continue;
             }
 
+            std::string statName(de->d_name);
             unique_fd statFd{
                 TEMP_FAILURE_RETRY(openat(wakelockFd, statName.c_str(), O_CLOEXEC | O_RDONLY))};
             if (statFd < 0) {
