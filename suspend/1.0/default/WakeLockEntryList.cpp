@@ -181,6 +181,28 @@ WakeLockInfo WakeLockEntryList::createNativeEntry(const std::string& name, int p
 
     return info;
 }
+
+/*
+ * Checks whether a given directory entry is a stat file we're interested in.
+ */
+static bool isStatFile(const struct dirent* de) {
+    const char* statName = de->d_name;
+    if (!strcmp(statName, ".")) {
+        return false;
+    } else if (!strcmp(statName, "..")) {
+        return false;
+    } else if (!strcmp(statName, "device")) {
+        return false;
+    } else if (!strcmp(statName, "power")) {
+        return false;
+    } else if (!strcmp(statName, "subsystem")) {
+        return false;
+    } else if (!strcmp(statName, "uevent")) {
+        return false;
+    }
+    return true;
+}
+
 /*
  * Creates and returns a kernel wakelock entry with data read from mKernelWakelockStatsFd
  */
@@ -213,12 +235,11 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
     if (wakelockDp) {
         struct dirent* de;
         while ((de = readdir(wakelockDp.get()))) {
-            std::string statName(de->d_name);
-            if ((statName == ".") || (statName == ".." || statName == "power" ||
-                                      statName == "subsystem" || statName == "uevent")) {
+            if (!isStatFile(de)) {
                 continue;
             }
 
+            std::string statName(de->d_name);
             unique_fd statFd{
                 TEMP_FAILURE_RETRY(openat(wakelockFd, statName.c_str(), O_CLOEXEC | O_RDONLY))};
             if (statFd < 0) {
