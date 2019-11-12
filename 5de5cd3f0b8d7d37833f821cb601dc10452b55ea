@@ -22,6 +22,30 @@
       "revId": "5de5cd3f0b8d7d37833f821cb601dc10452b55ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2612da19_59751569",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-12T07:19:13Z",
+      "side": 1,
+      "message": "strcmp",
+      "parentUuid": "16027b76_a01f3d68",
+      "range": {
+        "startLine": 194,
+        "startChar": 31,
+        "endLine": 194,
+        "endChar": 35
+      },
+      "revId": "5de5cd3f0b8d7d37833f821cb601dc10452b55ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
