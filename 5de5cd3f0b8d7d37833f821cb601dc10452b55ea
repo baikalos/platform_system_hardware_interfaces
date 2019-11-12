@@ -70,6 +70,30 @@
       "revId": "5de5cd3f0b8d7d37833f821cb601dc10452b55ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e90acf0_e195e631",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-12T17:05:55Z",
+      "side": 1,
+      "message": "Code size and no allocations (for statName, strings in unordered_set and in unordered_set).",
+      "parentUuid": "2ecdaa79_d8a5f4eb",
+      "range": {
+        "startLine": 194,
+        "startChar": 31,
+        "endLine": 194,
+        "endChar": 35
+      },
+      "revId": "5de5cd3f0b8d7d37833f821cb601dc10452b55ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
