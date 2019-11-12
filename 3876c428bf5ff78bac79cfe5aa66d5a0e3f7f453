@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "086adf64_d7452836",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-12T00:01:19Z",
+      "side": 1,
+      "message": "Could you please move this to a separate function? This function could be called on de-\u003ed_name before allocating the string (de-\u003ed_name).",
+      "range": {
+        "startLine": 217,
+        "startChar": 16,
+        "endLine": 218,
+        "endChar": 87
+      },
+      "revId": "3876c428bf5ff78bac79cfe5aa66d5a0e3f7f453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
