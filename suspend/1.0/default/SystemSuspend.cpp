@@ -183,7 +183,8 @@ void SystemSuspend::initAutosuspend() {
             }
 
             auto counterLock = std::unique_lock(mCounterLock);
-            mCounterCondVar.wait(counterLock, [this] { return mSuspendCounter == 0; });
+            mCounterCondVar.wait(counterLock,
+                                 [this] { return mSuspendCounter == 0 && mUseSuspendCounter; });
             // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
             // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before we
             // write to /sys/power/state.
