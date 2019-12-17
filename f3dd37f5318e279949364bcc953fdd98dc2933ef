@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0766887a_f083bbda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-12-17T18:26:31Z",
+      "side": 1,
+      "message": "This number looks a bit worrisome. I\u0027ll look into whether we can cut this down.",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "f3dd37f5318e279949364bcc953fdd98dc2933ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
