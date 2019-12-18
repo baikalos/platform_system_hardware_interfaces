@@ -45,6 +45,30 @@
       "revId": "f3dd37f5318e279949364bcc953fdd98dc2933ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c839530_91218391",
+        "filename": "suspend/1.0/default/SystemSuspendBenchmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-12-18T17:36:12Z",
+      "side": 1,
+      "message": "Wakelocks are RAII objects. So this one is released by the end of the test.",
+      "parentUuid": "bc77c857_850d91bc",
+      "range": {
+        "startLine": 34,
+        "startChar": 64,
+        "endLine": 34,
+        "endChar": 81
+      },
+      "revId": "f3dd37f5318e279949364bcc953fdd98dc2933ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
