@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1adca5b3_94049c99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-31T22:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b88fdc4_a001df7b",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "4da71e0c54ff0ca79b434a824c0969e74e04090f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6402702d_047b013c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6d5a880f_05fe2ffe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-31T22:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6402702d_047b013c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "4da71e0c54ff0ca79b434a824c0969e74e04090f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1776587b_19cf99e2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "4da71e0c54ff0ca79b434a824c0969e74e04090f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec012bd_6a289eda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-31T22:42:13Z",
+      "side": 1,
+      "message": "For minor version upgrades, we would move everything together. Otherwise, of course.",
+      "parentUuid": "1776587b_19cf99e2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "4da71e0c54ff0ca79b434a824c0969e74e04090f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
