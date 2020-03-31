@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dbe6670_aca4cf60",
+        "filename": "suspend/aidl/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-31T18:20:18Z",
+      "side": 0,
+      "message": "this is covered by and identical to the OWNERS file in default/",
+      "revId": "cd7224246968587cbdb1a16e36be64cd7439b329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
