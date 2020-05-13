@@ -252,6 +252,11 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
                 continue;
             }
 
+            if (valStr.empty()) {
+                PLOG(ERROR) <<  statName << "is empty";
+                continue;
+            }
+
             int64_t statVal = std::stoll(valStr);
 
             if (statName == "active_count") {
