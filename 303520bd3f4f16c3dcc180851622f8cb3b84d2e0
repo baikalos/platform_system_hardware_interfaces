@@ -22,6 +22,30 @@
       "revId": "303520bd3f4f16c3dcc180851622f8cb3b84d2e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ef6fbe_249f01da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-07-13T17:03:41Z",
+      "side": 1,
+      "message": "I\u0027m only able to test on cf atm. The dumping routine detaches the tread that\u0027s performing the dump if the timeout occurs, seems that is intend behavior, as it wouldn\u0027t make much sense to do a join if timeout already happened.",
+      "parentUuid": "4da58059_23acf707",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "303520bd3f4f16c3dcc180851622f8cb3b84d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
