@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da58059_23acf707",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-07-13T16:32:26Z",
+      "side": 1,
+      "message": "nice find, did you try simulating the SIGPIPE to make sure that it recovers correctly? Maybe by introducing a sleep there? I\u0027m curious if it recovers properly, and also, if there is a SIGPIPE, what is causing the delay? There could be a bug in the dumping routine.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "303520bd3f4f16c3dcc180851622f8cb3b84d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
