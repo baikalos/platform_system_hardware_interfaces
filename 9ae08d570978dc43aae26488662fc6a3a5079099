@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Autosubmit+1: Tim Murray <timmurray@google.com>
+Code-Review+2: Tri Vo <trong@google.com>
+Code-Review+2: Kalesh Singh <kaleshsingh@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 21 Sep 2020 20:23:26 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/system/hardware/interfaces/+/1433119
+Project: platform/system/hardware/interfaces
+Branch: refs/heads/master
