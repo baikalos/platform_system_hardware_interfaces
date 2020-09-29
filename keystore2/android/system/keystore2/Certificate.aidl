@@ -16,7 +16,7 @@
 
 package android.system.keystore2;
 
-@VintfStability
+/* @VintfStability */
 parcelable Certificate {
     /**
      * A DER encoded X509 certificate.

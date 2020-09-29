@@ -18,7 +18,7 @@ package android.system.keystore2;
 
 import android.system.keystore2.Certificate;
 
-@VintfStability
+/* @VintfStability */
 parcelable CertificateChain {
     /**
      * One or more concatenated DER encoded X509 certificates.

@@ -16,7 +16,6 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
 interface IKeystoreSecurityLevel {
   android.system.keystore2.IKeystoreOperation create(in android.system.keystore2.KeyDescriptor key, in android.system.keystore2.KeyParameter[] operationParameters, in boolean forced, out @nullable android.system.keystore2.OperationChallenge challenge);
   void generateKey(in android.system.keystore2.KeyDescriptor key, in android.system.keystore2.KeyParameter[] params, in byte[] entropy, out android.system.keystore2.KeyDescriptor resultKey, out @nullable android.system.keystore2.Certificate publicCert, out @nullable android.system.keystore2.CertificateChain certificateChain);

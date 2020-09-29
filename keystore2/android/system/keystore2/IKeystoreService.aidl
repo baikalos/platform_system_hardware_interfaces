@@ -38,7 +38,7 @@ import android.system.keystore2.SecurityLevel;
  * indicate KeyMint back end errors. Refer to the KeyMint interface spec for
  * detail.
  */
-@VintfStability
+/* @VintfStability */
 interface IKeystoreService {
 
     /**

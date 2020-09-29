@@ -24,7 +24,7 @@ package android.system.keystore2;
  * The grant permission cannot be granted.
  * Any granted permission applies only to the granted key.
  */
-@VintfStability
+/* @VintfStability */
 @Backing(type="int")
 enum KeyPermission {
     /**
