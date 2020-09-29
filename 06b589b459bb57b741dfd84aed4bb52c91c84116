@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1559c01_f2d8c134",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-29T20:44:22Z",
+      "side": 1,
+      "message": "Main review carried out on https://android-review.googlesource.com/c/platform/system/security/+/1350676",
+      "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b23349dc_ec6c8ea0",
+        "filename": "keystore2/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-29T20:44:22Z",
+      "side": 1,
+      "message": "you said core_current works here for you, right?",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fabc9c6d_60065e5e",
+        "filename": "keystore2/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-29T20:44:22Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 5
+      },
+      "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
