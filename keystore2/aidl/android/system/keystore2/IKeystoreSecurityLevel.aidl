@@ -17,12 +17,11 @@
 package android.system.keystore2;
 
 import android.system.keystore2.AuthenticatorSpec;
-import android.system.keystore2.Certificate;
-import android.system.keystore2.CertificateChain;
+import android.system.keystore2.CreateOperationResponse;
 import android.system.keystore2.IKeystoreOperation;
 import android.system.keystore2.KeyDescriptor;
+import android.system.keystore2.KeyMetadata;
 import android.system.keystore2.KeyParameter;
-import android.system.keystore2.OperationChallenge;
 
 /**
  * `IKeystoreSecurityLevel` is the per backend interface to Keystore. It provides
@@ -71,15 +70,13 @@ interface IKeystoreSecurityLevel {
      *            have a very high pruning resistance and cannot be pruned even by other forced
      *            operations.
      *
-     * @param challenge Information required for acquiring user authorization for the started
-     *            operation. This field is nullable/optional. If present, user authorization is
-     *            required.
-     *
      * @return The operation interface which also acts as a handle to the pending
-     *            operation.
+     *            operation and an optional operation challenge wrapped into the
+     *            `CreateOperationResponse` parcelable. If the latter is present, user
+     *            authorization is required for this operation.
      */
-    IKeystoreOperation create(in KeyDescriptor key, in KeyParameter[] operationParameters,
-                  in boolean forced, out @nullable OperationChallenge challenge);
+    CreateOperationResponse createOperation(in KeyDescriptor key,
+                  in KeyParameter[] operationParameters, in boolean forced);
 
     /**
      * Generates a new key and associates it with the given descriptor.
@@ -96,7 +93,6 @@ interface IKeystoreSecurityLevel {
      * ## Error conditions
      * `ResponseCode::INVALID_ARGUMENT` if `key.domain` is set to any other value than
      *                   the ones described above.
-     * `ResponseCode::KEY_NOT_FOUND` if the specified key did not exist.
      * A KeyMint ResponseCode may be returned indicating a backend diagnosed error.
      *
      * @param params Describes the characteristics of the to be generated key. See KeyMint HAL
@@ -105,23 +101,21 @@ interface IKeystoreSecurityLevel {
      * @param entropy This array of random bytes is mixed into the entropy source used for key
      *                   generation.
      *
-     * @param resultKey A key descriptor that can be used for subsequent key operations.
-     *                   If `Domain::BLOB` was requested, then the descriptor contains the
-     *                   generated key, and the caller must assure that the key is persistently
-     *                   stored accordingly; there is no way to recover the key if the blob is
-     *                   lost.
-     *
-     * @param publicCert The generated public certificate if applicable. If `Domain::BLOB` was
-     *                   requested, there is no other copy of this certificate. It is the caller's
-     *                   responsibility to store it persistently if required.
-     *
-     * @param certificateChain The generated certificate chain if applicable. If `Domain::BLOB` was
-     *                   requested, there is no other copy of this certificate chain. It is the
-     *                   caller's responsibility to store it persistently if required.
+     * @return KeyMetadata includes:
+     *            * A key descriptor that can be used for subsequent key operations.
+     *              If `Domain::BLOB` was requested, then the descriptor contains the
+     *              generated key, and the caller must assure that the key is persistently
+     *              stored accordingly; there is no way to recover the key if the blob is
+     *              lost.
+     *            * The generated public certificate if applicable. If `Domain::BLOB` was
+     *              requested, there is no other copy of this certificate. It is the caller's
+     *              responsibility to store it persistently if required.
+     *            * The generated certificate chain if applicable. If `Domain::BLOB` was
+     *              requested, there is no other copy of this certificate chain. It is the
+     *              caller's responsibility to store it persistently if required.
+     *            * The `IKeystoreSecurityLevel` field is always null in this context.
      */
-    void generateKey(in KeyDescriptor key, in KeyParameter[] params, in byte[] entropy,
-                     out KeyDescriptor resultKey, out @nullable Certificate publicCert,
-                     out @nullable CertificateChain certificateChain);
+    KeyMetadata generateKey(in KeyDescriptor key, in KeyParameter[] params, in byte[] entropy);
 
 
     /**
@@ -131,13 +125,16 @@ interface IKeystoreSecurityLevel {
      *
      * @param keyData The key to be imported. Expected encoding is PKCS#8 for asymmetric keys and
      *                raw key bits for symmetric keys.
+     *
+     * @return KeyMetadata see `generateKey`.
      */
-    void importKey(in KeyDescriptor key, in KeyParameter[] params, in byte[] keyData,
-                   out KeyDescriptor resultKey, out @nullable Certificate publicCert,
-                   out @nullable CertificateChain certificateChain);
+    KeyMetadata importKey(in KeyDescriptor key, in KeyParameter[] params, in byte[] keyData);
 
     /**
      * Allows importing keys wrapped with an RSA encryption key that is stored in AndroidKeystore.
+     *
+     * ## Error conditions
+     * `ResponseCode::KEY_NOT_FOUND` if the specified wrapping key did not exist.
      *
      * @param key Governs how the imported key shall be stored. See `generateKey` for details.
      *
@@ -157,11 +154,9 @@ interface IKeystoreSecurityLevel {
      *                       caller has to provide all of the possible authenticator IDs so that
      *                       Keymint can pick the right one based on the included key parameters.
      *
-     * @return resultKey, publicCert, and certificateChain see `generateKey`.
+     * @return KeyMetadata see `generateKey`.
      */
-    void importWrappedKey(in KeyDescriptor key, in KeyDescriptor wrappingKey,
+    KeyMetadata importWrappedKey(in KeyDescriptor key, in KeyDescriptor wrappingKey,
                           in @nullable byte[] maskingKey, in KeyParameter[] params,
-                          in AuthenticatorSpec[] authenticators,
-                          out KeyDescriptor resultKey, out @nullable Certificate publicCert,
-                          out @nullable CertificateChain certificateChain);
+                          in AuthenticatorSpec[] authenticators);
 }
