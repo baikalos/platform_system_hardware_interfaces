@@ -18,7 +18,7 @@ package android.system.keystore2;
 
 import android.system.keystore2.Domain;
 
-@VintfStability
+/* @VintfStability */
 parcelable KeyParameter {
     int tag;
     boolean boolValue;

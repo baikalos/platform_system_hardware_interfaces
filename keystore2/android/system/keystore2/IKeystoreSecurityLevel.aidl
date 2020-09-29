@@ -37,7 +37,7 @@ import android.system.keystore2.OperationChallenge;
  * indicate KeyMint back end errors. Refer to the KeyMint interface spec for
  * detail.
  */
-@VintfStability
+/* @VintfStability */
 interface IKeystoreSecurityLevel {
 
     /**
