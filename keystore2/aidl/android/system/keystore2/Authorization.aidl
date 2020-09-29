@@ -19,7 +19,7 @@ package android.system.keystore2;
 import android.system.keystore2.KeyParameter;
 import android.system.keystore2.SecurityLevel;
 
-@VintfStability
+/* @VintfStability */
 parcelable Authorization {
     SecurityLevel securityLevel;
     KeyParameter keyParameter;

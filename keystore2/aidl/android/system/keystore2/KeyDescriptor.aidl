@@ -48,7 +48,7 @@ import android.system.keystore2.Domain;
  * to the given key for the given request. In case of `Domain::BLOB` the implementation
  * must additionally check if the caller has `ManageBlob` permission. See KeyPermission.aidl.
  */
-@VintfStability
+/* @VintfStability */
 @RustDerive(Clone=true, Eq=true, PartialEq=true, Ord=true, PartialOrd=true)
 parcelable KeyDescriptor {
     Domain domain;

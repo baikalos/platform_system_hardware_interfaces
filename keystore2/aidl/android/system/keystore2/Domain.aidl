@@ -16,7 +16,7 @@
 
 package android.system.keystore2;
 
-@VintfStability
+/* @VintfStability */
 @Backing(type="int")
 enum Domain {
     APP = 0,

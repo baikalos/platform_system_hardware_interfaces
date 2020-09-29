@@ -23,7 +23,7 @@ import android.system.keystore2.AuthenticatorType;
  * to specify the sid of each possible authenticator type, e.g., password or
  * biometric authenticator, that the imported key may be bound to.
  */
-@VintfStability
+/* @VintfStability */
 parcelable AuthenticatorSpec {
     /**
      * The type of the authenticator in question.

@@ -21,7 +21,7 @@ package android.system.keystore2;
  * the new operation requires user authorization. The challenge may be passed
  * to an authenticator, such as Gatekeeper or Fingerprint.
  */
-@VintfStability
+/* @VintfStability */
 parcelable OperationChallenge {
     long challenge;
 }

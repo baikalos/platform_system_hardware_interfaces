@@ -16,7 +16,7 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@Backing(type="int") @VintfStability
+@Backing(type="int")
 enum Domain {
   APP = 0,
   GRANT = 1,
