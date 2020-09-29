@@ -16,10 +16,10 @@ aidl_interface {
     name: "android.system.keystore2",
     vendor_available: true,
     srcs: [ "android/system/keystore2/*.aidl" ],
-    stability: "vintf",
+//    stability: "vintf",
     backend: {
         java: {
-            sdk_version: "module_current",
+            sdk_version: "30",
         },
         ndk: {
             vndk: {
