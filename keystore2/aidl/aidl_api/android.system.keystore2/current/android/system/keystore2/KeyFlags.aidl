@@ -16,7 +16,8 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
-parcelable CertificateChain {
-  byte[] data;
+@Backing(type="int") @VintfStability
+enum KeyFlags {
+  NONE = 0,
+  AUTH_BOUND_WITHOUT_CRYPTOGRAPHIC_LSKF_BINDING = 1,
 }

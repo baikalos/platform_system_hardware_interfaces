@@ -16,10 +16,18 @@
 
 package android.system.keystore2;
 
+/**
+ * Additional switches, that can be applied to during key generation and import.
+ */
 @VintfStability
-parcelable Certificate {
+@Backing(type="int")
+enum KeyFlags {
     /**
-     * A DER encoded X509 certificate.
+     * Convenience variant indicating the absence of any additional switches.
      */
-    byte[] data;
-}
+    NONE = 0,
+    /**
+     * This flag disables cryptographic binding to the LSKF for auth bound keys.
+     */
+    AUTH_BOUND_WITHOUT_CRYPTOGRAPHIC_LSKF_BINDING = 0x1,
+ }
