@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84927557_459561e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407350
+      },
+      "writtenOn": "2020-09-30T05:18:41Z",
+      "side": 1,
+      "message": "Hi Tri,\nI put the patch in aosp to review as your requirement.\nPlease have a check.",
+      "revId": "a8d1916a9f475b6516a21a292ee31bb8b2ad9b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
