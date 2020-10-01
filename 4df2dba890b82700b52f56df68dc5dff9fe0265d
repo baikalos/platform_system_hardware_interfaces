@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "43bcac60_d41da78e",
+        "filename": "keystore2/android/system/keystore2/KeyParameter.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-10-01T16:55:18Z",
+      "side": 1,
+      "message": "This is not used. Remove.",
+      "range": {
+        "startLine": 19,
+        "startChar": 32,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "4df2dba890b82700b52f56df68dc5dff9fe0265d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0d6bd59_7e0748a0",
         "filename": "keystore2/android/system/keystore2/KeyParameter.aidl",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2020-09-29T20:47:25Z",
       "side": 1,
       "message": "I still think this should be documented, e.g. is 0 bool or is 1 bool?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "4df2dba890b82700b52f56df68dc5dff9fe0265d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65435f4d_bec97f28",
+        "filename": "keystore2/android/system/keystore2/KeyParameter.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-10-01T16:55:18Z",
+      "side": 1,
+      "message": "The values are from android.hardware.keymint.Tag, which has over 50 variants (I think). This whole file will go away once the KeyMint spec is available and we import android.hardware.keyming.KeyParameter instead. I don\u0027t think there is much point in spending time documenting this temporary solution.",
+      "parentUuid": "e0d6bd59_7e0748a0",
       "range": {
         "startLine": 23,
         "startChar": 0,
