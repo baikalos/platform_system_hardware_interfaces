@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ce0fa2b_dd0ded00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-01T17:20:03Z",
+      "side": 1,
+      "message": "this is no longer needed w/ core_current, right?",
+      "revId": "fa117936474fbe7cdc0b49bd21c55f6c1ca7d94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
