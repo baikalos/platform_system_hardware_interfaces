@@ -16,6 +16,24 @@
       "revId": "fa117936474fbe7cdc0b49bd21c55f6c1ca7d94a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25c665c6_c3803a60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-10-01T17:35:14Z",
+      "side": 1,
+      "message": "core_current did not work I think. It still failed to resolve android.os.Parcel and such. But I would have to double check why it did not work exactly. I just won\u0027t to have something that sort of works for now. And once b/169618843 is properly addressed we role this back anyway.",
+      "parentUuid": "3ce0fa2b_dd0ded00",
+      "revId": "fa117936474fbe7cdc0b49bd21c55f6c1ca7d94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
