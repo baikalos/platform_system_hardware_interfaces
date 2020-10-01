@@ -69,6 +69,30 @@
       "revId": "4df2dba890b82700b52f56df68dc5dff9fe0265d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1283952b_53a9128e",
+        "filename": "keystore2/android/system/keystore2/KeyParameter.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-01T17:27:01Z",
+      "side": 1,
+      "message": "It might be worth commenting at least that, because I thought it was an index into the other fields, but it seems it\u0027s some other data which has an associated type implicitly. Either way, sg",
+      "parentUuid": "65435f4d_bec97f28",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "4df2dba890b82700b52f56df68dc5dff9fe0265d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
