@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "d1559c01_f2d8c134",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Main review carried out on https://android-review.googlesource.com/c/platform/system/security/+/1350676",
       "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "84455883_8ec06d80",
         "filename": "keystore2/Android.bp",
@@ -31,10 +32,28 @@
       "side": 1,
       "message": "you could also move this to system/hardware/interfaces/keystore/aidl or system/hardware/interfaces/keystore2/aidl to be more consistent w/ the way other HALs are, but since we\u0027ll never have system/hardware/interfaces/keystore2/1.0/\u003chidl stuff\u003e, this is fine too",
       "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd8dd00_3da00fa7",
+        "filename": "keystore2/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-10-06T17:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84455883_8ec06d80",
+      "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "b23349dc_ec6c8ea0",
         "filename": "keystore2/Android.bp",
@@ -54,10 +73,10 @@
         "endChar": 39
       },
       "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fabc9c6d_60065e5e",
         "filename": "keystore2/android/system/keystore2/ResponseCode.aidl",
@@ -77,8 +96,7 @@
         "endChar": 5
       },
       "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
