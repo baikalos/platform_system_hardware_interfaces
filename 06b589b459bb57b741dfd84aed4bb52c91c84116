@@ -76,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75938879_432b8e69",
+        "filename": "keystore2/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-10-06T17:36:17Z",
+      "side": 1,
+      "message": "module_current worked.",
+      "parentUuid": "b23349dc_ec6c8ea0",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fabc9c6d_60065e5e",
@@ -89,6 +113,30 @@
       "writtenOn": "2020-09-29T20:44:22Z",
       "side": 1,
       "message": "nit: extra space",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 5
+      },
+      "revId": "06b589b459bb57b741dfd84aed4bb52c91c84116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94154a9b_50e33b4c",
+        "filename": "keystore2/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-10-06T17:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabc9c6d_60065e5e",
       "range": {
         "startLine": 79,
         "startChar": 4,
