@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "debb8169_d4d97545",
         "filename": "keystore2/aidl/Android.bp",
@@ -20,8 +21,31 @@
         "endChar": 14
       },
       "revId": "ef813e652cabd90b09fc4e338d672197604bc034",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d9edd60_d025e0b7",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-10-06T17:28:09Z",
+      "side": 1,
+      "message": "What is L19?",
+      "parentUuid": "debb8169_d4d97545",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "ef813e652cabd90b09fc4e338d672197604bc034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
