@@ -22,6 +22,30 @@
       },
       "revId": "47615b9075a4ca2cfabc7e4e7af0da0f0ed362e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd30b395_9241bd88",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-16T21:48:50Z",
+      "side": 1,
+      "message": "Thanks Kalesh! You are one step ahead of me! I am still preparing the upcoming changes, which will include changes at BatteryStats",
+      "parentUuid": "d3f3030a_b65fa514",
+      "range": {
+        "startLine": 93,
+        "startChar": 40,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "47615b9075a4ca2cfabc7e4e7af0da0f0ed362e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
