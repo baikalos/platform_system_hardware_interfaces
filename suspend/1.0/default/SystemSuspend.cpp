@@ -44,6 +44,7 @@ static const char kSleepState[] = "mem";
 // /sys/kernel/debug/wakeup_sources.
 static constexpr char kSysPowerWakeLock[] = "/sys/power/wake_lock";
 static constexpr char kSysPowerWakeUnlock[] = "/sys/power/wake_unlock";
+static constexpr char kSysKernelWakeupReasons[] = "/sys/kernel/wakeup_reasons/last_resume_reason";
 
 // This function assumes that data in fd is small enough that it can be read in one go.
 // We use this function instead of the ones available in libbase because it doesn't block
@@ -57,6 +58,22 @@ string readFd(int fd) {
 
 static inline int getCallingPid() {
     return ::android::hardware::IPCThreadState::self()->getCallingPid();
+}
+
+static std::vector<std::string> readWakeupReasons(int fd) {
+    std::vector<std::string> wakeupReasons;
+    std::string reasonline;
+
+    lseek(fd, 0, SEEK_SET);
+    std::stringstream ss(readFd(fd));
+
+    while (ss.good()) {
+        getline(ss, reasonline, '\n');
+        if (!reasonline.empty()) {
+            wakeupReasons.push_back(reasonline);
+        }
+    }
+    return wakeupReasons;
 }
 
 WakeLock::WakeLock(SystemSuspend* systemSuspend, const string& name, int pid)
@@ -95,7 +112,8 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
       mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
       mUseSuspendCounter(useSuspendCounter),
       mWakeLockFd(-1),
-      mWakeUnlockFd(-1) {
+      mWakeUnlockFd(-1),
+      mWakeupReasonsFd(-1) {
     mControlService->setSuspendService(this);
 
     if (!mUseSuspendCounter) {
@@ -107,6 +125,11 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
         if (mWakeUnlockFd < 0) {
             PLOG(ERROR) << "error opening " << kSysPowerWakeUnlock;
         }
+    }
+
+    mWakeupReasonsFd.reset(TEMP_FAILURE_RETRY(open(kSysKernelWakeupReasons, O_CLOEXEC | O_RDONLY)));
+    if (mWakeupReasonsFd < 0) {
+        PLOG(ERROR) << "error opening " << kSysKernelWakeupReasons;
     }
 }
 
@@ -199,7 +222,8 @@ void SystemSuspend::initAutosuspend() {
                 PLOG(VERBOSE) << "error writing to /sys/power/state";
             }
 
-            mControlService->notifyWakeup(success);
+            std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
+            mControlService->notifyWakeup(success, wakeupReasons);
 
             updateSleepTime(success);
         }
