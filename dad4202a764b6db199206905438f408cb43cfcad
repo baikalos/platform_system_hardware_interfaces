@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "582d6576_97b362ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-16T20:29:17Z",
+      "side": 1,
+      "message": "LGTM from the perspective of the overlapping changes we\u0027ll be making for Adaptive Suspend",
+      "revId": "dad4202a764b6db199206905438f408cb43cfcad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
