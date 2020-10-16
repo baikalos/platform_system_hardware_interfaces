@@ -70,6 +70,30 @@
       },
       "revId": "4b3db38e2ee51a89e40ff8a54471622e58e40e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bfe13ac_2474d35d",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-16T18:50:43Z",
+      "side": 1,
+      "message": "Ah, okay... that\u0027s good to know.  So it will save memory within SCS when Adaptive Suspend adds wakeup reason stats, but once it leaves SCS it\u0027s going over the wire and into all Java-based clients as String16.  Still probably worth it to save the memory in SCS, I think?  But no net savings for Java consumers.",
+      "parentUuid": "9852db05_4ad3cda2",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 27
+      },
+      "revId": "4b3db38e2ee51a89e40ff8a54471622e58e40e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
