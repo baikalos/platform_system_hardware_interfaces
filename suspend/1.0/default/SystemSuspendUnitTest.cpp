@@ -301,14 +301,14 @@ TEST_F(SystemSuspendTest, WakeLockStressTest) {
 // MockCallbackImpl can be destroyed independently of its wrapper MockCallback which is passed to
 // SystemSuspend.
 struct MockCallbackImpl {
-    MOCK_METHOD1(notifyWakeup, binder::Status(bool));
+    MOCK_METHOD2(notifyWakeup, binder::Status(bool, const std::vector<std::string>&));
 };
 
 class MockCallback : public BnSuspendCallback {
    public:
     MockCallback(MockCallbackImpl* impl) : mImpl(impl), mDisabled(false) {}
-    binder::Status notifyWakeup(bool x) {
-        return mDisabled ? binder::Status::ok() : mImpl->notifyWakeup(x);
+    binder::Status notifyWakeup(bool x, const std::vector<std::string>& wakeupReasons) {
+        return mDisabled ? binder::Status::ok() : mImpl->notifyWakeup(x, wakeupReasons);
     }
     // In case we pull the rug from under MockCallback, but SystemSuspend still has an sp<> to the
     // object.
@@ -363,7 +363,7 @@ TEST_F(SystemSuspendTest, DeadCallback) {
 class CbRegisteringCb : public BnSuspendCallback {
    public:
     CbRegisteringCb(sp<ISuspendControlService> controlService) : mControlService(controlService) {}
-    binder::Status notifyWakeup(bool x) {
+    binder::Status notifyWakeup(bool x, const std::vector<std::string>& wakeupReasons) {
         sp<MockCallback> cb = new MockCallback(nullptr);
         cb->disable();
         bool retval = false;
