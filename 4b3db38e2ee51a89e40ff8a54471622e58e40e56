@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e091b0be_b2590eb0",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-16T18:00:21Z",
+      "side": 1,
+      "message": "This seems premature to me.  None of the existing or other planned consumers of this data - BatteryStatsService, wakeup reason stats tracked within SCS, and PowerAnomalyService consuming those stats - need these strings to be String16, and we know the source data is simple ASCII.  What do we gain by converting to String16 now (rather than in your client), in light of the extra processing and memory consumption that no other users seem poised to benefit from?",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 27
+      },
+      "revId": "4b3db38e2ee51a89e40ff8a54471622e58e40e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
