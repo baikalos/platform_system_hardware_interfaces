@@ -22,6 +22,30 @@
       },
       "revId": "4b3db38e2ee51a89e40ff8a54471622e58e40e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b1d7779_e38b8b74",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-16T18:05:09Z",
+      "side": 1,
+      "message": "Great point Kelly. I am using String16 only because AIDL Backend Type Specs:\n\nJava/AIDL C++                   NDK\nString\t  android::String16\tstd::string\n\nShall we use byte/int8_t for this utf-8 string?",
+      "parentUuid": "e091b0be_b2590eb0",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 27
+      },
+      "revId": "4b3db38e2ee51a89e40ff8a54471622e58e40e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
