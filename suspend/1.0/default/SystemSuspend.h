@@ -122,6 +122,7 @@ class SystemSuspend : public ISystemSuspend {
     bool mUseSuspendCounter;
     unique_fd mWakeLockFd;
     unique_fd mWakeUnlockFd;
+    unique_fd mWakeupReasonsFd;
 };
 
 }  // namespace V1_0
