@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3f3030a_b65fa514",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-10-16T21:27:20Z",
+      "side": 1,
+      "message": "Do we need to add this to the battery stats callback?\n\nhttps://android.googlesource.com/platform/frameworks/base/+/master/services/core/jni/com_android_server_am_BatteryStatsService.cpp#117",
+      "range": {
+        "startLine": 93,
+        "startChar": 40,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "47615b9075a4ca2cfabc7e4e7af0da0f0ed362e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
