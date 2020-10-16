@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19962e9d_0fd9b92c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-16T22:32:12Z",
+      "side": 1,
+      "message": "Two questions not directly tied to specific lines of code:\n1) Should there be one (or more) new test(s) to validate the functionality of wakeup reasons?  (e.g. mocking a multi-line input from the sysfs node and verifying that it shows up correctly at the callback)\n2) is there a matching BatteryStatsService CL that will be merged along with this one?",
+      "revId": "b119f04e17842abc157c1b9057ecc3935f6019a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
