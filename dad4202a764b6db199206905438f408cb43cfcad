@@ -16,6 +16,29 @@
       "message": "LGTM from the perspective of the overlapping changes we\u0027ll be making for Adaptive Suspend",
       "revId": "dad4202a764b6db199206905438f408cb43cfcad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b02dd7_5e7ba998",
+        "filename": "suspend/1.0/default/SuspendControlService.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-10-16T21:26:54Z",
+      "side": 1,
+      "message": "Delete?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "dad4202a764b6db199206905438f408cb43cfcad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
