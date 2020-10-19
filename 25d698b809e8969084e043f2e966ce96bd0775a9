@@ -16,6 +16,24 @@
       "message": "this was unneeded?",
       "revId": "25d698b809e8969084e043f2e966ce96bd0775a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86da1fd7_12721340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-10-19T14:22:47Z",
+      "side": 1,
+      "message": "In Michael\u0027s follow up change the parameter gets used but we could still have this warning for future.",
+      "parentUuid": "90307cf2_82b2d699",
+      "revId": "25d698b809e8969084e043f2e966ce96bd0775a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
