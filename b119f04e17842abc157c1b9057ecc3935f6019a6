@@ -34,6 +34,24 @@
       "parentUuid": "19962e9d_0fd9b92c",
       "revId": "b119f04e17842abc157c1b9057ecc3935f6019a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f02288_4b7dcaac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-19T06:53:35Z",
+      "side": 1,
+      "message": "1) Test case added covered single or multiple wakeup reasons.\n2) CL is up.",
+      "parentUuid": "413ab856_48e948ea",
+      "revId": "b119f04e17842abc157c1b9057ecc3935f6019a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
