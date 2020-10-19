@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e803a1_fb95c45c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-19T19:20:05Z",
+      "side": 1,
+      "message": "One minor comment on commenting, but LGTM otherwise",
+      "revId": "8d38a9c97b66364dfec66d68f3a21a2747711bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cecc7d5_d3d01b20",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-19T19:20:05Z",
+      "side": 1,
+      "message": "nit: in keeping with the existing commenting structure, adding an inline comment here to explain which fd this is might be helpful",
+      "range": {
+        "startLine": 636,
+        "startChar": 88,
+        "endLine": 636,
+        "endChar": 89
+      },
+      "revId": "8d38a9c97b66364dfec66d68f3a21a2747711bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
