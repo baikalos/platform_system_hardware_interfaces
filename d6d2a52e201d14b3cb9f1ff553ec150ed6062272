@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "565639d3_80a1942c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-10-19T14:28:29Z",
+      "side": 1,
+      "message": "Hi Michael, you should add the battery stats change to this topic too",
+      "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
