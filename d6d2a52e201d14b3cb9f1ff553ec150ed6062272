@@ -16,6 +16,29 @@
       "message": "Hi Michael, you should add the battery stats change to this topic too",
       "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14bb0350_54acb816",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-20T00:53:55Z",
+      "side": 1,
+      "message": "if we can\u0027t read the reasons, we ignore it w/o emitting any failure. Is this ever expected? Is there anything we should do if we fail to read here?\n\nIf it\u0027s always expected to succeed, we may abort, so that we can discover a problem.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
