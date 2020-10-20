@@ -39,6 +39,30 @@
       },
       "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2f991c_27cc27dd",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-20T01:56:04Z",
+      "side": 1,
+      "message": "There are circumstances where the sysfs node could be empty, but I do think it would be a very strange and attention-warranting situation for the read to flat-out fail.  (The code that implements that sysfs node is in the common kernel.)",
+      "parentUuid": "14bb0350_54acb816",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
