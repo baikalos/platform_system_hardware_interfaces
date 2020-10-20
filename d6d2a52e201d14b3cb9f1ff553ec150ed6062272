@@ -63,6 +63,30 @@
       },
       "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a36170_4aec9835",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-20T07:56:19Z",
+      "side": 1,
+      "message": "Thank you both for catching this!\nI originally put it this way because BatteryStats is handling non-parsable wakeup reasons as \"unknown\" [1], So I assumed all clients should follow the same fashion. I totally agree that we should report such failures. I have added a warning if read fails, and wakeReasons will be filled with an “unknown”. \n\nFurthermore, unit test is updated to cover empty wakeup reason senario. \n\nhttps://source.corp.google.com/android/frameworks/base/services/core/java/com/android/server/am/BatteryStatsService.java;rcl\u003d803a4f6fe6829132168ce6901d2b7064588b6406;l\u003d1865",
+      "parentUuid": "6e2f991c_27cc27dd",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
