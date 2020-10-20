@@ -68,6 +68,30 @@
       },
       "revId": "a7062ca4e99cf4e109d517b8243b9e00b14de3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00efa970_c41e2a98",
+        "filename": "suspend/1.0/default/internal_aidl/android/system/suspend/ISuspendCallback.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-20T02:01:54Z",
+      "side": 1,
+      "message": "The follow-up to this (Adaptive Suspend) is going to add wakeup reason stats tracking within SuspendControlService, which is the biggest reason why it makes sense to collect the data here and distribute it to callback clients rather than having each client read the data itself.  (In fact, we\u0027ll be adding another sysfs node read as well, though that won\u0027t be added to the notifyWakeup() callback.)\n\nAs for size...  There isn\u0027t really a _theoretical_ limit, per se.  But in _practice_, on devices that I\u0027m familiar with (obviously a small subset of all Android devices), we\u0027re talking about almost always 1 string, occasionally 2 or 3, very rarely more than that, where each string is \u003c\u003c 100 characters.",
+      "parentUuid": "60868f8d_04214a29",
+      "range": {
+        "startLine": 30,
+        "startChar": 63,
+        "endLine": 30,
+        "endChar": 76
+      },
+      "revId": "a7062ca4e99cf4e109d517b8243b9e00b14de3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
