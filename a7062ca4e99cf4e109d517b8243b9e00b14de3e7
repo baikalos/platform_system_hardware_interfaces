@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c69d119_9be51985",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-20T00:59:28Z",
+      "side": 1,
+      "message": "super nit: use O_RDONLY here, and open up the file separately for writing, since that\u0027s part of the test environment, but this gives SystemSuspend a writeable FD, which diverges slightly from IRL usage",
+      "range": {
+        "startLine": 98,
+        "startChar": 86,
+        "endLine": 98,
+        "endChar": 92
+      },
+      "revId": "a7062ca4e99cf4e109d517b8243b9e00b14de3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a030c3f3_a84dc7f8",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-20T00:59:28Z",
+      "side": 1,
+      "message": "unused - btw, should test multiple wakeupReasons in one of these CLs",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 14
+      },
+      "revId": "a7062ca4e99cf4e109d517b8243b9e00b14de3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60868f8d_04214a29",
+        "filename": "suspend/1.0/default/internal_aidl/android/system/suspend/ISuspendCallback.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-20T00:59:28Z",
+      "side": 1,
+      "message": "How big can this data be?\n\nAlso - if this is a stable linux kernel interface, should we prefer the clients to read it directly instead? Or - is there a plan for userspace wakeup reasons?",
+      "range": {
+        "startLine": 30,
+        "startChar": 63,
+        "endLine": 30,
+        "endChar": 76
+      },
+      "revId": "a7062ca4e99cf4e109d517b8243b9e00b14de3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
