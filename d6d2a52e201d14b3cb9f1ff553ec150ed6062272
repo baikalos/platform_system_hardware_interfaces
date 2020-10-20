@@ -87,6 +87,30 @@
       },
       "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e30af9_7b2efff1",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-20T18:16:50Z",
+      "side": 1,
+      "message": "Just for the record (no action needed, just an FYI), while this and other framework code are handling the missing wakeup reasons the right way, they\u0027re a low-key bane of my existence and I have a minor quest to eliminate them.  They can make diagnosing power issues very challenging (and have done on multiple occasions), and the _objective_ of the kernel wakeup reason code (which I rewrote a hefty chunk of related to this) is to capture all wakeup reasons.",
+      "parentUuid": "c3a36170_4aec9835",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "d6d2a52e201d14b3cb9f1ff553ec150ed6062272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
