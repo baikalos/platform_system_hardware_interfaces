@@ -22,6 +22,30 @@
       },
       "revId": "71a5ee6f7e10ae802a358bf030b541b2989f9882",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6438b0f_542f7723",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-10-21T01:45:55Z",
+      "side": 1,
+      "message": "We have some aggregate, population visibility into whether it\u0027s occurring on Pixel devices, at least.  (Maybe non-Pixel too, but I don\u0027t have any business reason to look at non-Pixel data.) The EW batterystats tables include wakeup reasons under system \u003e wakeup_reason \u003e [fields], and sure enough, even the sampling of the table under plx shows that \"unknown\" shows up a fair bit.  (I\u0027m pretty sure it\u0027s in WW data too, but I haven\u0027t been able to make time to get up to speed on navigating WW tables yet.)\n\nBut if we do want to be notified via some other mechanism, we may want to differentiate between the two scenarios that could lead to this result:\n* the kernel doesn\u0027t know what caused the wakeup (which I dream of driving down to 0 some day)\n* there was an error reading the sysfs node (which we wouldn\u0027t expect to occur, any more than errors accessing any of the other sysfs nodes that SCS touches)",
+      "parentUuid": "9772ced4_9e48b151",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "71a5ee6f7e10ae802a358bf030b541b2989f9882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
