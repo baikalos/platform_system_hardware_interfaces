@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,15 +17,19 @@
 package android.system.suspend;
 
 /**
- * Callback interface for monitoring system-suspend events.
+ * Callback interface for monitoring wakelock events.
  * @hide
  */
-oneway interface ISuspendCallback
-{
+interface IWakelockCallback {
     /**
-     * An implementation of ISuspendControlService must call notifyWakeup after every system wakeup.
-     *
-     * @param success whether previous system suspend attempt was successful.
+     * ISuspendControlService will call this to notify the subscriber the specific wakelock is
+     * acquired.
      */
-     void notifyWakeup(boolean success);
+    void notifyAcquired();
+
+    /**
+     * ISuspendControlService will call this to notify the subscriber the specific wakelock is
+     * released.
+     */
+    void notifyReleased();
 }
