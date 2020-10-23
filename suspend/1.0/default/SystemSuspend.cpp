@@ -143,6 +143,7 @@ Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
     auto pid = getCallingPid();
     auto timeNow = getTimeNow();
     IWakeLock* wl = new WakeLock{this, name, pid};
+    mControlService->notifyWakelock(name, true);
     mStatsList.updateOnAcquire(name, pid, timeNow);
     return wl;
 }
@@ -220,6 +221,7 @@ void SystemSuspend::updateSleepTime(bool success) {
 
 void SystemSuspend::updateWakeLockStatOnRelease(const std::string& name, int pid,
                                                 TimestampType timeNow) {
+    mControlService->notifyWakelock(name, false);
     mStatsList.updateOnRelease(name, pid, timeNow);
 }
 
