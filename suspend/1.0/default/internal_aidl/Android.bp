@@ -5,11 +5,18 @@ aidl_interface {
     srcs: [
         "android/system/suspend/ISuspendControlService.aidl",
         "android/system/suspend/ISuspendCallback.aidl",
+        "android/system/suspend/IWakelockCallback.aidl",
         "android/system/suspend/WakeLockInfo.aidl",
     ],
     backend: {
         java: {
             sdk_version: "28",
+        },
+        ndk: {
+            apex_available: [
+                "//apex_available:platform",
+                "com.android.bluetooth.updatable"
+            ],
         },
     },
 }
