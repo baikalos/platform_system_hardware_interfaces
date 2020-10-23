@@ -19,6 +19,7 @@
 #include <android-base/result.h>
 #include <android-base/unique_fd.h>
 #include <android/system/suspend/BnSuspendCallback.h>
+#include <android/system/suspend/BnWakelockCallback.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/ProcessState.h>
@@ -52,6 +53,7 @@ using android::hardware::joinRpcThreadpool;
 using android::hardware::Return;
 using android::hardware::Void;
 using android::system::suspend::BnSuspendCallback;
+using android::system::suspend::BnWakelockCallback;
 using android::system::suspend::ISuspendControlService;
 using android::system::suspend::WakeLockInfo;
 using android::system::suspend::V1_0::getTimeNow;
@@ -382,6 +384,60 @@ TEST_F(SystemSuspendTest, CallbackRegisterCallbackNoDeadlock) {
     controlService->registerCallback(cb, &retval);
     ASSERT_TRUE(retval);
     checkLoop(3);
+}
+
+struct MockWakelockCallbackImpl {
+    MOCK_METHOD0(notifyAcquired, binder::Status());
+    MOCK_METHOD0(notifyReleased, binder::Status());
+};
+
+class MockWakelockCallback : public BnWakelockCallback {
+   public:
+    MockWakelockCallback(MockWakelockCallbackImpl* impl) : mImpl(impl), mDisabled(false) {}
+    binder::Status notifyAcquired(void) {
+        return mDisabled ? binder::Status::ok() : mImpl->notifyAcquired();
+    }
+    binder::Status notifyReleased(void) {
+        return mDisabled ? binder::Status::ok() : mImpl->notifyReleased();
+    }
+    // In case we pull the rug from under MockWakelockCallback, but SystemSuspend still has an sp<>
+    // to the object.
+    void disable() { mDisabled = true; }
+
+   private:
+    MockWakelockCallbackImpl* mImpl;
+    bool mDisabled;
+};
+
+// Tests that nullptr can't be registered as wakelock callbacks.
+TEST_F(SystemSuspendTest, RegisterInvalidWakelockCallback) {
+    bool retval = false;
+    controlService->registerWakelockCallback(nullptr, String16("testLock"), &retval);
+    ASSERT_FALSE(retval);
+}
+
+// Tests that a callback cannot be registered with same wakelock twice.
+TEST_F(SystemSuspendTest, RegisterSameWakelockCallback) {
+    bool retval = false;
+    MockWakelockCallbackImpl impl;
+    sp<MockWakelockCallback> cb1 = new MockWakelockCallback(&impl);
+    sp<MockWakelockCallback> cb2 = new MockWakelockCallback(&impl);
+
+    controlService->registerWakelockCallback(cb1, String16("testLock1"), &retval);
+    ASSERT_TRUE(retval);
+    controlService->registerWakelockCallback(cb1, String16("testLock2"), &retval);
+    ASSERT_TRUE(retval);
+    controlService->registerWakelockCallback(cb2, String16("testLock1"), &retval);
+    ASSERT_TRUE(retval);
+    controlService->registerWakelockCallback(cb1, String16("testLock1"), &retval);
+    ASSERT_FALSE(retval);
+    controlService->registerWakelockCallback(cb1, String16("testLock2"), &retval);
+    ASSERT_FALSE(retval);
+    controlService->registerWakelockCallback(cb2, String16("testLock2"), &retval);
+    ASSERT_TRUE(retval);
+
+    cb1->disable();
+    cb2->disable();
 }
 
 class SystemSuspendSameThreadTest : public ::testing::Test {

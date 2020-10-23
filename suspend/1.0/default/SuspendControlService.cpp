@@ -71,6 +71,43 @@ binder::Status SuspendControlService::registerCallback(const sp<ISuspendCallback
     return retOk(true, _aidl_return);
 }
 
+binder::Status SuspendControlService::registerWakelockCallback(
+    const sp<IWakelockCallback>& callback, const android::String16& name, bool* _aidl_return) {
+    if (!callback) {
+        return retOk(false, _aidl_return);
+    }
+
+    const std::string nameStr = String8(name).string();
+    if (nameStr.empty()) {
+        return retOk(false, _aidl_return);
+    }
+
+    auto l = std::lock_guard(mWakelockCallbackLock);
+    sp<IBinder> cb = IInterface::asBinder(callback);
+    // Only remote binders can be linked to death
+    if (cb->remoteBinder() != nullptr) {
+        if (mWakelockCallbacks.find(nameStr) == mWakelockCallbacks.end()) {
+            return retOk(false, _aidl_return);
+        }
+        if (findWakelockCb(cb, nameStr) == mWakelockCallbacks[nameStr].end()) {
+            auto status = cb->linkToDeath(this);
+            if (status != NO_ERROR) {
+                LOG(ERROR) << __func__ << " Cannot link to death: " << status;
+                return retOk(false, _aidl_return);
+            }
+        }
+    }
+
+    if (std::find(mWakelockCallbacks[nameStr].begin(), mWakelockCallbacks[nameStr].end(),
+                  callback) != mWakelockCallbacks[nameStr].end()) {
+        LOG(ERROR) << __func__ << " Same wakelock callback has already been registered";
+        return retOk(false, _aidl_return);
+    }
+
+    mWakelockCallbacks[nameStr].push_back(callback);
+    return retOk(true, _aidl_return);
+}
+
 binder::Status SuspendControlService::forceSuspend(bool* _aidl_return) {
     const auto suspendService = mSuspend.promote();
     return retOk(suspendService != nullptr && suspendService->forceSuspend(), _aidl_return);
