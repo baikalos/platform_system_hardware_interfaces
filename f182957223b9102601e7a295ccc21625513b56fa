@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6916bf8_b94ad728",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:46:35Z",
+      "side": 1,
+      "message": "nit: pref \u0027else\u0027 here, since these are symmetrical operations, it\u0027s strange to to have this structure where they are at different indents",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 60
+      },
+      "revId": "f182957223b9102601e7a295ccc21625513b56fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6322dc0e_cbbcd418",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:46:35Z",
+      "side": 1,
+      "message": "extra parens",
+      "range": {
+        "startLine": 189,
+        "startChar": 36,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "f182957223b9102601e7a295ccc21625513b56fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "106de37b_644714ba",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:46:35Z",
+      "side": 1,
+      "message": "ASSERT_TRUE(testLock-\u003erelease().isOk()) ?",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 24
+      },
+      "revId": "f182957223b9102601e7a295ccc21625513b56fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b56511fe_eca9aeaf",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T19:46:35Z",
+      "side": 1,
+      "message": "nit: avoid comments which duplicate function/test name",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 81
+      },
+      "revId": "f182957223b9102601e7a295ccc21625513b56fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
