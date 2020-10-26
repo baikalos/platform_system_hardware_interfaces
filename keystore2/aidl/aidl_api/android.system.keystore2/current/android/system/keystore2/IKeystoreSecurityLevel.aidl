@@ -18,8 +18,8 @@
 package android.system.keystore2;
 @VintfStability
 interface IKeystoreSecurityLevel {
-  android.system.keystore2.CreateOperationResponse createOperation(in android.system.keystore2.KeyDescriptor key, in android.system.keystore2.KeyParameter[] operationParameters, in boolean forced);
-  android.system.keystore2.KeyMetadata generateKey(in android.system.keystore2.KeyDescriptor key, in @nullable android.system.keystore2.KeyDescriptor attestationKey, in android.system.keystore2.KeyParameter[] params, in android.system.keystore2.KeyFlags flags, in byte[] entropy);
-  android.system.keystore2.KeyMetadata importKey(in android.system.keystore2.KeyDescriptor key, in @nullable android.system.keystore2.KeyDescriptor attestationKey, in android.system.keystore2.KeyParameter[] params, in android.system.keystore2.KeyFlags flags, in byte[] keyData);
-  android.system.keystore2.KeyMetadata importWrappedKey(in android.system.keystore2.KeyDescriptor key, in android.system.keystore2.KeyDescriptor wrappingKey, in @nullable byte[] maskingKey, in android.system.keystore2.KeyParameter[] params, in android.system.keystore2.AuthenticatorSpec[] authenticators);
+  android.system.keystore2.CreateOperationResponse createOperation(in android.system.keystore2.KeyDescriptor key, in android.hardware.keymint.KeyParameter[] operationParameters, in boolean forced);
+  android.system.keystore2.KeyMetadata generateKey(in android.system.keystore2.KeyDescriptor key, in @nullable android.system.keystore2.KeyDescriptor attestationKey, in android.hardware.keymint.KeyParameter[] params, in android.system.keystore2.KeyFlags flags, in byte[] entropy);
+  android.system.keystore2.KeyMetadata importKey(in android.system.keystore2.KeyDescriptor key, in @nullable android.system.keystore2.KeyDescriptor attestationKey, in android.hardware.keymint.KeyParameter[] params, in android.system.keystore2.KeyFlags flags, in byte[] keyData);
+  android.system.keystore2.KeyMetadata importWrappedKey(in android.system.keystore2.KeyDescriptor key, in android.system.keystore2.KeyDescriptor wrappingKey, in @nullable byte[] maskingKey, in android.hardware.keymint.KeyParameter[] params, in android.system.keystore2.AuthenticatorSpec[] authenticators);
 }
