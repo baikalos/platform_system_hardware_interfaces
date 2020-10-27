@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3263636_2acc8ec2",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-10-27T22:14:12Z",
+      "side": 1,
+      "message": "nit: It wasn\u0027t immediately clear to me why we couldn\u0027t do find instead of iterating.\n\nMaybe add a comment as to why we need to loop here. Something like\n// Remove all registered instances of callback (who), since the same callback can\n// be registered to different wake locks.",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 98
+      },
+      "revId": "04c9782125aaa33e4c6389a71bcd803194df3329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
