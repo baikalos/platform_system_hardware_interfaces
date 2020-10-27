@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6239b7df_6353b3d0",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6916bf8_b94ad728",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 60
+      },
+      "revId": "f182957223b9102601e7a295ccc21625513b56fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6322dc0e_cbbcd418",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-26T19:46:35Z",
       "side": 1,
       "message": "extra parens",
+      "range": {
+        "startLine": 189,
+        "startChar": 36,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "f182957223b9102601e7a295ccc21625513b56fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab0564e_4a0e0fb6",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6322dc0e_cbbcd418",
       "range": {
         "startLine": 189,
         "startChar": 36,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffa5a17_54ca8f4e",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "106de37b_644714ba",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 24
+      },
+      "revId": "f182957223b9102601e7a295ccc21625513b56fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b56511fe_eca9aeaf",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-26T19:46:35Z",
       "side": 1,
       "message": "nit: avoid comments which duplicate function/test name",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 81
+      },
+      "revId": "f182957223b9102601e7a295ccc21625513b56fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "106e504c_62ca3e70",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b56511fe_eca9aeaf",
       "range": {
         "startLine": 493,
         "startChar": 0,
