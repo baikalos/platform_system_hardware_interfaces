@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1840809_ce242a10",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d11941_75ee2e41",
+      "range": {
+        "startLine": 80,
+        "startChar": 32,
+        "endLine": 80,
+        "endChar": 54
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b25abfb_361b7582",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-26T19:43:35Z",
       "side": 1,
       "message": "if the name doesn\u0027t exist in the wakelock callbacks list, it can\u0027t be registered, but how does it get there in the first place?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 9
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8913b8b8_888a2079",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Deeply misunderstand the binders registration. Refactored.",
+      "parentUuid": "6b25abfb_361b7582",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9027a08_06476a16",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Refactored",
+      "parentUuid": "5dd7a11b_ee0bd5bc",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 39
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b3dc390_d5191d03",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-26T19:43:35Z",
       "side": 1,
       "message": "L88 should only be wrapping this, right, not any other checks?",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8060a2_9d5e40c1",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Refactored",
+      "parentUuid": "6b3dc390_d5191d03",
       "range": {
         "startLine": 93,
         "startChar": 30,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12dc6c86_4a368e6c",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Now only use interface to check already registered callback. Refactored.",
+      "parentUuid": "5310d1ab_3a900de9",
+      "range": {
+        "startLine": 102,
+        "startChar": 31,
+        "endLine": 102,
+        "endChar": 49
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "978e9454_a5da4dbe",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec69adc_b7177d85",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "978e9454_a5da4dbe",
+      "range": {
+        "startLine": 116,
+        "startChar": 28,
+        "endLine": 116,
+        "endChar": 38
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bed1e4a_6b6fc1ba",
@@ -152,6 +296,30 @@
       "writtenOn": "2020-10-26T19:43:35Z",
       "side": 1,
       "message": "this is non-mutable access. These find* functions should be const, and avoid allocating extra spots",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3db744d_607eb6c9",
+        "filename": "suspend/1.0/default/SuspendControlService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Refactored to not use find function.",
+      "parentUuid": "0bed1e4a_6b6fc1ba",
       "range": {
         "startLine": 69,
         "startChar": 30,
@@ -187,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf494f3b_d6b606f8",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Yes, this is leak prevention.\nWithout disable, a previous registered callback may affect the following tests.\nSimilar to suspend wakeup callback registration, unregister is not \"needed\" by the application. Do you prefer to add a unregister API?",
+      "parentUuid": "0a77d975_a69ca2f2",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 21
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b192adf6_fbc6a216",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 1
@@ -198,6 +390,30 @@
       "writtenOn": "2020-10-26T19:43:35Z",
       "side": 1,
       "message": "can you break this into different test cases, e.g. \"can\u0027t register callback twice for the same name\" or \"can register the same callback for two names\" etc..? This way, it\u0027s easier to see what goes wrong/what is being tested.",
+      "range": {
+        "startLine": 433,
+        "startChar": 4,
+        "endLine": 433,
+        "endChar": 16
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75ecabd_4bb64956",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b192adf6_fbc6a216",
       "range": {
         "startLine": 433,
         "startChar": 4,
@@ -231,6 +447,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76d1bb0_c96a03c4",
+        "filename": "suspend/1.0/default/internal_aidl/android/system/suspend/ISuspendControlService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Yes, verified locally.",
+      "parentUuid": "2f25deb9_4079702f",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 78
+      },
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b0f9762_d6a97a55",
@@ -244,6 +484,24 @@
       "writtenOn": "2020-10-26T19:43:35Z",
       "side": 1,
       "message": "these should be oneway, to avoid blocking suspend service for response, right?",
+      "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d8c4cc_582d30b7",
+        "filename": "suspend/1.0/default/internal_aidl/android/system/suspend/IWakelockCallback.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-27T00:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b0f9762_d6a97a55",
       "revId": "6a6dc109fede0c66379bd269f507b08faafe479f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
