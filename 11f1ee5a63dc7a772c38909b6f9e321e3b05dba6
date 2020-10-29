@@ -16,6 +16,24 @@
       "message": "is this file needed by bluetooth - I think it has changed in the past. I\u0027m wondering if we need to freeze it",
       "revId": "11f1ee5a63dc7a772c38909b6f9e321e3b05dba6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7b06ae_5f65ac21",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-29T22:49:06Z",
+      "side": 0,
+      "message": "Hi Steven:\nThis is not needed by the Bluetooth. \nDumb question, how can I freeze a single file?",
+      "parentUuid": "2af1b4a7_1ecfb308",
+      "revId": "11f1ee5a63dc7a772c38909b6f9e321e3b05dba6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
