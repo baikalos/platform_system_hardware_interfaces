@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7d54b6_9c334302",
+        "filename": "suspend/1.0/default/internal_aidl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-29T00:50:32Z",
+      "side": 1,
+      "message": "these are the same sources from L6..L9 - we should avoid compiling them in two interfaces to avoid ODR and for organization. Also, if it\u0027s an exported interface, we may want to move internal_aidl -\u003e aidl.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "2db47eaebd0f560168904be08a77d5bcd97acc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8cebac5_64837449",
+        "filename": "suspend/1.0/default/internal_aidl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-29T00:50:32Z",
+      "side": 1,
+      "message": "avoid freezing version 1 until release",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "2db47eaebd0f560168904be08a77d5bcd97acc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
