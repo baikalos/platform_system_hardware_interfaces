@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56a6c6ef_d200de11",
+        "filename": "suspend/1.0/default/internal_aidl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-29T02:22:51Z",
+      "side": 1,
+      "message": "Right. Can we remove suspend_control_aidl_interface, in favor of the new android.system.suspend.control?",
+      "parentUuid": "7f7d54b6_9c334302",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "2db47eaebd0f560168904be08a77d5bcd97acc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8cebac5_64837449",
         "filename": "suspend/1.0/default/internal_aidl/Android.bp",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-29T00:50:32Z",
       "side": 1,
       "message": "avoid freezing version 1 until release",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "2db47eaebd0f560168904be08a77d5bcd97acc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b74c57_e07726f0",
+        "filename": "suspend/1.0/default/internal_aidl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-29T02:22:51Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "d8cebac5_64837449",
       "range": {
         "startLine": 32,
         "startChar": 0,
