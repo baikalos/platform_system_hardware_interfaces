@@ -97,11 +97,11 @@ class SystemSuspendTest : public ::testing::Test {
             wakeupReasonsFd =
                 unique_fd(TEMP_FAILURE_RETRY(open(wakeupReasonsFile.path, O_CLOEXEC | O_RDONLY)));
 
-            sp<ISystemSuspend> suspend = new SystemSuspend(
-                std::move(wakeupCountFds[1]), std::move(stateFds[1]),
-                unique_fd(-1) /*suspendStatsFd*/, 1 /* maxNativeStatsEntries */,
-                unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
-                0ms /* baseSleepTime */, suspendControl);
+            sp<ISystemSuspend> suspend =
+                new SystemSuspend(std::move(wakeupCountFds[1]), std::move(stateFds[1]),
+                                  unique_fd(-1) /*suspendStatsFd*/, 1 /* maxNativeStatsEntries */,
+                                  unique_fd(-1) /* kernelWakelockStatsFd */,
+                                  std::move(wakeupReasonsFd), suspendControl);
             status_t status = suspend->registerAsService(kServiceName);
             if (android::OK != status) {
                 LOG(FATAL) << "Unable to register service: " << status;
