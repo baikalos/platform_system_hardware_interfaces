@@ -52,6 +52,24 @@
       "parentUuid": "6c7b06ae_5f65ac21",
       "revId": "11f1ee5a63dc7a772c38909b6f9e321e3b05dba6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79d74e3_c22c5229",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-30T23:24:33Z",
+      "side": 0,
+      "message": "Just to confirm we will move WakeLockInfo.aidl back to the internal_aidl folder and have it compile under a different interface name \"android.system.suspend.control.WakeLockInfo\". \nBluetooth will only link against \"android.system.suspend.control\", while others also link against \"android.system.suspend.control.WakeLockInfo\".",
+      "parentUuid": "180a32cc_a7f9a9ac",
+      "revId": "11f1ee5a63dc7a772c38909b6f9e321e3b05dba6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
