@@ -101,7 +101,7 @@ class SystemSuspendTest : public ::testing::Test {
                 std::move(wakeupCountFds[1]), std::move(stateFds[1]),
                 unique_fd(-1) /*suspendStatsFd*/, 1 /* maxNativeStatsEntries */,
                 unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
-                0ms /* baseSleepTime */, suspendControl);
+                unique_fd(-1) /*suspendTimeFd*/, suspendControl);
             status_t status = suspend->registerAsService(kServiceName);
             if (android::OK != status) {
                 LOG(FATAL) << "Unable to register service: " << status;
@@ -652,7 +652,7 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
             unique_fd(-1) /* wakeupCountFd */, unique_fd(-1) /* stateFd */,
             unique_fd(dup(suspendStatsFd)), 1 /* maxNativeStatsEntries */,
             unique_fd(dup(kernelWakelockStatsFd.get())), unique_fd(-1) /* wakeupReasonsFd */,
-            0ms /* baseSleepTime */, suspendControl);
+            unique_fd(-1) /*suspendTimeFd*/, suspendControl);
     }
 
     virtual void TearDown() override {

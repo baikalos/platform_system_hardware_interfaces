@@ -82,7 +82,7 @@ class SystemSuspend : public ISystemSuspend {
    public:
     SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
                   size_t maxNativeStatsEntries, unique_fd kernelWakelockStatsFd,
-                  unique_fd wakeupReasonsFd, std::chrono::milliseconds baseSleepTime,
+                  unique_fd wakeupReasonsFd, unique_fd suspendTimeFd,
                   const sp<SuspendControlService>& controlService, bool useSuspendCounter = true);
     Return<sp<IWakeLock>> acquireWakeLock(WakeLockType type, const hidl_string& name) override;
     void incSuspendCounter(const std::string& name);
@@ -105,14 +105,22 @@ class SystemSuspend : public ISystemSuspend {
     unique_fd mStateFd;
 
     unique_fd mSuspendStatsFd;
+    unique_fd mSuspendTimeFd;
 
-    // Amount of sleep time between consecutive iterations of the suspend loop.
-    std::chrono::milliseconds mBaseSleepTime;
+    const std::chrono::milliseconds kBaseSleepTime;
+    const std::chrono::milliseconds kMaxSleepTime;
+    const double kSleepTimeScaleFactor;
+    const int32_t kSuspendBackoffThreshold;
+    const std::chrono::milliseconds kShortSuspendThreshold;
+    const bool kFailedSuspendBackoffEnabled;
+    const bool kShortSuspendBackoffEnabled;
+
+    // Amount of thread sleep time between consecutive iterations of the suspend loop
     std::chrono::milliseconds mSleepTime;
-    std::chrono::milliseconds kMaxSleepTime;
+    int32_t mNumConsecutiveBadSuspends;
 
-    // Updates sleep time depending on the result of suspend attempt.
-    void updateSleepTime(bool success);
+    // Updates thread sleep time depending on the result of suspend attempt
+    void updateSleepTime(bool success, std::chrono::nanoseconds suspendTime);
 
     sp<SuspendControlService> mControlService;
 
