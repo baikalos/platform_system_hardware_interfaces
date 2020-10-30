@@ -42,12 +42,23 @@ namespace system {
 namespace suspend {
 namespace V1_0 {
 
+struct SuspendTime {
+    std::chrono::nanoseconds suspendOverhead;
+    std::chrono::nanoseconds suspendTime;
+};
+
 static const char kSleepState[] = "mem";
 // TODO(b/128923994): we only need /sys/power/wake_[un]lock to export debugging info via
 // /sys/kernel/debug/wakeup_sources.
 static constexpr char kSysPowerWakeLock[] = "/sys/power/wake_lock";
 static constexpr char kSysPowerWakeUnlock[] = "/sys/power/wake_unlock";
 static constexpr int32_t kDefaultMaxSleepTimeMsec = 60000;
+static constexpr int32_t kDefaultBaseSleepTimeMsec = 100;
+static constexpr double kDefaultSleepTimeScaleFactor = 2.0;
+static constexpr int32_t kDefaultSuspendBackoffThreshold = 0;
+static constexpr int32_t kDefaultShortSuspendThresholdMsec = 0;
+static constexpr bool kDefaultFailedSuspendBackoffEnabled = true;
+static constexpr bool kDefaultShortSuspendBackoffEnabled = false;
 
 // This function assumes that data in fd is small enough that it can be read in one go.
 // We use this function instead of the ones available in libbase because it doesn't block
@@ -84,6 +95,26 @@ static std::vector<std::string> readWakeupReasons(int fd) {
     return wakeupReasons;
 }
 
+// reads the suspend overhead and suspend time
+// Returns 0s if reading the sysfs node fails (unlikely)
+static struct SuspendTime readSuspendTime(int fd) {
+    std::string content;
+    SuspendTime ret = {0ns, 0ns};
+
+    lseek(fd, 0, SEEK_SET);
+    if (ReadFdToString(fd, &content)) {
+        double suspendOverhead, suspendTime;
+        std::stringstream(content) >> suspendOverhead >> suspendTime;
+        ret.suspendOverhead =
+            std::chrono::nanoseconds((long long)(suspendOverhead * std::nano::den));
+        ret.suspendTime = std::chrono::nanoseconds((long long)(suspendTime * std::nano::den));
+    } else {
+        LOG(ERROR) << "failed to read suspend time";
+    }
+
+    return ret;
+}
+
 WakeLock::WakeLock(SystemSuspend* systemSuspend, const string& name, int pid)
     : mReleased(), mSystemSuspend(systemSuspend), mName(name), mPid(pid) {
     mSystemSuspend->incSuspendCounter(mName);
@@ -107,17 +138,31 @@ void WakeLock::releaseOnce() {
 
 SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
                              size_t maxNativeStatsEntries, unique_fd kernelWakelockStatsFd,
-                             unique_fd wakeupReasonsFd, std::chrono::milliseconds baseSleepTime,
+                             unique_fd wakeupReasonsFd, unique_fd suspendTimeFd,
                              const sp<SuspendControlService>& controlService,
                              bool useSuspendCounter)
     : mSuspendCounter(0),
       mWakeupCountFd(std::move(wakeupCountFd)),
       mStateFd(std::move(stateFd)),
       mSuspendStatsFd(std::move(suspendStatsFd)),
-      mBaseSleepTime(baseSleepTime),
-      mSleepTime(baseSleepTime),
+      mSuspendTimeFd(std::move(suspendTimeFd)),
+      kBaseSleepTime(std::chrono::milliseconds(
+          SuspendProperties::base_sleep_time_msec().value_or(kDefaultBaseSleepTimeMsec))),
       kMaxSleepTime(std::chrono::milliseconds(
           SuspendProperties::max_sleep_time_msec().value_or(kDefaultMaxSleepTimeMsec))),
+      kSleepTimeScaleFactor(
+          SuspendProperties::sleep_time_scale_factor().value_or(kDefaultSleepTimeScaleFactor)),
+      kSuspendBackoffThreshold(
+          SuspendProperties::suspend_backoff_threshold().value_or(kDefaultSuspendBackoffThreshold)),
+      kShortSuspendThreshold(
+          std::chrono::milliseconds(SuspendProperties::short_suspend_threshold_msec().value_or(
+              kDefaultShortSuspendThresholdMsec))),
+      kFailedSuspendBackoffEnabled(SuspendProperties::failed_suspend_backoff_enabled().value_or(
+          kDefaultFailedSuspendBackoffEnabled)),
+      kShortSuspendBackoffEnabled(SuspendProperties::short_suspend_backoff_enabled().value_or(
+          kDefaultShortSuspendBackoffEnabled)),
+      mSleepTime(kBaseSleepTime),
+      mNumConsecutiveBadSuspends(0),
       mControlService(controlService),
       mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
       mUseSuspendCounter(useSuspendCounter),
@@ -227,23 +272,36 @@ void SystemSuspend::initAutosuspend() {
                 PLOG(VERBOSE) << "error writing to /sys/power/state";
             }
 
+            struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
+
             std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
             mControlService->notifyWakeup(success, wakeupReasons);
 
-            updateSleepTime(success);
+            updateSleepTime(success, suspendTime.suspendTime);
         }
     });
     autosuspendThread.detach();
     LOG(INFO) << "automatic system suspend enabled";
 }
 
-void SystemSuspend::updateSleepTime(bool success) {
-    if (success) {
-        mSleepTime = mBaseSleepTime;
+void SystemSuspend::updateSleepTime(bool success, std::chrono::nanoseconds suspendTime) {
+    bool shortSuspend = kShortSuspendBackoffEnabled && success && (suspendTime > 0ns) &&
+                        (suspendTime < kShortSuspendThreshold);
+    bool failedSuspend = kFailedSuspendBackoffEnabled && !success;
+
+    if (!failedSuspend && !shortSuspend) {
+        mNumConsecutiveBadSuspends = 0;
+        mSleepTime = kBaseSleepTime;
         return;
     }
-    // Double sleep time after each failure up to one minute.
-    mSleepTime = std::min(mSleepTime * 2, kMaxSleepTime);
+
+    mNumConsecutiveBadSuspends++;
+
+    if (mNumConsecutiveBadSuspends > kSuspendBackoffThreshold) {
+        mSleepTime = std::min(
+            std::chrono::round<std::chrono::milliseconds>(mSleepTime * kSleepTimeScaleFactor),
+            kMaxSleepTime);
+    }
 }
 
 void SystemSuspend::updateWakeLockStatOnRelease(const std::string& name, int pid,
