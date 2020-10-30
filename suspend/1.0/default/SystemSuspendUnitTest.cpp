@@ -58,6 +58,7 @@ using android::system::suspend::V1_0::getTimeNow;
 using android::system::suspend::V1_0::ISystemSuspend;
 using android::system::suspend::V1_0::IWakeLock;
 using android::system::suspend::V1_0::readFd;
+using android::system::suspend::V1_0::SleepTimeConfig;
 using android::system::suspend::V1_0::SuspendControlService;
 using android::system::suspend::V1_0::SuspendStats;
 using android::system::suspend::V1_0::SystemSuspend;
@@ -69,6 +70,16 @@ namespace android {
 
 static constexpr char kServiceName[] = "TestService";
 static constexpr char kControlServiceName[] = "TestControlService";
+
+static const SleepTimeConfig kDefaultSleepTimeConfig = {
+    .baseSleepTime = 100ms,
+    .maxSleepTime = 60000ms,
+    .sleepTimeScaleFactor = 2.0,
+    .suspendBackoffThreshold = 0,
+    .shortSuspendThreshold = 0ms,
+    .failedSuspendBackoffEnabled = true,
+    .shortSuspendBackoffEnabled = false,
+};
 
 static bool isReadBlocked(int fd, int timeout_ms = 20) {
     struct pollfd pfd {
@@ -101,7 +112,7 @@ class SystemSuspendTest : public ::testing::Test {
                 std::move(wakeupCountFds[1]), std::move(stateFds[1]),
                 unique_fd(-1) /*suspendStatsFd*/, 1 /* maxNativeStatsEntries */,
                 unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
-                0ms /* baseSleepTime */, suspendControl);
+                unique_fd(-1) /*suspendTimeFd*/, kDefaultSleepTimeConfig, suspendControl);
             status_t status = suspend->registerAsService(kServiceName);
             if (android::OK != status) {
                 LOG(FATAL) << "Unable to register service: " << status;
@@ -652,7 +663,7 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
             unique_fd(-1) /* wakeupCountFd */, unique_fd(-1) /* stateFd */,
             unique_fd(dup(suspendStatsFd)), 1 /* maxNativeStatsEntries */,
             unique_fd(dup(kernelWakelockStatsFd.get())), unique_fd(-1) /* wakeupReasonsFd */,
-            0ms /* baseSleepTime */, suspendControl);
+            unique_fd(-1) /*suspendTimeFd*/, kDefaultSleepTimeConfig, suspendControl);
     }
 
     virtual void TearDown() override {

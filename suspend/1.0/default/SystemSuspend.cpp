@@ -25,8 +25,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include <SuspendProperties.sysprop.h>
-
 #include <string>
 #include <thread>
 
@@ -35,19 +33,22 @@ using ::android::base::ReadFdToString;
 using ::android::base::WriteStringToFd;
 using ::android::hardware::Void;
 using ::std::string;
-using namespace ::android::sysprop;
 
 namespace android {
 namespace system {
 namespace suspend {
 namespace V1_0 {
 
+struct SuspendTime {
+    std::chrono::nanoseconds suspendOverhead;
+    std::chrono::nanoseconds suspendTime;
+};
+
 static const char kSleepState[] = "mem";
 // TODO(b/128923994): we only need /sys/power/wake_[un]lock to export debugging info via
 // /sys/kernel/debug/wakeup_sources.
 static constexpr char kSysPowerWakeLock[] = "/sys/power/wake_lock";
 static constexpr char kSysPowerWakeUnlock[] = "/sys/power/wake_unlock";
-static constexpr int32_t kDefaultMaxSleepTimeMsec = 60000;
 
 // This function assumes that data in fd is small enough that it can be read in one go.
 // We use this function instead of the ones available in libbase because it doesn't block
@@ -84,6 +85,30 @@ static std::vector<std::string> readWakeupReasons(int fd) {
     return wakeupReasons;
 }
 
+// reads the suspend overhead and suspend time
+// Returns 0s if reading the sysfs node fails (unlikely)
+static struct SuspendTime readSuspendTime(int fd) {
+    std::string content;
+
+    lseek(fd, 0, SEEK_SET);
+    if (!ReadFdToString(fd, &content)) {
+        LOG(ERROR) << "failed to read suspend time";
+        return {0ns, 0ns};
+    }
+
+    double suspendOverhead, suspendTime;
+    std::stringstream ss(content);
+    if (!(ss >> suspendOverhead) || !(ss >> suspendTime)) {
+        LOG(ERROR) << "failed to parse suspend time " << content;
+        return {0ns, 0ns};
+    }
+
+    return {std::chrono::duration_cast<std::chrono::nanoseconds>(
+                std::chrono::duration<double>(suspendOverhead)),
+            std::chrono::duration_cast<std::chrono::nanoseconds>(
+                std::chrono::duration<double>(suspendTime))};
+}
+
 WakeLock::WakeLock(SystemSuspend* systemSuspend, const string& name, int pid)
     : mReleased(), mSystemSuspend(systemSuspend), mName(name), mPid(pid) {
     mSystemSuspend->incSuspendCounter(mName);
@@ -107,17 +132,18 @@ void WakeLock::releaseOnce() {
 
 SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
                              size_t maxNativeStatsEntries, unique_fd kernelWakelockStatsFd,
-                             unique_fd wakeupReasonsFd, std::chrono::milliseconds baseSleepTime,
+                             unique_fd wakeupReasonsFd, unique_fd suspendTimeFd,
+                             const SleepTimeConfig& sleepTimeConfig,
                              const sp<SuspendControlService>& controlService,
                              bool useSuspendCounter)
     : mSuspendCounter(0),
       mWakeupCountFd(std::move(wakeupCountFd)),
       mStateFd(std::move(stateFd)),
       mSuspendStatsFd(std::move(suspendStatsFd)),
-      mBaseSleepTime(baseSleepTime),
-      mSleepTime(baseSleepTime),
-      kMaxSleepTime(std::chrono::milliseconds(
-          SuspendProperties::max_sleep_time_msec().value_or(kDefaultMaxSleepTimeMsec))),
+      mSuspendTimeFd(std::move(suspendTimeFd)),
+      kSleepTimeConfig(sleepTimeConfig),
+      mSleepTime(sleepTimeConfig.baseSleepTime),
+      mNumConsecutiveBadSuspends(0),
       mControlService(controlService),
       mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
       mUseSuspendCounter(useSuspendCounter),
@@ -227,23 +253,54 @@ void SystemSuspend::initAutosuspend() {
                 PLOG(VERBOSE) << "error writing to /sys/power/state";
             }
 
+            struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
+
             std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
             mControlService->notifyWakeup(success, wakeupReasons);
 
-            updateSleepTime(success);
+            updateSleepTime(success, suspendTime.suspendTime);
         }
     });
     autosuspendThread.detach();
     LOG(INFO) << "automatic system suspend enabled";
 }
 
-void SystemSuspend::updateSleepTime(bool success) {
-    if (success) {
-        mSleepTime = mBaseSleepTime;
+/**
+ * Updates sleep time depending on the result of suspend attempt.
+ * Time (in milliseconds) between suspend attempts is described the formula
+ * t[n] = { B, 0 < n <= N
+ *        { min(B * (S**(n - N)), M), n > N
+ * where:
+ *   n is the number of consecutive bad suspend attempts,
+ *   B = kBaseSleepTime,
+ *   N = kSuspendBackoffThreshold,
+ *   S = kSleepTimeScaleFactor,
+ *   M = kMaxSleepTime
+ *
+ * kFailedSuspendBackoffEnabled determines whether a failed suspend is counted as a bad suspend
+ *
+ * kShortSuspendBackoffEnabled determines whether a suspend whose duration
+ * t < kShortSuspendThreshold is counted as a bad suspend
+ */
+void SystemSuspend::updateSleepTime(bool success, std::chrono::nanoseconds suspendTime) {
+    bool shortSuspend = kSleepTimeConfig.shortSuspendBackoffEnabled && success &&
+                        (suspendTime > 0ns) &&
+                        (suspendTime < kSleepTimeConfig.shortSuspendThreshold);
+    bool failedSuspend = kSleepTimeConfig.failedSuspendBackoffEnabled && !success;
+
+    if (!failedSuspend && !shortSuspend) {
+        mNumConsecutiveBadSuspends = 0;
+        mSleepTime = kSleepTimeConfig.baseSleepTime;
         return;
     }
-    // Double sleep time after each failure up to one minute.
-    mSleepTime = std::min(mSleepTime * 2, kMaxSleepTime);
+
+    mNumConsecutiveBadSuspends++;
+
+    if (mNumConsecutiveBadSuspends > kSleepTimeConfig.suspendBackoffThreshold) {
+        mSleepTime = std::min(std::chrono::round<std::chrono::milliseconds>(
+                                  mSleepTime * kSleepTimeConfig.sleepTimeScaleFactor),
+                              kSleepTimeConfig.maxSleepTime);
+    }
 }
 
 void SystemSuspend::updateWakeLockStatOnRelease(const std::string& name, int pid,
@@ -331,6 +388,10 @@ Result<SuspendStats> SystemSuspend::getSuspendStats() {
     }
 
     return stats;
+}
+
+std::chrono::milliseconds SystemSuspend::getSleepTime() const {
+    return mSleepTime;
 }
 
 }  // namespace V1_0
