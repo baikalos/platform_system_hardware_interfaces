@@ -39,6 +39,30 @@
       },
       "revId": "43529f2de352517707e140a176a66161f2e582a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88575e4b_8d051239",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-10-30T23:46:28Z",
+      "side": 1,
+      "message": "https://source.android.com/devices/architecture/sysprops-apis#defining_system_properties_libraries This is what appears in the documentation for examples, so I think so unless that doc needs an update",
+      "parentUuid": "75ab922d_fbd6b5da",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "43529f2de352517707e140a176a66161f2e582a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
