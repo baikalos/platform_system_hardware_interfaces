@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3954d1ac_bd0e9232",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-10-30T22:22:25Z",
+      "side": 1,
+      "message": "Would the resulting loss of precision be acceptable?\n\nWe plan to gather accumulated statistics on suspend time and overhead and loss of precision could result aggregated error in the stats.",
+      "parentUuid": "193229f7_6b747b0d",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "f208559781e3f0d7c7ae618dfa51c6b89f05e36b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "113f828f_e43e8f4e",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc0764a3_4e22d855",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-10-30T22:22:25Z",
+      "side": 1,
+      "message": "I wanted to make sure I handled the case where we fail to read the sysfs node. I\u0027m not sure why that would happen but readFd can fail.\n\nI chose to return {-1. -1} if I fail to read from the sysfs node.",
+      "parentUuid": "827485f9_219eb83e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 5
+      },
+      "revId": "f208559781e3f0d7c7ae618dfa51c6b89f05e36b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85a63f76_504a1162",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 3
@@ -106,6 +154,30 @@
       "writtenOn": "2020-10-30T22:08:55Z",
       "side": 1,
       "message": "Strictly greater than (\u003e) ? 0 would mean we didn\u0027t actually suspend.",
+      "range": {
+        "startLine": 287,
+        "startChar": 36,
+        "endLine": 287,
+        "endChar": 39
+      },
+      "revId": "f208559781e3f0d7c7ae618dfa51c6b89f05e36b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9dfcd8_89c2d768",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-10-30T22:22:25Z",
+      "side": 1,
+      "message": "good catch.",
+      "parentUuid": "68c5beab_cd2a6337",
       "range": {
         "startLine": 287,
         "startChar": 36,
