@@ -30,7 +30,7 @@ prop {
     type: Integer
     scope: Internal
     access: Readonly
-    prop_name: "suspend_hal.max_sleep_time_msec"
+    prop_name: "suspend_hal.base_sleep_time_msec"
 }
 
 # Minimum number of consecutive bad (short, failed) suspends before time between attempts is scaled
