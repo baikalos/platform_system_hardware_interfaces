@@ -34,6 +34,24 @@
       "parentUuid": "2af1b4a7_1ecfb308",
       "revId": "11f1ee5a63dc7a772c38909b6f9e321e3b05dba6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180a32cc_a7f9a9ac",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-30T22:39:41Z",
+      "side": 0,
+      "message": "only put what we need to stabilize in a stable interface, and leave the other things as an internal API",
+      "parentUuid": "6c7b06ae_5f65ac21",
+      "revId": "11f1ee5a63dc7a772c38909b6f9e321e3b05dba6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
