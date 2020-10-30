@@ -141,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df93bfa8_47761ab7",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-10-30T22:52:11Z",
+      "side": 1,
+      "message": "can add this to make sure shortSuspend is only ever true if we have successfully suspended",
+      "parentUuid": "85a63f76_504a1162",
+      "range": {
+        "startLine": 286,
+        "startChar": 24,
+        "endLine": 286,
+        "endChar": 54
+      },
+      "revId": "f208559781e3f0d7c7ae618dfa51c6b89f05e36b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68c5beab_cd2a6337",
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "good catch.",
       "parentUuid": "68c5beab_cd2a6337",
+      "range": {
+        "startLine": 287,
+        "startChar": 36,
+        "endLine": 287,
+        "endChar": 39
+      },
+      "revId": "f208559781e3f0d7c7ae618dfa51c6b89f05e36b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1db25c8_a84661e8",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-10-30T22:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db9dfcd8_89c2d768",
       "range": {
         "startLine": 287,
         "startChar": 36,
