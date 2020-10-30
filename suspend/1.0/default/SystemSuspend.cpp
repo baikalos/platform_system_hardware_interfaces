@@ -25,6 +25,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include <SuspendProperties.sysprop.h>
+
 #include <string>
 #include <thread>
 
@@ -33,6 +35,7 @@ using ::android::base::ReadFdToString;
 using ::android::base::WriteStringToFd;
 using ::android::hardware::Void;
 using ::std::string;
+using namespace ::android::sysprop;
 
 namespace android {
 namespace system {
@@ -44,6 +47,7 @@ static const char kSleepState[] = "mem";
 // /sys/kernel/debug/wakeup_sources.
 static constexpr char kSysPowerWakeLock[] = "/sys/power/wake_lock";
 static constexpr char kSysPowerWakeUnlock[] = "/sys/power/wake_unlock";
+static constexpr int32_t kDefaultMaxSleepTimeMsec = 60000;
 
 // This function assumes that data in fd is small enough that it can be read in one go.
 // We use this function instead of the ones available in libbase because it doesn't block
@@ -112,6 +116,8 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
       mSuspendStatsFd(std::move(suspendStatsFd)),
       mBaseSleepTime(baseSleepTime),
       mSleepTime(baseSleepTime),
+      kMaxSleepTime(std::chrono::milliseconds(
+          SuspendProperties::max_sleep_time_msec().value_or(kDefaultMaxSleepTimeMsec))),
       mControlService(controlService),
       mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
       mUseSuspendCounter(useSuspendCounter),
@@ -232,7 +238,6 @@ void SystemSuspend::initAutosuspend() {
 }
 
 void SystemSuspend::updateSleepTime(bool success) {
-    static constexpr std::chrono::milliseconds kMaxSleepTime = 1min;
     if (success) {
         mSleepTime = mBaseSleepTime;
         return;

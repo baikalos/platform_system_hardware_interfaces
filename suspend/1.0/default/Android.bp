@@ -49,6 +49,7 @@ cc_binary {
     shared_libs: [
         "android.system.suspend@1.0",
         "suspend_control_aidl_interface-cpp",
+        "SuspendProperties",
     ],
     srcs: [
         "main.cpp",
@@ -70,6 +71,7 @@ cc_test {
         "android.system.suspend@1.0",
         "suspend_control_aidl_interface-cpp",
         "libgmock",
+        "SuspendProperties",
     ],
     srcs: [
         "SuspendControlService.cpp",
@@ -93,4 +95,10 @@ cc_benchmark {
     srcs: [
         "SystemSuspendBenchmark.cpp",
     ],
+}
+
+sysprop_library {
+  name: "SuspendProperties",
+  srcs: ["SuspendProperties.sysprop"],
+  property_owner: "Platform",
 }
