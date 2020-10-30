@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51659633_10ae5408",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-10-30T23:00:34Z",
+      "side": 1,
+      "message": "IIUC these stats will be used to tune the suspend parameters so I expect this would be ok since the properties themselves have millisecond granularity. On second thought you could save this as nanoseconds to keep the precision. I\u0027m not sure if suspends shorter than millisecond granularity happen in practice. But you raise a good point about the precision. So lets keep this as nanoseconds so we don\u0027t miss short suspends \u003c 1ms (if any).",
+      "parentUuid": "3954d1ac_bd0e9232",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "f208559781e3f0d7c7ae618dfa51c6b89f05e36b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "113f828f_e43e8f4e",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 3
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "I wanted to make sure I handled the case where we fail to read the sysfs node. I\u0027m not sure why that would happen but readFd can fail.\n\nI chose to return {-1. -1} if I fail to read from the sysfs node.",
       "parentUuid": "827485f9_219eb83e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 5
+      },
+      "revId": "f208559781e3f0d7c7ae618dfa51c6b89f05e36b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "becd023f_23ceb773",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-10-30T23:00:34Z",
+      "side": 1,
+      "message": "Fair enough. Lets document what is returned on failure.",
+      "parentUuid": "fc0764a3_4e22d855",
       "range": {
         "startLine": 104,
         "startChar": 0,
