@@ -109,6 +109,8 @@ class SystemSuspend : public ISystemSuspend {
     // Amount of sleep time between consecutive iterations of the suspend loop.
     std::chrono::milliseconds mBaseSleepTime;
     std::chrono::milliseconds mSleepTime;
+    std::chrono::milliseconds kMaxSleepTime;
+
     // Updates sleep time depending on the result of suspend attempt.
     void updateSleepTime(bool success);
 
