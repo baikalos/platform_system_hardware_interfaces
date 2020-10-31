@@ -70,6 +70,24 @@
       "parentUuid": "180a32cc_a7f9a9ac",
       "revId": "11f1ee5a63dc7a772c38909b6f9e321e3b05dba6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcddc5c4_c12b854f",
+        "filename": "suspend/aidl/android/system/suspend/WakeLockInfo.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-10-31T00:02:15Z",
+      "side": 0,
+      "message": "WakeLockInfo is required by API: getWakeLockStats defined in ISuspendControlService. It has to be compiled with the whole AIDL package, am I missing anything here?",
+      "parentUuid": "c79d74e3_c22c5229",
+      "revId": "11f1ee5a63dc7a772c38909b6f9e321e3b05dba6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
