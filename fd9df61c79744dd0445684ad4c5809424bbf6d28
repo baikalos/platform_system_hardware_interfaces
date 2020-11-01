@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e606d1_6213017a",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-01T05:17:17Z",
+      "side": 1,
+      "message": "Tested on bramble I saw the following logs:\n11-01 06:25:51.142  6141  6141 I suspend ns: 642601308470\tsuspend cycles:      13050424193\n11-01 06:25:51.142    76    76 I PM      : Start suspend monitor\n11-01 06:26:51.247  6141  6141 I PM      : suspend exit 2020-11-01 06:26:51.247906792 UTC\n11-01 06:26:51.247  6141  6141 I PM      : suspend exit\n11-01 06:26:51.248    76    76 I PM      : Stop suspend monitor\n11-01 06:26:51.248   582  6141 E android.system.suspend@1.0-service: suspend s\u003d1 oh\u003d152049182 t\u003d60035318206\n11-01 06:26:51.248   582  6141 E android.system.suspend@1.0-service: failed to read wakeup reasons\n11-01 06:26:51.248  1900  3181 I BatteryStatsService: In wakeup_callback: resumed from suspend\n11-01 06:26:51.348  6141  6141 I PM      : suspend entry 2020-11-01 06:26:51.348479041 UTC\n11-01 06:26:51.348  6141  6141 I PM      : suspend entry (deep)\n11-01 06:26:51.349    76    76 I PM      : Start suspend monitor\n11-01 06:26:51.384     8     8 I [kworke][0x34ececcdd][06:26:51.384682] wlan: [8:I:HDD] hdd_suspend_wlan: 1168: WLAN being suspended by OS\n11-01 06:26:51.431  6141  6141 I [Binder][0x34edc998a][06:26:51.431785] wlan: [6141:I:HDD] __wlan_hdd_bus_suspend: 1038: starting bus suspend\n11-01 06:26:51.431  6141  6141 I [Binder][0x34edca40e][06:26:51.431924] wlan: [6141:I:WMI] suspend type: WOW_IFACE_PAUSE_DISABLED\n11-01 06:26:51.436  6141  6141 I [Binder][0x34ede1ceb][06:26:51.436949] wlan: [6141:I:HDD] __wlan_hdd_bus_suspend: 1101: bus suspend succeeded\n11-01 06:26:51.462    76    76 I PM      : Stop suspend monitor\n11-01 06:26:51.462  6141  6141 I suspend ns: 642885710241\tsuspend cycles:      14208565173\n11-01 06:26:51.462    76    76 I PM      : Start suspend monitor\n11-01 06:27:01.892   582  6141 E android.system.suspend@1.0-service: suspend s\u003d1 oh\u003d167866840 t\u003d10357507235\n11-01 06:27:01.892   582  6141 E android.system.suspend@1.0-service: failed to read wakeup reasons\n\nA few potential problems observed:\n1. \"suspend ns\" message doesn\u0027t seem to align with output of sysfs node, mainly the time spent in suspend. Am I misunderstanding something?\n2. 11-01 06:26:51.248   582  6141 E android.system.suspend@1.0-service: failed to read wakeup reasons seems to indicate that the service is failing to read from the wakeup reasons.\ncat /sys/kernel/wakeup_reasons/last_resume_reason                                                                                                   \n-1 misconfigured IRQ 191 smp2p\nshows there are wakeup reasons to parse. What is going on there?",
+      "range": {
+        "startLine": 278,
+        "startChar": 12,
+        "endLine": 279,
+        "endChar": 67
+      },
+      "revId": "fd9df61c79744dd0445684ad4c5809424bbf6d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
