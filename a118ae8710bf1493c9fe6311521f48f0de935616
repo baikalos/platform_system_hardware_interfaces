@@ -22,6 +22,30 @@
       },
       "revId": "a118ae8710bf1493c9fe6311521f48f0de935616",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff9fb30_67d6a649",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-02T18:19:11Z",
+      "side": 1,
+      "message": "I can do that. Will make these injectable and will add a unit test.",
+      "parentUuid": "5bfc886d_48c9df12",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "a118ae8710bf1493c9fe6311521f48f0de935616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
