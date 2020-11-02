@@ -22,6 +22,30 @@
       },
       "revId": "b06678f8d8290166b9b78485f21e5c778caf813d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9137650e_d462da2b",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-02T22:03:41Z",
+      "side": 1,
+      "message": "I haven\u0027t looked into the implementation as yet. But my thought was that we could upstream these by adding into the suspend_stats sysfs node we added last year.",
+      "parentUuid": "a5e9828c_90b4baf5",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 95
+      },
+      "revId": "b06678f8d8290166b9b78485f21e5c778caf813d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
