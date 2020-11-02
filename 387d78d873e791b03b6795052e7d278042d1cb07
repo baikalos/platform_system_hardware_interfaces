@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bebf6ab3_b1976755",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-02T05:27:36Z",
+      "side": 1,
+      "message": "nit; I recommend using dot \".\" to separate terms of prop_name by loglcal groups.\n\ne.g. some suggestions:\n\nsuspend_hal.max_sleep_time_msec -\u003e suspend_hal.max_sleep_time.msec\nsuspend_hal.suspend_backoff_threshold -\u003e suspend_hal.backoff_threshold.count\nsuspend_hal.short_suspend_backoff_enabled -\u003e suspend_hal.short_suspend_backoff.enabled\n\nNot a strong opinion, so feel free to use any names you think are reasonable and pretty.",
+      "revId": "387d78d873e791b03b6795052e7d278042d1cb07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
