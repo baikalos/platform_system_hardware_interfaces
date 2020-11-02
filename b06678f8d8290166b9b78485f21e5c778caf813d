@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00f70942_57550f96",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-02T23:23:11Z",
+      "side": 1,
+      "message": "(just to capture the item we chatted about) What should happen here if part or all of the parsing fails?  Does it make sense to propagate one good number and one bad one?  Should the failure be logged?",
+      "range": {
+        "startLine": 107,
+        "startChar": 35,
+        "endLine": 107,
+        "endChar": 69
+      },
+      "revId": "b06678f8d8290166b9b78485f21e5c778caf813d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af6c58b_02e7dacb",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-02T23:23:11Z",
+      "side": 1,
+      "message": "nit: extraneous",
+      "range": {
+        "startLine": 302,
+        "startChar": 33,
+        "endLine": 302,
+        "endChar": 40
+      },
+      "revId": "b06678f8d8290166b9b78485f21e5c778caf813d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5e9828c_90b4baf5",
         "filename": "suspend/1.0/default/main.cpp",
         "patchSetId": 15
@@ -38,6 +84,30 @@
       "side": 1,
       "message": "I haven\u0027t looked into the implementation as yet. But my thought was that we could upstream these by adding into the suspend_stats sysfs node we added last year.",
       "parentUuid": "a5e9828c_90b4baf5",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 95
+      },
+      "revId": "b06678f8d8290166b9b78485f21e5c778caf813d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a64065a_021d651e",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-02T23:23:11Z",
+      "side": 1,
+      "message": "Both of those sysfs nodes are implemented by kernel/power/wakeup_reason.c.  I have rather accidentally stumbled into becoming the de facto owner of that code thanks to GKI, as I rewrote a great deal of the implementation in that file not long ago (back when we could have Pixel kernels).  :-)\n\nThe feature is in the common android kernels, but is not upstreamed.  Its original author did try to upstream it, but was unsuccessful, and there is no plan at this time to try again.",
+      "parentUuid": "9137650e_d462da2b",
       "range": {
         "startLine": 49,
         "startChar": 0,

@@ -118,6 +118,30 @@
       },
       "revId": "fd9df61c79744dd0445684ad4c5809424bbf6d28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b5b0cb5_ebfca9ab",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-02T23:23:11Z",
+      "side": 1,
+      "message": "As a totally orthogonal note, the \"-1 misconfigured IRQ 191 smp2p\" message means that after getting QC to fix it multiple times for previous devices, they are once again setting this interrupt as both IRQF_NO_SUSPEND and enable_irq_wake(), which is an invalid IRQ configuration in nearly all cases (including theirs).\n\nThe read failures are concerning to me, since I\u0027m responsible for the kernel code behind that sysfs node.  I could see it happening if the suspend service went to read the reasons right as a new suspend was starting, since the existing reasons are cleared when a PM_SUSPEND_PREPARE event goes out.  But looking at the timestamps, that isn\u0027t what happened here.\n\n\nBen, if you do testing again that produces these read errors, can you grab a bugreport and share it with me?  I\u0027d love to see the entire set of kernel and system log messages surrounding the resumes where the wakeup reason reading fails.\n\n(clearing \"resolved\" just for visibility; feel free to close)",
+      "parentUuid": "fe767f3f_1dc1a29f",
+      "range": {
+        "startLine": 278,
+        "startChar": 12,
+        "endLine": 279,
+        "endChar": 67
+      },
+      "revId": "fd9df61c79744dd0445684ad4c5809424bbf6d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
