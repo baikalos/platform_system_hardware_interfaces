@@ -46,6 +46,30 @@
       },
       "revId": "fd9df61c79744dd0445684ad4c5809424bbf6d28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d75aaa5_c2c36f7a",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-11-02T05:16:40Z",
+      "side": 1,
+      "message": "The wake reason reading operation does not parse or filter. It can only be:\n1. wakeup reason file is empty.\n2. sysfs read operation failed. \n\nAs 2. is very unlikely, I assume it is the kernel failed to provide a wakeup reason. And SystemSuspend will push back a \"unknown\" reason into the reason vector.",
+      "parentUuid": "0bd3e2fa_76813ad2",
+      "range": {
+        "startLine": 278,
+        "startChar": 12,
+        "endLine": 279,
+        "endChar": 67
+      },
+      "revId": "fd9df61c79744dd0445684ad4c5809424bbf6d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
