@@ -22,6 +22,30 @@
       },
       "revId": "9c6a97f81faf507a63970b544529aacc862c200e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5c9f7b_908eb81a",
+        "filename": "suspend/1.0/default/SuspendProperties.sysprop",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-03T00:22:13Z",
+      "side": 1,
+      "message": "reworded.",
+      "parentUuid": "1b3d98de_82da040b",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "9c6a97f81faf507a63970b544529aacc862c200e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
