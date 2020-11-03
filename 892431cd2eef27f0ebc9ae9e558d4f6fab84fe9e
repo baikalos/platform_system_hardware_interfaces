@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be47077_3b54716d",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-03T00:41:19Z",
+      "side": 1,
+      "message": "ditto: const",
+      "range": {
+        "startLine": 393,
+        "startChar": 41,
+        "endLine": 393,
+        "endChar": 55
+      },
+      "revId": "892431cd2eef27f0ebc9ae9e558d4f6fab84fe9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf28841_b3ad74c9",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-03T00:41:19Z",
+      "side": 1,
+      "message": "Can you mark this getter as const?",
+      "range": {
+        "startLine": 108,
+        "startChar": 30,
+        "endLine": 108,
+        "endChar": 44
+      },
+      "revId": "892431cd2eef27f0ebc9ae9e558d4f6fab84fe9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
