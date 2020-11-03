@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b05b56_3fb9c602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-03T01:20:55Z",
+      "side": 1,
+      "message": "LGTM from the perspective of the algorithm\n",
+      "revId": "dbff7a956a33f88300cbe1b2ca3314a2f58a1719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
