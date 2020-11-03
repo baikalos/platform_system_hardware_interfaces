@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "054718a0_f19c283f",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-03T23:38:12Z",
+      "side": 1,
+      "message": "I will think about how to test the backoff enable flag, but that may be difficult because the SystemSuspend class is currently constructed as part of test setup. \n\nThe code on L341 was intended to test the bad suspend threshold.",
+      "parentUuid": "056cf8a4_c9481bf2",
+      "revId": "69376e75ca672d9f12b703e2154de9cdb2ede930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95285387_dbbc7bde",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 1
