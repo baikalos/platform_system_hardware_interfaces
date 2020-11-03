@@ -46,6 +46,29 @@
       },
       "revId": "7f4055c7f27a3c4c661f5b37041b8290f47e329f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f3c648a_14a9f015",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-03T01:15:57Z",
+      "side": 1,
+      "message": "Why 1 and not 0?  The way you defined the threshold, this will require 2 consecutive bad suspends in order to trigger backoff.",
+      "range": {
+        "startLine": 78,
+        "startChar": 31,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "7f4055c7f27a3c4c661f5b37041b8290f47e329f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
