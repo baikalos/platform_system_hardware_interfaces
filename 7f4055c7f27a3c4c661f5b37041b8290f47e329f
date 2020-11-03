@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4094c9_9452d25c",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-03T01:10:00Z",
+      "side": 1,
+      "message": "Sorry for the misunderstanding. I meant you can mark the method as const.\nstd::chrono::milliseconds getSleepTime() const;",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 51
+      },
+      "revId": "7f4055c7f27a3c4c661f5b37041b8290f47e329f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
