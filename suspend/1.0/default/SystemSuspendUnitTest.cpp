@@ -71,14 +71,14 @@ namespace android {
 static constexpr char kServiceName[] = "TestService";
 static constexpr char kControlServiceName[] = "TestControlService";
 
-static const SleepTimeConfig kDefaultSleepTimeConfig = {
+static const SleepTimeConfig kSleepTimeConfig = {
     .baseSleepTime = 100ms,
-    .maxSleepTime = 60000ms,
-    .sleepTimeScaleFactor = 2.0,
-    .suspendBackoffThreshold = 0,
-    .shortSuspendThreshold = 0ms,
+    .maxSleepTime = 400ms,
+    .sleepTimeScaleFactor = 1.9,
+    .suspendBackoffThreshold = 1,
+    .shortSuspendThreshold = 100ms,
     .failedSuspendBackoffEnabled = true,
-    .shortSuspendBackoffEnabled = false,
+    .shortSuspendBackoffEnabled = true,
 };
 
 static bool isReadBlocked(int fd, int timeout_ms = 20) {
@@ -108,11 +108,14 @@ class SystemSuspendTest : public ::testing::Test {
             wakeupReasonsFd =
                 unique_fd(TEMP_FAILURE_RETRY(open(wakeupReasonsFile.path, O_CLOEXEC | O_RDONLY)));
 
+            suspendTimeFd =
+                unique_fd(TEMP_FAILURE_RETRY(open(suspendTimeFile.path, O_CLOEXEC | O_RDONLY)));
+
             sp<ISystemSuspend> suspend = new SystemSuspend(
                 std::move(wakeupCountFds[1]), std::move(stateFds[1]),
                 unique_fd(-1) /*suspendStatsFd*/, 1 /* maxNativeStatsEntries */,
                 unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
-                unique_fd(-1) /*suspendTimeFd*/, kDefaultSleepTimeConfig, suspendControl);
+                std::move(suspendTimeFd), kSleepTimeConfig, suspendControl);
             status_t status = suspend->registerAsService(kServiceName);
             if (android::OK != status) {
                 LOG(FATAL) << "Unable to register service: " << status;
@@ -202,18 +205,22 @@ class SystemSuspendTest : public ::testing::Test {
     static unique_fd wakeupCountFds[2];
     static unique_fd stateFds[2];
     static unique_fd wakeupReasonsFd;
+    static unique_fd suspendTimeFd;
     static int wakeupCountFd;
     static int stateFd;
     static TemporaryFile wakeupReasonsFile;
+    static TemporaryFile suspendTimeFile;
 };
 
 // SystemSuspendTest test suite resources
 unique_fd SystemSuspendTest::wakeupCountFds[2];
 unique_fd SystemSuspendTest::stateFds[2];
 unique_fd SystemSuspendTest::wakeupReasonsFd;
+unique_fd SystemSuspendTest::suspendTimeFd;
 int SystemSuspendTest::wakeupCountFd;
 int SystemSuspendTest::stateFd;
 TemporaryFile SystemSuspendTest::wakeupReasonsFile;
+TemporaryFile SystemSuspendTest::suspendTimeFile;
 
 // Tests that autosuspend thread can only be enabled once.
 TEST_F(SystemSuspendTest, OnlyOneEnableAutosuspend) {
@@ -313,6 +320,51 @@ TEST_F(SystemSuspendTest, WakeLockStressTest) {
         tds[i].join();
     }
     ASSERT_EQ(getActiveWakeLockCount(), 0);
+}
+
+TEST_F(SystemSuspendTest, SuspendBackoffTest) {
+    const std::string longSuspend = "0.001 10.0";
+    const std::string shortSuspend = "0.001 0.09";
+
+    SystemSuspend* s = static_cast<SystemSuspend*>(suspendService.get());
+    unique_fd suspendTimeWriteFd = unique_fd(
+        TEMP_FAILURE_RETRY(open(SystemSuspendTest::suspendTimeFile.path, O_CLOEXEC | O_WRONLY)));
+
+    checkLoop(3);
+
+    // Sleep time shall be set to base sleep time after a long suspend
+    lseek(suspendTimeWriteFd, 0, SEEK_SET);
+    ASSERT_TRUE(WriteStringToFd(longSuspend, suspendTimeWriteFd));
+    checkLoop(1);
+    ASSERT_EQ(s->getSleepTime(), kSleepTimeConfig.baseSleepTime);
+
+    // Sleep time shall back off after the configured backoff threshold
+    std::chrono::milliseconds expectedSleepTime = std::chrono::round<std::chrono::milliseconds>(
+        kSleepTimeConfig.baseSleepTime * kSleepTimeConfig.sleepTimeScaleFactor);
+    lseek(suspendTimeWriteFd, 0, SEEK_SET);
+    ASSERT_TRUE(WriteStringToFd(shortSuspend, suspendTimeWriteFd));
+    checkLoop(kSleepTimeConfig.suspendBackoffThreshold);
+    ASSERT_EQ(s->getSleepTime(), kSleepTimeConfig.baseSleepTime);
+    checkLoop(1);
+    ASSERT_EQ(s->getSleepTime(), expectedSleepTime);
+
+    // Sleep time shall return to base sleep time after a long suspend
+    lseek(suspendTimeWriteFd, 0, SEEK_SET);
+    ASSERT_TRUE(WriteStringToFd(longSuspend, suspendTimeWriteFd));
+    checkLoop(1);
+    ASSERT_EQ(s->getSleepTime(), kSleepTimeConfig.baseSleepTime);
+
+    // Sleep time shall be capped at the configured maximum
+    lseek(suspendTimeWriteFd, 0, SEEK_SET);
+    ASSERT_TRUE(WriteStringToFd(shortSuspend, suspendTimeWriteFd));
+    checkLoop(3 + kSleepTimeConfig.suspendBackoffThreshold);
+    ASSERT_EQ(s->getSleepTime(), kSleepTimeConfig.maxSleepTime);
+
+    // Sleep time shall return to base sleep time after a long suspend
+    lseek(suspendTimeWriteFd, 0, SEEK_SET);
+    ASSERT_TRUE(WriteStringToFd(longSuspend, suspendTimeWriteFd));
+    checkLoop(1);
+    ASSERT_EQ(s->getSleepTime(), kSleepTimeConfig.baseSleepTime);
 }
 
 // Callbacks are passed around as sp<>. However, mock expectations are verified when mock objects
@@ -663,7 +715,7 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
             unique_fd(-1) /* wakeupCountFd */, unique_fd(-1) /* stateFd */,
             unique_fd(dup(suspendStatsFd)), 1 /* maxNativeStatsEntries */,
             unique_fd(dup(kernelWakelockStatsFd.get())), unique_fd(-1) /* wakeupReasonsFd */,
-            unique_fd(-1) /*suspendTimeFd*/, kDefaultSleepTimeConfig, suspendControl);
+            unique_fd(-1) /*suspendTimeFd*/, kSleepTimeConfig, suspendControl);
     }
 
     virtual void TearDown() override {
