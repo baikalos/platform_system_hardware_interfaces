@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d561356e_286a182b",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-03T00:24:15Z",
+      "side": 1,
+      "message": "logging separate failure for parsing.",
+      "parentUuid": "00f70942_57550f96",
+      "range": {
+        "startLine": 107,
+        "startChar": 35,
+        "endLine": 107,
+        "endChar": 69
+      },
+      "revId": "b06678f8d8290166b9b78485f21e5c778caf813d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3af6c58b_02e7dacb",
