@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac1bf3f_729dd519",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-11-03T18:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a21e34_8e15a449",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 60
+      },
+      "revId": "eb12daf78e75ce6d1ec8250b8edc5a611e7f7be0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3382b58_2f10156d",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8c3a7d_58f27278",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-11-03T18:40:16Z",
+      "side": 1,
+      "message": "Comment updated. \nWe will iterate through all names as same callback can be registered to multiple wakelocks. \n\nWhile iterating callbacks under a wakelock name, we will break on first found as a callback cannot registered to a wakelock twice.",
+      "parentUuid": "b3382b58_2f10156d",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 31
+      },
+      "revId": "eb12daf78e75ce6d1ec8250b8edc5a611e7f7be0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b13db5_9f45feb3",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-03T17:55:22Z",
       "side": 1,
       "message": "btw - if you were getting errors without the break, you could do:\n\n        if (who \u003d\u003d ...) {\n            it \u003d mNameToService.erase(it);\n        } else {\n            ++it;\n        }",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 22
+      },
+      "revId": "eb12daf78e75ce6d1ec8250b8edc5a611e7f7be0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61df555_17b15da5",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-11-03T18:40:16Z",
+      "side": 1,
+      "message": "Leave the break due to the updated comment above.",
+      "parentUuid": "65b13db5_9f45feb3",
       "range": {
         "startLine": 116,
         "startChar": 0,
