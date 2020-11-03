@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f12490f_aad00c69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-03T20:52:01Z",
+      "side": 1,
+      "message": "LGTM from the algo side, happy to +2 if all the framework side considerations are addressed?",
+      "revId": "647cf12c646a0efa374c3afb7498858ad8c21d38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
