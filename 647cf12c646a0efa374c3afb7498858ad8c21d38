@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a128deee_72127e9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:53:02Z",
+      "side": 1,
+      "message": "Currently only unit tests to verify correct function of this. With the default settings this behaves exactly the same as the existing suspend backoff algorithm but we plan on adding power tests as we tune the parameters for various devices.",
+      "parentUuid": "376c8c6b_135e9409",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "647cf12c646a0efa374c3afb7498858ad8c21d38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4f12490f_aad00c69",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a3a31c_1a2710c9",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ba9c91_83e3d018",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 88
+      },
+      "revId": "647cf12c646a0efa374c3afb7498858ad8c21d38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a5bdf9c_5458d5d5",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-04T00:24:48Z",
       "side": 1,
       "message": "nit: log `content`",
+      "range": {
+        "startLine": 103,
+        "startChar": 55,
+        "endLine": 103,
+        "endChar": 57
+      },
+      "revId": "647cf12c646a0efa374c3afb7498858ad8c21d38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "327c1d9f_adeed450",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a5bdf9c_5458d5d5",
       "range": {
         "startLine": 103,
         "startChar": 55,
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ed2fa1_2fdc4035",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b12957e_eba4d4f2",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "647cf12c646a0efa374c3afb7498858ad8c21d38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82538ffe_6c807e59",
@@ -123,6 +219,30 @@
       "writtenOn": "2020-11-04T00:24:48Z",
       "side": 1,
       "message": "nit: use SleepTimeConfig here?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 65
+      },
+      "revId": "647cf12c646a0efa374c3afb7498858ad8c21d38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9807cc2_7ede6e4a",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:53:02Z",
+      "side": 1,
+      "message": "These are the default values to use if the system properties are not defined and the types do not quite match up.",
+      "parentUuid": "82538ffe_6c807e59",
       "range": {
         "startLine": 57,
         "startChar": 0,
