@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "176600c2_4966ed13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-04T00:27:08Z",
+      "side": 1,
+      "message": "I still wish there was a good way to test at least one of the two enables, but I understand why that isn\u0027t a straightforward thing to do.  If you come up with an idea, I think it\u0027s worth adding.",
+      "revId": "f4e6be0555798efc128b6dda01bf70dc8a43847b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
