@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90dcc2f6_166e9978",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T21:51:59Z",
+      "side": 1,
+      "message": "seeing flaky test failures on cf_x86_phone-userdebug\nsystem/hardware/interfaces/suspend/1.0/default/SystemSuspendUnitTest.cpp:377: Failure\nExpected equality of these values:\ns-\u003egetSleepTime()\nWhich is: 8-byte object \u003c90-01 00-00 00-00 00-00\u003e\nkSleepTimeConfig.baseSleepTime\nWhich is: 8-byte object \u003c64-00 00-00 00-00 00-00\u003e\n\nI have a strong suspicion this is because the unit test is attempting to read mSleepTime without proper locking.\n\nmSleepTime is read and written exclusively in the autosuspend thread, so normally no locking is necessary.\n\nHowever in order for the unit test to exercise this code and verify we are suspending for the correct amount of time, it needs to read mSleepTime as well, which would require a lock of some kind.",
+      "range": {
+        "startLine": 375,
+        "startChar": 4,
+        "endLine": 377,
+        "endChar": 65
+      },
+      "revId": "482deba38b93afe3dbdb037be7f95b7592e8e7e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
