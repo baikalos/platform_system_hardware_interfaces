@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ba0400_4a71cd21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-04T21:47:52Z",
+      "side": 1,
+      "message": "I keep thinking maybe there\u0027s some subtle difference between the old fgets()-based code in BSS and the new code here that might explain some of what we\u0027re seeing, but I haven\u0027t found anything concrete yet.  In case it jogs anyone else\u0027s thinking, here are the kinds of content we could get from the sysfs node on a successful read:\n\n---\n\u003cEOF\u003e\n---\n\u003cAbort reason\u003e\u003cEOF\u003e\n---\n-1\u003cAbnormal wakeup reason\u003e\u003cEOF\u003e\n---\n\u003cIRQnum\u003e\u003cIRQ info\u003e\\n\n\u003cEOF\u003e\n---\n\u003cIRQnum\u003e\u003cIRQ info\u003e\\n\n\u003cIRQnum\u003e\u003cIRQ info\u003e\\n        (or potentially even more lines like this)\n\u003cEOF\u003e\n---\n",
+      "revId": "1510b91a47420c4600a4033d5b6ddad059b8d59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055d43c7_1628e983",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-04T21:47:52Z",
+      "side": 1,
+      "message": "It looks like ReadFdToString already wraps the operation that can return temporary failures in TEMP_FAILURE_RETRY anyway, so this might be redundant.  Plus ReadFdToString() returns a bool and TEMP_FAILURE_RETRY() is for things that can return -1, unless I\u0027m looking at the wrong code for one or both of them, so it wouldn\u0027t even do anything.",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "1510b91a47420c4600a4033d5b6ddad059b8d59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
