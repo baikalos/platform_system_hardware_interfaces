@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d642984_7071ffc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-04T16:12:47Z",
+      "side": 1,
+      "message": "api-review will need an api reviewer btw - ACL is messed up, they should be guarding sepolicy contexts if anything, since this is a nice wrapper around get property calls, but not all property APIs are expressed this way",
+      "revId": "74387c66149e1b34479163642165b8fba5cf2554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
