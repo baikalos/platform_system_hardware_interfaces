@@ -77,6 +77,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2222574c_306391ab",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:19:12Z",
+      "side": 1,
+      "message": "Split into 3 separate tests",
+      "parentUuid": "95285387_dbbc7bde",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 47
+      },
+      "revId": "69376e75ca672d9f12b703e2154de9cdb2ede930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ad7aac0_8030ea77",
@@ -90,6 +114,30 @@
       "writtenOn": "2020-11-03T21:11:16Z",
       "side": 1,
       "message": "Do you need this checkloop?",
+      "range": {
+        "startLine": 333,
+        "startChar": 4,
+        "endLine": 333,
+        "endChar": 17
+      },
+      "revId": "69376e75ca672d9f12b703e2154de9cdb2ede930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b07641_e358117f",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:19:12Z",
+      "side": 1,
+      "message": "nope. removed.",
+      "parentUuid": "1ad7aac0_8030ea77",
       "range": {
         "startLine": 333,
         "startChar": 4,
@@ -123,6 +171,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6b1661_3e155493",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:19:12Z",
+      "side": 1,
+      "message": "factored this out into suspendFor()",
+      "parentUuid": "371b70f5_bc934dab",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 338,
+        "endChar": 17
+      },
+      "revId": "69376e75ca672d9f12b703e2154de9cdb2ede930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99a4ff9b_33becb33",
@@ -136,6 +208,30 @@
       "writtenOn": "2020-11-03T21:11:16Z",
       "side": 1,
       "message": "This is same as on L351. You can make it a method in the test fixture class. And call it in tearDown().",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 65
+      },
+      "revId": "69376e75ca672d9f12b703e2154de9cdb2ede930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51439be_86f0f0f4",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-04T00:19:12Z",
+      "side": 1,
+      "message": "Factored into suspendFor(). I would like to avoid calling in tearDown() if possible since that would result in that getting done for all of the other tests as well. Factoring into suspendFor() reduces this to 2 lines.",
+      "parentUuid": "99a4ff9b_33becb33",
       "range": {
         "startLine": 363,
         "startChar": 0,
