@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+1: Kelly Rossmoyer <krossmo@google.com>
+Code-Review+2: Tri Vo <trong@google.com>
+Autosubmit+1: Tri Vo <trong@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 04 Nov 2020 01:54:19 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/system/hardware/interfaces/+/1486304
+Project: platform/system/hardware/interfaces
+Branch: refs/heads/master
