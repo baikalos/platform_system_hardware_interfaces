@@ -22,6 +22,30 @@
       },
       "revId": "482deba38b93afe3dbdb037be7f95b7592e8e7e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daefbabc_471dac90",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-05T04:04:25Z",
+      "side": 1,
+      "message": "Ahh I see. Many of the callback tests are already racy and call checkLoop() some number of times to wait for the callback to happen. In your case you can\u0027t because the test depends on the number of checkLoops. AFAIK this isn\u0027t being used for any CI or cts tests, so it would be ok to add some sleep time to suspendFor() to mitigate this, as we don\u0027t want to introduce any synchronization here.",
+      "parentUuid": "90dcc2f6_166e9978",
+      "range": {
+        "startLine": 375,
+        "startChar": 4,
+        "endLine": 377,
+        "endChar": 65
+      },
+      "revId": "482deba38b93afe3dbdb037be7f95b7592e8e7e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
