@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87bf75e_d652fea2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-11-05T06:14:23Z",
+      "side": 1,
+      "message": "Thanks for the review Kalesh, the comments are addressed. PTLA. \nSteve, this will need your owner + AAR vote, thank you!!",
+      "revId": "40df8e56775ec57389f3fd28c7e2868bb490d7c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
