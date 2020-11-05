@@ -86,6 +86,29 @@
       "parentUuid": "5d642984_7071ffc7",
       "revId": "74387c66149e1b34479163642165b8fba5cf2554",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3175b9_fd635edd",
+        "filename": "suspend/1.0/default/SuspendProperties.sysprop",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-11-05T18:58:39Z",
+      "side": 1,
+      "message": "Who sets these properties? Is it done by the vendor per device or is it always platform code?",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "74387c66149e1b34479163642165b8fba5cf2554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
