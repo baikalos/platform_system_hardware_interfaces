@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b03f62ff_45dd8105",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-06T22:50:32Z",
+      "side": 1,
+      "message": "Still, the function getSleepTime() is error prone due to this problem. I\u0027m not sure that it is a good design decision to have it exposed as a public method.",
+      "parentUuid": "7ae23cb7_29f2d075",
+      "revId": "482deba38b93afe3dbdb037be7f95b7592e8e7e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90dcc2f6_166e9978",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 6
