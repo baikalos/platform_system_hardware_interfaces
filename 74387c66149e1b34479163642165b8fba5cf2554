@@ -133,6 +133,30 @@
       },
       "revId": "74387c66149e1b34479163642165b8fba5cf2554",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f1aa16_c5218983",
+        "filename": "suspend/1.0/default/SuspendProperties.sysprop",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-11-06T15:50:00Z",
+      "side": 1,
+      "message": "jiyong@: given these are set by vendors via build but owned by the \"Platform\" component, don\u0027t we want to track these? Seems like internal is the wrong scope given they\u0027re read and written by differing parties.",
+      "parentUuid": "8e9c42ca_3fda5aad",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "74387c66149e1b34479163642165b8fba5cf2554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
