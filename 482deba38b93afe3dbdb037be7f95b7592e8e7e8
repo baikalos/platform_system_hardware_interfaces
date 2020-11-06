@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6222e586_271b68fe",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-06T23:02:22Z",
+      "side": 1,
+      "message": "I could expose updateSleepTime() as a public method and have it return the new mSleepTime.\n\nThen the unit tests could test updateSleepTime() in isolation.\n\nThis would also have the added bonus of allowing more sophisticated tests.",
+      "parentUuid": "b03f62ff_45dd8105",
+      "revId": "482deba38b93afe3dbdb037be7f95b7592e8e7e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90dcc2f6_166e9978",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 6
