@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ae23cb7_29f2d075",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-06T03:58:16Z",
+      "side": 1,
+      "message": "Cna you wait here for autoSuspendThread to become blocked again?\n\nwhile (!isReadBlocked(wakeupCountFd)) {}\n\nthat should avoid any flakiness due to synchronization",
+      "revId": "482deba38b93afe3dbdb037be7f95b7592e8e7e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90dcc2f6_166e9978",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 6
