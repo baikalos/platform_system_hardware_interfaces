@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca32191_eefc5d65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-08T23:45:26Z",
+      "side": 1,
+      "message": "I guess you would then need non-empty txt files.",
+      "revId": "b48b20087c7d2851e144e39bcabafe554b3cf7e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
