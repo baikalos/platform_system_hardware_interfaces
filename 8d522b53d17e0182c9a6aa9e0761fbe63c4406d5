@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10972fb7_6ae0aa7c",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-11-09T23:35:43Z",
+      "side": 1,
+      "message": "nit: should be 4 space indents to match the rest of the file",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "revId": "8d522b53d17e0182c9a6aa9e0761fbe63c4406d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc603dc_8a04ca01",
+        "filename": "suspend/1.0/default/SuspendProperties.sysprop",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2020-11-09T23:35:43Z",
+      "side": 1,
+      "message": "nit: max_sleep_time_millis\n\n- Why a period before msec? That\u0027s generally used for namespacing, which the time unit isn\u0027t really doing\n\n- In go/android-api-guidelines we suggest Nanos and Micros as method suffixes, so let\u0027s use \"millis\" over \"msec\" to be consistent with the rest of the platform.\n\nDitto for properties below, including using an underscore for count and enabled suffixes.",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "8d522b53d17e0182c9a6aa9e0761fbe63c4406d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
