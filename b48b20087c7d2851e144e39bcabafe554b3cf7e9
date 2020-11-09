@@ -51,6 +51,24 @@
       "message": "The txt files need to be updated, see the build failure:\n\n```\n******************************\nAPI of sysprop_library SuspendProperties doesn\u0027t match with current.txt\nPlease update current.txt by:\nm SuspendProperties-dump-api \u0026\u0026 rm -rf system/hardware/interfaces/suspend/1.0/default/api/SuspendProperties-current.txt \u0026\u0026 cp -f out/soong/.intermediates/system/hardware/interfaces/suspend/1.0/default/SuspendProperties_sysprop_library/api-dump.txt system/hardware/interfaces/suspend/1.0/default/api/SuspendProperties-current.txt\n******************************\n```",
       "revId": "b48b20087c7d2851e144e39bcabafe554b3cf7e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9f6bd1_7a8c09da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-09T16:25:13Z",
+      "side": 1,
+      "message": "Okay I updated the txt files.",
+      "parentUuid": "1e9c9bd1_4c22c451",
+      "revId": "b48b20087c7d2851e144e39bcabafe554b3cf7e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
