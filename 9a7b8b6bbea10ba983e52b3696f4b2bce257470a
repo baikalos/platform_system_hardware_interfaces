@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d4a1d0_8936cda8",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-09T16:22:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8e2627e_a278fb56",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 61
+      },
+      "revId": "9a7b8b6bbea10ba983e52b3696f4b2bce257470a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a62e3d2_7023b588",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79eec33_df671d22",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-09T16:22:27Z",
+      "side": 1,
+      "message": "This is what clang-format corrects it to. repo hooks fail if I put the brackets on the same line",
+      "parentUuid": "4a62e3d2_7023b588",
+      "range": {
+        "startLine": 248,
+        "startChar": 46,
+        "endLine": 249,
+        "endChar": 9
+      },
+      "revId": "9a7b8b6bbea10ba983e52b3696f4b2bce257470a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5379eb_95ca562f",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-09T15:04:59Z",
       "side": 1,
       "message": "nit: Maybe ASSERT_EQ(actual.count(), expected.count()) \u003c\u003c \"Incorrect sleep time\".",
+      "range": {
+        "startLine": 251,
+        "startChar": 36,
+        "endLine": 252,
+        "endChar": 70
+      },
+      "revId": "9a7b8b6bbea10ba983e52b3696f4b2bce257470a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ed35d9_2b82d2f8",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-09T16:22:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5379eb_95ca562f",
       "range": {
         "startLine": 251,
         "startChar": 36,
