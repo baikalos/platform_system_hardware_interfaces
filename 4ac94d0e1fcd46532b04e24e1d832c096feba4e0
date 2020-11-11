@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf0a1cb_cbbc76c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-11T16:44:37Z",
+      "side": 1,
+      "message": "What on product uses this? I thought it should go through NDK/SDK APIs on product?",
+      "revId": "4ac94d0e1fcd46532b04e24e1d832c096feba4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
