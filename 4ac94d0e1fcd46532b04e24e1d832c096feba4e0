@@ -16,6 +16,24 @@
       "message": "What on product uses this? I thought it should go through NDK/SDK APIs on product?",
       "revId": "4ac94d0e1fcd46532b04e24e1d832c096feba4e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e24c917_ce8c3386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-11T23:56:58Z",
+      "side": 1,
+      "message": "As this is marked as VNDK, it must be available to both product and vendor.",
+      "parentUuid": "4bf0a1cb_cbbc76c1",
+      "revId": "4ac94d0e1fcd46532b04e24e1d832c096feba4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
