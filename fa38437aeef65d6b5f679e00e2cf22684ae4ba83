@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "fa38437aeef65d6b5f679e00e2cf22684ae4ba83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce28b0af_f016a9b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-11-12T17:00:09Z",
+      "side": 1,
+      "message": "Note that the presubmit error seems real.",
+      "revId": "fa38437aeef65d6b5f679e00e2cf22684ae4ba83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
