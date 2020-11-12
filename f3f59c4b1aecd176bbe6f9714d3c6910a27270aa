@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c45041_5218c472",
+        "filename": "keystore2/aidl/android/system/keystore2/KeyFlags.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-12T18:29:21Z",
+      "side": 1,
+      "message": "nit: consider const int for flags (saves having to cast this out of enum class)",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "f3f59c4b1aecd176bbe6f9714d3c6910a27270aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
