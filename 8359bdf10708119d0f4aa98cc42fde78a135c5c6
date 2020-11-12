@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ee37f4_d8b84b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1678423
+      },
+      "writtenOn": "2020-11-12T16:35:51Z",
+      "side": 1,
+      "message": "The two files changed are deleted in the next CL. Shouldn\u0027t this CL be abandoned?",
+      "revId": "8359bdf10708119d0f4aa98cc42fde78a135c5c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
