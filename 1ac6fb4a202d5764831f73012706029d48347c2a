@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "114269da_59ade53b",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T18:56:08Z",
+      "side": 1,
+      "message": "from L105, wakeLockIt is already incremented, so I think this might skip over an element.\n\nPrefer this setup (and might as well save the break on L107):\n\n    for (auto it \u003d ....begin(); it !\u003d .....end();) {\n        if (...) {\n            it \u003d ....erase(lit);\n        } else {\n            ++it;\n        }\n    }\n\nOr save yourself the trouble and use erase w/ remove_if",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "1ac6fb4a202d5764831f73012706029d48347c2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
