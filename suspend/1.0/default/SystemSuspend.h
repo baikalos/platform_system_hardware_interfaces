@@ -28,6 +28,7 @@
 
 #include "SuspendControlService.h"
 #include "WakeLockEntryList.h"
+#include "WakeupList.h"
 
 namespace android {
 namespace system {
@@ -103,6 +104,7 @@ class SystemSuspend : public ISystemSuspend {
     bool enableAutosuspend();
     bool forceSuspend();
 
+    const WakeupList& getWakeupList() const;
     const WakeLockEntryList& getStatsList() const;
     void updateWakeLockStatOnRelease(const std::string& name, int pid, TimestampType timeNow);
     void updateStatsNow();
@@ -134,6 +136,7 @@ class SystemSuspend : public ISystemSuspend {
     sp<SuspendControlServiceInternal> mControlServiceInternal;
 
     WakeLockEntryList mStatsList;
+    WakeupList mWakeupList;
 
     // If true, use mSuspendCounter to keep track of native wake locks. Otherwise, rely on
     // /sys/power/wake_lock interface to block suspend.
@@ -142,6 +145,8 @@ class SystemSuspend : public ISystemSuspend {
     unique_fd mWakeLockFd;
     unique_fd mWakeUnlockFd;
     unique_fd mWakeupReasonsFd;
+
+    bool mAutosuspendEnabled;
 };
 
 }  // namespace V1_0
