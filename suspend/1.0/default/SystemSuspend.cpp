@@ -147,6 +147,7 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
       mControlService(controlService),
       mControlServiceInternal(controlServiceInternal),
       mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
+      mWakeupList(1000),
       mUseSuspendCounter(useSuspendCounter),
       mWakeLockFd(-1),
       mWakeUnlockFd(-1),
@@ -317,6 +318,10 @@ const WakeLockEntryList& SystemSuspend::getStatsList() const {
 
 void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
+}
+
+const WakeupList& SystemSuspend::getWakeupList() const {
+    return mWakeupList;
 }
 
 /**
