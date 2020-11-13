@@ -16,6 +16,29 @@
       "message": "The two files changed are deleted in the next CL. Shouldn\u0027t this CL be abandoned?",
       "revId": "8359bdf10708119d0f4aa98cc42fde78a135c5c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2365f7_613ff034",
+        "filename": "keystore2/aidl/android/system/keystore2/KeyParameter.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-13T03:15:46Z",
+      "side": 1,
+      "message": "union is supported now btw",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "8359bdf10708119d0f4aa98cc42fde78a135c5c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
