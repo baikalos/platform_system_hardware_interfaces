@@ -42,6 +42,7 @@
 
 #include "SuspendControlService.h"
 #include "SystemSuspend.h"
+#include "WakeupList.h"
 
 using android::sp;
 using android::base::Result;
@@ -58,6 +59,7 @@ using android::system::suspend::BnWakelockCallback;
 using android::system::suspend::ISuspendControlService;
 using android::system::suspend::internal::ISuspendControlServiceInternal;
 using android::system::suspend::internal::WakeLockInfo;
+using android::system::suspend::internal::WakeupInfo;
 using android::system::suspend::V1_0::getTimeNow;
 using android::system::suspend::V1_0::ISystemSuspend;
 using android::system::suspend::V1_0::IWakeLock;
@@ -69,6 +71,7 @@ using android::system::suspend::V1_0::SuspendStats;
 using android::system::suspend::V1_0::SystemSuspend;
 using android::system::suspend::V1_0::TimestampType;
 using android::system::suspend::V1_0::WakeLockType;
+using android::system::suspend::V1_0::WakeupList;
 using namespace std::chrono_literals;
 
 namespace android {
@@ -1184,6 +1187,119 @@ TEST_F(SystemSuspendSameThreadTest, GetSuspendStats) {
     ASSERT_EQ(stats.lastFailedDev, "fakeDev");
     ASSERT_EQ(stats.lastFailedErrno, 42);
     ASSERT_EQ(stats.lastFailedStep, "fakeStep");
+}
+
+class WakeupListTest : public ::testing::Test {
+   public:
+    virtual void SetUp() override {}
+
+    virtual void TearDown() override {}
+};
+
+TEST_F(WakeupListTest, TestEmpty) {
+    WakeupList wakeupList(3);
+
+    std::vector<WakeupInfo> wakeups;
+    wakeupList.getWakeupStats(&wakeups);
+
+    ASSERT_TRUE(wakeups.empty());
+}
+
+TEST_F(WakeupListTest, TestNoCapacity) {
+    WakeupList wakeupList(0);
+
+    wakeupList.update({"a"});
+
+    std::vector<WakeupInfo> wakeups;
+    wakeupList.getWakeupStats(&wakeups);
+
+    ASSERT_TRUE(wakeups.empty());
+}
+
+TEST_F(WakeupListTest, TestConcat) {
+    WakeupList wakeupList(3);
+
+    wakeupList.update({"a", "b"});
+
+    std::vector<WakeupInfo> wakeups;
+    wakeupList.getWakeupStats(&wakeups);
+
+    ASSERT_EQ(wakeups[0].name, "a;b");
+    ASSERT_EQ(wakeups[0].count, 1);
+}
+
+TEST_F(WakeupListTest, TestNewEntry) {
+    WakeupList wakeupList(3);
+
+    wakeupList.update({"a"});
+    wakeupList.update({"b"});
+
+    std::vector<WakeupInfo> wakeups;
+    wakeupList.getWakeupStats(&wakeups);
+
+    ASSERT_EQ(wakeups[1].name, "a");
+    ASSERT_EQ(wakeups[1].count, 1);
+    ASSERT_EQ(wakeups[0].name, "b");
+    ASSERT_EQ(wakeups[0].count, 1);
+}
+
+TEST_F(WakeupListTest, TestIncrement) {
+    WakeupList wakeupList(3);
+
+    wakeupList.update({"a"});
+    wakeupList.update({"b"});
+    wakeupList.update({"a"});
+
+    std::vector<WakeupInfo> wakeups;
+    wakeupList.getWakeupStats(&wakeups);
+
+    ASSERT_EQ(wakeups[0].name, "a");
+    ASSERT_EQ(wakeups[0].count, 2);
+    ASSERT_EQ(wakeups[1].name, "b");
+    ASSERT_EQ(wakeups[1].count, 1);
+}
+
+TEST_F(WakeupListTest, TestCapacity) {
+    WakeupList wakeupList(3);
+
+    wakeupList.update({"a"});
+    wakeupList.update({"b"});
+    wakeupList.update({"c"});
+    wakeupList.update({"d"});
+
+    std::vector<WakeupInfo> wakeups;
+    wakeupList.getWakeupStats(&wakeups);
+
+    ASSERT_EQ(wakeups.size(), 3);
+    ASSERT_EQ(wakeups[0].name, "d");
+    ASSERT_EQ(wakeups[0].count, 1);
+    ASSERT_EQ(wakeups[1].name, "c");
+    ASSERT_EQ(wakeups[1].count, 1);
+    ASSERT_EQ(wakeups[2].name, "b");
+    ASSERT_EQ(wakeups[2].count, 1);
+}
+
+TEST_F(WakeupListTest, TestLRUEvict) {
+    WakeupList wakeupList(3);
+
+    wakeupList.update({"a"});
+    wakeupList.update({"b"});
+    wakeupList.update({"a"});
+    wakeupList.update({"c"});
+    wakeupList.update({"c"});
+    wakeupList.update({"c"});
+    wakeupList.update({"d"});
+
+    std::vector<WakeupInfo> wakeups;
+    wakeupList.getWakeupStats(&wakeups);
+
+    ASSERT_EQ(wakeups.size(), 3);
+    ASSERT_EQ(wakeups[0].name, "d");
+    ASSERT_EQ(wakeups[0].count, 1);
+    ASSERT_EQ(wakeups[1].name, "c");
+    ASSERT_EQ(wakeups[1].count, 3);
+    ASSERT_EQ(wakeups[2].name, "a");
+    ASSERT_EQ(wakeups[2].count, 2);
 }
 
 }  // namespace android
