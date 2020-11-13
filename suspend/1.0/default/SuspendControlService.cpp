@@ -172,10 +172,23 @@ binder::Status SuspendControlServiceInternal::getWakeLockStats(
     return binder::Status::ok();
 }
 
+binder::Status SuspendControlServiceInternal::getWakeupStats(
+    std::vector<WakeupInfo>* _aidl_return) {
+    const auto suspendService = mSuspend.promote();
+    if (!suspendService) {
+        return binder::Status::fromExceptionCode(binder::Status::Exception::EX_NULL_POINTER,
+                                                 String8("Null reference to suspendService"));
+    }
+
+    suspendService->getWakeupList().getWakeupStats(_aidl_return);
+    return binder::Status::ok();
+}
+
 static std::string dumpUsage() {
     return "\nUsage: adb shell dumpsys suspend_control [option]\n\n"
            "   Options:\n"
            "       --wakelocks      : returns wakelock stats.\n"
+           "       --wakeups        : returns wakeup stats.\n"
            "       --suspend_stats  : returns suspend stats.\n"
            "       --help or -h     : prints this message.\n\n"
            "   Note: All stats are returned  if no or (an\n"
@@ -191,14 +204,20 @@ status_t SuspendControlServiceInternal::dump(int fd, const Vector<String16>& arg
     }
 
     bool wakelocks = true;
+    bool wakeups = true;
     bool suspend_stats = true;
 
     if (args.size() > 0) {
         std::string arg(String8(args[0]).string());
         if (arg == "--wakelocks") {
             suspend_stats = false;
+            wakeups = false;
+        } else if (arg == "wakeups") {
+            suspend_stats = false;
+            wakelocks = false;
         } else if (arg == "--suspend_stats") {
             wakelocks = false;
+            wakeups = false;
         } else if (arg == "-h" || arg == "--help") {
             std::string usage = dumpUsage();
             dprintf(fd, "%s\n", usage.c_str());
@@ -212,6 +231,17 @@ status_t SuspendControlServiceInternal::dump(int fd, const Vector<String16>& arg
         wlStats << suspendService->getStatsList();
         dprintf(fd, "\n%s\n", wlStats.str().c_str());
     }
+
+    if (wakeups) {
+        std::stringstream wakeupStats;
+        std::vector<WakeupInfo> wakeups;
+        suspendService->getWakeupList().getWakeupStats(&wakeups);
+        for (const auto& w : wakeups) {
+            wakeupStats << w.name << " = " << w.count << std::endl;
+        }
+        dprintf(fd, "Wakeups:\n%s\n", wakeupStats.str().c_str());
+    }
+
     if (suspend_stats) {
         Result<SuspendStats> res = suspendService->getSuspendStats();
         if (!res.ok()) {
