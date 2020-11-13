@@ -87,13 +87,14 @@ binder::Status SuspendControlService::registerWakelockCallback(
 
 void SuspendControlService::binderDied(const wp<IBinder>& who) {
     auto l = std::lock_guard(mCallbackLock);
-    mCallbacks.erase(findCb(who));
+    if (!mCallbacks.empty()) {
+        mCallbacks.erase(findCb(who));
+    }
 
     auto lWakelock = std::lock_guard(mWakelockCallbackLock);
     // Iterate through all wakelock names as same callback can be registered with different
     // wakelocks.
-    for (auto wakelockIt = mWakelockCallbacks.begin(); wakelockIt != mWakelockCallbacks.end();
-         ++wakelockIt) {
+    for (auto wakelockIt = mWakelockCallbacks.begin(); wakelockIt != mWakelockCallbacks.end();) {
         // Iterate through all callbacks but break on first found as a callback cannot registered
         // twice to the same wakelock.
         for (auto callbackIt = wakelockIt->second.begin(); callbackIt != wakelockIt->second.end();
@@ -101,10 +102,13 @@ void SuspendControlService::binderDied(const wp<IBinder>& who) {
             if (who == IInterface::asBinder(*callbackIt)) {
                 wakelockIt->second.erase(callbackIt);
                 if (wakelockIt->second.empty()) {
-                    mWakelockCallbacks.erase(wakelockIt);
+                    wakelockIt = mWakelockCallbacks.erase(wakelockIt);
                 }
                 break;
             }
+        }
+        if (wakelockIt != mWakelockCallbacks.end()) {
+            ++wakelockIt;
         }
     }
 }
