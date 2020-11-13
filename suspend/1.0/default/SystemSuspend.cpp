@@ -147,6 +147,7 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
       mControlService(controlService),
       mControlServiceInternal(controlServiceInternal),
       mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
+      mWakeupList(1000),
       mUseSuspendCounter(useSuspendCounter),
       mWakeLockFd(-1),
       mWakeUnlockFd(-1),
@@ -260,6 +261,7 @@ void SystemSuspend::initAutosuspend() {
             std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
             mControlService->notifyWakeup(success, wakeupReasons);
 
+            mWakeupList.update(wakeupReasons);
             updateSleepTime(success, suspendTime.suspendTime);
         }
     });
@@ -317,6 +319,10 @@ const WakeLockEntryList& SystemSuspend::getStatsList() const {
 
 void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
+}
+
+const WakeupList& SystemSuspend::getWakeupList() const {
+    return mWakeupList;
 }
 
 /**
