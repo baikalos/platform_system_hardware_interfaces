@@ -172,6 +172,18 @@ binder::Status SuspendControlServiceInternal::getWakeLockStats(
     return binder::Status::ok();
 }
 
+binder::Status SuspendControlServiceInternal::getWakeupStats(
+    std::vector<WakeupInfo>* _aidl_return) {
+    const auto suspendService = mSuspend.promote();
+    if (!suspendService) {
+        return binder::Status::fromExceptionCode(binder::Status::Exception::EX_NULL_POINTER,
+                                                 String8("Null reference to suspendService"));
+    }
+
+    suspendService->getWakeupList().getWakeupStats(_aidl_return);
+    return binder::Status::ok();
+}
+
 static std::string dumpUsage() {
     return "\nUsage: adb shell dumpsys suspend_control [option]\n\n"
            "   Options:\n"

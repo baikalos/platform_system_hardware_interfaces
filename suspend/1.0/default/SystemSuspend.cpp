@@ -319,6 +319,10 @@ void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
 }
 
+const WakeupList& SystemSuspend::getWakeupList() const {
+    return mWakeupList;
+}
+
 /**
  * Returns suspend stats.
  */
