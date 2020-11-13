@@ -16,6 +16,23 @@
       "message": "Thank you very much reviewers!",
       "revId": "02cb25ebeb7a0c30507c5fd9c246f7998133e3ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "533944fc_1cd3c06b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-11-13T21:34:34Z",
+      "side": 1,
+      "message": "This appears to fix the P0 b/173200764.\n\nI hope we can land this very soon.  Thanks!",
+      "revId": "02cb25ebeb7a0c30507c5fd9c246f7998133e3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
