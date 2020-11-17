@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33efae78_293d8323",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:17:43Z",
+      "side": 1,
+      "message": "so - this test tests things in process, and binderDied won\u0027t be executed there. Could we also add an integration test or before that to get this in, verify manually these are updated like you expect them to be.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "9346190f0945d0b7903e08aae96d5569048dcd24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
