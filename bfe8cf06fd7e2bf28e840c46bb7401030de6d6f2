@@ -22,6 +22,30 @@
       },
       "revId": "bfe8cf06fd7e2bf28e840c46bb7401030de6d6f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49dcd78_705ce6f8",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-11-18T01:43:17Z",
+      "side": 1,
+      "message": "I understand how this could be helpful, but this goes way what this interface spec is supposed to provide.",
+      "parentUuid": "16e5b8d5_20b668e0",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "bfe8cf06fd7e2bf28e840c46bb7401030de6d6f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
