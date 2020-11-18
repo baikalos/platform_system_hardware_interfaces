@@ -227,6 +227,30 @@
       },
       "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e7fcd3_470ed968",
+        "filename": "suspend/1.0/default/WakeupList.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-18T19:54:45Z",
+      "side": 1,
+      "message": "This is a reasonable code improvement for a future change, but I believe this is out of scope for this change.\n\nDoing that would require some large modifications to the wakelock list code and require entirely separate round of testing.",
+      "parentUuid": "a0d9a8aa_55ee16e3",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
