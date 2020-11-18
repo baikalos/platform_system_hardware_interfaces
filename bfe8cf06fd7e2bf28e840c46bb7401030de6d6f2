@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fefe712_3d0ec9ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1678423
+      },
+      "writtenOn": "2020-11-18T01:50:42Z",
+      "side": 1,
+      "message": "Ok, at least a link to where its usage is described would be helpful.",
+      "revId": "bfe8cf06fd7e2bf28e840c46bb7401030de6d6f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16e5b8d5_20b668e0",
