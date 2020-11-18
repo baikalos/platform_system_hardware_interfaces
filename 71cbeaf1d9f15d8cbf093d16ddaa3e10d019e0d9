@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fbee0db_cbfc5863",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-18T19:39:37Z",
+      "side": 1,
+      "message": "Seems fine to me.",
+      "parentUuid": "a338bb2a_3da84279",
+      "range": {
+        "startLine": 262,
+        "startChar": 12,
+        "endLine": 262,
+        "endChar": 66
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d11ac528_30b2c09c",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-18T17:14:25Z",
       "side": 1,
       "message": "Is this change required?",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c45623_91ada7c6",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-18T19:39:37Z",
+      "side": 1,
+      "message": "This was necessary to allow for unit tests to pass. Currently creating multiple SystemSuspend objects in the unit test was causing enableAutoSuspend to fail to function properly.",
+      "parentUuid": "d11ac528_30b2c09c",
       "range": {
         "startLine": 149,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3335bb12_45cc6b41",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-18T19:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "063f092a_7cdb518c",
+      "range": {
+        "startLine": 1249,
+        "startChar": 19,
+        "endLine": 1249,
+        "endChar": 36
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a7c1503_4f5d15a5",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-18T17:14:25Z",
       "side": 1,
       "message": "If the setup isn\u0027t needed for these, they can be TEST instead of TEST_F.",
+      "range": {
+        "startLine": 1289,
+        "startChar": 0,
+        "endLine": 1393,
+        "endChar": 1
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4da941_27d40c09",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-18T19:39:37Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "9a7c1503_4f5d15a5",
       "range": {
         "startLine": 1289,
         "startChar": 0,
