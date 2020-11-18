@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627da27a_720cb8a5",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-18T22:12:07Z",
+      "side": 1,
+      "message": "I don\u0027t think you need the mEnableAutoSuspend change. Probably what\u0027s happening is that enableAutosuspend() gets called on the service registered in L 115. Can you register this instance with a different name, and use that for these tests?",
+      "range": {
+        "startLine": 1214,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 66
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ff7f30_3373d4b0",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-18T22:12:07Z",
+      "side": 1,
+      "message": "You can use `repo upload --no-verify .`for this. This looks like bug, since L 1220 is formatted on single line.\n\nTo reduce the race window in the tests, in auto suspend you can move updateSleepTime() to right after the readSleepTime(), to mitigate the additional latency from updating wakeup stats.",
+      "range": {
+        "startLine": 1232,
+        "startChar": 0,
+        "endLine": 1233,
+        "endChar": 9
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0038d1_5f242dc0",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-18T22:12:07Z",
+      "side": 1,
+      "message": "You should be able to delete this, I believe.",
+      "range": {
+        "startLine": 1291,
+        "startChar": 0,
+        "endLine": 1291,
+        "endChar": 49
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
