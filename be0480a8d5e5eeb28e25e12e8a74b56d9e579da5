@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9444521a_8b779bfd",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-18T19:55:22Z",
+      "side": 1,
+      "message": "These tests are intermittently failing, likely due to a race condition in the autosuspend thread.",
+      "range": {
+        "startLine": 1249,
+        "startChar": 7,
+        "endLine": 1249,
+        "endChar": 17
+      },
+      "revId": "be0480a8d5e5eeb28e25e12e8a74b56d9e579da5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
