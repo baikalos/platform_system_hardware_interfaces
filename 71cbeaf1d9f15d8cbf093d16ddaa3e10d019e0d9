@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a338bb2a_3da84279",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-18T17:14:25Z",
+      "side": 1,
+      "message": "Should we update the wakeupReasons stats before this callback happens?",
+      "range": {
+        "startLine": 262,
+        "startChar": 12,
+        "endLine": 262,
+        "endChar": 66
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11ac528_30b2c09c",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-18T17:14:25Z",
+      "side": 1,
+      "message": "Is this change required?",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "063f092a_7cdb518c",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-18T17:14:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure what test service refers to? Can you make the names describe what is tested. Maybe GetSingleWakeupReasonStat, GetMultiWakeupReasonStat etc.",
+      "range": {
+        "startLine": 1249,
+        "startChar": 19,
+        "endLine": 1249,
+        "endChar": 36
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7c1503_4f5d15a5",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-18T17:14:25Z",
+      "side": 1,
+      "message": "If the setup isn\u0027t needed for these, they can be TEST instead of TEST_F.",
+      "range": {
+        "startLine": 1289,
+        "startChar": 0,
+        "endLine": 1393,
+        "endChar": 1
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d9a8aa_55ee16e3",
+        "filename": "suspend/1.0/default/WakeupList.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-18T17:14:25Z",
+      "side": 1,
+      "message": "Can we have a generic list class that both wakelocks and wakeup will use?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
