@@ -224,6 +224,30 @@
       },
       "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d62190_bf900f8f",
+        "filename": "suspend/aidl/android/system/suspend/internal/WakeupInfo.aidl",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-19T16:28:08Z",
+      "side": 1,
+      "message": "I can change this to\n\nparcelable WakeupInfo {\n   /* Name of the wakeup from /sys/kernel/wakeup_reasons/last_resume_reason */\n   @utf8InCpp String name;\n\n   /* Number of times the wakeup was encountered */\n   long count;\n}\n\nWould that be satisfactory?",
+      "parentUuid": "7ac0fb1e_941c3686",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
