@@ -251,6 +251,30 @@
       },
       "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf2ccc8_5b229530",
+        "filename": "suspend/1.0/default/WakeupList.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-19T16:45:28Z",
+      "side": 1,
+      "message": "Filed b/173706869 to address this separately.\n\nI would prefer to do this in a separate change to avoid making large, unrelated changes in this CL.",
+      "parentUuid": "31e7fcd3_470ed968",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "71cbeaf1d9f15d8cbf093d16ddaa3e10d019e0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -158,6 +158,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "738d554c_cfa04f16",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-19T16:45:28Z",
+      "side": 1,
+      "message": "Filed b/173706869 to address this separately.\n\nI would prefer to do this in a separate change to avoid making large, unrelated changes in this CL.",
+      "parentUuid": "1fbe221c_eef40cbe",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 145,
+        "endChar": 93
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08dfff3c_9a811bf4",
         "filename": "suspend/aidl/android/system/suspend/internal/ISuspendControlServiceInternal.aidl",
         "patchSetId": 15
