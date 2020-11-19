@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22fd98db_db2fd266",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-19T17:24:45Z",
+      "side": 1,
+      "message": "No worries. it\u0027s ready for your review now :)",
+      "parentUuid": "a97c46e0_1581ee57",
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c91ed1bf_fbb12eea",
