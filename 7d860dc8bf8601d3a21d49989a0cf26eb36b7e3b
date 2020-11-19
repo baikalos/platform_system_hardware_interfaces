@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b68c5ad3_c8bd816a",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-19T17:24:08Z",
+      "side": 1,
+      "message": "There is currently no unit test for this.",
+      "parentUuid": "c91ed1bf_fbb12eea",
+      "range": {
+        "startLine": 195,
+        "startChar": 40,
+        "endLine": 195,
+        "endChar": 44
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d272e48_6866e0c6",
         "filename": "suspend/1.0/default/SuspendControlService.cpp",
         "patchSetId": 15
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-19T03:04:57Z",
       "side": 1,
       "message": "this ignores arguments after the first?",
+      "range": {
+        "startLine": 207,
+        "startChar": 8,
+        "endLine": 207,
+        "endChar": 23
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aec37ac_1b262aa3",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-19T17:24:08Z",
+      "side": 1,
+      "message": "modified this as per your recommendation below.",
+      "parentUuid": "6d272e48_6866e0c6",
       "range": {
         "startLine": 207,
         "startChar": 8,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "177e644f_db23734e",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-19T17:24:08Z",
+      "side": 1,
+      "message": "Good suggestion. done.",
+      "parentUuid": "74075f73_78fb5aeb",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 0
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f97842df_45d2bde0",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-19T06:32:55Z",
       "side": 1,
       "message": "This is just a nit, but for consistency, neither of the other two printing blocks include a label like this.  (If you take Steven\u0027s suggestion and make the function capable of printing more than one block, I would _add_ a label like this to the other two blocks, not remove it here.)",
+      "range": {
+        "startLine": 239,
+        "startChar": 21,
+        "endLine": 239,
+        "endChar": 29
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02ffd5c_c135bd6a",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-19T17:24:08Z",
+      "side": 1,
+      "message": "suspend stats already has \"----- Suspend Stats -----\\n\n\nand wakelock stats already has a WAKELOCK_STATS header.\n\nThe format is inconsistent between the two but they do already have headers.",
+      "parentUuid": "f97842df_45d2bde0",
       "range": {
         "startLine": 239,
         "startChar": 21,
