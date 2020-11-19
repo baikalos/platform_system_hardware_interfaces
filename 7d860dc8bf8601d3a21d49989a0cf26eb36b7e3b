@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91ed1bf_fbb12eea",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T03:04:57Z",
+      "side": 1,
+      "message": "is this tested?",
+      "range": {
+        "startLine": 195,
+        "startChar": 40,
+        "endLine": 195,
+        "endChar": 44
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d272e48_6866e0c6",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T03:04:57Z",
+      "side": 1,
+      "message": "this ignores arguments after the first?",
+      "range": {
+        "startLine": 207,
+        "startChar": 8,
+        "endLine": 207,
+        "endChar": 23
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74075f73_78fb5aeb",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T03:04:57Z",
+      "side": 1,
+      "message": "consider:\n\n    enum : int32_t {\n      OPT_WAKELOCKS \u003d 1 \u003c\u003c 0,\n      OPT_WAKEUPS \u003d 1 \u003c\u003c 0,\n      OPT_SUSPEND_STATS \u003d 1 \u003c\u003c 0,\n      OPT_ALL \u003d 0xffffffff;\n    };\n    int opts \u003d 0;\n    ...\n    if (args.empty()) {\n        opts \u003d OPT_ALL;\n    } else {\n      for (const auto\u0026 arg : args) {\n         if ... opts |\u003d OPT_...\n         ...\n      }\n    }\n    ...\n\nOr some other approach to avoid having to set every option, other than the one you want to false (maps, avoiding the booleans and putting the associated code directly here, etc...)",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 0
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fbe221c_eef40cbe",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T03:04:57Z",
+      "side": 1,
+      "message": "nit: Relying on order for 6 argument of the same type starts risking OBO, and the tests don\u0027t cover this. For instance, imagine if the order here and in the tests is the same, but it\u0027s different in the cpp, then we\u0027d have issues/missing info only at runtime. Consider using struct fields instead, so they are identified by name.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 145,
+        "endChar": 93
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08dfff3c_9a811bf4",
+        "filename": "suspend/aidl/android/system/suspend/internal/ISuspendControlServiceInternal.aidl",
+        "patchSetId": 15
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T03:04:57Z",
+      "side": 1,
+      "message": "format",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a426d2d_81d385c6",
+        "filename": "suspend/aidl/android/system/suspend/internal/WakeupInfo.aidl",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T03:04:57Z",
+      "side": 1,
+      "message": "usually individual struct fields are commented\n\nCan you also comment where these names come from (some other API)?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
