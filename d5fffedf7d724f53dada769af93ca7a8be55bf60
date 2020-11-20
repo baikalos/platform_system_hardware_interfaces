@@ -266,6 +266,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99d50dbb_65511a6d",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-20T19:18:33Z",
+      "side": 1,
+      "message": "Multiple instances of suspend don\u0027t affect each other, only the case where multiple auto suspend threads could get started from the same suspend instance can cause issues with sleepTime and backoff. I don\u0027t think there is an trigger event for this currently but the race still exists.\n\nWith regards to testing Ben, adding the lock wouldn\u0027t require any changes to the tests you currently have. I don\u0027t think atomic will solve the race mentioned above, since multiple threads could still read mAutosuspendEnabled as false before it gets updated, and spin up multiple auto suspend threads on the same suspend instance.",
+      "parentUuid": "67a158d5_97bf0bf6",
+      "range": {
+        "startLine": 1214,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 66
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ff7f30_3373d4b0",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 14
