@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba53320d_9fbff628",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-11-20T01:52:44Z",
+      "side": 1,
+      "message": "Yes you are right, I was wrongly under the impression that local statics are thread safe. Seems this is only true for their initialization when compiled in gcc w/o fno-threadsafe-statics flag.\n\nHaving more than one auto suspend thread would mess up the whole backoff heuristic.\n\nWe wouldn\u0027t need to make singleton because it\u0027s not so much that we want to ensure only one instance of the systemsuspend class, rather that we only start one autosuspend thread.\n\nRather than the atomics which would still allow the admittedly already existing race between the check and the update of mAutosupendEnabled (when multiple threads simultaneously check mAutosuspendEnabled and it\u0027s false), I think we should just make the enableAutosuspend() function thread safe with something like a scoped lock.",
+      "parentUuid": "2e0f3ae2_330a06d9",
+      "range": {
+        "startLine": 1214,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 66
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ff7f30_3373d4b0",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 14
