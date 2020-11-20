@@ -224,6 +224,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4568fdb8_ba8ccd62",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-20T05:08:12Z",
+      "side": 1,
+      "message": "Sorry I missed that, thanks for the correction.",
+      "parentUuid": "a02ffd5c_c135bd6a",
+      "range": {
+        "startLine": 239,
+        "startChar": 21,
+        "endLine": 239,
+        "endChar": 29
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9272c606_4bc1a8ff",
@@ -261,6 +285,30 @@
       "side": 1,
       "message": "There are 2 cases where we can have empty reasons.\n\n1. wakeupReasons \u003d {\"\"};\n2. wakeupReasons is empty -- Either because readWakeupReasons() failed to read or parsing somehow failed.\n\nFor 1 currently the code is logging the wakeup as \"\". I can change this to \"unknown\" if you prefer.\n\nFor 2, there is currently not logging. Would you prefer some other reason here? Or \"unknown\" is also okay?",
       "parentUuid": "9272c606_4bc1a8ff",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 5
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1b86fb8_ed1dff1f",
+        "filename": "suspend/1.0/default/WakeupList.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-20T05:08:12Z",
+      "side": 1,
+      "message": "I\u0027m interested in different perspectives, but I think \"unknown\" makes sense in both cases.  We know at this point that a wakeup did actually happen, so even if the kernel or something between here and the kernel fails to capture a reason correctly, I think it still counts as an unknown wakeup.",
+      "parentUuid": "ade29409_a17114f3",
       "range": {
         "startLine": 38,
         "startChar": 0,
