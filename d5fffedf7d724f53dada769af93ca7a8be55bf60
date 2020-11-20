@@ -218,6 +218,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e2a2d51_fbaabaf0",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-20T16:25:13Z",
+      "side": 1,
+      "message": "I will follow up with @trong to get his opinion about how to resolve this.",
+      "parentUuid": "fb612622_92dfce8a",
+      "range": {
+        "startLine": 1214,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 66
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ff7f30_3373d4b0",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 14
