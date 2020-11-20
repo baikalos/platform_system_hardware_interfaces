@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e0f3ae2_330a06d9",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-20T00:25:04Z",
+      "side": 1,
+      "message": "Wouldn\u0027t the static variable be similarly susceptible to race condition in this way? I can change this to std::atomic_bool or std::atomic_flag instead to prevent the race condition.\n\nAlso why do we want to ensure only one auto suspend thread? That makes unit testing substantially more difficult. If the concern is having multiple threads accessing /sys/power/state and we want to ensure only one instance of this wouldn\u0027t it be better to make the entire class or set of classes a singleton?",
+      "parentUuid": "5ff73580_e0f2e33b",
+      "range": {
+        "startLine": 1214,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 66
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ff7f30_3373d4b0",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 14
