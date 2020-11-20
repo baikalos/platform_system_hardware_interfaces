@@ -290,6 +290,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c22f97af_496a57e7",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-20T20:54:25Z",
+      "side": 1,
+      "message": "I updated mAutosuspendEnabled to be std::atomic_flag with SystemSuspend::enableAutosuspend() checking \n\nif (mAutosuspendEnabled.test_and_set()) return;\n// enable autosuspend thread\n\nUnless I\u0027m missing something this should ensure that the race described above cannot happen.",
+      "parentUuid": "99d50dbb_65511a6d",
+      "range": {
+        "startLine": 1214,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 66
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ff7f30_3373d4b0",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 14
