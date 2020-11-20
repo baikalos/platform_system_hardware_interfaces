@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "369d3fa3_e8849069",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-20T03:27:47Z",
+      "side": 1,
+      "message": "I guess I\u0027m just not understanding why we can only start one autosuspend thread, but create many instances of the SystemSuspend class.\n\nNothing in the documentation of that class suggests that only one instance of the autosuspend thread is permitted per program instance.\n\nThe current design (static autosuspend flag) allows for multiple SystemSuspend threads operating on entirely separate file descriptors, but only one of the SystemSuspend objects is allowed to initialize its autosuspend thread.\n\nIt seems to me that either\n1. There should only be one SystemSuspend class (singleton) allowed per program\n2. There should be no restrictions on SystemSuspend. All data used by a given SystemSuspend object is local to that class.",
+      "parentUuid": "ba53320d_9fbff628",
+      "range": {
+        "startLine": 1214,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 66
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ff7f30_3373d4b0",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 14
