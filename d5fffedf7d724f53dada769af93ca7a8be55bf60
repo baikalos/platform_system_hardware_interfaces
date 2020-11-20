@@ -242,6 +242,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67a158d5_97bf0bf6",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-11-20T17:44:11Z",
+      "side": 1,
+      "message": "I think it\u0027s OK for each SystemSuspend class to have its own suspend thread as long as none of them try to suspend. This class was deliberately made in a way that allows creating multiple instances of it for testing. That is why dependencies on /sys/power/* are injected into it.\n\n\u003e Having more than one auto suspend thread would mess up the whole backoff heuristic.\n\nI don\u0027t have enough context on this. But if different instance of SystemSuspend can affect each other, I think we should fix that for testibility.",
+      "parentUuid": "4e2a2d51_fbaabaf0",
+      "range": {
+        "startLine": 1214,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 66
+      },
+      "revId": "d5fffedf7d724f53dada769af93ca7a8be55bf60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ff7f30_3373d4b0",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 14

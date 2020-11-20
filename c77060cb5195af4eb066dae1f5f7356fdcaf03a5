@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e2fdd8_1bfe5980",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-11-20T17:44:11Z",
+      "side": 1,
+      "message": "enableAutosuspend() can only have 1 client. Reason being that it\u0027s a way for system_suspend to know that it\u0027s safe to start autosuspend, i.e. the client relies on the fact that device won\u0027t autosuspend until enableAutosuspend() is called. This is particularly important at boot time. We can\u0027t start autosuspend until system_server says it\u0027s OK to do so. Having multiple clients may invalidate that.\n\nUsing atomic_flag here is fine, since I don\u0027t think we can programmatically enforce that only one other thread can call this function.",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 150,
+        "endChar": 20
+      },
+      "revId": "c77060cb5195af4eb066dae1f5f7356fdcaf03a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
