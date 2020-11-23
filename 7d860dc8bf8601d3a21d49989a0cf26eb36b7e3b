@@ -345,6 +345,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b7c5abd_7fb18643",
+        "filename": "suspend/1.0/default/WakeupList.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-11-23T21:19:47Z",
+      "side": 1,
+      "message": "That\u0027s a valid point, and maybe we need to step back and look at the bigger picture on this part.\n\nMichael tried modifying the original reading of the data to use \"unknown\".  But that ran into some quite strict (overly so, IMO) limitations within BatteryStatsService, which is only willing to handle either empty strings or strings starting with \"Abort\" or a number (IRQ num).  So that got backed out, and BSS is back to doing its own replacement of \"unknown\" for blank reasons.\n\nNow we\u0027re running into the same thing here.  We don\u0027t want to just omit wakeups that didn\u0027t come with a valid wakeup reason, so we should capture _something_.  But doing replacement here will create discrepancy with the original data, and - at the same time - create alignment with BSS.\n\nMaybe the best solution all around would be to go back to what Michael started, replace with \"unknown\" at the point where the data is collected, and modify BSS so it\u0027s willing to receive \"unknown\" as a wakeup reason rather than rejecting it?  (And remove the BSS code for doing the substitution, which would no longer be needed.)",
+      "parentUuid": "2c71a4ae_cb9bd273",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 5
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fbe221c_eef40cbe",
         "filename": "suspend/1.0/default/main.cpp",
         "patchSetId": 15
