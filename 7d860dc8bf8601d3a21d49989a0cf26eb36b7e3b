@@ -369,6 +369,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2acd99db_cf273423",
+        "filename": "suspend/1.0/default/WakeupList.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-23T21:27:59Z",
+      "side": 1,
+      "message": "That seems like it would be best done as a separate change so that we avoid issues with BSS being momentarily down.\n\nIn that case I think this code is valid, as empty wakeupReasons would not be expected (but we should check for it anyway I think).",
+      "parentUuid": "5b7c5abd_7fb18643",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 5
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fbe221c_eef40cbe",
         "filename": "suspend/1.0/default/main.cpp",
         "patchSetId": 15
