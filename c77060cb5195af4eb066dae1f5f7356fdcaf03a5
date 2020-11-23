@@ -22,6 +22,30 @@
       },
       "revId": "c77060cb5195af4eb066dae1f5f7356fdcaf03a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41091545_5171afdf",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-11-23T21:12:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22e2fdd8_1bfe5980",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 150,
+        "endChar": 20
+      },
+      "revId": "c77060cb5195af4eb066dae1f5f7356fdcaf03a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
