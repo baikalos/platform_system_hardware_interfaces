@@ -1,0 +1,5 @@
+service system_memory_reclaimer /system/bin/hw/memory_reclaimerd
+    class early_hal
+    capabilities SYS_NICE SYS_PTRACE DAC_OVERRIDE
+    user system
+    group system
