@@ -1,0 +1,15 @@
+<manifest version="1.0" type="framework">
+    <hal>
+        <name>android.system.memory_reclaimer</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IMemoryReclaimer</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.system.memory_reclaimer</name>
+        <fqname>IMemoryReclaimerService/default</fqname>
+    </hal>
+</manifest>
