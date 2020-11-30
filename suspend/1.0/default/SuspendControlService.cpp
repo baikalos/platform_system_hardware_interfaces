@@ -40,15 +40,6 @@ binder::Status retOk(const T& value, T* ret_val) {
     return binder::Status::ok();
 }
 
-void SuspendControlService::setSuspendService(const wp<SystemSuspend>& suspend) {
-    mSuspend = suspend;
-}
-
-binder::Status SuspendControlService::enableAutosuspend(bool* _aidl_return) {
-    const auto suspendService = mSuspend.promote();
-    return retOk(suspendService != nullptr && suspendService->enableAutosuspend(), _aidl_return);
-}
-
 binder::Status SuspendControlService::registerCallback(const sp<ISuspendCallback>& callback,
                                                        bool* _aidl_return) {
     if (!callback) {
@@ -71,17 +62,73 @@ binder::Status SuspendControlService::registerCallback(const sp<ISuspendCallback
     return retOk(true, _aidl_return);
 }
 
-binder::Status SuspendControlService::forceSuspend(bool* _aidl_return) {
-    const auto suspendService = mSuspend.promote();
-    return retOk(suspendService != nullptr && suspendService->forceSuspend(), _aidl_return);
+binder::Status SuspendControlService::registerWakelockCallback(
+    const sp<IWakelockCallback>& callback, const std::string& name, bool* _aidl_return) {
+    if (!callback || name.empty()) {
+        return retOk(false, _aidl_return);
+    }
+
+    auto l = std::lock_guard(mWakelockCallbackLock);
+    if (std::find(mWakelockCallbacks[name].begin(), mWakelockCallbacks[name].end(), callback) !=
+        mWakelockCallbacks[name].end()) {
+        LOG(ERROR) << __func__ << " Same wakelock callback has already been registered";
+        return retOk(false, _aidl_return);
+    }
+
+    if (IInterface::asBinder(callback)->remoteBinder() &&
+        IInterface::asBinder(callback)->linkToDeath(this) != NO_ERROR) {
+        LOG(WARNING) << __func__ << " Cannot link to death";
+        return retOk(false, _aidl_return);
+    }
+    mWakelockCallbacks[name].push_back(callback);
+
+    return retOk(true, _aidl_return);
 }
 
 void SuspendControlService::binderDied(const wp<IBinder>& who) {
     auto l = std::lock_guard(mCallbackLock);
-    mCallbacks.erase(findCb(who));
+    std::remove_if(mCallbacks.begin(), mCallbacks.end(), [&who](const sp<ISuspendCallback>& i) {
+        return who == IInterface::asBinder(i);
+    });
+
+    auto lWakelock = std::lock_guard(mWakelockCallbackLock);
+    // Iterate through all wakelock names as same callback can be registered with different
+    // wakelocks.
+    for (auto wakelockIt = mWakelockCallbacks.begin(); wakelockIt != mWakelockCallbacks.end();) {
+        std::remove_if(
+            wakelockIt->second.begin(), wakelockIt->second.end(),
+            [&who](const sp<IWakelockCallback>& i) { return who == IInterface::asBinder(i); });
+        if (wakelockIt->second.empty()) {
+            wakelockIt = mWakelockCallbacks.erase(wakelockIt);
+        } else {
+            ++wakelockIt;
+        }
+    }
 }
 
-void SuspendControlService::notifyWakeup(bool success) {
+void SuspendControlService::notifyWakelock(const std::string& name, bool isAcquired) {
+    // A callback could potentially modify mWakelockCallbacks (e.g., via registerCallback). That
+    // must not result in a deadlock. To that end, we make a copy of the callback is an entry can be
+    // found for the particular wakelock  and release mCallbackLock before calling the copied
+    // callbacks.
+    auto callbackLock = std::unique_lock(mWakelockCallbackLock);
+    auto it = mWakelockCallbacks.find(name);
+    if (it == mWakelockCallbacks.end()) {
+        return;
+    }
+    auto callbacksCopy = it->second;
+    callbackLock.unlock();
+
+    for (const auto& callback : callbacksCopy) {
+        if (isAcquired) {
+            callback->notifyAcquired().isOk();  // ignore errors
+        } else {
+            callback->notifyReleased().isOk();  // ignore errors
+        }
+    }
+}
+
+void SuspendControlService::notifyWakeup(bool success, std::vector<std::string>& wakeupReasons) {
     // A callback could potentially modify mCallbacks (e.g., via registerCallback). That must not
     // result in a deadlock. To that end, we make a copy of mCallbacks and release mCallbackLock
     // before calling the copied callbacks.
@@ -90,11 +137,26 @@ void SuspendControlService::notifyWakeup(bool success) {
     callbackLock.unlock();
 
     for (const auto& callback : callbacksCopy) {
-        callback->notifyWakeup(success).isOk();  // ignore errors
+        callback->notifyWakeup(success, wakeupReasons).isOk();  // ignore errors
     }
 }
 
-binder::Status SuspendControlService::getWakeLockStats(std::vector<WakeLockInfo>* _aidl_return) {
+void SuspendControlServiceInternal::setSuspendService(const wp<SystemSuspend>& suspend) {
+    mSuspend = suspend;
+}
+
+binder::Status SuspendControlServiceInternal::enableAutosuspend(bool* _aidl_return) {
+    const auto suspendService = mSuspend.promote();
+    return retOk(suspendService != nullptr && suspendService->enableAutosuspend(), _aidl_return);
+}
+
+binder::Status SuspendControlServiceInternal::forceSuspend(bool* _aidl_return) {
+    const auto suspendService = mSuspend.promote();
+    return retOk(suspendService != nullptr && suspendService->forceSuspend(), _aidl_return);
+}
+
+binder::Status SuspendControlServiceInternal::getWakeLockStats(
+    std::vector<WakeLockInfo>* _aidl_return) {
     const auto suspendService = mSuspend.promote();
     if (!suspendService) {
         return binder::Status::fromExceptionCode(binder::Status::Exception::EX_NULL_POINTER,
@@ -117,7 +179,7 @@ static std::string dumpUsage() {
            "         invalid) option is specified.\n\n";
 }
 
-status_t SuspendControlService::dump(int fd, const Vector<String16>& args) {
+status_t SuspendControlServiceInternal::dump(int fd, const Vector<String16>& args) {
     register_sig_handler();
 
     const auto suspendService = mSuspend.promote();
