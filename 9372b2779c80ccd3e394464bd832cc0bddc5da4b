@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3184a475_4fd82bbc",
+        "filename": "suspend/aidl/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "697cd77a_1be6b56d",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5470caf_8a72e654",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-01T01:28:03Z",
       "side": 1,
       "message": "so you might be able to avoid these",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b218708f_66e12f13",
+        "filename": "suspend/aidl/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5470caf_8a72e654",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb61850_ddcd2c15",
+        "filename": "suspend/aidl/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e3c8517_d8aa2df3",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "207d3636_03e763a4",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-01T01:28:03Z",
       "side": 1,
       "message": "unused",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd099824_3d282f54",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "207d3636_03e763a4",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -139,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a5604a_0d87d9e5",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9543a70d_c46ffe55",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ecaa14_55cde7ae",
@@ -152,6 +272,30 @@
       "writtenOn": "2020-12-01T01:28:03Z",
       "side": 1,
       "message": "from debugging?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 46
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f6e1381_0e620a41",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ecaa14_55cde7ae",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -185,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cda5f37_0def80d3",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "056378a4_384f60da",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27a2129c_8c4ea864",
@@ -208,6 +376,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6bcd797_53f3c078",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "You are correct, I verified it from experiment. Remove the test.",
+      "parentUuid": "27a2129c_8c4ea864",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 22
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c9220cd_0702256d",
@@ -221,6 +413,30 @@
       "writtenOn": "2020-12-01T01:28:03Z",
       "side": 1,
       "message": "delete this line, actually you can:\n\n- s/TEST_P/TEST_F/\n- delete L174...L176\n- delete TestWithParam (use just ::testing::Test)\n\nsince the parameter is unused",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f921255e_80d4a60f",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T07:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c9220cd_0702256d",
       "range": {
         "startLine": 173,
         "startChar": 0,
