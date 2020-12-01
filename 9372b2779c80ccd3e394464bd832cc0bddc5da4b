@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697cd77a_1be6b56d",
+        "filename": "suspend/aidl/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "avoid VTS (which refers to vendor test suite), since this test is for a system component, it might be surprising\n\n(it\u0027s still fine to leave it in \u0027vts\u0027 on L31 - it should be a reasonably useful integration test in that context)",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5470caf_8a72e654",
+        "filename": "suspend/aidl/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "so you might be able to avoid these",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3c8517_d8aa2df3",
+        "filename": "suspend/aidl/vts/functional/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "this can be removed (function defined here unused)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207d3636_03e763a4",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "unused",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9543a70d_c46ffe55",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "nit: fwiw, in C++ this is redundant",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25adde05_102c5ab2",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "also - assuming we aren\u0027t testing notifications, since the unit test does this? makes sense",
+      "range": {
+        "startLine": 43,
+        "startChar": 50,
+        "endLine": 43,
+        "endChar": 56
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ecaa14_55cde7ae",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "from debugging?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 46
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056378a4_384f60da",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "this should preceed L63",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a2129c_8c4ea864",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "this doesn\u0027t actually kill the binder (the process would have to die, the object is still alive in this process, and there isn\u0027t a way to test that it dies without fork+kill)",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 22
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9220cd_0702256d",
+        "filename": "suspend/aidl/vts/functional/VtsAidlSystemSuspendV1_0TargetTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-01T01:28:03Z",
+      "side": 1,
+      "message": "delete this line, actually you can:\n\n- s/TEST_P/TEST_F/\n- delete L174...L176\n- delete TestWithParam (use just ::testing::Test)\n\nsince the parameter is unused",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "9372b2779c80ccd3e394464bd832cc0bddc5da4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
