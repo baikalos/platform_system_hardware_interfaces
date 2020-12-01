@@ -16,6 +16,24 @@
       "message": "yeah, \u0027require_root: true\u0027 here",
       "revId": "26ada07bcc14e6d1261b322d2dbb6667d7c921b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5522e7d8_fc1938da",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T20:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb840076_fb2c6147",
+      "revId": "26ada07bcc14e6d1261b322d2dbb6667d7c921b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
