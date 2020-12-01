@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc44340_879ef2fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-01T22:34:13Z",
+      "side": 1,
+      "message": "Verified locally with debug print that binderDied will erase the callback, and no process crash observed.\nRepeatedly running \"atest SystemSuspendV1_0AidlTest\" all return PASSED. ",
+      "revId": "4494039aa8eb0a698d0fe2fbe99ccad3a2b838ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
