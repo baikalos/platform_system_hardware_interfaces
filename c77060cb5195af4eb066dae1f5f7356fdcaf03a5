@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a32c49_5e7fda11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-02T01:09:46Z",
+      "side": 1,
+      "message": "Kalesh and Steven - are you comfortable with this moving forward with Ben\u0027s latest changes from November 19?",
+      "revId": "c77060cb5195af4eb066dae1f5f7356fdcaf03a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22e2fdd8_1bfe5980",
