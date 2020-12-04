@@ -39,6 +39,30 @@
       },
       "revId": "7e6213be7c41919c6cf5d89c21edb851346a7038",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6cc66c8_185d51da",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1729155
+      },
+      "writtenOn": "2020-12-04T22:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d18ce833_989680dc",
+      "range": {
+        "startLine": 382,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 70
+      },
+      "revId": "7e6213be7c41919c6cf5d89c21edb851346a7038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
