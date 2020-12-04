@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35948649_33de10b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-04T07:19:09Z",
+      "side": 1,
+      "message": "One minor suggestion, but the code LGTM.  Kalesh and Steven, can you PTAL?",
+      "revId": "c7d0d5aeba4a8b5d6ac499b57a7a5568d4eb0cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c311f01c_6c6d14a8",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-04T07:19:09Z",
+      "side": 1,
+      "message": "Great find.  It\u0027s probably worth also adding these to dumpUsage() above.",
+      "range": {
+        "startLine": 227,
+        "startChar": 22,
+        "endLine": 227,
+        "endChar": 71
+      },
+      "revId": "c7d0d5aeba4a8b5d6ac499b57a7a5568d4eb0cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
