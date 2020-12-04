@@ -16,6 +16,29 @@
       "message": "LGTM. Fine with +2ing once Kelly approves as well.",
       "revId": "7e6213be7c41919c6cf5d89c21edb851346a7038",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18ce833_989680dc",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-04T21:54:59Z",
+      "side": 1,
+      "message": "Since this will be called somewhat regularly, would you be open to capturing the two values in a single log message to reduce the contribution to overall log volume?",
+      "range": {
+        "startLine": 382,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 70
+      },
+      "revId": "7e6213be7c41919c6cf5d89c21edb851346a7038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
