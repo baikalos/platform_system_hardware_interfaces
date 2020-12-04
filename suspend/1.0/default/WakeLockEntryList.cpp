@@ -377,7 +377,9 @@ void WakeLockEntryList::getWakeLockStats(std::vector<WakeLockInfo>* aidl_return)
             aidl_return->emplace_back(entry);
         }
     }
+    LOG(INFO) << "Number of native wakelocks: " << aidl_return->size();
     getKernelWakelockStats(aidl_return);
+    LOG(INFO) << "Number of total wakelocks: " << aidl_return->size();
 }
 
 }  // namespace V1_0
