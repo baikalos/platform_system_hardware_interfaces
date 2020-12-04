@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7397f0c_f9d8b8a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-04T21:09:19Z",
+      "side": 1,
+      "message": "LGTM. Fine with +2ing once Kelly approves as well.",
+      "revId": "7e6213be7c41919c6cf5d89c21edb851346a7038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
