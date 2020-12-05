@@ -16,6 +16,69 @@
       "message": "LGTM, and there were other active reviews before the trivial addition of the dumpUsage() text output, so going ahead w/ +2",
       "revId": "df6c1e8f55d63ca5bd0766f15e846cd1f08c3527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87db78d8_2dfb4b72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-05T01:07:33Z",
+      "side": 1,
+      "message": "just glanced at the code - giving owners for AIDL interface",
+      "revId": "df6c1e8f55d63ca5bd0766f15e846cd1f08c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b68b7dd9_ce3fc4c6",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-05T01:07:33Z",
+      "side": 1,
+      "message": "--all (right?)",
+      "range": {
+        "startLine": 228,
+        "startChar": 65,
+        "endLine": 228,
+        "endChar": 69
+      },
+      "revId": "df6c1e8f55d63ca5bd0766f15e846cd1f08c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9d3eb9_fde47ed9",
+        "filename": "suspend/1.0/default/WakeupList.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-05T01:07:33Z",
+      "side": 1,
+      "message": "mCapacity is never validated to be \u003e0 in this class (consider check here or in constructor?)",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "df6c1e8f55d63ca5bd0766f15e846cd1f08c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
