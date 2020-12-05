@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5280ab60_703a2d09",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-05T01:16:35Z",
+      "side": 1,
+      "message": "Ah crap, yes.",
+      "parentUuid": "b68b7dd9_ce3fc4c6",
+      "range": {
+        "startLine": 228,
+        "startChar": 65,
+        "endLine": 228,
+        "endChar": 69
+      },
+      "revId": "df6c1e8f55d63ca5bd0766f15e846cd1f08c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f9d3eb9_fde47ed9",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-12-05T01:07:33Z",
       "side": 1,
       "message": "mCapacity is never validated to be \u003e0 in this class (consider check here or in constructor?)",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "df6c1e8f55d63ca5bd0766f15e846cd1f08c3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba43e9bb_7e6c4c3f",
+        "filename": "suspend/1.0/default/WakeupList.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-05T01:16:35Z",
+      "side": 1,
+      "message": "mCapacity is size_t (unsigned integer) and so \u003e\u003d 0.\n\nThis class works as intended if mCapacity \u003d\u003d 0 (it never stores anything) and the TestNoCapacity unit test, validates the case where mCapacity \u003d\u003d 0.",
+      "parentUuid": "5f9d3eb9_fde47ed9",
       "range": {
         "startLine": 67,
         "startChar": 26,

@@ -107,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4935ff1_4e787fdd",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-05T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "159cdf61_4c7901f4",
+      "range": {
+        "startLine": 195,
+        "startChar": 40,
+        "endLine": 195,
+        "endChar": 44
+      },
+      "revId": "7d860dc8bf8601d3a21d49989a0cf26eb36b7e3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d272e48_6866e0c6",
