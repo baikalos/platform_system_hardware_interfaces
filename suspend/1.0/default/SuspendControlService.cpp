@@ -161,6 +161,11 @@ binder::Status SuspendControlServiceInternal::forceSuspend(bool* _aidl_return) {
     return retOk(suspendService != nullptr && suspendService->forceSuspend(), _aidl_return);
 }
 
+binder::Status SuspendControlServiceInternal::getSuspendStats(SuspendInfo* _aidl_return) {
+    (void)_aidl_return;
+    return binder::Status::ok();
+}
+
 binder::Status SuspendControlServiceInternal::getWakeLockStats(
     std::vector<WakeLockInfo>* _aidl_return) {
     const auto suspendService = mSuspend.promote();
