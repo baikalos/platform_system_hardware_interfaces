@@ -256,6 +256,27 @@ class SystemSuspendTest : public ::testing::Test {
         ASSERT_EQ(actual.count(), expected.count()) << "incorrect sleep time";
     }
 
+    void checkSuspendInfo(const SuspendInfo& expected) {
+        SystemSuspend* s = static_cast<SystemSuspend*>(suspendService.get());
+        // There is a race window where sleepTime can be checked in the tests,
+        // before it is updated in autoSuspend
+        while (!isReadBlocked(wakeupCountFd)) {
+        }
+        SuspendInfo actual;
+        s->getSuspendInfo(&actual);
+
+        ASSERT_EQ(actual.suspendAttemptCount, expected.suspendAttemptCount);
+        ASSERT_EQ(actual.failedSuspendCount, expected.failedSuspendCount);
+        ASSERT_EQ(actual.shortSuspendCount, expected.shortSuspendCount);
+        ASSERT_EQ(actual.goodSuspendTimeMillis, expected.goodSuspendTimeMillis);
+        ASSERT_EQ(actual.shortSuspendTimeMillis, expected.shortSuspendTimeMillis);
+        ASSERT_EQ(actual.suspendOverheadTimeMillis, expected.suspendOverheadTimeMillis);
+        ASSERT_EQ(actual.failedSuspendOverheadTimeMillis, expected.failedSuspendOverheadTimeMillis);
+        ASSERT_EQ(actual.newBackoffCount, expected.newBackoffCount);
+        ASSERT_EQ(actual.backoffContinueCount, expected.backoffContinueCount);
+        ASSERT_EQ(actual.sleepTimeMillis, expected.sleepTimeMillis);
+    }
+
     sp<ISystemSuspend> suspendService;
     sp<ISuspendControlService> controlService;
     sp<ISuspendControlServiceInternal> controlServiceInternal;
@@ -383,6 +404,13 @@ TEST_F(SystemSuspendTest, SuspendBackoffLongSuspendTest) {
     // Sleep time shall be set to base sleep time after a long suspend
     suspendFor(10000ms, 1);
     checkSleepTime(kSleepTimeConfig.baseSleepTime);
+}
+
+TEST_F(SystemSuspendTest, SuspendInfoTest) {
+    // Sleep time shall be set to base sleep time after a long suspend
+    suspendFor(10000ms, 1);
+    SuspendInfo expected;
+    checkSuspendInfo(expected);
 }
 
 TEST_F(SystemSuspendTest, BackoffThresholdTest) {
