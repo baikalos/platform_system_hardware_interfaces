@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d8e248b_efbde558",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-14T20:22:23Z",
+      "side": 1,
+      "message": "Implementation CL is a follow-on CL. I will submit them simultaneously to avoid the revert/dead code issue.",
+      "parentUuid": "f2f4907c_560dedde",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "7a5fbc67b59319de4ba8a4cf3b2cdabf34b51a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f58e0e4d_49c8b789",
         "filename": "suspend/aidl/android/system/suspend/internal/SuspendInfo.aidl",
         "patchSetId": 2
