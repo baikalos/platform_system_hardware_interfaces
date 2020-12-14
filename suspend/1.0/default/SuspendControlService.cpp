@@ -162,7 +162,13 @@ binder::Status SuspendControlServiceInternal::forceSuspend(bool* _aidl_return) {
 }
 
 binder::Status SuspendControlServiceInternal::getSuspendStats(SuspendInfo* _aidl_return) {
-    (void)_aidl_return;
+    const auto suspendService = mSuspend.promote();
+    if (!suspendService) {
+        return binder::Status::fromExceptionCode(binder::Status::Exception::EX_NULL_POINTER,
+                                                 String8("Null reference to suspendService"));
+    }
+
+    suspendService->getSuspendInfo(_aidl_return);
     return binder::Status::ok();
 }
 

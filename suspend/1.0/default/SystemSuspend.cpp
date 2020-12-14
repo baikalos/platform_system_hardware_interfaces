@@ -255,7 +255,7 @@ void SystemSuspend::initAutosuspend() {
             }
 
             struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
-            updateSleepTime(success, suspendTime.suspendTime);
+            updateSleepTime(success, suspendTime);
 
             std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
             mWakeupList.update(wakeupReasons);
@@ -284,16 +284,44 @@ void SystemSuspend::initAutosuspend() {
  * kShortSuspendBackoffEnabled determines whether a suspend whose duration
  * t < kShortSuspendThreshold is counted as a bad suspend
  */
-void SystemSuspend::updateSleepTime(bool success, std::chrono::nanoseconds suspendTime) {
+void SystemSuspend::updateSleepTime(bool success, const struct SuspendTime& suspendTime) {
+    std::scoped_lock lock(mSuspendInfoLock);
+    mSuspendInfo.suspendAttemptCount++;
+    mSuspendInfo.sleepTimeMillis +=
+        std::chrono::round<std::chrono::milliseconds>(mSleepTime).count();
+
     bool shortSuspend = kSleepTimeConfig.shortSuspendBackoffEnabled && success &&
-                        (suspendTime > 0ns) &&
-                        (suspendTime < kSleepTimeConfig.shortSuspendThreshold);
+                        (suspendTime.suspendTime > 0ns) &&
+                        (suspendTime.suspendTime < kSleepTimeConfig.shortSuspendThreshold);
     bool failedSuspend = kSleepTimeConfig.failedSuspendBackoffEnabled && !success;
+
+    if (success) {
+        mSuspendInfo.suspendOverheadTimeMillis +=
+            std::chrono::round<std::chrono::milliseconds>(suspendTime.suspendOverhead).count();
+    } else {
+        mSuspendInfo.failedSuspendCount++;
+        mSuspendInfo.failedSuspendOverheadTimeMillis +=
+            std::chrono::round<std::chrono::milliseconds>(suspendTime.suspendOverhead).count();
+    }
+
+    if (shortSuspend) {
+        mSuspendInfo.shortSuspendCount++;
+        mSuspendInfo.shortSuspendTimeMillis +=
+            std::chrono::round<std::chrono::milliseconds>(suspendTime.suspendTime).count();
+    }
 
     if (!failedSuspend && !shortSuspend) {
         mNumConsecutiveBadSuspends = 0;
         mSleepTime = kSleepTimeConfig.baseSleepTime;
+        mSuspendInfo.goodSuspendTimeMillis +=
+            std::chrono::round<std::chrono::milliseconds>(suspendTime.suspendTime).count();
         return;
+    }
+
+    if (mNumConsecutiveBadSuspends == 0) {
+        mSuspendInfo.newBackoffCount++;
+    } else {
+        mSuspendInfo.backoffContinueCount++;
     }
 
     mNumConsecutiveBadSuspends++;
@@ -317,6 +345,12 @@ const WakeLockEntryList& SystemSuspend::getStatsList() const {
 
 void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
+}
+
+void SystemSuspend::getSuspendInfo(SuspendInfo* info) {
+    std::scoped_lock lock(mSuspendInfoLock);
+
+    *info = mSuspendInfo;
 }
 
 const WakeupList& SystemSuspend::getWakeupList() const {
