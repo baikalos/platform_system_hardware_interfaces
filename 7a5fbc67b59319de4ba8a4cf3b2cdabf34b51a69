@@ -187,6 +187,30 @@
       },
       "revId": "7a5fbc67b59319de4ba8a4cf3b2cdabf34b51a69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f8f6b8_6362b657",
+        "filename": "suspend/aidl/android/system/suspend/internal/SuspendInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-14T20:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cd66cac_1c63e91c",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "7a5fbc67b59319de4ba8a4cf3b2cdabf34b51a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
