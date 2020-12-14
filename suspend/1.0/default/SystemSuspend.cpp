@@ -319,6 +319,12 @@ void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
 }
 
+void SystemSuspend::getSuspendInfo(SuspendInfo* info) {
+    std::scoped_lock lock(mSuspendInfoLock);
+
+    *info = mSuspendInfo;
+}
+
 const WakeupList& SystemSuspend::getWakeupList() const {
     return mWakeupList;
 }
