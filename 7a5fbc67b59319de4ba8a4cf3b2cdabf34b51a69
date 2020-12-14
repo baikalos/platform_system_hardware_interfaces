@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f4907c_560dedde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-14T18:48:33Z",
+      "side": 1,
+      "message": "can we add implementation at the same time (or with submission)? Too many times, this ends up with needing a revert OR just dead code intree",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "7a5fbc67b59319de4ba8a4cf3b2cdabf34b51a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58e0e4d_49c8b789",
+        "filename": "suspend/aidl/android/system/suspend/internal/SuspendInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-14T18:48:33Z",
+      "side": 1,
+      "message": "are these system properties or something?",
+      "range": {
+        "startLine": 28,
+        "startChar": 52,
+        "endLine": 28,
+        "endChar": 82
+      },
+      "revId": "7a5fbc67b59319de4ba8a4cf3b2cdabf34b51a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
