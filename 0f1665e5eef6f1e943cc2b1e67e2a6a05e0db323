@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ba0416_328daf25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-15T19:43:15Z",
+      "side": 1,
+      "message": "LGTM on functionality",
+      "revId": "0f1665e5eef6f1e943cc2b1e67e2a6a05e0db323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
