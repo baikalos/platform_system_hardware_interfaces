@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bc9779f_c5cf8f86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-15T18:52:39Z",
+      "side": 1,
+      "message": "Follow-on CL is ready for review. I added you to it. It will be submitted at the same time as this CL.\n\nIf you prefer I can remove the stub impl portion of this CL since it is immediately being replaced in the other CL.",
+      "parentUuid": "0d8e248b_efbde558",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "7a5fbc67b59319de4ba8a4cf3b2cdabf34b51a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f58e0e4d_49c8b789",
         "filename": "suspend/aidl/android/system/suspend/internal/SuspendInfo.aidl",
         "patchSetId": 2
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "sgtm",
       "parentUuid": "6491b4f4_ebce57cf",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "7a5fbc67b59319de4ba8a4cf3b2cdabf34b51a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fa623c_5a21549c",
+        "filename": "suspend/aidl/android/system/suspend/internal/SuspendInfo.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-15T18:52:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26d9102_df141d46",
       "range": {
         "startLine": 28,
         "startChar": 9,
