@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a653434a_0235a45a",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-15T02:03:33Z",
+      "side": 1,
+      "message": "SuspendInfo includes that of other tests in this test suite.\n\nPotential solutions:\n - modify this test suite so that it doesn\u0027t have \"history\"\n - Move these tests to a separate test suite\n - get snapshot of stats on test setup and have the check account for initial values.",
+      "range": {
+        "startLine": 266,
+        "startChar": 11,
+        "endLine": 266,
+        "endChar": 25
+      },
+      "revId": "54b4a81c108d05da6f591469da4f7e72bd0dcfa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
