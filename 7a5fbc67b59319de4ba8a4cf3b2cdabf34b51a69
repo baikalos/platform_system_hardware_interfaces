@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41b2ec9_bfd821e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-15T19:01:23Z",
+      "side": 1,
+      "message": "Actually I think I will just go ahead and remove it.",
+      "parentUuid": "5bc9779f_c5cf8f86",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "7a5fbc67b59319de4ba8a4cf3b2cdabf34b51a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f58e0e4d_49c8b789",
