@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ae7bb8_508f9652",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-15T22:35:53Z",
+      "side": 1,
+      "message": "The user-visible distinction between these seems less than clear (which is a result of the functionality, not anything you did).  Any thoughts on ways we could improve on this?\n\nI don\u0027t know if we can change the name of the existing \"suspend_stats\" option (is it considered a stable interface?  do anyone know if anything uses it programmatically?), but if we can, maybe something along these lines?\n\n--kernel_suspends   : returns suspend success/error stats from the kernel\\n\n--suspend_controls  : returns suspend control stats from Android\\n\n\n(Not sure about that \"Android\" part, but I\u0027m not sure what the best way to refer to SCS is.)",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 81
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4471c5d0_c88795e4",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-15T22:35:53Z",
+      "side": 1,
+      "message": "nit: off by one space from the other lines (or is there a constraint that makes this necessary?)",
+      "range": {
+        "startLine": 207,
+        "startChar": 33,
+        "endLine": 207,
+        "endChar": 34
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84acecc8_7f20bf4d",
+        "filename": "suspend/1.0/default/SuspendControlService.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-15T22:35:53Z",
+      "side": 1,
+      "message": "Thanks for cleaning this up. :-)",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 55
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2854fdad_28dc430c",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-15T22:35:53Z",
+      "side": 1,
+      "message": "There\u0027s an interesting nuance here.  The failed suspend stats are updating no matter what, but the short suspend stats are only updating if short suspend backoff is enabled.\n\nI think the condition for updating the short suspend stats needs to just be based on the duration, not also the enable, so we can observe short suspends without necessarily having the short suspend backoff activated.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 65
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001981a2_fe99c92a",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-15T22:35:53Z",
+      "side": 1,
+      "message": "I think perhaps this is meant to be kSleepTimeConfig.backoffThreshold, and that the \"else\" portion should be if it\u0027s greater than the backoffThreshold value.",
+      "range": {
+        "startLine": 325,
+        "startChar": 38,
+        "endLine": 325,
+        "endChar": 39
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
