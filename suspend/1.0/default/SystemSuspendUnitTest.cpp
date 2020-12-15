@@ -1189,7 +1189,7 @@ TEST_F(SystemSuspendSameThreadTest, GetSuspendStats) {
     ASSERT_EQ(stats.lastFailedStep, "fakeStep");
 }
 
-class WakeupTest : public ::testing::Test {
+class SuspendWakeupTest : public ::testing::Test {
    public:
     virtual void SetUp() override {
         Socketpair(SOCK_STREAM, &wakeupCountTestFd, &wakeupCountServiceFd);
@@ -1221,15 +1221,54 @@ class WakeupTest : public ::testing::Test {
 
     void wakeup(std::string wakeupReason) {
         ASSERT_TRUE(WriteStringToFile(wakeupReason, wakeupReasonsFile.path));
+        checkLoop(1);
+    }
 
-        // Mock value for /sys/power/wakeup_count.
-        std::string wakeupCount = std::to_string(rand());
-        ASSERT_TRUE(WriteStringToFd(wakeupCount, wakeupCountTestFd));
-        ASSERT_EQ(readFd(wakeupCountTestFd), wakeupCount)
-            << "wakeup count value written by SystemSuspend is not equal to value given to it";
-        ASSERT_EQ(readFd(stateTestFd), "mem")
-            << "SystemSuspend failed to write correct sleep state.";
-        while (!isReadBlocked(wakeupCountTestFd)) {}
+    void checkLoop(int numIter) {
+        for (int i = 0; i < numIter; i++) {
+            // Mock value for /sys/power/wakeup_count.
+            std::string wakeupCount = std::to_string(rand());
+            ASSERT_TRUE(WriteStringToFd(wakeupCount, wakeupCountTestFd));
+            ASSERT_EQ(readFd(wakeupCountTestFd), wakeupCount)
+                << "wakeup count value written by SystemSuspend is not equal to value given to it";
+            ASSERT_EQ(readFd(stateTestFd), "mem")
+                << "SystemSuspend failed to write correct sleep state.";
+            // There is a race window where sleepTime can be checked in the tests,
+            // before it is updated in autoSuspend
+            while (!isReadBlocked(wakeupCountTestFd)) {
+            }
+        }
+    }
+
+    void suspendFor(std::chrono::milliseconds suspendTime,
+                    std::chrono::milliseconds suspendOverhead, int numberOfSuspends) {
+        std::string suspendStr =
+            std::to_string(
+                std::chrono::duration_cast<std::chrono::duration<double>>(suspendOverhead)
+                    .count()) +
+            " " +
+            std::to_string(
+                std::chrono::duration_cast<std::chrono::duration<double>>(suspendTime).count());
+        ASSERT_TRUE(WriteStringToFile(suspendStr, suspendTimeFile.path));
+        checkLoop(numberOfSuspends);
+    }
+
+    void checkSuspendInfo(const SuspendInfo& expected) {
+        SystemSuspend* s = static_cast<SystemSuspend*>(suspend.get());
+
+        SuspendInfo actual;
+        s->getSuspendInfo(&actual);
+
+        ASSERT_EQ(actual.suspendAttemptCount, expected.suspendAttemptCount);
+        ASSERT_EQ(actual.failedSuspendCount, expected.failedSuspendCount);
+        ASSERT_EQ(actual.shortSuspendCount, expected.shortSuspendCount);
+        ASSERT_EQ(actual.goodSuspendTimeMillis, expected.goodSuspendTimeMillis);
+        ASSERT_EQ(actual.shortSuspendTimeMillis, expected.shortSuspendTimeMillis);
+        ASSERT_EQ(actual.suspendOverheadTimeMillis, expected.suspendOverheadTimeMillis);
+        ASSERT_EQ(actual.failedSuspendOverheadTimeMillis, expected.failedSuspendOverheadTimeMillis);
+        ASSERT_EQ(actual.newBackoffCount, expected.newBackoffCount);
+        ASSERT_EQ(actual.backoffContinueCount, expected.backoffContinueCount);
+        ASSERT_EQ(actual.sleepTimeMillis, expected.sleepTimeMillis);
     }
 
     unique_fd wakeupCountServiceFd;
@@ -1247,7 +1286,80 @@ class WakeupTest : public ::testing::Test {
     sp<ISystemSuspend> suspend;
 };
 
-TEST_F(WakeupTest, GetSingleWakeupReasonStat) {
+TEST_F(SuspendWakeupTest, LongSuspendStat) {
+    suspendFor(10000ms, 20ms, 1);
+
+    SuspendInfo expected;
+    expected.suspendAttemptCount = 1;
+    expected.goodSuspendTimeMillis = 10000;
+    expected.suspendOverheadTimeMillis = 20;
+    expected.sleepTimeMillis = kSleepTimeConfig.baseSleepTime.count();
+
+    checkSuspendInfo(expected);
+}
+
+TEST_F(SuspendWakeupTest, ShortSuspendStat) {
+    suspendFor(10ms, 20ms, 1);
+
+    SuspendInfo expected;
+    expected.suspendAttemptCount = 1;
+    expected.shortSuspendCount = 1;
+    expected.shortSuspendTimeMillis = 10;
+    expected.suspendOverheadTimeMillis = 20;
+    expected.newBackoffCount = 1;
+    expected.sleepTimeMillis = kSleepTimeConfig.baseSleepTime.count();
+
+    checkSuspendInfo(expected);
+}
+
+TEST_F(SuspendWakeupTest, ShortSuspendContinueStat) {
+    suspendFor(10ms, 20ms, 2);
+
+    SuspendInfo expected;
+    expected.suspendAttemptCount = 2;
+    expected.shortSuspendCount = 2;
+    expected.shortSuspendTimeMillis = 20;
+    expected.suspendOverheadTimeMillis = 40;
+    expected.newBackoffCount = 1;
+    expected.backoffContinueCount = 1;
+    expected.sleepTimeMillis = kSleepTimeConfig.baseSleepTime.count() * 2;
+
+    checkSuspendInfo(expected);
+}
+
+TEST_F(SuspendWakeupTest, MultipleSuspendStat) {
+    SuspendInfo expected;
+
+    // Initially do a long suspend
+    suspendFor(10000ms, 100ms, 1);
+    expected.suspendAttemptCount = 1;
+    expected.goodSuspendTimeMillis = 10000;
+    expected.suspendOverheadTimeMillis = 100;
+    expected.sleepTimeMillis = kSleepTimeConfig.baseSleepTime.count();
+    checkSuspendInfo(expected);
+
+    // Do a couple short suspends to trigger suspend backoff
+    suspendFor(10ms, 20ms, 2);
+    expected.suspendAttemptCount += 2;
+    expected.shortSuspendCount += 2;
+    expected.shortSuspendTimeMillis += 20;
+    expected.suspendOverheadTimeMillis += 40;
+    expected.newBackoffCount += 1;
+    expected.backoffContinueCount += 1;
+    expected.sleepTimeMillis += kSleepTimeConfig.baseSleepTime.count() * 2;
+    checkSuspendInfo(expected);
+
+    // Do another long suspend. Sleep time will include backoff time
+    suspendFor(10000ms, 100ms, 1);
+    expected.suspendAttemptCount += 1;
+    expected.goodSuspendTimeMillis += 10000;
+    expected.suspendOverheadTimeMillis += 100;
+    expected.sleepTimeMillis += std::chrono::round<std::chrono::milliseconds>(
+        kSleepTimeConfig.baseSleepTime * kSleepTimeConfig.sleepTimeScaleFactor).count();
+    checkSuspendInfo(expected);
+}
+
+TEST_F(SuspendWakeupTest, GetSingleWakeupReasonStat) {
     wakeup("abc");
 
     std::vector<WakeupInfo> wStats;
@@ -1257,7 +1369,7 @@ TEST_F(WakeupTest, GetSingleWakeupReasonStat) {
     ASSERT_EQ(wStats[0].count, 1);
 }
 
-TEST_F(WakeupTest, GetChainedWakeupReasonStat) {
+TEST_F(SuspendWakeupTest, GetChainedWakeupReasonStat) {
     wakeup("a\nb");
 
     std::vector<WakeupInfo> wStats;
@@ -1267,7 +1379,7 @@ TEST_F(WakeupTest, GetChainedWakeupReasonStat) {
     ASSERT_EQ(wStats[0].count, 1);
 }
 
-TEST_F(WakeupTest, GetMultipleWakeupReasonStats) {
+TEST_F(SuspendWakeupTest, GetMultipleWakeupReasonStats) {
     wakeup("abc");
     wakeup("d\ne");
     wakeup("");
