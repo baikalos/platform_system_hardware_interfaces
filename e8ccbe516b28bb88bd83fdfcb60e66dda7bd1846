@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0cddcf_95eb0f12",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2020-12-16T14:58:40Z",
+      "side": 1,
+      "message": "The only user is dumpsys. This gets triggered in bugreport (default/--all). So I think it\u0027s safe to modify to args if needed.",
+      "parentUuid": "65f7e504_676bf8d7",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 81
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "84acecc8_7f20bf4d",
