@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bbe7b32_4982d38e",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-16T00:56:57Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "2854fdad_28dc430c",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 65
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "001981a2_fe99c92a",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 9
@@ -130,6 +154,30 @@
       "writtenOn": "2020-12-15T22:35:53Z",
       "side": 1,
       "message": "I think perhaps this is meant to be kSleepTimeConfig.backoffThreshold, and that the \"else\" portion should be if it\u0027s greater than the backoffThreshold value.",
+      "range": {
+        "startLine": 325,
+        "startChar": 38,
+        "endLine": 325,
+        "endChar": 39
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92df8381_fd923b0d",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-16T00:56:57Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "001981a2_fe99c92a",
       "range": {
         "startLine": 325,
         "startChar": 38,
