@@ -97,6 +97,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "93bc07ad_84930f7a",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-16T20:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0cddcf_95eb0f12",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 81
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f193c790_b0bb26e1",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-16T20:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4471c5d0_c88795e4",
+      "range": {
+        "startLine": 207,
+        "startChar": 33,
+        "endLine": 207,
+        "endChar": 34
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "84acecc8_7f20bf4d",
         "filename": "suspend/1.0/default/SuspendControlService.h",
         "patchSetId": 9
@@ -165,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4cb106_03521de0",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-16T20:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbe7b32_4982d38e",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 65
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "001981a2_fe99c92a",
@@ -202,6 +274,30 @@
       "side": 1,
       "message": "Good point!",
       "parentUuid": "001981a2_fe99c92a",
+      "range": {
+        "startLine": 325,
+        "startChar": 38,
+        "endLine": 325,
+        "endChar": 39
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c591a59b_de7ae847",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-16T20:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92df8381_fd923b0d",
       "range": {
         "startLine": 325,
         "startChar": 38,
