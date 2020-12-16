@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f7e504_676bf8d7",
+        "filename": "suspend/1.0/default/SuspendControlService.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-16T00:55:06Z",
+      "side": 1,
+      "message": "As far as I can tell the existing suspend stats (--suspend_stats) is not a stable interface.\n\nThe structure itself is defined in SystemSuspend.h and it looks like the only caller of SystemSuspend::getSuspendStats is in the dump() function below.\n\nSo I don\u0027t really see a downside to modifying it if necessary. I agree with you I think the naming here could use a change.",
+      "parentUuid": "60ae7bb8_508f9652",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 81
+      },
+      "revId": "e8ccbe516b28bb88bd83fdfcb60e66dda7bd1846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "84acecc8_7f20bf4d",
