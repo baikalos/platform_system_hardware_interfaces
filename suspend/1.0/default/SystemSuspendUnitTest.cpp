@@ -481,11 +481,9 @@ TEST_F(SystemSuspendTest, CallbackNotifyWakeupReason) {
     const std::string wakeupReason4 = "Abort: android,wakeup-reason-2\n";
     const std::string wakeupReason5 =
         "999 :android,wakeup-reason-3\nAbort: android,wakeup-reason-3";
-    const std::string referenceWakeupReason0 = "";
-    const std::string referenceWakeupReason1 = " ";
-    const std::vector<std::string> referenceWakeupReason2 = {"", "", ""};
+    const std::string referenceWakeupUnknown = "unknown";
     const std::string referenceWakeupReason3 = "100 :android,wakeup-reason-1";
-    const std::vector<std::string> referenceWakeupReason4 = {"Abort: android,wakeup-reason-2", ""};
+    const std::string referenceWakeupReason4 = "Abort: android,wakeup-reason-2";
     const std::vector<std::string> referenceWakeupReason5 = {"999 :android,wakeup-reason-3",
                                                              "Abort: android,wakeup-reason-3"};
 
@@ -504,23 +502,20 @@ TEST_F(SystemSuspendTest, CallbackNotifyWakeupReason) {
     // make sure at least one callback been finished.
     checkLoop(3);
     ASSERT_EQ(impl.mWakeupReasons.size(), 1);
-    ASSERT_EQ(impl.mWakeupReasons[0], referenceWakeupReason0);
+    ASSERT_EQ(impl.mWakeupReasons[0], referenceWakeupUnknown);
 
     // wakeupReason1 single invalid wakeup reason with only space.
     ASSERT_TRUE(WriteStringToFd(wakeupReason1, wakeupReasonsWriteFd));
     checkLoop(3);
     ASSERT_EQ(impl.mWakeupReasons.size(), 1);
-    ASSERT_EQ(impl.mWakeupReasons[0], referenceWakeupReason1);
+    ASSERT_EQ(impl.mWakeupReasons[0], referenceWakeupUnknown);
 
     // wakeupReason2 two empty wakeup reasons.
     lseek(wakeupReasonsWriteFd, 0, SEEK_SET);
     ASSERT_TRUE(WriteStringToFd(wakeupReason2, wakeupReasonsWriteFd));
     checkLoop(3);
-    ASSERT_EQ(impl.mWakeupReasons.size(), 3);
-    i = 0;
-    for (auto wakeupReason : impl.mWakeupReasons) {
-        ASSERT_EQ(wakeupReason, referenceWakeupReason2[i++]);
-    }
+    ASSERT_EQ(impl.mWakeupReasons.size(), 1);
+    ASSERT_EQ(impl.mWakeupReasons[0], referenceWakeupUnknown);
 
     // wakeupReason3 single wakeup reasons.
     lseek(wakeupReasonsWriteFd, 0, SEEK_SET);
@@ -533,11 +528,8 @@ TEST_F(SystemSuspendTest, CallbackNotifyWakeupReason) {
     lseek(wakeupReasonsWriteFd, 0, SEEK_SET);
     ASSERT_TRUE(WriteStringToFd(wakeupReason4, wakeupReasonsWriteFd));
     checkLoop(3);
-    ASSERT_EQ(impl.mWakeupReasons.size(), 2);
-    i = 0;
-    for (auto wakeupReason : impl.mWakeupReasons) {
-        ASSERT_EQ(wakeupReason, referenceWakeupReason4[i++]);
-    }
+    ASSERT_EQ(impl.mWakeupReasons.size(), 1);
+    ASSERT_EQ(impl.mWakeupReasons[0], referenceWakeupReason4);
 
     // wakeupReason5 two wakeup reasons.
     lseek(wakeupReasonsWriteFd, 0, SEEK_SET);
@@ -1404,7 +1396,7 @@ TEST_F(SuspendWakeupTest, GetMultipleWakeupReasonStats) {
     ASSERT_EQ(wStats.size(), 4);
     ASSERT_EQ(wStats[0].name, "wxyz;abc");
     ASSERT_EQ(wStats[0].count, 1);
-    ASSERT_EQ(wStats[1].name, "");
+    ASSERT_EQ(wStats[1].name, "unknown");
     ASSERT_EQ(wStats[1].count, 2);
     ASSERT_EQ(wStats[2].name, "d;e");
     ASSERT_EQ(wStats[2].count, 1);
