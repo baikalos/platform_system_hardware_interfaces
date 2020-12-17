@@ -105,7 +105,6 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
                              size_t maxNativeStatsEntries, unique_fd kernelWakelockStatsFd,
                              unique_fd wakeupReasonsFd, std::chrono::milliseconds baseSleepTime,
                              const sp<SuspendControlService>& controlService,
-                             const sp<SuspendControlServiceInternal>& controlServiceInternal,
                              bool useSuspendCounter)
     : mSuspendCounter(0),
       mWakeupCountFd(std::move(wakeupCountFd)),
@@ -114,13 +113,12 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
       mBaseSleepTime(baseSleepTime),
       mSleepTime(baseSleepTime),
       mControlService(controlService),
-      mControlServiceInternal(controlServiceInternal),
       mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
       mUseSuspendCounter(useSuspendCounter),
       mWakeLockFd(-1),
       mWakeUnlockFd(-1),
       mWakeupReasonsFd(std::move(wakeupReasonsFd)) {
-    mControlServiceInternal->setSuspendService(this);
+    mControlService->setSuspendService(this);
 
     if (!mUseSuspendCounter) {
         mWakeLockFd.reset(TEMP_FAILURE_RETRY(open(kSysPowerWakeLock, O_CLOEXEC | O_RDWR)));

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.system.suspend.internal;
+package android.system.suspend;
 
 
 /**
