@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c1cc8ed_ed58a613",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-17T01:38:43Z",
+      "side": 1,
+      "message": "Maybe define a constant for this, since it\u0027s used in multiple places?",
+      "range": {
+        "startLine": 76,
+        "startChar": 17,
+        "endLine": 76,
+        "endChar": 24
+      },
+      "revId": "366116c6b02e504659c56d142ccf3ee2207e544a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
