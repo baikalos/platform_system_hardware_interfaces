@@ -69,6 +69,30 @@
       },
       "revId": "9c06eea3904e0811e5e8afeeaa7183602a1f642e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd06e5d5_03755189",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-17T07:56:46Z",
+      "side": 1,
+      "message": "Right, I follow that part.  In general operation, I think(?) the sequence of events looks like:\n\nA) do sleep(active sleep time)\nB) wait for no kernel wake activity or userspace wakelocks\nC) do suspend N\nD) update active sleep time and stats\nE) do sleep(active sleep time)\nF) wait for no kernel wake activity or userspace wakelocks\nG) do suspend N+1\nH) update active sleep time and stats\nI) do sleep(active sleep time)\n...\n\nSo _if_ I understand correctly, the code in line 1315 would span the following steps from that sequence:\n\nTest starts at step C (I think?)\nC) do suspend 1\n    result: success, 10ms in suspend, 20ms of overhead -\u003e bad(short) suspend\nD) update active sleep time and stats.\n    sleepTimeMillis +\u003d active sleep time (i.e. base sleep time)\n    active sleep time *\u003d scaling factor\nE) do sleep(active sleep time)\nF) wait for no kernel wake activity or userspace wakelocks\nG) do suspend 2\n    result: success, 10ms in suspend, 20ms of overhead -\u003e bad(short) suspend\nH) update active sleep time and stats.\n    sleepTimeMillis +\u003d active sleep time (i.e. base sleep time * scaling factor)\n    active sleep time *\u003d scaling factor\n\nTest obtains stats.\n\nSo sleepTimeMillis has now been updated twice:\n    in step D, it was increased (from 0) by (base sleep time)\n    in step H, it was increased by (base sleep time * scaling factor)\n\nAnd there would be 1 new backoff (step D) and 1 backoff continuation (step H), and the active sleep time would now be (base sleep time * scaling factor * scaling factor)\n\nIs that an accurate reflection of what the sequence looks like in production and how it happens under test on line 1315?",
+      "parentUuid": "295f3b45_8cb1b3a4",
+      "range": {
+        "startLine": 1323,
+        "startChar": 1,
+        "endLine": 1323,
+        "endChar": 74
+      },
+      "revId": "9c06eea3904e0811e5e8afeeaa7183602a1f642e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
