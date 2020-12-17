@@ -93,6 +93,30 @@
       },
       "revId": "9c06eea3904e0811e5e8afeeaa7183602a1f642e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21821fe9_4eac7001",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-17T17:24:09Z",
+      "side": 1,
+      "message": "Ah I think I might know the difference in our reasoning here:\nThe suspend backoff threshold is defined as\n# Number of consecutive bad (short, failed) suspends above which time between attempts is scaled\n\nSo if the threshold \u003d 1, then we will start backing off when numConsecutiveBadSuspends \u003d 2.\nThe default value for this is 0 to remain consistent with the old algorithm.\n\nSo the situation you described is more like the following:\nC) do suspend 1\nresult: success, 10ms in suspend, 20ms of overhead -\u003e bad(short) suspend\nD) update active sleep time and stats.\nsleepTimeMillis +\u003d active sleep time (i.e. base sleep time)\nnumConsecutiveBadSuspends \u003d 1\nactive sleep time \u003d base sleep time (numConsecutiveBadSuspends is not strictly \u003e the threshold of 1)\nE-F)\nG) do suspend 2\nresult: success, 10ms in suspend, 20ms of overhead -\u003e bad(short) suspend\nH) update active sleep time and stats.\n    sleepTimeMillis +\u003d active sleep time (i.e. base sleep time)\n    numConsecutiveBadSuspend \u003d 2\n    active sleep time *\u003d scaling factor",
+      "parentUuid": "bd06e5d5_03755189",
+      "range": {
+        "startLine": 1323,
+        "startChar": 1,
+        "endLine": 1323,
+        "endChar": 74
+      },
+      "revId": "9c06eea3904e0811e5e8afeeaa7183602a1f642e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
