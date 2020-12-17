@@ -45,6 +45,30 @@
       },
       "revId": "9c06eea3904e0811e5e8afeeaa7183602a1f642e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "295f3b45_8cb1b3a4",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-12-17T02:49:46Z",
+      "side": 1,
+      "message": "I\u0027ve chosen to update the amount of time slept in SystemSuspend::updateSleepTime() with the amount of time previously slept. So\n\nif we never attempt suspend, sleepTimeMillis \u003d\u003d 0\nif we suspend once, sleepTimeMillis \u003d\u003d baseSleepTime\n\netc.\n\nI chose to do it that way to make it so that we update sleep stats in one place vs updating before kernel suspend, and then again after kernel suspend.\n\nThe results would be mostly the same, but it would produce slightly different results when it came to unit testing.",
+      "parentUuid": "f2eca017_6196456d",
+      "range": {
+        "startLine": 1323,
+        "startChar": 1,
+        "endLine": 1323,
+        "endChar": 74
+      },
+      "revId": "9c06eea3904e0811e5e8afeeaa7183602a1f642e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
