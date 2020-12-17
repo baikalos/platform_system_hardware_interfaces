@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b90cb4_3dd36606",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-17T01:25:54Z",
+      "side": 1,
+      "message": "It might be worth defining some constants for a few of these numbers getting used repeatedly, e.g.:\nLONG_SUSPEND_MILLIS 10000\nSHORT_SUSPEND_MILLIS 10\nOVERHEAD_MILLIS 20\nSINGLE_SUSPEND_COUNT 1\nMULTIPLE_SUSPEND_COUNT 2\n\nThen lines like 1334 will become more clear (e.g. that 20 isn\u0027t because of the 20ms of overhead, but rather because it is SHORT_SUSPEND_MILLIS * MULTIPLE_SUSPEND_COUNT)",
+      "range": {
+        "startLine": 1290,
+        "startChar": 15,
+        "endLine": 1290,
+        "endChar": 22
+      },
+      "revId": "9c06eea3904e0811e5e8afeeaa7183602a1f642e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2eca017_6196456d",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-17T01:25:54Z",
+      "side": 1,
+      "message": "I have a migraine, and I may just be thinking about these incorrectly; apologies in advance for whatever I\u0027m missing.  But I\u0027m not following why this line and lines 1337 and 1346-47 are the right numerical targets for sleepTimeMillis.\n\nOn this instance and line 1337, wouldn\u0027t we expect to sleep for:\n* baseSleepTime the first time, since we\u0027re starting with a clean slate\n* baseSleepTime * sleepTimeScaleFactor the second time, since we should have backed off after the first time\n... making the total baseSleepTime * (1 + sleepTimeScaleFactor)?\n\nAnd on line 1346, wouldn\u0027t we expect sleep time to grow by:\n* baseSleepTime * sleepTimeScaleFactor^2\nrelative to the previous sleepTimeMillis?  In the first sleep (line 1329) we would\u0027ve slept for baseSleepTime, and in the second sleep (also line 1329) we would\u0027ve slept for the first \"backed off\" duration of baseSleepTime * sleepTimeScaleFactor, so the third sleep (line 1340) would then be for the second backed-off duration, which would be baseSleepTime * sleepTimeScaleFactor * sleepTimeScaleFactor",
+      "range": {
+        "startLine": 1323,
+        "startChar": 1,
+        "endLine": 1323,
+        "endChar": 74
+      },
+      "revId": "9c06eea3904e0811e5e8afeeaa7183602a1f642e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
