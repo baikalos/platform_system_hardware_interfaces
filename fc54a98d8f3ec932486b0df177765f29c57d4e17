@@ -110,6 +110,24 @@
       "message": "Is this intentionally left empty ?",
       "revId": "fc54a98d8f3ec932486b0df177765f29c57d4e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42012237_b0c54cd4",
+        "filename": "memory_reclaimer/aidl/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1650665
+      },
+      "writtenOn": "2020-12-18T00:02:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff7e9876_bbe7db29",
+      "revId": "fc54a98d8f3ec932486b0df177765f29c57d4e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
