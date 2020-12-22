@@ -69,6 +69,7 @@ cc_test {
         "system_suspend_defaults",
         "system_suspend_stats_defaults",
     ],
+    shared_libs: ["libcutils"],
     static_libs: [
         "android.system.suspend.control-cpp",
         "android.system.suspend.control.internal-cpp",
@@ -95,6 +96,7 @@ cc_test {
     shared_libs: [
         "libbinder",
         "libutils",
+        "libcutils",
     ],
     static_libs: [
         "android.system.suspend.control-cpp",
