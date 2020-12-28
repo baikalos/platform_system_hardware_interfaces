@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4acd9d_9f540e87",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-28T19:54:16Z",
+      "side": 1,
+      "message": "Just to improve test coverage a bit, can you also add a \u0027\\n\u0027 at the end of this string and the string on line 1392?  I think we should make sure we\u0027re testing the \"multiple IRQ reasons\" case, which will look like \"\u003creason 1\u003e\\n\u003creason 2\u003e\\n\"",
+      "range": {
+        "startLine": 483,
+        "startChar": 68,
+        "endLine": 483,
+        "endChar": 69
+      },
+      "revId": "b492cbeb1081f605c36bb4ef0fbae13fbe461bcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47eaab6f_0f60c5e8",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2020-12-28T19:54:16Z",
+      "side": 1,
+      "message": "The only repeated instance now is \"unknown\", which is kind of a special case.  It might be worth adding another wakeup(\"abc\"); at the end (after line 1392) to ensure there\u0027s coverage of \"normal\" reasons occurring multiple times.",
+      "range": {
+        "startLine": 1388,
+        "startChar": 12,
+        "endLine": 1388,
+        "endChar": 15
+      },
+      "revId": "b492cbeb1081f605c36bb4ef0fbae13fbe461bcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
