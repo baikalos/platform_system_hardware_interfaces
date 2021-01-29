@@ -180,4 +180,16 @@ interface IKeystoreService {
      *               for the designated key.
      */
     void ungrant(in KeyDescriptor key, in int granteeUid);
+
+    /**
+     * Advances the boot level. After this step, keys with
+     * Tag::MAX_BOOT_LEVEL less than this value cannot be used until
+     * the next device reboot.
+     *
+     * ## Error conditions
+     * `ResponseCode::INVALID_ARGUMENT` if the value of bootLevel is negative or too large
+     * `ResponseCode::PERMISSION_DENIED` if the caller does not have permission to advance
+     * the boot level.
+     */
+    void advanceBootLevel(in int bootLevel);
 }

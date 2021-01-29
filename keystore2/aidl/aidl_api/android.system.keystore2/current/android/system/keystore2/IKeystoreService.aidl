@@ -40,4 +40,5 @@ interface IKeystoreService {
   void deleteKey(in android.system.keystore2.KeyDescriptor key);
   android.system.keystore2.KeyDescriptor grant(in android.system.keystore2.KeyDescriptor key, in int granteeUid, in int accessVector);
   void ungrant(in android.system.keystore2.KeyDescriptor key, in int granteeUid);
+  void advanceBootLevel(in int bootLevel);
 }
