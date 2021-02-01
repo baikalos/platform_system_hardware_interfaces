@@ -16,7 +16,7 @@
 
 package android.system.keystore2;
 
-import android.hardware.keymint.SecurityLevel;
+import android.hardware.security.keymint.SecurityLevel;
 import android.system.keystore2.Domain;
 import android.system.keystore2.IKeystoreSecurityLevel;
 import android.system.keystore2.KeyDescriptor;
@@ -32,7 +32,7 @@ import android.system.keystore2.KeyEntryResponse;
  * Error conditions are reported as service specific error.
  * Positive codes correspond to `android.system.keystore2.ResponseCode`
  * and indicate error conditions diagnosed by the Keystore 2.0 service.
- * Negative codes correspond to `android.hardware.keymint.ErrorCode` and
+ * Negative codes correspond to `android.hardware.security.keymint.ErrorCode` and
  * indicate KeyMint back end errors. Refer to the KeyMint interface spec for
  * detail.
  */
@@ -88,6 +88,10 @@ interface IKeystoreService {
      * fields can be updated with custom certificates.
      *
      * Callers require the `UPDATE` permission.
+     *
+     * If no key by the given name is found and only a the certificateChain argument is given,
+     * A new entry is created by the given name. This is used by the Keystore SPI to create.
+     * pure certificate entries. In this case the `REBIND` permission is checked.
      *
      * ## Error conditions
      * `ResponseCode::KEY_NOT_FOUND` if the key did not exist.

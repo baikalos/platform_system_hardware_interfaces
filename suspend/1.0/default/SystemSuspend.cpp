@@ -49,6 +49,7 @@ static const char kSleepState[] = "mem";
 // /sys/kernel/debug/wakeup_sources.
 static constexpr char kSysPowerWakeLock[] = "/sys/power/wake_lock";
 static constexpr char kSysPowerWakeUnlock[] = "/sys/power/wake_unlock";
+static constexpr char kUnknownWakeup[] = "unknown";
 
 // This function assumes that data in fd is small enough that it can be read in one go.
 // We use this function instead of the ones available in libbase because it doesn't block
@@ -67,18 +68,27 @@ static inline int getCallingPid() {
 static std::vector<std::string> readWakeupReasons(int fd) {
     std::vector<std::string> wakeupReasons;
     std::string reasonlines;
-    std::string reasonline;
 
     lseek(fd, 0, SEEK_SET);
     if (!ReadFdToString(fd, &reasonlines)) {
         LOG(ERROR) << "failed to read wakeup reasons";
-        return wakeupReasons;
+        // Return unknown wakeup reason if we fail to read
+        return {kUnknownWakeup};
     }
 
     std::stringstream ss(reasonlines);
-    while (ss.good()) {
-        std::getline(ss, reasonline, '\n');
-        wakeupReasons.push_back(reasonline);
+    for (std::string reasonline; std::getline(ss, reasonline);) {
+        reasonline = ::android::base::Trim(reasonline);
+
+        // Only include non-empty reason lines
+        if (!reasonline.empty()) {
+            wakeupReasons.push_back(reasonline);
+        }
+    }
+
+    // Empty wakeup reason found. Record as unknown wakeup
+    if (wakeupReasons.empty()) {
+        wakeupReasons.push_back(kUnknownWakeup);
     }
 
     return wakeupReasons;
@@ -130,7 +140,7 @@ void WakeLock::releaseOnce() {
 }
 
 SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
-                             size_t maxNativeStatsEntries, unique_fd kernelWakelockStatsFd,
+                             size_t maxStatsEntries, unique_fd kernelWakelockStatsFd,
                              unique_fd wakeupReasonsFd, unique_fd suspendTimeFd,
                              const SleepTimeConfig& sleepTimeConfig,
                              const sp<SuspendControlService>& controlService,
@@ -146,7 +156,8 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
       mNumConsecutiveBadSuspends(0),
       mControlService(controlService),
       mControlServiceInternal(controlServiceInternal),
-      mStatsList(maxNativeStatsEntries, std::move(kernelWakelockStatsFd)),
+      mStatsList(maxStatsEntries, std::move(kernelWakelockStatsFd)),
+      mWakeupList(maxStatsEntries),
       mUseSuspendCounter(useSuspendCounter),
       mWakeLockFd(-1),
       mWakeUnlockFd(-1),
@@ -166,14 +177,12 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
 }
 
 bool SystemSuspend::enableAutosuspend() {
-    static bool initialized = false;
-    if (initialized) {
+    if (mAutosuspendEnabled.test_and_set()) {
         LOG(ERROR) << "Autosuspend already started.";
         return false;
     }
 
     initAutosuspend();
-    initialized = true;
     return true;
 }
 
@@ -256,11 +265,12 @@ void SystemSuspend::initAutosuspend() {
             }
 
             struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
+            updateSleepTime(success, suspendTime);
 
             std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
-            mControlService->notifyWakeup(success, wakeupReasons);
+            mWakeupList.update(wakeupReasons);
 
-            updateSleepTime(success, suspendTime.suspendTime);
+            mControlService->notifyWakeup(success, wakeupReasons);
         }
     });
     autosuspendThread.detach();
@@ -284,25 +294,56 @@ void SystemSuspend::initAutosuspend() {
  * kShortSuspendBackoffEnabled determines whether a suspend whose duration
  * t < kShortSuspendThreshold is counted as a bad suspend
  */
-void SystemSuspend::updateSleepTime(bool success, std::chrono::nanoseconds suspendTime) {
-    bool shortSuspend = kSleepTimeConfig.shortSuspendBackoffEnabled && success &&
-                        (suspendTime > 0ns) &&
-                        (suspendTime < kSleepTimeConfig.shortSuspendThreshold);
-    bool failedSuspend = kSleepTimeConfig.failedSuspendBackoffEnabled && !success;
+void SystemSuspend::updateSleepTime(bool success, const struct SuspendTime& suspendTime) {
+    std::scoped_lock lock(mSuspendInfoLock);
+    mSuspendInfo.suspendAttemptCount++;
+    mSuspendInfo.sleepTimeMillis +=
+        std::chrono::round<std::chrono::milliseconds>(mSleepTime).count();
 
-    if (!failedSuspend && !shortSuspend) {
+    bool shortSuspend = success && (suspendTime.suspendTime > 0ns) &&
+                        (suspendTime.suspendTime < kSleepTimeConfig.shortSuspendThreshold);
+
+    bool badSuspend = (kSleepTimeConfig.failedSuspendBackoffEnabled && !success) ||
+                      (kSleepTimeConfig.shortSuspendBackoffEnabled && shortSuspend);
+
+    auto suspendTimeMillis =
+        std::chrono::round<std::chrono::milliseconds>(suspendTime.suspendTime).count();
+    auto suspendOverheadMillis =
+        std::chrono::round<std::chrono::milliseconds>(suspendTime.suspendOverhead).count();
+
+    if (success) {
+        mSuspendInfo.suspendOverheadTimeMillis += suspendOverheadMillis;
+    } else {
+        mSuspendInfo.failedSuspendCount++;
+        mSuspendInfo.failedSuspendOverheadTimeMillis += suspendOverheadMillis;
+    }
+
+    if (shortSuspend) {
+        mSuspendInfo.shortSuspendCount++;
+        mSuspendInfo.shortSuspendTimeMillis += suspendTimeMillis;
+    }
+
+    if (!badSuspend) {
         mNumConsecutiveBadSuspends = 0;
         mSleepTime = kSleepTimeConfig.baseSleepTime;
+        mSuspendInfo.goodSuspendTimeMillis += suspendTimeMillis;
         return;
     }
 
-    mNumConsecutiveBadSuspends++;
+    // Suspend attempt was bad (failed or short suspend)
+    if (mNumConsecutiveBadSuspends >= kSleepTimeConfig.backoffThreshold) {
+        if (mNumConsecutiveBadSuspends == kSleepTimeConfig.backoffThreshold) {
+            mSuspendInfo.newBackoffCount++;
+        } else {
+            mSuspendInfo.backoffContinueCount++;
+        }
 
-    if (mNumConsecutiveBadSuspends > kSleepTimeConfig.backoffThreshold) {
         mSleepTime = std::min(std::chrono::round<std::chrono::milliseconds>(
                                   mSleepTime * kSleepTimeConfig.sleepTimeScaleFactor),
                               kSleepTimeConfig.maxSleepTime);
     }
+
+    mNumConsecutiveBadSuspends++;
 }
 
 void SystemSuspend::updateWakeLockStatOnRelease(const std::string& name, int pid,
@@ -317,6 +358,16 @@ const WakeLockEntryList& SystemSuspend::getStatsList() const {
 
 void SystemSuspend::updateStatsNow() {
     mStatsList.updateNow();
+}
+
+void SystemSuspend::getSuspendInfo(SuspendInfo* info) {
+    std::scoped_lock lock(mSuspendInfoLock);
+
+    *info = mSuspendInfo;
+}
+
+const WakeupList& SystemSuspend::getWakeupList() const {
+    return mWakeupList;
 }
 
 /**
