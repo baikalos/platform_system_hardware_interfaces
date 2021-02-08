@@ -31,7 +31,10 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
+/**
+ * @hide
+ */
+@Hide @VintfStability
 parcelable Authorization {
   android.hardware.security.keymint.SecurityLevel securityLevel;
   android.hardware.security.keymint.KeyParameter keyParameter;

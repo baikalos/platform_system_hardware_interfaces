@@ -16,12 +16,31 @@
 
 package android.system.keystore2;
 
+/**
+ * @hide
+ */
 @VintfStability
 @Backing(type="int")
+@Hide
 enum Domain {
+    /**
+    * @hide
+    */
     APP = 0,
+    /**
+    * @hide
+    */
     GRANT = 1,
+    /**
+    * @hide
+    */
     SELINUX = 2,
+    /**
+    * @hide
+    */
     BLOB = 3,
+    /**
+    * @hide
+    */
     KEY_ID = 4,
 }

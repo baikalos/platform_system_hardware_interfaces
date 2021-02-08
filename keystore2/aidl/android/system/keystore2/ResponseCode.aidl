@@ -16,8 +16,12 @@
 
 package android.system.keystore2;
 
+/**
+ * @hide
+ */
 @VintfStability
 @Backing(type="int")
+@Hide
 enum ResponseCode {
     /* 1 Reserved - formerly NO_ERROR */
     /**

@@ -31,9 +31,21 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
+/**
+ * @hide
+ */
+@Hide @VintfStability
 parcelable CreateOperationResponse {
+  /**
+   * @hide
+   */
   android.system.keystore2.IKeystoreOperation iOperation;
+  /**
+   * @hide
+   */
   @nullable android.system.keystore2.OperationChallenge operationChallenge;
+  /**
+   * @hide
+   */
   @nullable android.system.keystore2.KeyParameters parameters;
 }

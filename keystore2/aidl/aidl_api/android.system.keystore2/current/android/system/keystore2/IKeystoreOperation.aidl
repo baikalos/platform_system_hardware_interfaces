@@ -31,10 +31,25 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
+/**
+ * @hide
+ */
+@Hide @SensitiveData @VintfStability
 interface IKeystoreOperation {
+  /**
+   * @hide
+   */
   void updateAad(in byte[] aadInput);
+  /**
+   * @hide
+   */
   @nullable byte[] update(in byte[] input);
+  /**
+   * @hide
+   */
   @nullable byte[] finish(in @nullable byte[] input, in @nullable byte[] signature);
+  /**
+   * @hide
+   */
   void abort();
 }

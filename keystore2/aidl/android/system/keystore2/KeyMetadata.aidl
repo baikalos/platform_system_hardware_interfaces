@@ -25,38 +25,45 @@ import android.system.keystore2.KeyDescriptor;
  * Metadata of a key entry including the key characteristics `authorizations`
  * security level `securityLevel` and a key id based key descriptor.
  * See KeyDescriptor.aidl for the benefits of key id based key descriptor usage.
+ * @hide
  */
 @VintfStability
+@Hide
 parcelable KeyMetadata {
     /**
      * The KeyId based key descriptor. Using this key descriptor for subsequent
      * operations ensures that the private key material used in those operations
      * corresponds to the meta data in this structure. Alias based key descriptors
      * may point to a different key if the alias was rebound in the meantime.
+     * @hide
      */
     KeyDescriptor key;
     /**
      * The security level that the key resides in.
-     * TODO, we could also take this from the origin tag in authorizations.
+     * @hide
      */
     SecurityLevel keySecurityLevel;
     /**
      * The authorizations describing the key, e.g., the algorithm, key size,
      * permissible purposes, digests and paddings, as well as usage restrictions,
      * e.g., whether or not user authorization is required.
+     * @hide
      */
     Authorization[] authorizations;
     /**
      * The public certificate if the requested key is an asymmetric key.
+     * @hide
      */
     @nullable byte[] certificate;
     /**
      * The certificate chain if the key has one, e.g., if the key was generated with
      * attestation or if the client installed one using `updateSubcomponent`.
+     * @hide
      */
     @nullable byte[] certificateChain;
     /**
      * The time of the last modification in milliseconds since January 1st 1970.
+     * @hide
      */
     long modificationTimeMs;
 }

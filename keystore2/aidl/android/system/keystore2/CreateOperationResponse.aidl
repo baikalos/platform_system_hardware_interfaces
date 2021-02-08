@@ -22,21 +22,26 @@ import android.system.keystore2.OperationChallenge;
 
 /**
  * This parcelable is returned by `IKeystoreSecurityLevel::createOperation`.
+ * @hide
  */
 @VintfStability
+@Hide
 parcelable CreateOperationResponse {
     /**
      * The binder representing the newly created operation.
+     * @hide
      */
     IKeystoreOperation iOperation;
     /**
      * A challenge associated with the newly created operation. If this field is set.
      * it indicates that the operation has yet to be authorized by the user.
+     * @hide
      */
     @nullable OperationChallenge operationChallenge;
     /**
      * Optional parameters returned from the KeyMint operation. This may contain a nonce
      * or an initialization vector IV for operations that use them.
+     * @hide
      */
     @nullable KeyParameters parameters;
 }

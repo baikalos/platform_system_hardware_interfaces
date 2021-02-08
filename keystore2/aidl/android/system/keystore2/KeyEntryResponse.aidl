@@ -22,14 +22,17 @@ import android.system.keystore2.KeyMetadata;
 /**
  * This includes the metadata of the requested key and the security level interface
  * corresponding to the key's security level.
+ * @hide
  */
 @VintfStability
+@Hide
 parcelable KeyEntryResponse {
     /**
      * The security level interface is served by the Keystore instance
      * that corresponds to the key's security level. It can be used to start
      * operations, generate, and import keys. This field is optional,
      * it is only populated by `IKeystoreService::getKeyEntry`.
+     * @hide
      */
     @nullable IKeystoreSecurityLevel iSecurityLevel;
     /**
@@ -37,6 +40,7 @@ parcelable KeyEntryResponse {
      * operations ensures that the private key material used in those operations
      * corresponds to the meta data in this structure. Alias based key descriptors
      * may point to a different key if the alias was rebound in the meantime.
+     * @hide
      */
     KeyMetadata metadata;
 }

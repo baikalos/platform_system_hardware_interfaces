@@ -31,10 +31,19 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@RustDerive(Clone=true, Eq=true, Ord=true, PartialEq=true, PartialOrd=true) @VintfStability
+/**
+ * @hide
+ */
+@Hide @RustDerive(Clone=true, Eq=true, Ord=true, PartialEq=true, PartialOrd=true) @VintfStability
 parcelable KeyDescriptor {
   android.system.keystore2.Domain domain;
   long nspace;
+  /**
+   * @hide
+   */
   @nullable String alias;
+  /**
+   * @hide
+   */
   @nullable byte[] blob;
 }

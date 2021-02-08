@@ -31,12 +31,33 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
+/**
+ * @hide
+ */
+@Hide @VintfStability
 parcelable KeyMetadata {
+  /**
+   * @hide
+   */
   android.system.keystore2.KeyDescriptor key;
+  /**
+   * @hide
+   */
   android.hardware.security.keymint.SecurityLevel keySecurityLevel;
+  /**
+   * @hide
+   */
   android.system.keystore2.Authorization[] authorizations;
+  /**
+   * @hide
+   */
   @nullable byte[] certificate;
+  /**
+   * @hide
+   */
   @nullable byte[] certificateChain;
+  /**
+   * @hide
+   */
   long modificationTimeMs;
 }

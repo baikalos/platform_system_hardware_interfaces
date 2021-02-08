@@ -31,13 +31,37 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
+/**
+ * @hide
+ */
+@Hide @VintfStability
 interface IKeystoreService {
+  /**
+   * @hide
+   */
   android.system.keystore2.IKeystoreSecurityLevel getSecurityLevel(in android.hardware.security.keymint.SecurityLevel securityLevel);
+  /**
+   * @hide
+   */
   android.system.keystore2.KeyEntryResponse getKeyEntry(in android.system.keystore2.KeyDescriptor key);
+  /**
+   * @hide
+   */
   void updateSubcomponent(in android.system.keystore2.KeyDescriptor key, in @nullable byte[] publicCert, in @nullable byte[] certificateChain);
+  /**
+   * @hide
+   */
   android.system.keystore2.KeyDescriptor[] listEntries(in android.system.keystore2.Domain domain, in long nspace);
+  /**
+   * @hide
+   */
   void deleteKey(in android.system.keystore2.KeyDescriptor key);
+  /**
+   * @hide
+   */
   android.system.keystore2.KeyDescriptor grant(in android.system.keystore2.KeyDescriptor key, in int granteeUid, in int accessVector);
+  /**
+   * @hide
+   */
   void ungrant(in android.system.keystore2.KeyDescriptor key, in int granteeUid);
 }

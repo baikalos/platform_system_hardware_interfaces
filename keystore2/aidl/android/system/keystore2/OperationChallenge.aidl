@@ -20,8 +20,10 @@ package android.system.keystore2;
  * An operation challenge is returned by `IKeystoreSecurityLevel::create` iff
  * the new operation requires user authorization. The challenge may be passed
  * to an authenticator, such as Gatekeeper or Fingerprint.
+ * @hide
  */
 @VintfStability
+@Hide
 parcelable OperationChallenge {
     long challenge;
 }
