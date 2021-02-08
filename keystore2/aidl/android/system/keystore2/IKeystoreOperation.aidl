@@ -33,8 +33,11 @@ package android.system.keystore2;
  * Negative codes correspond to `android.hardware.security.keymint.ErrorCode` and
  * indicate KeyMint back end errors. Refer to the KeyMint interface spec for
  * detail.
+ * @hide
  */
 @VintfStability
+@SensitiveData
+@Hide
 interface IKeystoreOperation {
 
     /**
@@ -56,7 +59,7 @@ interface IKeystoreOperation {
      *       operation such that subsequent API calls will yield `INVALID_OPERATION_HANDLE`.
      *
      * @param aadInput The AAD to be added to the operation.
-     *
+     * @hide
      */
     void updateAad(in byte[] aadInput);
 
@@ -79,6 +82,7 @@ interface IKeystoreOperation {
      * @param input Input data.
      *
      * @return Optional output data.
+     * @hide
      */
     @nullable byte[] update(in byte[] input);
 
@@ -105,6 +109,7 @@ interface IKeystoreOperation {
      * @return A signature when finalizing a signing operation, or an AEAD message tag when
      *                performing an authenticated encryption, or the final chunk of cipher
      *                or plain text during encryption or decryption respectively.
+     * @hide
      */
     @nullable byte[] finish(in @nullable byte[] input, in @nullable byte[] signature);
 
@@ -113,6 +118,7 @@ interface IKeystoreOperation {
      *
      * Note: `abort` finalizes the operation regardless of the outcome unless
      *       `ResponseCode::OPERATION_BUSY` was returned.
+     * @hide
      */
     void abort();
 }

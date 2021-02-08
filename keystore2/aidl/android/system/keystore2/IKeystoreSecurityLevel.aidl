@@ -35,14 +35,18 @@ import android.system.keystore2.KeyMetadata;
  * Negative codes correspond to `android.hardware.security.keymint.ErrorCode` and
  * indicate KeyMint back end errors. Refer to the KeyMint interface spec for
  * detail.
+ * @hide
  */
 @VintfStability
+@SensitiveData
+@Hide
 interface IKeystoreSecurityLevel {
 
     /**
      * This flag disables cryptographic binding to the LSKF for auth bound keys.
      * It has no effect non auth bound keys. Such keys are not bound to the LSKF by
      * default.
+     * @hide
      */
     const int KEY_FLAG_AUTH_BOUND_WITHOUT_CRYPTOGRAPHIC_LSKF_BINDING = 0x1;
 
@@ -81,6 +85,7 @@ interface IKeystoreSecurityLevel {
      *            operation and an optional operation challenge wrapped into the
      *            `CreateOperationResponse` parcelable. If the latter is present, user
      *            authorization is required for this operation.
+     * @hide
      */
     CreateOperationResponse createOperation(in KeyDescriptor key,
                   in KeyParameter[] operationParameters, in boolean forced);
@@ -126,6 +131,7 @@ interface IKeystoreSecurityLevel {
      *              requested, there is no other copy of this certificate chain. It is the
      *              caller's responsibility to store it persistently if required.
      *            * The `IKeystoreSecurityLevel` field is always null in this context.
+     * @hide
      */
     KeyMetadata generateKey(in KeyDescriptor key, in @nullable KeyDescriptor attestationKey,
                             in KeyParameter[] params, in int flags, in byte[] entropy);
@@ -140,6 +146,7 @@ interface IKeystoreSecurityLevel {
      *                raw key bits for symmetric keys.
      *
      * @return KeyMetadata see `generateKey`.
+     * @hide
      */
     KeyMetadata importKey(in KeyDescriptor key, in @nullable KeyDescriptor attestationKey,
                           in KeyParameter[] params, in int flags, in byte[] keyData);
@@ -169,6 +176,7 @@ interface IKeystoreSecurityLevel {
      *                       KeyMint can pick the right one based on the included key parameters.
      *
      * @return KeyMetadata see `generateKey`.
+     * @hide
      */
     KeyMetadata importWrappedKey(in KeyDescriptor key, in KeyDescriptor wrappingKey,
                                  in @nullable byte[] maskingKey, in KeyParameter[] params,

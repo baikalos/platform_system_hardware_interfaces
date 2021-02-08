@@ -23,34 +23,42 @@ package android.system.keystore2;
  * Implementations must only allow granting permissions that the key owner possesses.
  * The grant permission cannot be granted.
  * Any granted permission applies only to the granted key.
+ * @hide
  */
 @VintfStability
 @Backing(type="int")
+@Hide
 enum KeyPermission {
     /**
      * Convenience variant indicating an empty access vector.
+     * @hide
      */
     NONE = 0,
     /**
      * Allows deleting the key.
+     * @hide
      */
     DELETE = 0x1,
     /**
      * Allows the usage of UNIQUE ID with the given key.
+     * @hide
      */
     GEN_UNIQUE_ID = 0x2,
     /**
      * Allows reading metadata about the key including public key and certificate.
+     * @hide
      */
     GET_INFO = 0x4,
     /**
      * Allows granting the key. Implementations must not allow this permission
      * to be granted though, so this is mentioned here just for completeness.
+     * @hide
      */
     GRANT = 0x8,
     /**
      * Allows using a key by specifying the key blob in the key descriptor.
      * Implementations must not allow this permission to be granted.
+     * @hide
      */
     MANAGE_BLOB = 0x10,
     /**
@@ -58,6 +66,7 @@ enum KeyPermission {
      * It makes no sense to grant this permission, because the API does not
      * permit generating keys by domains other than `App` or `SELinux`.
      * Implementations must not allow this permission to be granted.
+     * @hide
      */
     REBIND = 0x20,
     /**
@@ -65,16 +74,19 @@ enum KeyPermission {
      * Forced operations cannot be pruned and they have special pruning power
      * allowing them to evict any non forced operation to obtain a KeyMint
      * operation slot.
+     * @hide
      */
     REQ_FORCED_OP = 0x40,
     /**
      * Allow updating the public certificate and certificate chain fields
      * of the given key.
+     * @hide
      */
     UPDATE = 0x80,
     /**
      * Allow using the key for cryptographic operations within the limitations
      * of the key's usage restrictions.
+     * @hide
      */
     USE = 0x100,
     /**
@@ -82,6 +94,7 @@ enum KeyPermission {
      * It makes no sense to grant this permission, because attestation only
      * works during key generation, and keys cannot be created through a grant.
      * Implementations must not allow this permission to be granted.
+     * @hide
      */
     USE_DEV_ID = 0x200,
     /**
@@ -92,6 +105,7 @@ enum KeyPermission {
      * This permission is checked during key generation and import if the
      * `KeyFlag.AUTH_BOUND_WITHOUT_CRYPTOGRAPHIC_LSKF_BINDING` was set. Because keys cannot
      * be generated or imported via grant, it does not make sense to grant this key.
+     * @hide
      */
     USE_NO_LSKF_BINDING = 0x400,
  }

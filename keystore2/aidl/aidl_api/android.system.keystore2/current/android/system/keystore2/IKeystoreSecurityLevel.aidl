@@ -31,11 +31,29 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
+/**
+ * @hide
+ */
+@Hide @SensitiveData @VintfStability
 interface IKeystoreSecurityLevel {
+  /**
+   * @hide
+   */
   android.system.keystore2.CreateOperationResponse createOperation(in android.system.keystore2.KeyDescriptor key, in android.hardware.security.keymint.KeyParameter[] operationParameters, in boolean forced);
+  /**
+   * @hide
+   */
   android.system.keystore2.KeyMetadata generateKey(in android.system.keystore2.KeyDescriptor key, in @nullable android.system.keystore2.KeyDescriptor attestationKey, in android.hardware.security.keymint.KeyParameter[] params, in int flags, in byte[] entropy);
+  /**
+   * @hide
+   */
   android.system.keystore2.KeyMetadata importKey(in android.system.keystore2.KeyDescriptor key, in @nullable android.system.keystore2.KeyDescriptor attestationKey, in android.hardware.security.keymint.KeyParameter[] params, in int flags, in byte[] keyData);
+  /**
+   * @hide
+   */
   android.system.keystore2.KeyMetadata importWrappedKey(in android.system.keystore2.KeyDescriptor key, in android.system.keystore2.KeyDescriptor wrappingKey, in @nullable byte[] maskingKey, in android.hardware.security.keymint.KeyParameter[] params, in android.system.keystore2.AuthenticatorSpec[] authenticators);
+  /**
+   * @hide
+   */
   const int KEY_FLAG_AUTH_BOUND_WITHOUT_CRYPTOGRAPHIC_LSKF_BINDING = 1;
 }

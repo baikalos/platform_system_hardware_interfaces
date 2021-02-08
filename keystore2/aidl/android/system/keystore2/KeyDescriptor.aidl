@@ -47,19 +47,23 @@ import android.system.keystore2.Domain;
  * must perform appropriate access control to assure that the caller has access
  * to the given key for the given request. In case of `Domain::BLOB` the implementation
  * must additionally check if the caller has `ManageBlob` permission. See KeyPermission.aidl.
+ * @hide
  */
 @VintfStability
 @RustDerive(Clone=true, Eq=true, PartialEq=true, Ord=true, PartialOrd=true)
+@Hide
 parcelable KeyDescriptor {
     Domain domain;
     long nspace; /* namespace is a keyword in C++, so we had a to pick a different field name. */
     /**
      * A free form string denoting the key, chosen by the client.
+     * @hide
      */
     @nullable String alias;
     /**
      * An opaque blob. This blob is represents a KeyMint key. It is encrypted
      * and cannot be interpreted by the client.
+     * @hide
      */
     @nullable byte[] blob;
 }

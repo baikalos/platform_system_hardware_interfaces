@@ -35,8 +35,10 @@ import android.system.keystore2.KeyEntryResponse;
  * Negative codes correspond to `android.hardware.security.keymint.ErrorCode` and
  * indicate KeyMint back end errors. Refer to the KeyMint interface spec for
  * detail.
+ * @hide
  */
 @VintfStability
+@Hide
 interface IKeystoreService {
 
     /**
@@ -44,6 +46,7 @@ interface IKeystoreService {
      *
      * ## Error conditions
      * `ErrorCode::HARDWARE_TYPE_UNAVAILABLE` if the requested security level does not exist.
+     * @hide
      */
     IKeystoreSecurityLevel getSecurityLevel(in SecurityLevel securityLevel);
 
@@ -78,6 +81,7 @@ interface IKeystoreService {
      * @return The `KeyEntryResponse includes the requested key's metadata and the security level
      *                      interface corresponding to the key's security level, which can be used
      *                      to start operations, generate, and import keys.
+     * @hide
      */
     KeyEntryResponse getKeyEntry(in KeyDescriptor key);
 
@@ -103,6 +107,7 @@ interface IKeystoreService {
      * @param publicCert An optional new public key certificate for the given key.
      *
      * @param certificateChain An optional certificate chain for the given key.
+     * @hide
      */
     void updateSubcomponent(in KeyDescriptor key, in @nullable byte[] publicCert,
                             in @nullable byte[] certificateChain);
@@ -129,6 +134,7 @@ interface IKeystoreService {
      * Note: `namespace` is a keyword in C++, the underscore disambiguates.
      *
      * @return List of KeyDescriptors.
+     * @hide
      */
     KeyDescriptor[] listEntries(in Domain domain, in long nspace);
 
@@ -141,6 +147,7 @@ interface IKeystoreService {
      *               for the designated key.
      *
      * @param key The key to be deleted.
+     * @hide
      */
     void deleteKey(in KeyDescriptor key);
 
@@ -171,6 +178,7 @@ interface IKeystoreService {
      *
      * @return A key descriptor that can be used by the grantee to perform operations
      *                  on the given key within the limits of the supplied access vector.
+     * @hide
      */
     KeyDescriptor grant(in KeyDescriptor key, in int granteeUid, in int accessVector);
 
@@ -182,6 +190,7 @@ interface IKeystoreService {
      * `ResponseCode::KEY_NOT_FOUND` if the key designated by `key` did not exist.
      * `ResponseCode::PERMISSION_DENIED` if the caller does not have the permission `grant`
      *               for the designated key.
+     * @hide
      */
     void ungrant(in KeyDescriptor key, in int granteeUid);
 }

@@ -31,8 +31,17 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
-@VintfStability
+/**
+ * @hide
+ */
+@Hide @VintfStability
 parcelable KeyEntryResponse {
+  /**
+   * @hide
+   */
   @nullable android.system.keystore2.IKeystoreSecurityLevel iSecurityLevel;
+  /**
+   * @hide
+   */
   android.system.keystore2.KeyMetadata metadata;
 }
