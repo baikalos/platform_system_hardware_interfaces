@@ -1,4 +1,6 @@
+#include <aidl/android/system/keystore2/IKeystoreService.h>
 #include <android-base/logging.h>
+#include <android/binder_manager.h>
 #include <android/security/keystore/BnKeystoreOperationResultCallback.h>
 #include <android/security/keystore/BnKeystoreResponseCallback.h>
 #include <android/security/keystore/IKeystoreService.h>
@@ -50,9 +52,30 @@ using android::security::keymaster::OperationResult;
 
 using KSReturn = keystore::KeyStoreNativeReturnCode;
 
+namespace ks2 = ::aidl::android::system::keystore2;
+namespace KMV1 = ::aidl::android::hardware::security::keymint;
+
 namespace {
 
+constexpr const int64_t KS2_NAMESPACE_VPN = 101;
+constexpr const int64_t KS2_NAMESPACE_WIFI = 102;
+
+int64_t getNamespaceforCurrentUid() {
+    auto uid = getuid();
+    switch (uid) {
+        case AID_WIFI:
+            return KS2_NAMESPACE_WIFI;
+        case AID_VPN:
+            return KS2_NAMESPACE_VPN;
+        // 0 is the super user namespace, and nothing has access to this namespace on user builds.
+        // So this will always fail.
+        default:
+            return 0;
+    }
+}
+
 constexpr const char kKeystoreServiceName[] = "android.security.keystore";
+constexpr const char keystore2_service_name[] = "android.system.keystore2";
 constexpr int32_t UID_SELF = -1;
 
 using keystore::KeyCharacteristicsPromise;
@@ -103,6 +126,64 @@ std::vector<uint8_t> convertCertToPem(const std::vector<uint8_t>& cert_bytes) {
     }
     return {pem_bytes, pem_bytes + pem_len};
 }
+
+using android::hardware::hidl_string;
+
+bool keyStore2GetCert(const hidl_string& key, std::vector<uint8_t>& result) {
+    ::ndk::SpAIBinder keystoreBinder(AServiceManager_checkService(keystore2_service_name));
+    auto keystore2 = ks2::IKeystoreService::fromBinder(keystoreBinder);
+
+    if (!keystore2) {
+        LOG(WARNING) << AT << "Unable to connect to Keystore 2.0.";
+        return false;
+    }
+
+    std::string alias = key.c_str();
+    size_t legacy_prefix_len = 0;
+    if (alias.find("CACERT_") == 0) {
+        legacy_prefix_len = 7;
+    } else if (alias.find("USRCERT_") == 0) {
+        legacy_prefix_len = 8;
+    }
+
+    if (legacy_prefix_len > 0) {
+        LOG(WARNING) << AT << "Keystore backend used with legacy alias prefix - ignoring.";
+        alias = alias.substr(legacy_prefix_len);
+    }
+
+    ks2::KeyDescriptor descriptor = {
+        .domain = ks2::Domain::SELINUX,
+        .nspace = getNamespaceforCurrentUid(),
+        .alias = alias,
+        .blob = std::nullopt,
+    };
+
+    ks2::KeyEntryResponse response;
+    auto rc = keystore2->getKeyEntry(descriptor, &response);
+    if (!rc.isOk()) {
+        auto exception_code = rc.getExceptionCode();
+        if (exception_code == EX_SERVICE_SPECIFIC) {
+            LOG(ERROR) << AT << "Keystore getKeyEntry returned service specific error: "
+                       << rc.getExceptionCode();
+        } else {
+            LOG(ERROR) << AT << "Communication with Keystore getKeyEntry failed error: "
+                       << exception_code;
+        }
+        return false;
+    }
+
+    if (response.metadata.certificate) {
+        result = std::move(*response.metadata.certificate);
+        return true;
+    } else if (response.metadata.certificateChain) {
+        result = std::move(*response.metadata.certificateChain);
+        return true;
+    } else {
+        LOG(ERROR) << AT << "No certificate(s) found.";
+        return false;
+    }
+}
+
 };  // namespace
 
 
@@ -116,18 +197,20 @@ namespace implementation {
 using security::keystore::IKeystoreService;
 // Methods from ::android::hardware::wifi::keystore::V1_0::IKeystore follow.
 Return<void> Keystore::getBlob(const hidl_string& key, getBlob_cb _hidl_cb) {
-    sp<IKeystoreService> service = interface_cast<IKeystoreService>(
-        defaultServiceManager()->getService(String16(kKeystoreServiceName)));
-    if (service == nullptr) {
-        _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
-        return Void();
-    }
     ::std::vector<uint8_t> value;
-    // Retrieve the blob as wifi user.
-    auto ret = service->get(String16(key.c_str()), AID_WIFI, &value);
-    if (!ret.isOk()) {
-        _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
-        return Void();
+    if (!keyStore2GetCert(key, value)) {
+        sp<IKeystoreService> service = interface_cast<IKeystoreService>(
+            defaultServiceManager()->getService(String16(kKeystoreServiceName)));
+        if (service == nullptr) {
+            _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
+            return Void();
+        }
+        // Retrieve the blob as wifi user.
+        auto ret = service->get(String16(key.c_str()), AID_WIFI, &value);
+        if (!ret.isOk()) {
+            _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
+            return Void();
+        }
     }
     // convert to PEM before sending it to openssl library.
     std::vector<uint8_t> pem_cert = convertCertToPem(value);
