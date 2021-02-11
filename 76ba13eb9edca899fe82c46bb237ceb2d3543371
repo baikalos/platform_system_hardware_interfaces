@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78735d5c_5d9e8908",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-02-11T22:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b588d4b8_e5ef6f81",
+      "range": {
+        "startLine": 60,
+        "startChar": 44,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "76ba13eb9edca899fe82c46bb237ceb2d3543371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b79d9712_d4c37cc6",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-11T19:19:45Z",
       "side": 1,
       "message": "Google C++ guidelines disallow the use of non const lvalue references. You can use a pointer here, but I would strongly recommend returning this by value. Since you only return a bool you can express this as std::optional.\n\n std::optional\u003cstd::vector\u003c...\u003e\u003e keyStore2GetCert(...)\n\nat the call site:\n\n if (auto my_result \u003d keyStore2GetCert(...)) {\n     do_something_with(*my_result); // E.g. value \u003d std::move(*my_result);\n } else {\n     // keystore 1 fallback here\n }\n\n\nIf you choose to return a value or an error code you can use std::variant.",
+      "range": {
+        "startLine": 132,
+        "startChar": 46,
+        "endLine": 132,
+        "endChar": 67
+      },
+      "revId": "76ba13eb9edca899fe82c46bb237ceb2d3543371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95848024_c9a986fb",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-02-11T22:45:30Z",
+      "side": 1,
+      "message": "Done, went for optional.",
+      "parentUuid": "b79d9712_d4c37cc6",
       "range": {
         "startLine": 132,
         "startChar": 46,
