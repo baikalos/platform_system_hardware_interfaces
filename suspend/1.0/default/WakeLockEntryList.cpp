@@ -21,7 +21,9 @@
 #include <android-base/parseint.h>
 #include <android-base/stringprintf.h>
 
+#include <fstream>
 #include <iomanip>
+#include <regex>
 
 using android::base::ParseInt;
 using android::base::ReadFdToString;
@@ -32,6 +34,8 @@ namespace android {
 namespace system {
 namespace suspend {
 namespace V1_0 {
+
+static constexpr char kSysBusI2cDevicesDir[] = "/sys/bus/i2c/devices/";
 
 static std::ostream& operator<<(std::ostream& out, const WakeLockInfo& entry) {
     const char* sep = " | ";
@@ -201,6 +205,37 @@ static bool isStatFile(const struct dirent* de) {
 }
 
 /*
+ * Wakelock names associated with I2C client devices have a cryptic name due to
+ * how the kernel creates the i2c client sysfs nodes during device
+ * registration. This is done to prevent name collisions and is in the format
+ * <bus_number>-<device_addr>, e.g. "4-002f".
+ *
+ * To provide a easily recognizable name for quick debugging with dumpsys,
+ * translate the unique i2c client's name to the recognizable device name. On
+ * failure to locate/read the file, this function will return back the same
+ * wlName.
+ */
+static std::string mapWakelockNameToI2cDeviceName(const std::string wlName) {
+    std::string fileName = kSysBusI2cDevicesDir + wlName + "/name";
+
+    std::ifstream sysFsNode(fileName.c_str());
+    if (sysFsNode) {
+        std::string i2cDevName;
+
+        if (sysFsNode.good()) {
+            std::getline(sysFsNode, i2cDevName);
+        }
+
+        // Only return the i2cDevName if we successfully read the file content.
+        // In the unlikely event of empty file, send back the original wakelock name.
+        if (!i2cDevName.empty()) {
+            return i2cDevName;
+        }
+    }
+    return wlName;
+}
+
+/*
  * Creates and returns a kernel wakelock entry with data read from mKernelWakelockStatsFd
  */
 WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) const {
@@ -260,6 +295,9 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
             valStr.erase(std::remove(valStr.begin(), valStr.end(), '\n'), valStr.end());
 
             if (statName == "name") {
+                if (std::regex_match(valStr, std::regex("([0-9]{1,}(-)[0-9a-fA-F]{4,})"))) {
+                    valStr = mapWakelockNameToI2cDeviceName(valStr);
+                }
                 info.name = valStr;
                 continue;
             }
