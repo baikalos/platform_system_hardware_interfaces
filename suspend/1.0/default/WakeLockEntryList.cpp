@@ -236,6 +236,30 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
     std::unique_ptr<DIR, decltype(&closedir)> wakelockDp(fdopendir(dup(wakelockFd.get())),
                                                          &closedir);
     if (wakelockDp) {
+        std::string valStr;
+
+        /**
+         * Wakesource names associated with I2C client devices have a cryptic name due to
+         * how the kernel creates the i2c client sysfs nodes during device
+         * registration. This is done to prevent name collisions and is in the format
+         * <bus_number>-<device_addr>, e.g. "4-002f".
+         *
+         * To provide a easily recognizable name for quick debugging with dumpsys,
+         * use the device name instead.
+         */
+        unique_fd deviceNameFd{
+            TEMP_FAILURE_RETRY(openat(wakelockFd, "device/name", O_CLOEXEC | O_RDONLY))};
+        if (deviceNameFd >= 0) {
+            // Get the device name instead of the wakesource name.
+            if (ReadFdToString(deviceNameFd.get(), &valStr)) {
+                // Trim newline?
+                valStr.erase(std::remove(valStr.begin(), valStr.end(), '\n'), valStr.end());
+                info.name = valStr;
+            } else {
+                PLOG(ERROR) << "Error reading hardware device name for " << kwlId;
+            }
+        }
+
         struct dirent* de;
         while ((de = readdir(wakelockDp.get()))) {
             if (!isStatFile(de)) {
@@ -243,6 +267,11 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
             }
 
             std::string statName(de->d_name);
+            if (statName == "name" && !info.name.empty()) {
+                // Already got the device name.
+                continue;
+            }
+
             unique_fd statFd{
                 TEMP_FAILURE_RETRY(openat(wakelockFd, statName.c_str(), O_CLOEXEC | O_RDONLY))};
             if (statFd < 0) {
@@ -250,7 +279,6 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
                 continue;
             }
 
-            std::string valStr;
             if (!ReadFdToString(statFd.get(), &valStr)) {
                 PLOG(ERROR) << "Error reading " << statName << " for " << kwlId;
                 continue;
