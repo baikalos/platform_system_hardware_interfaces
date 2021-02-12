@@ -115,6 +115,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa4884e_6d0c19ee",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-12T03:20:03Z",
+      "side": 1,
+      "message": "This is intentional. The new name follows the naming convention for system vendor interfaces (reverse HALs). It lives in system/hardware/interfaces. The old interface was unstable and lived in system/security and it got its package name for the java API which is in android.security.keystore.",
+      "parentUuid": "be8b1414_9d93b15e",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "a269fd23cd6105ed0488ad70356367203a7c5399",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc73b903_e02ad297",
@@ -140,6 +164,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17e483c7_6390631e",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-12T03:20:03Z",
+      "side": 1,
+      "message": "Well keystore 1 won\u0027t be around for much longer. Then it will be useful to know why things fell apart. I guess we should really make this an error.",
+      "parentUuid": "cc73b903_e02ad297",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 67
+      },
+      "revId": "a269fd23cd6105ed0488ad70356367203a7c5399",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ca82d46_ca536b2b",
         "filename": "wifi/keystore/1.0/default/keystore.cpp",
         "patchSetId": 2
@@ -151,6 +199,30 @@
       "writtenOn": "2021-02-12T00:14:50Z",
       "side": 1,
       "message": "Does this function convert (or trim out) the alias prefix?\nWhy isn\u0027t it needed anymore?",
+      "range": {
+        "startLine": 146,
+        "startChar": 8,
+        "endLine": 146,
+        "endChar": 29
+      },
+      "revId": "a269fd23cd6105ed0488ad70356367203a7c5399",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cde39818_341d9882",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-12T03:20:03Z",
+      "side": 1,
+      "message": "Keystore2 considers the key and the optional certificates as one unit grouped under the alias. In keystore 1 each of these artifacts was a separate entry held together by convention. This lead some clients to use keystore as a key value store, which it is clearly not. We have a file system for that. Keystore2 understands the old convention and delivers the artifacts based on their roles. getKeyEntry will return a handle to the private/secret key material and the optional public certificates.\n\nIf you see this warning you should fix the calling code.",
+      "parentUuid": "2ca82d46_ca536b2b",
       "range": {
         "startLine": 146,
         "startChar": 8,
@@ -186,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07db3172_79f8afc2",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-12T03:20:03Z",
+      "side": 1,
+      "message": "ks2_cert is an std::optional so not equivalent to value.\n\nThis and the following line should be\n\n if (auto ks2_cert \u003d keyStore2GetCert(key)) {\n    value \u003d std::move(*ks_cert);\n } else { ...\n\nThis makes sure that ks2_cert is not read without having a value. (Working in Rust for a while makes the things you can do in C++ look really weird.)",
+      "parentUuid": "c10f7de9_8b6d392f",
+      "range": {
+        "startLine": 196,
+        "startChar": 9,
+        "endLine": 196,
+        "endChar": 17
+      },
+      "revId": "a269fd23cd6105ed0488ad70356367203a7c5399",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1844b247_ef80143c",
         "filename": "wifi/keystore/1.0/default/keystore.cpp",
         "patchSetId": 2
@@ -197,6 +293,30 @@
       "writtenOn": "2021-02-12T00:14:50Z",
       "side": 1,
       "message": "Can you please add comments why we keep both v2 and v1 paths here? It would be more readable for people who would see this in the future.",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "a269fd23cd6105ed0488ad70356367203a7c5399",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9602879b_61b95202",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-12T03:20:03Z",
+      "side": 1,
+      "message": "The fallback can be removed when Keystore2 becomes the default. This should happen fairly soon. This patch is among the last blockers of completing this migration.",
+      "parentUuid": "1844b247_ef80143c",
       "range": {
         "startLine": 197,
         "startChar": 4,
