@@ -205,6 +205,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b57efce_e1d97ad1",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-14T20:04:48Z",
+      "side": 1,
+      "message": "Oh right.",
+      "parentUuid": "ea8be456_a7c443cb",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "a269fd23cd6105ed0488ad70356367203a7c5399",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc73b903_e02ad297",
