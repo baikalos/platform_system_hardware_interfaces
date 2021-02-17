@@ -16,6 +16,23 @@
       "message": "Added PEM support",
       "revId": "d65e9c2304facb889bcdebc0cfead234b2097b08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "209c7a13_eebce763",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-02-17T23:25:52Z",
+      "side": 1,
+      "message": "Linker errors look like it didn\u0027t pick https://r.android.com/1584871.",
+      "revId": "d65e9c2304facb889bcdebc0cfead234b2097b08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
