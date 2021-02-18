@@ -33,6 +33,23 @@
       "message": "Linker errors look like it didn\u0027t pick https://r.android.com/1584871.",
       "revId": "d65e9c2304facb889bcdebc0cfead234b2097b08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "902b7092_43e60106",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-02-18T00:38:25Z",
+      "side": 1,
+      "message": "Odd, the Android.bp change has landed in master",
+      "revId": "d65e9c2304facb889bcdebc0cfead234b2097b08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
