@@ -33,6 +33,24 @@
       "message": "string::find() is inefficient here, because it will continue to look for a substring match throughout the entire string, when we only care if there is a match immediately at the beginning.\n\nC++20 adds string::starts_with(), but I\u0027m not sure if that\u0027s supported by the toolchain we\u0027re using.  However, there is an android::base::StartsWith() utility function to do this for us.\n\nI\u0027ve put up a follow-up CL to switch to this: https://android-review.googlesource.com/c/platform/system/hardware/interfaces/+/1598493",
       "revId": "830dc55082535e1492697b6c63ed74da7f4aecf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bed3655_1fd8be80",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-02-21T19:49:14Z",
+      "side": 1,
+      "message": "Thanks Greg, +2\u0027d and added Roshan as an owner.",
+      "parentUuid": "ae69e570_b631c1db",
+      "revId": "830dc55082535e1492697b6c63ed74da7f4aecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
