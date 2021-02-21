@@ -16,6 +16,23 @@
       "message": "Follow-up to https://android-review.googlesource.com/c/platform/system/hardware/interfaces/+/1585008",
       "revId": "c5152422a40c132385eb77aeec52068a7630b0a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f2806a_b1aaae89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-02-21T19:45:13Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "c5152422a40c132385eb77aeec52068a7630b0a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
