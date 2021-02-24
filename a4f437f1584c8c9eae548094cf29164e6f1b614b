@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9964adbe_8d221465",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-02-24T23:32:14Z",
+      "side": 1,
+      "message": "Can return NULL indeed:\nhttps://www.openssl.org/docs/man1.1.1/man3/BIO_s_mem.html\n\nAlso added checks to existing BIO operations.",
+      "parentUuid": "29980c0f_4c409706",
+      "range": {
+        "startLine": 133,
+        "startChar": 34,
+        "endLine": 133,
+        "endChar": 49
+      },
+      "revId": "a4f437f1584c8c9eae548094cf29164e6f1b614b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c2e4d1_3379ce30",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T22:28:19Z",
       "side": 1,
       "message": "where does this come from? I don\u0027t think this is a good idea. Namespaces don\u0027t really correspond to UIDs. WIFI is the only exception. So why don\u0027t you just hard code NAMESPACE_WIFI \u003d 102 here?",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 47
+      },
+      "revId": "a4f437f1584c8c9eae548094cf29164e6f1b614b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7078d61_75d8e48a",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-02-24T23:32:14Z",
+      "side": 1,
+      "message": "Good point, I copy-pasted it from your CL unreflectively.",
+      "parentUuid": "28c2e4d1_3379ce30",
       "range": {
         "startLine": 185,
         "startChar": 22,
