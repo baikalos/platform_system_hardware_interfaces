@@ -331,8 +331,8 @@ void SystemSuspend::updateSleepTime(bool success, const struct SuspendTime& susp
     }
 
     // Suspend attempt was bad (failed or short suspend)
-    if (mNumConsecutiveBadSuspends >= kSleepTimeConfig.backoffThreshold) {
-        if (mNumConsecutiveBadSuspends == kSleepTimeConfig.backoffThreshold) {
+    if (mNumConsecutiveBadSuspends >= static_cast<int64_t>(kSleepTimeConfig.backoffThreshold)) {
+        if (mNumConsecutiveBadSuspends == static_cast<int64_t>(kSleepTimeConfig.backoffThreshold)) {
             mSuspendInfo.newBackoffCount++;
         } else {
             mSuspendInfo.backoffContinueCount++;
