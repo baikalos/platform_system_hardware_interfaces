@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d2d920_0ed2d84a",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-04T23:14:37Z",
+      "side": 1,
+      "message": "this sounds like an implementation detail, can you share more specifics?",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 95
+      },
+      "revId": "3788f70b34f3d27aada88c6285150ad9564fec6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
