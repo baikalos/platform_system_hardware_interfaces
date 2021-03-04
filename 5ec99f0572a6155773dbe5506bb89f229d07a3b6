@@ -33,6 +33,23 @@
       "message": "Hi Hai, Roshan, can you PTAL. Thanks!",
       "revId": "5ec99f0572a6155773dbe5506bb89f229d07a3b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80d8ef0_dbaefbdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2021-03-04T20:08:31Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "5ec99f0572a6155773dbe5506bb89f229d07a3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
