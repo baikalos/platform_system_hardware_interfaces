@@ -22,6 +22,30 @@
       },
       "revId": "3788f70b34f3d27aada88c6285150ad9564fec6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674b98d7_71769cd3",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115498
+      },
+      "writtenOn": "2021-03-05T01:51:57Z",
+      "side": 1,
+      "message": "Ah sorry, this is just indicating what the keystore SPI should do upon receiving this error message in order to provision the platform with more attestation certificates/keys. If this is not the appropriate place for this comment, I can remove it.",
+      "parentUuid": "77d2d920_0ed2d84a",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 95
+      },
+      "revId": "3788f70b34f3d27aada88c6285150ad9564fec6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
