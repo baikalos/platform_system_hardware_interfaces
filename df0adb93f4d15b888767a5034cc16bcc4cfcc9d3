@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008729101",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1620672?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "6793c1da_6d58b833",
+          "description": "Change to \"omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementReader.aidl\"",
+          "replacements": [
+            {
+              "path": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementReader.aidl",
+              "range": {
+                "startLine": 37,
+                "startChar": 17,
+                "endLine": 37,
+                "endChar": 25
+              },
+              "replacement": "it\u0027s not "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "204feaf2_4aac28b6",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementReader.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-05T23:39:22Z",
+      "side": 1,
+      "message": "Common typo found: \"its not \" -- should it be \"it\u0027s not \"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "df0adb93f4d15b888767a5034cc16bcc4cfcc9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008729101",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1620672?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "7c95b687_1fe4d001",
+          "description": "Change to \"omapi/aidl/android/se/omapi/ISecureElementReader.aidl\"",
+          "replacements": [
+            {
+              "path": "omapi/aidl/android/se/omapi/ISecureElementReader.aidl",
+              "range": {
+                "startLine": 38,
+                "startChar": 17,
+                "endLine": 38,
+                "endChar": 25
+              },
+              "replacement": "it\u0027s not "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "727a926e_a2a871b3",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementReader.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-05T23:39:22Z",
+      "side": 1,
+      "message": "Common typo found: \"its not \" -- should it be \"it\u0027s not \"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "df0adb93f4d15b888767a5034cc16bcc4cfcc9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
