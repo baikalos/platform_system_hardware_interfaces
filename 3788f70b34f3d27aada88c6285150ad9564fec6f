@@ -46,6 +46,30 @@
       },
       "revId": "3788f70b34f3d27aada88c6285150ad9564fec6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfff341_51693098",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-05T18:43:33Z",
+      "side": 1,
+      "message": "Yeah, maybe it\u0027s that RemoteProvisioner sounds like it is some app/implementation detail, which doesn\u0027t affect hardware/vendor implementation. We don\u0027t care here how keystore should provision more keys, just that upon receiving this, keystore should provision more keys (and - is there any way the HAL can know it has succeeded in doing this?)",
+      "parentUuid": "674b98d7_71769cd3",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 95
+      },
+      "revId": "3788f70b34f3d27aada88c6285150ad9564fec6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
