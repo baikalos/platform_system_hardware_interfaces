@@ -173,4 +173,19 @@ interface IKeystoreSecurityLevel {
     KeyMetadata importWrappedKey(in KeyDescriptor key, in KeyDescriptor wrappingKey,
                                  in @nullable byte[] maskingKey, in KeyParameter[] params,
                                  in AuthenticatorSpec[] authenticators);
+
+    /**
+     * Allows getting a per-boot wrapped ephemeral key from a wrapped storage key.
+     *
+     * ## Error conditions
+     * `ResponseCode::PERMISSION_DENIED` if the caller does not have the
+     * `ConvertStorageKeyToEphemeral` keystore2 permission
+     *
+     * A KeyMint ErrorCode may be returned indicating a backend diagnosed error.
+     *
+     * @param storageKey The input wrapped storage key to convert
+     *
+     * @return byte[] representing the wrapped per-boot ephemeral key.
+     */
+    byte[] convertStorageKeyToEphemeral(in byte[] storageKey);
 }
