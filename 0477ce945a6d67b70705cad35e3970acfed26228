@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c58093_1ef419ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2021-03-08T20:37:36Z",
+      "side": 1,
+      "message": "Just to be clear, if the device is running an older vendor image \u0026 new system image, we will still be able to use keystore 2 right? There are no new HAL dependencies for keystore 2?",
+      "revId": "0477ce945a6d67b70705cad35e3970acfed26228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
