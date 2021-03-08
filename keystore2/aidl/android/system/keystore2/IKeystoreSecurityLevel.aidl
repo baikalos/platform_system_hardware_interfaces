@@ -173,4 +173,13 @@ interface IKeystoreSecurityLevel {
     KeyMetadata importWrappedKey(in KeyDescriptor key, in KeyDescriptor wrappingKey,
                                  in @nullable byte[] maskingKey, in KeyParameter[] params,
                                  in AuthenticatorSpec[] authenticators);
+
+    /**
+     * Allows getting a per-boot wrapped ephemeral key from a wrapped storage key.
+     *
+     * @param storageKey The input wrapped storage key to convert
+     *
+     * @return byte[] representing the wrapped per-boot ephemeral key.
+     */
+    byte[] convertStorageKeyToEphemeral(in byte[] storageKey);
 }
