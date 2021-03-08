@@ -31,11 +31,7 @@ cc_test {
         "libhidlbase",
         "libnativehelper",
         "libutils",
-        "libkeystore_binder",
         "libbinder",
-        "libkeystore_aidl",
-        "libkeystore_parcelables",
-        "libkeymaster4support",
     ],
     static_libs: [
         "VtsHalHidlTargetTestBase",
