@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8f97ea_1df4d026",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1060907
+      },
+      "writtenOn": "2021-03-09T16:25:25Z",
+      "side": 1,
+      "message": "What error is thrown if the KeyDescriptor is not a blob? Think it would be good to specify this explicitly to make clear that non-blob keys are always rejected here.",
+      "revId": "926ed40de4b35825bbd01262d9fde585af822257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
