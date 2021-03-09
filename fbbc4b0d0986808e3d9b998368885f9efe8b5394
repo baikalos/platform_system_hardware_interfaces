@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab418c00_0fa4af32",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-09T22:47:33Z",
+      "side": 1,
+      "message": "All other keys can be deleted through the IKeystoreService interface. In that case the blob is loaded from the database which also knows which security level they belong to. For blob keys keystore does not know this, so we tell keystore by calling the correct security level.\n\nThis is basically the rationale.",
+      "parentUuid": "02427f8c_1fbb904a",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 97
+      },
+      "revId": "fbbc4b0d0986808e3d9b998368885f9efe8b5394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3490143_5fcf974d",
         "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
         "patchSetId": 2
