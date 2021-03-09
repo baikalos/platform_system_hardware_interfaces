@@ -173,4 +173,19 @@ interface IKeystoreSecurityLevel {
     KeyMetadata importWrappedKey(in KeyDescriptor key, in KeyDescriptor wrappingKey,
                                  in @nullable byte[] maskingKey, in KeyParameter[] params,
                                  in AuthenticatorSpec[] authenticators);
+
+    /**
+     * Allows deleting a Domain::BLOB key from the backend underlying this IKeystoreSecurityLevel
+     *
+     * ## Error conditions
+     * `ResponseCode::PERMISSION_DENIED` if the caller does not have the permission `DELETE`
+     *               for the designated key, or the "MANAGE_BLOB" permission to manage
+     *               Domain::BLOB keys.
+     * `ResponseCode::INVALID_ARGUMENT` if key.domain isn't Domain::BLOB or if key.blob isn't specified.
+     *
+     * A KeyMint ResponseCode may be returned indicating a backend diagnosed error.
+     *
+     * @param KeyDescriptor representing the key to delete.
+     */
+    void deleteKey(in KeyDescriptor key);
 }
