@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22f5891b_d303a3a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-09T21:23:17Z",
+      "side": 1,
+      "message": "nit: deleteKey",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "fbbc4b0d0986808e3d9b998368885f9efe8b5394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0877a421_94e7c309",
         "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
         "patchSetId": 2
@@ -14,6 +37,30 @@
       "writtenOn": "2021-03-09T21:15:48Z",
       "side": 1,
       "message": "Maybe add some rationale for this duplication.",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 97
+      },
+      "revId": "fbbc4b0d0986808e3d9b998368885f9efe8b5394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02427f8c_1fbb904a",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-09T21:23:17Z",
+      "side": 1,
+      "message": "also - maybe why only BLOB keys?",
+      "parentUuid": "0877a421_94e7c309",
       "range": {
         "startLine": 178,
         "startChar": 7,
