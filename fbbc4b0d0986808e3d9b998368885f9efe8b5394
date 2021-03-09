@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0877a421_94e7c309",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-09T21:15:48Z",
+      "side": 1,
+      "message": "Maybe add some rationale for this duplication.",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 97
+      },
+      "revId": "fbbc4b0d0986808e3d9b998368885f9efe8b5394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3490143_5fcf974d",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-09T21:15:48Z",
+      "side": 1,
+      "message": "line length",
+      "range": {
+        "startLine": 184,
+        "startChar": 100,
+        "endLine": 184,
+        "endChar": 104
+      },
+      "revId": "fbbc4b0d0986808e3d9b998368885f9efe8b5394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
