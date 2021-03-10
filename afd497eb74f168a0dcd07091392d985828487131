@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e45689b7_06d9b0df",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-10T00:24:36Z",
+      "side": 1,
+      "message": "line length.",
+      "range": {
+        "startLine": 181,
+        "startChar": 100,
+        "endLine": 181,
+        "endChar": 103
+      },
+      "revId": "afd497eb74f168a0dcd07091392d985828487131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b1a174_3bd82b50",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-10T00:24:36Z",
+      "side": 1,
+      "message": "Keymint has ErrorCode, Keystore has ResponseCode.",
+      "range": {
+        "startLine": 184,
+        "startChar": 17,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "afd497eb74f168a0dcd07091392d985828487131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
