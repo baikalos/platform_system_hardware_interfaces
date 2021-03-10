@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd640a36_8e9fcdfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368904
+      },
+      "writtenOn": "2021-03-10T08:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f5891b_d303a3a4",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "fbbc4b0d0986808e3d9b998368885f9efe8b5394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0877a421_94e7c309",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5058cab_93b3f664",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1368904
+      },
+      "writtenOn": "2021-03-10T08:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab418c00_0fa4af32",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 97
+      },
+      "revId": "fbbc4b0d0986808e3d9b998368885f9efe8b5394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3490143_5fcf974d",
@@ -108,6 +156,30 @@
       "writtenOn": "2021-03-09T21:15:48Z",
       "side": 1,
       "message": "line length",
+      "range": {
+        "startLine": 184,
+        "startChar": 100,
+        "endLine": 184,
+        "endChar": 104
+      },
+      "revId": "fbbc4b0d0986808e3d9b998368885f9efe8b5394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff8e384_b5f4d806",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1368904
+      },
+      "writtenOn": "2021-03-10T08:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3490143_5fcf974d",
       "range": {
         "startLine": 184,
         "startChar": 100,
