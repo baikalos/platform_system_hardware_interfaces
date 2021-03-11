@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fbeab87_b0707d94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1060907
+      },
+      "writtenOn": "2021-03-11T20:22:33Z",
+      "side": 1,
+      "message": "Lots of lines in this commit message go above 72 characters, so they are a bit harder to read in Gerrit etc - cheers!",
+      "revId": "3f6522420f67c4798edabd1c3a910b85e71cb30d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
