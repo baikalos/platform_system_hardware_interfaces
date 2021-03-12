@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da85e722_dfbb2584",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1621997
+      },
+      "writtenOn": "2021-03-12T19:49:34Z",
+      "side": 1,
+      "message": "Thanks! - I could get rustfmt working on vim.",
+      "parentUuid": "d97b8388_8aeca56f",
+      "range": {
+        "startLine": 49,
+        "startChar": 100,
+        "endLine": 49,
+        "endChar": 111
+      },
+      "revId": "840a569ec44e2365a5edeb435f7b88114a9852cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31444494_e47a7727",
@@ -48,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "735a13b3_b7a05880",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1621997
+      },
+      "writtenOn": "2021-03-12T19:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31444494_e47a7727",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 8
+      },
+      "revId": "840a569ec44e2365a5edeb435f7b88114a9852cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39b3d724_0113149a",
@@ -62,6 +110,30 @@
       "side": 1,
       "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
       "parentUuid": "831fa0a7_fd39c0a0",
+      "range": {
+        "startLine": 308,
+        "startChar": 75,
+        "endLine": 308,
+        "endChar": 76
+      },
+      "revId": "840a569ec44e2365a5edeb435f7b88114a9852cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81234665_1b0b8520",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1621997
+      },
+      "writtenOn": "2021-03-12T19:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b3d724_0113149a",
       "range": {
         "startLine": 308,
         "startChar": 75,
