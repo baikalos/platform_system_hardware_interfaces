@@ -16,6 +16,24 @@
       "message": "Lots of lines in this commit message go above 72 characters, so they are a bit harder to read in Gerrit etc - cheers!",
       "revId": "3f6522420f67c4798edabd1c3a910b85e71cb30d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186d6aa6_9971a806",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368904
+      },
+      "writtenOn": "2021-03-15T06:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fbeab87_b0707d94",
+      "revId": "3f6522420f67c4798edabd1c3a910b85e71cb30d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
