@@ -16,6 +16,24 @@
       "message": "Wrap lines to 72 chars",
       "revId": "7c760e793c664fda855d745afe54443ce2b48dad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88576765_88756f19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368904
+      },
+      "writtenOn": "2021-03-15T04:02:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a1725a_6bc04e9c",
+      "revId": "7c760e793c664fda855d745afe54443ce2b48dad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
