@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d4c3d9_b551c52e",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-16T00:07:41Z",
+      "side": 1,
+      "message": "do see https://android-review.googlesource.com/c/platform/frameworks/native/+/1610953 (merging this should be blocked on that topic - pretty critical to get it in)\n\nbut, this should use something like libaidlvintf_gtest_helper to test any instance which is in the VINTF manifest (in case we ever make this a lazy service, register multiple, etc...)",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
