@@ -70,6 +70,30 @@
       },
       "revId": "3788f70b34f3d27aada88c6285150ad9564fec6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb87c218_8f8a4869",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115498
+      },
+      "writtenOn": "2021-03-18T15:16:27Z",
+      "side": 1,
+      "message": "Ah, I see. The RemoteProvisioner app is a core part of how this process works, as it functions as a relay between the server and the system components with a little bit of business logic to refresh keys when necessary. The HAL doesn\u0027t have any insight into the state of the attestation key pool that\u0027s managed by keystore, though.\n\nI\u0027ve stripped away that extraneous info and limited it to only what\u0027s relevant to keystore.",
+      "parentUuid": "dcfff341_51693098",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 95
+      },
+      "revId": "3788f70b34f3d27aada88c6285150ad9564fec6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
