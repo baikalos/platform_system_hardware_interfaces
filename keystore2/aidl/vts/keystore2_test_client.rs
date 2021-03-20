@@ -250,7 +250,6 @@ mod tests {
         let sec_level =
             map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
         let (key, cert, cert_chain) = make_ec_signing_key(&*sec_level, "EC_KEY").unwrap();
-        println!("key {:?}", key);
         assert!(cert.is_some());
         assert!(cert_chain.is_none());
 
@@ -349,57 +348,219 @@ mod tests {
     }
 
     #[test]
-    fn keystore2_test_client() {
+    fn get_security_level_success() {
         let keystore2 = get_connection();
-
-        assert_eq!(
-            Err((ExceptionCode::SERVICE_SPECIFIC, ResponseCode::SYSTEM_ERROR)),
+        assert!(
             keystore2
-                .deleteKey(&KeyDescriptor {
-                    domain: Domain::APP,
-                    nspace: 0,
-                    alias: None,
-                    blob: None
-                })
-                .map_err(|s| (s.exception_code(), ResponseCode(s.service_specific_error())))
+                .getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)
+                .is_ok(),
+            "getSecurityLevel with SecurityLevel::TRUSTED_ENVIRONMENT should have succeeded."
         );
+    }
+
+    #[test]
+    fn get_security_level_failure() {
+        let keystore2 = get_connection();
         if let Err(error) = keystore2
             .getSecurityLevel(SecurityLevel::SOFTWARE)
-            .map_err(|s| ErrorCode(s.service_specific_error()))
+            .map_err(|s| (s.exception_code(), ErrorCode(s.service_specific_error())))
         {
-            assert_eq!(error, ErrorCode::HARDWARE_TYPE_UNAVAILABLE);
+            assert_eq!(
+                (
+                    ExceptionCode::SERVICE_SPECIFIC,
+                    ErrorCode::HARDWARE_TYPE_UNAVAILABLE,
+                ),
+                error
+            );
         } else {
             panic!("getSecurityLevel with SecurityLevel::SOFTWARE should have failed.");
         }
+    }
 
-        if let Ok(sec_level) = keystore2
-            .getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)
-            .map_err(|s| s.service_specific_error())
-        {
-            let gen_params = AuthSetBuilder::new()
-                .algorithm(Algorithm::EC)
-                .purpose(KeyPurpose::SIGN)
-                .purpose(KeyPurpose::VERIFY)
-                .digest(Digest::SHA_2_256)
-                .ec_curve(EcCurve::P_256);
-            assert!(sec_level
-                .generateKey(
-                    &KeyDescriptor {
-                        domain: Domain::SELINUX,
-                        nspace: SELINUX_SHELL_NAMESPACE,
-                        alias: Some("test_key".to_string()),
-                        blob: None
-                    },
-                    None,
-                    &gen_params,
-                    0,
-                    b"entropy",
-                )
-                .is_ok());
+    #[test]
+    fn get_key_entry_success() {
+        let test_alias = "get_key_entry_success_key";
+
+        let keystore2 = get_connection();
+        let sec_level =
+            map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+        let (key, cert, cert_chain) = make_ec_signing_key(&*sec_level, test_alias).unwrap();
+        assert!(cert.is_some());
+        assert!(cert_chain.is_none());
+
+        if let Ok(key_entry_response) = keystore2.getKeyEntry(&key) {
+            assert_eq!(key, key_entry_response.metadata.key);
+            assert_eq!(cert, key_entry_response.metadata.certificate);
+            assert_eq!(cert_chain, key_entry_response.metadata.certificateChain);
         } else {
-            panic!(
-                "getSecurityLevel with SecurityLevel::TRUSTED_ENVIRONMENT should have succeeded."
+            panic!("getKeyEntry should have succeeded.")
+        }
+    }
+
+    #[test]
+    fn get_key_entry_failure() {
+        let test_alias = "get_key_entry_failure_key";
+
+        let keystore2 = get_connection();
+        if let Err(error) = keystore2
+            .getKeyEntry(&KeyDescriptor {
+                domain: Domain::SELINUX,
+                nspace: SELINUX_SHELL_NAMESPACE,
+                alias: Some(test_alias.to_string()),
+                blob: None,
+            })
+            .map_err(|s| (s.exception_code(), ResponseCode(s.service_specific_error())))
+        {
+            assert_eq!(
+                (ExceptionCode::SERVICE_SPECIFIC, ResponseCode::KEY_NOT_FOUND),
+                error
             );
+        } else {
+            panic!("getKeyEntry should have failed for non-exsting key.")
+        }
+    }
+
+    #[test]
+    fn update_subcomponent_success() {
+        let test_alias = "update_subcomponent_success_key";
+
+        let keystore2 = get_connection();
+        let sec_level =
+            map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+        let (key, cert, cert_chain) = make_ec_signing_key(&*sec_level, test_alias).unwrap();
+        assert!(cert.is_some());
+        assert!(cert_chain.is_none());
+
+        let other_cert: [u8; 32] = [123; 32];
+        let other_cert_chain: [u8; 32] = [12; 32];
+
+        if let Err(_error) =
+            keystore2.updateSubcomponent(&key, Some(&other_cert), Some(&other_cert_chain))
+        {
+            panic!("updateSubcomponent should have succeeded.")
+        }
+
+        if let Ok(key_entry_response) = keystore2.getKeyEntry(&key) {
+            assert_eq!(
+                Some(other_cert.to_vec()),
+                key_entry_response.metadata.certificate
+            );
+            assert_eq!(
+                Some(other_cert_chain.to_vec()),
+                key_entry_response.metadata.certificateChain
+            );
+        } else {
+            panic!("getKeyEntry should have succeeded.")
+        }
+    }
+
+    #[test]
+    fn update_subcomponent_failure() {
+        let test_alias = "update_component_failure_key";
+
+        let keystore2 = get_connection();
+
+        let other_cert: [u8; 32] = [123; 32];
+        let other_cert_chain: [u8; 32] = [12; 32];
+
+        if let Err(error) = keystore2
+            .updateSubcomponent(
+                &KeyDescriptor {
+                    domain: Domain::SELINUX,
+                    nspace: SELINUX_SHELL_NAMESPACE,
+                    alias: Some(test_alias.to_string()),
+                    blob: None,
+                },
+                Some(&other_cert),
+                Some(&other_cert_chain),
+            )
+            .map_err(|s| (s.exception_code(), ResponseCode(s.service_specific_error())))
+        {
+            assert_eq!(
+                (ExceptionCode::SERVICE_SPECIFIC, ResponseCode::KEY_NOT_FOUND),
+                error
+            );
+        } else {
+            panic!("getKeyEntry should have failed for non-exsting key.")
+        }
+    }
+
+    #[test]
+    fn list_entries_success() {
+        let test_alias = "list_entries_success_key";
+
+        let keystore2 = get_connection();
+        let sec_level =
+            map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+        let (_key, cert, cert_chain) = make_ec_signing_key(&*sec_level, test_alias).unwrap();
+        assert!(cert.is_some());
+        assert!(cert_chain.is_none());
+
+        if let Ok(key_descriptors) = keystore2.listEntries(Domain::SELINUX, SELINUX_SHELL_NAMESPACE)
+        {
+            let mut key_exists = false;
+            for key_descriptor in key_descriptors {
+                if let Some(alias) = key_descriptor.alias {
+                    if alias == test_alias {
+                        key_exists = true;
+                    }
+                }
+            }
+            assert!(key_exists, "listEntries should have returned test key.");
+        } else {
+            panic!("listEntries should have succeeded.");
+        }
+    }
+
+    #[test]
+    fn delete_key_success() {
+        let test_alias = "delete_key_success_key";
+
+        let keystore2 = get_connection();
+        let sec_level =
+            map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+        let (key, cert, cert_chain) = make_ec_signing_key(&*sec_level, test_alias).unwrap();
+        assert!(cert.is_some());
+        assert!(cert_chain.is_none());
+
+        if let Err(_error) = keystore2.deleteKey(&key) {
+            panic!("deleteKey should have succeeded")
+        }
+
+        // Key should already be deleted.
+        if let Err(error) = keystore2
+            .getKeyEntry(&key)
+            .map_err(|s| (s.exception_code(), ResponseCode(s.service_specific_error())))
+        {
+            assert_eq!(
+                (ExceptionCode::SERVICE_SPECIFIC, ResponseCode::KEY_NOT_FOUND),
+                error
+            );
+        } else {
+            panic!("getKeyEntry should have failed.")
+        }
+    }
+
+    fn delete_key_failure() {
+        let test_alias = "delete_key_failure_key";
+
+        let keystore2 = get_connection();
+
+        if let Err(error) = keystore2
+            .deleteKey(&KeyDescriptor {
+                domain: Domain::SELINUX,
+                nspace: SELINUX_SHELL_NAMESPACE,
+                alias: Some(test_alias.to_string()),
+                blob: None,
+            })
+            .map_err(|s| (s.exception_code(), ResponseCode(s.service_specific_error())))
+        {
+            assert_eq!(
+                (ExceptionCode::SERVICE_SPECIFIC, ResponseCode::KEY_NOT_FOUND),
+                error
+            );
+        } else {
+            panic!("deleteKey should have failed.")
         }
     }
 }
