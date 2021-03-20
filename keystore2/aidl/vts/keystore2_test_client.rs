@@ -400,4 +400,121 @@ mod tests {
             );
         }
     }
+
+    #[test]
+    fn keystore2_get_entry_test() {
+        let test_alias = "keystore2_get_entry_test_key";
+
+        let keystore2 = get_connection();
+        let sec_level =
+            map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+        let (key, cert, cert_chain) = make_ec_signing_key(&*sec_level, test_alias).unwrap();
+        assert!(cert.is_some());
+        assert!(cert_chain.is_none());
+
+        if let Ok(key_entry_response) = keystore2.getKeyEntry(&key) {
+            assert_eq!(key, key_entry_response.metadata.key);
+            assert_eq!(cert, key_entry_response.metadata.certificate);
+            assert_eq!(cert_chain, key_entry_response.metadata.certificateChain);
+        } else {
+            panic!("getKeyEntry should have succeeded.")
+        }
+    }
+
+    #[test]
+    fn keystore2_update_subcomponent_test() {
+        let test_alias = "keystore2_update_component_test_key";
+
+        let keystore2 = get_connection();
+        let sec_level =
+            map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+        let (key, cert, cert_chain) = make_ec_signing_key(&*sec_level, test_alias).unwrap();
+        assert!(cert.is_some());
+        assert!(cert_chain.is_none());
+
+        let other_cert: [u8; 32] = [123; 32];
+        let other_cert_chain: [u8; 32] = [12; 32];
+
+        if let Err(_error) =
+            keystore2.updateSubcomponent(&key, Some(&other_cert), Some(&other_cert_chain))
+        {
+            panic!("updateSubcomponent should have succeeded.")
+        }
+
+        if let Ok(key_entry_response) = keystore2.getKeyEntry(&key) {
+            assert_eq!(
+                Some(other_cert.to_vec()),
+                key_entry_response.metadata.certificate
+            );
+            assert_eq!(
+                Some(other_cert_chain.to_vec()),
+                key_entry_response.metadata.certificateChain
+            );
+        } else {
+            panic!("getKeyEntry should have succeeded.")
+        }
+    }
+
+    #[test]
+    fn keystore2_delete_key_test() {
+        let test_alias = "keystore2_delete_key_test_key";
+
+        let keystore2 = get_connection();
+        let sec_level =
+            map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+        let (key, cert, cert_chain) = make_ec_signing_key(&*sec_level, test_alias).unwrap();
+        assert!(cert.is_some());
+        assert!(cert_chain.is_none());
+
+        if let Ok(key_entry_response) = keystore2.getKeyEntry(&key) {
+            assert_eq!(key, key_entry_response.metadata.key);
+            assert_eq!(cert, key_entry_response.metadata.certificate);
+            assert_eq!(cert_chain, key_entry_response.metadata.certificateChain);
+        } else {
+            panic!("getKeyEntry should have succeeded.")
+        }
+
+        if let Err(_error) = keystore2.deleteKey(&key) {
+            panic!("deleteKey should have succeeded")
+        }
+
+        if let Err(error) = keystore2
+            .getKeyEntry(&key)
+            .map_err(|s| (s.exception_code(), ResponseCode(s.service_specific_error())))
+        {
+            assert_eq!(
+                (ExceptionCode::SERVICE_SPECIFIC, ResponseCode::KEY_NOT_FOUND),
+                error
+            );
+        } else {
+            panic!("getKeyEntry should have failed.")
+        }
+    }
+
+    #[test]
+    fn keystore2_list_entries_test() {
+        let test_alias = "keystore2_list_entries_test_key";
+
+        let keystore2 = get_connection();
+        let sec_level =
+            map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+        let (_key, cert, cert_chain) = make_ec_signing_key(&*sec_level, test_alias).unwrap();
+        assert!(cert.is_some());
+        assert!(cert_chain.is_none());
+
+        if let Ok(key_descriptors) = keystore2.listEntries(Domain::SELINUX, SELINUX_SHELL_NAMESPACE)
+        {
+            let mut key_exists = false;
+            for key_descriptor in key_descriptors {
+                if let Some(alias) = key_descriptor.alias {
+                    if alias == test_alias {
+                        key_exists = true;
+                    }
+                }
+            }
+            assert!(key_exists, "listEntries should have returned test key.");
+        } else {
+            panic!("listEntries should have succeeded.");
+        }
+    }
 }
