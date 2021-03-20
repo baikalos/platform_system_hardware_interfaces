@@ -27,6 +27,7 @@ rust_test {
         "libanyhow",
         "libbinder_rs",
         "liblazy_static",
+        "liblibc",
         "libthiserror",
     ],
 }
