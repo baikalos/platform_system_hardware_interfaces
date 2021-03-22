@@ -22,6 +22,30 @@
       },
       "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4998beaa_20ce1a52",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-22T21:51:14Z",
+      "side": 1,
+      "message": "I am not clear on what is \"this\" and \"that\", i.e., what should be blocked on what.\n\nAlso are there rust bindings for libaidlvintf_gtest_helper?",
+      "parentUuid": "f3d4c3d9_b551c52e",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
