@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08154453_758fb676",
+        "filename": "omapi/aidl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As we are moving these files from framework/base here. We will mostly keep the copyright as it is.",
+      "parentUuid": "7f35826f_ea5d9071",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aaf4e29_addd4cf2",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-23T15:58:06Z",
       "side": 1,
       "message": "2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4eceef4_1c2b2221",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As per our discussion. I will keep it same as these files are moved here from framework/base. I will be updating the commit message to reflect the same..",
+      "parentUuid": "4aaf4e29_addd4cf2",
       "range": {
         "startLine": 2,
         "startChar": 17,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c475a8_4a484c8b",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As per our discussion. I will keep it same as these files are moved here from framework/base. I will be updating the commit message to reflect the same..",
+      "parentUuid": "018f5073_7db64494",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85aa877a_726ce455",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-23T15:58:06Z",
       "side": 1,
       "message": "There\u0027s an extra blank line here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0778ea19_f4396077",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As per our discussion. I will keep it same as these files are moved here from framework/base. I will be updating the commit message to reflect the same..",
+      "parentUuid": "85aa877a_726ce455",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "346bd544_61a6b848",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As per our discussion. I will keep it same as these files are moved here from framework/base. I will be updating the commit message to reflect the same..",
+      "parentUuid": "95f3d6cc_9d4f125f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "376a596c_97ffd21f",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-03-23T15:58:06Z",
       "side": 1,
       "message": "Word wrap at 100 cols.",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "524a1dba_0fb9a42b",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As per our discussion. I will keep it same as these files are moved here from framework/base. I will be updating the commit message to reflect the same..",
+      "parentUuid": "376a596c_97ffd21f",
       "range": {
         "startLine": 28,
         "startChar": 7,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85806cf2_4f45b6e3",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As per our discussion. I will keep it same as these files are moved here from framework/base. I will be updating the commit message to reflect the same..",
+      "parentUuid": "a5bf6333_447e291d",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56c9a08a_15a64bb8",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-03-23T15:58:06Z",
       "side": 1,
       "message": "Indented one space too far.",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437314d8_7cc64571",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As per our discussion. I will keep it same as these files are moved here from framework/base. I will be updating the commit message to reflect the same..",
+      "parentUuid": "56c9a08a_15a64bb8",
       "range": {
         "startLine": 49,
         "startChar": 5,
@@ -225,6 +417,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82a6a00_a006bbad",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As per our discussion. I will keep it same as these files are moved here from framework/base. I will be updating the commit message to reflect the same..",
+      "parentUuid": "06c19f26_701c58c2",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2b99857_badd7b0d",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-03-23T15:58:06Z",
       "side": 1,
       "message": "Why do we have an interface with no methods?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6c052b_7ebdc533",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementListener.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As these files are moved here from framework/base, we are keeping the files as it is. I will be updating the commit message to reflect the same..",
+      "parentUuid": "d2b99857_badd7b0d",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -271,6 +511,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a91427_a9208550",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementReader.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As these files are moved here from framework/base, we are keeping the files as it is. I will be updating the commit message to reflect the same..",
+      "parentUuid": "39c78878_7178d971",
+      "range": {
+        "startLine": 34,
+        "startChar": 51,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4efbc062_2cc80859",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-03-23T15:58:06Z",
       "side": 1,
       "message": "initializes",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f9ff17_fe62e16c",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementReader.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As these files are moved here from framework/base, we are keeping the files as it is. I will be updating the commit message to reflect the same..",
+      "parentUuid": "4efbc062_2cc80859",
       "range": {
         "startLine": 35,
         "startChar": 29,
@@ -317,6 +605,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22720ee7_b97a35a5",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementReader.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As these files are moved here from framework/base, we are keeping the files as it is. I will be updating the commit message to reflect the same..",
+      "parentUuid": "641f11d3_b019faf5",
+      "range": {
+        "startLine": 38,
+        "startChar": 41,
+        "endLine": 38,
+        "endChar": 59
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0e0a9ee_82f3085b",
@@ -330,6 +642,30 @@
       "writtenOn": "2021-03-23T15:58:06Z",
       "side": 1,
       "message": "Add a blank line before the @return.",
+      "range": {
+        "startLine": 54,
+        "startChar": 6,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd78b7bf_ea9f5d32",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementReader.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "As these files are moved here from framework/base, we are keeping the files as it is. I will be updating the commit message to reflect the same..",
+      "parentUuid": "f0e0a9ee_82f3085b",
       "range": {
         "startLine": 54,
         "startChar": 6,
@@ -363,6 +699,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a3180b_93b7dd0a",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementSession.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "I think there is some mistake from my side here.These files should be auto-generated. Will be fixing it in the latest commit.",
+      "parentUuid": "b7c8488a_1390635d",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 43
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "671fc85a_a87f89ee",
@@ -376,6 +736,30 @@
       "writtenOn": "2021-03-23T15:58:06Z",
       "side": 1,
       "message": "Import this, too.",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 54
+      },
+      "revId": "0acd31db85336e95a7d1194e152671a5396e980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8093269_3820b460",
+        "filename": "omapi/aidl/aidl_api/android.se.omapi/current/android/se/omapi/ISecureElementSession.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-23T19:26:18Z",
+      "side": 1,
+      "message": "I think there is some mistake from my side here.These files should be auto-generated. Will be fixing it in the latest commit.",
+      "parentUuid": "671fc85a_a87f89ee",
       "range": {
         "startLine": 62,
         "startChar": 15,
