@@ -70,6 +70,30 @@
       },
       "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0bc673_5491759e",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1621997
+      },
+      "writtenOn": "2021-03-23T19:09:07Z",
+      "side": 1,
+      "message": "Looks like this is the eventual update:\n\"android.system.keystore2\" -\u003e \"android.system.keystore2.IKeystoreService/default\"\n\nAre you asking that the current commit be merged after the topic containing ag/1649648 because if this goes in first, ag/1649648 has to update keystore2/aidl/vts/keystore2_test_client.rs as well?\n\nIs it a huge cost to rebase the aidl-rust-stability topic and update ag/1649648? I\u0027m new to the platform/aosp so not fully aware of all the costs - happy to learn more :)",
+      "parentUuid": "1cc041f5_8a7cf51f",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
