@@ -46,6 +46,30 @@
       },
       "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc041f5_8a7cf51f",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-23T01:58:43Z",
+      "side": 1,
+      "message": "this/that - we should update the KS2_SERVICE_NAME variable. It\u0027s not worth blocking the stability topic\n\n\u003e Also are there rust bindings for libaidlvintf_gtest_helper?\n\nI don\u0027t think so",
+      "parentUuid": "4998beaa_20ce1a52",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
