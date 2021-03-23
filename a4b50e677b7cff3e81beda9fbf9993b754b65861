@@ -50,6 +50,24 @@
       "message": "are there VTS test cases for this?",
       "revId": "a4b50e677b7cff3e81beda9fbf9993b754b65861",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0524d66_5ed379aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368904
+      },
+      "writtenOn": "2021-03-23T09:43:06Z",
+      "side": 1,
+      "message": "Yes, vts_kernel_encryption_test will test these (I\u0027m updating them to use the keystore2 API instead of talking directly to keymaster).",
+      "parentUuid": "393c18d5_671a3ad0",
+      "revId": "a4b50e677b7cff3e81beda9fbf9993b754b65861",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
