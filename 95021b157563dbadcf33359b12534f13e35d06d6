@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc001ac_c8472942",
+        "filename": "omapi/aidl/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "can you move this to be system, in line with other things in this directory?",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc855b2_2e20c4c8",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "is this and the 2017 copied from somewhere?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49057d9e_230bfda9",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "how is this different than the hardware-level secure element API? Will we need both indefinitely?",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195d299e_306f0f91",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "format",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb6e038d_549a9ac6",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementListener.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "empty?",
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1391a7bb_013cb8a6",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementReader.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "this API implies only one client. Do we need/want this?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7bbeb0_b655d7cc",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "can you document error codes in these interfaces?",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b33dc0b_1048a28a",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "can you specify this is for debug-only purposes? or unique only? Does the name carry any further meaning?",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff97480_21ae5d3e",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "what package name is this?",
+      "range": {
+        "startLine": 45,
+        "startChar": 48,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac14ec6_efe9a95d",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "nit: prefer \u0027Nfc\u0027",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd61b452_432f9b05",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementSession.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:00:39Z",
+      "side": 1,
+      "message": "what is this?",
+      "range": {
+        "startLine": 64,
+        "startChar": 66,
+        "endLine": 64,
+        "endChar": 68
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
