@@ -94,6 +94,30 @@
       },
       "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6859a73b_0e085b9c",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-24T00:19:55Z",
+      "side": 1,
+      "message": "Yes - we shouldn\u0027t add any more blockers to that topic, I think.\n\nBut the main thing is that this should work on any instance of the keystore service which is declared in the VINTF manifest like other tests using libaidlvintf_gtest_helper. Especially since this is the first Rust VTS test, and people will copy this.",
+      "parentUuid": "de0bc673_5491759e",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
