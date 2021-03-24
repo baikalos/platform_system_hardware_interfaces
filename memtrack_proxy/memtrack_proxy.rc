@@ -1,0 +1,4 @@
+service memtrack_proxy /system/bin/memtrack_proxy
+    class core
+    user system
+    group system
