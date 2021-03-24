@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdaf7391_85da6806",
+        "filename": "omapi/aidl/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-24T18:10:58Z",
+      "side": 1,
+      "message": "Also, we are keeping this intentionally unresolved to avoid it going into treehugger accidentally.",
+      "parentUuid": "eff9fbf1_3129ce8b",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dc855b2_2e20c4c8",
         "filename": "omapi/aidl/android/se/omapi/ISecureElementChannel.aidl",
         "patchSetId": 7
