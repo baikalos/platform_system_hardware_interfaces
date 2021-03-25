@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f589f35e_632b1671",
+        "filename": "memtrack_proxy/MemtrackProxy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-03-25T02:06:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96bb0ca0_d0a6e49f",
+      "range": {
+        "startLine": 68,
+        "startChar": 33,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "69a1480f7bd839f48a014ed1c696f7270750980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "911abefa_45ec330e",
         "filename": "memtrack_proxy/MemtrackProxy.cpp",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2021-03-25T00:51:58Z",
       "side": 1,
       "message": "is this ever expected to happen? Should we ignore checking the return to get a harder error, so we can have this reported and fixed?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 63
+      },
+      "revId": "69a1480f7bd839f48a014ed1c696f7270750980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce40c34_1c1f4a39",
+        "filename": "memtrack_proxy/MemtrackProxy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-03-25T02:06:54Z",
+      "side": 1,
+      "message": "I explicitly checked the HIDL return here because I came across b/35728498 from smoreland@ :)",
+      "parentUuid": "911abefa_45ec330e",
       "range": {
         "startLine": 119,
         "startChar": 0,
