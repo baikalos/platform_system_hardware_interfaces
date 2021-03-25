@@ -22,6 +22,30 @@
       },
       "revId": "32f8c567a191f5816a96f1caf994ab65b008fe73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0efd91a4_438c85f0",
+        "filename": "memtrack_proxy/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-03-25T00:49:02Z",
+      "side": 1,
+      "message": "Ack. Will post new version making this a part of system server",
+      "parentUuid": "dbbe1291_a12e9365",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "32f8c567a191f5816a96f1caf994ab65b008fe73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
