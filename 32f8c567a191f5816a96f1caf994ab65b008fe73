@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbbe1291_a12e9365",
+        "filename": "memtrack_proxy/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:24:21Z",
+      "side": 1,
+      "message": "this should probably go in frameworks/base next to other system_server sources (this directory is only supposed to be for hardware interfaces, but this is a service using hardware interfaces)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "32f8c567a191f5816a96f1caf994ab65b008fe73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
