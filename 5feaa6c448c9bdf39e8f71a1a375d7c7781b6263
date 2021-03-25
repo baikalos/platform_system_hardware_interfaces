@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0bd17d_7c40b6ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1632361
+      },
+      "writtenOn": "2021-03-25T18:39:06Z",
+      "side": 1,
+      "message": "We have moved this aidl(s) from framework/base to system/hardware/interfaces and mark them as vendor stable. This requires API council approval.",
+      "revId": "5feaa6c448c9bdf39e8f71a1a375d7c7781b6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
