@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2165e17_9433fd81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "btw - what is the motivation of exposing this to vendor?",
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a812090_556bf1e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "nit: avoid wrapping commit message \u0026 add newline after first line",
+      "range": {
+        "startLine": 7,
+        "startChar": 53,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bc001ac_c8472942",
         "filename": "omapi/aidl/Android.bp",
         "patchSetId": 7
@@ -62,6 +102,30 @@
       "side": 1,
       "message": "Also, we are keeping this intentionally unresolved to avoid it going into treehugger accidentally.",
       "parentUuid": "eff9fbf1_3129ce8b",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7889bf8_f40c5276",
+        "filename": "omapi/aidl/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "TH can run w/ unresolved comments btw. PR+1 or CR+2 triggers it.\n\nAnyway - ack",
+      "parentUuid": "bdaf7391_85da6806",
       "range": {
         "startLine": 20,
         "startChar": 19,
@@ -168,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "446c9a04_998861d9",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "My question is, what is the functional difference between both of these APIs. Are they at different abstraction levels, and can you characterize this difference?",
+      "parentUuid": "8f6e61ca_dd7fab76",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "195d299e_306f0f91",
         "filename": "omapi/aidl/android/se/omapi/ISecureElementChannel.aidl",
         "patchSetId": 7
@@ -215,6 +303,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d94db3a7_77412988",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "Please document the exact format (and add tests). We need APIs to be defined precisely, since they need to be backwards compatible",
+      "parentUuid": "2d641fc8_02572f44",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb6e038d_549a9ac6",
         "filename": "omapi/aidl/android/se/omapi/ISecureElementListener.aidl",
         "patchSetId": 7
@@ -244,6 +356,24 @@
       "side": 1,
       "message": "As we are just moving the existing code. We kept it as in the original.",
       "parentUuid": "fb6e038d_549a9ac6",
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fba3450_6c439743",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementListener.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "This is more as an API review. I don\u0027t think we should expose an empty class in an API. Do you know what it is used for/why this is needed?",
+      "parentUuid": "404275d6_a1e7c48a",
       "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -285,6 +415,30 @@
       "side": 1,
       "message": "We are just moving the existing code so we are keeping it as it is. Omapi team could possibly give more insights.",
       "parentUuid": "1391a7bb_013cb8a6",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e56e459_327cf500",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementReader.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "Please reach out to them/see if this could make the release",
+      "parentUuid": "209c1f18_1cad84e9",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -344,6 +498,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "833bdd9d_ec5df176",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "Since it is being exposed as an API, we should document and test the behavior. Otherwise internal framework changes could break vendor code.",
+      "parentUuid": "272d76ea_2aaea424",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b33dc0b_1048a28a",
         "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
         "patchSetId": 7
@@ -391,6 +569,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04b5c20f_c48b5c21",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "a64a6db3_af47030c",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ff97480_21ae5d3e",
         "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
         "patchSetId": 7
@@ -426,6 +628,30 @@
       "side": 1,
       "message": "As we are just moving the existing code. We are keeping it as it is.",
       "parentUuid": "5ff97480_21ae5d3e",
+      "range": {
+        "startLine": 45,
+        "startChar": 48,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9da2bf_4565720f",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "7a6e6345_f646c028",
       "range": {
         "startLine": 45,
         "startChar": 48,
@@ -520,6 +746,30 @@
       "side": 1,
       "message": "As we are just moving the existing code. We are keeping it as it is.",
       "parentUuid": "cd61b452_432f9b05",
+      "range": {
+        "startLine": 64,
+        "startChar": 66,
+        "endLine": 64,
+        "endChar": 68
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18a0d9a_1071019f",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementSession.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:59:24Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "961136eb_db160600",
       "range": {
         "startLine": 64,
         "startChar": 66,
