@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c654d73_4e1e8f2b",
+        "filename": "memtrack_proxy/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:51:58Z",
+      "side": 1,
+      "message": "Can this be combined with system_server or another processes? This would be a lot of resources to fix an API which no one noticed was broken for 4 years",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "69a1480f7bd839f48a014ed1c696f7270750980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96bb0ca0_d0a6e49f",
+        "filename": "memtrack_proxy/MemtrackProxy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:51:58Z",
+      "side": 1,
+      "message": "maybe comment - as discussed with jeffv - if the process dies in the meantime, this call can\u0027t return any results",
+      "range": {
+        "startLine": 68,
+        "startChar": 33,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "69a1480f7bd839f48a014ed1c696f7270750980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911abefa_45ec330e",
+        "filename": "memtrack_proxy/MemtrackProxy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:51:58Z",
+      "side": 1,
+      "message": "is this ever expected to happen? Should we ignore checking the return to get a harder error, so we can have this reported and fixed?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 63
+      },
+      "revId": "69a1480f7bd839f48a014ed1c696f7270750980a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
