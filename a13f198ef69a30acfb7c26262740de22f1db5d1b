@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b81eb6_7be90e40",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-30T22:16:01Z",
+      "side": 1,
+      "message": "this should still go over all instances in the manifest or check to make sure there are no others",
+      "range": {
+        "startLine": 175,
+        "startChar": 79,
+        "endLine": 175,
+        "endChar": 86
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
