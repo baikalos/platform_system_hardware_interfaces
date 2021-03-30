@@ -142,6 +142,30 @@
       },
       "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b48ee7_124fe72c",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-30T22:37:15Z",
+      "side": 1,
+      "message": "Should we maybe do something like this:\n\nhttps://source.corp.google.com/aosp-master/system/security/keystore2/src/shared_secret_negotiation.rs;rcl\u003dd544d5a91c9d8fb1edcc9607399f90ac5d754ed0;l\u003d111",
+      "parentUuid": "24e01655_f82c9edc",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
