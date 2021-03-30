@@ -118,6 +118,30 @@
       },
       "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e01655_f82c9edc",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1621997
+      },
+      "writtenOn": "2021-03-30T16:05:29Z",
+      "side": 1,
+      "message": "Service name is updated.",
+      "parentUuid": "6859a73b_0e085b9c",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "3cee1c25fbcc768423d8d96c72649eb39361869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
