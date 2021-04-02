@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009563243",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1662227?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "7e882c0c_c40eaa22",
+          "description": "Change to \"omapi/aidl/android/system/omapi/ISecureElementListener.aidl\"",
+          "replacements": [
+            {
+              "path": "omapi/aidl/android/system/omapi/ISecureElementListener.aidl",
+              "range": {
+                "startLine": 24,
+                "startChar": 27,
+                "endLine": 24,
+                "endChar": 38
+              },
+              "replacement": "notification"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "1eda5a61_d6be006f",
+        "filename": "omapi/aidl/android/system/omapi/ISecureElementListener.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-02T21:33:18Z",
+      "side": 1,
+      "message": "Common typo found: \"notifcation\" -- should it be \"notification\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "1b2c498c01e9962d3200d6dbb9f22ea1cb23f36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009563244",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1662227?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "13b4ce9e_f728db25",
+        "filename": "omapi/aidl/android/system/omapi/SecureElementErrorCode.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-02T21:33:18Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027they\u0027, \u0027them\u0027, or \u0027person\u0027; see https://developers.google.com/style/word-list#gender for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 46,
+        "startChar": 42,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "1b2c498c01e9962d3200d6dbb9f22ea1cb23f36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
