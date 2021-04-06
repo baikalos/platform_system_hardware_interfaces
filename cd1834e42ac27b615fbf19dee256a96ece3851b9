@@ -34,6 +34,24 @@
       "parentUuid": "a9df7e1a_7ebcbf42",
       "revId": "cd1834e42ac27b615fbf19dee256a96ece3851b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c3b66b_8d2b524e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-06T21:35:42Z",
+      "side": 1,
+      "message": "NDK/C++/Java backends are enabled by default, Rust is disabled by default. I know, I know",
+      "parentUuid": "0eaf1214_333db0e8",
+      "revId": "cd1834e42ac27b615fbf19dee256a96ece3851b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
