@@ -16,6 +16,24 @@
       "message": "oof - so as the errors indicate, this property is also contagious",
       "revId": "cd1834e42ac27b615fbf19dee256a96ece3851b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eaf1214_333db0e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-04-06T20:35:44Z",
+      "side": 1,
+      "message": "I see how dependent libraries would complain if their _ndk variant suddenly goes missing. What I don\u0027t get is why dependent libraries that have only java and rust enabled would complain.",
+      "parentUuid": "a9df7e1a_7ebcbf42",
+      "revId": "cd1834e42ac27b615fbf19dee256a96ece3851b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
