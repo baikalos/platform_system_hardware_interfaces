@@ -33,8 +33,10 @@ package android.system.keystore2;
  * Negative codes correspond to `android.hardware.security.keymint.ErrorCode` and
  * indicate KeyMint back end errors. Refer to the KeyMint interface spec for
  * detail.
+ * @hide
  */
 @VintfStability
+@SensitiveData
 interface IKeystoreOperation {
 
     /**

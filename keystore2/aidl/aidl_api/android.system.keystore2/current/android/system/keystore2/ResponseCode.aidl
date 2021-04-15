@@ -32,6 +32,7 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.system.keystore2;
+/* @hide */
 @Backing(type="int") @VintfStability
 enum ResponseCode {
   LOCKED = 2,
@@ -45,4 +46,5 @@ enum ResponseCode {
   OPERATION_BUSY = 19,
   INVALID_ARGUMENT = 20,
   TOO_MUCH_DATA = 21,
+  OUT_OF_KEYS = 22,
 }

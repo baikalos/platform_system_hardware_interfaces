@@ -35,6 +35,7 @@ import android.system.keystore2.KeyEntryResponse;
  * Negative codes correspond to `android.hardware.security.keymint.ErrorCode` and
  * indicate KeyMint back end errors. Refer to the KeyMint interface spec for
  * detail.
+ * @hide
  */
 @VintfStability
 interface IKeystoreService {
@@ -133,7 +134,10 @@ interface IKeystoreService {
     KeyDescriptor[] listEntries(in Domain domain, in long nspace);
 
     /**
-     * Deletes the designated key.
+     * Deletes the designated key. This method can be used on keys with any domain except
+     * Domain::BLOB, since keystore knows which security level any non Domain::BLOB key
+     * belongs to. To delete Domain::BLOB keys, use IKeystoreSecurityLevel::deleteKey()
+     * instead.
      *
      * ## Error conditions
      * `ResponseCode::KEY_NOT_FOUND` if the key designated by `key` did not exist.

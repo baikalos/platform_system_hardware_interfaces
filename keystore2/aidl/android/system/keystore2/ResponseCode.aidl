@@ -16,6 +16,7 @@
 
 package android.system.keystore2;
 
+/** @hide */
 @VintfStability
 @Backing(type="int")
 enum ResponseCode {
@@ -39,6 +40,9 @@ enum ResponseCode {
      * Indicates that the requested key does not exist.
      */
     KEY_NOT_FOUND = 7,
+    /**
+     * Indicates a data corruption in the Keystore 2.0 database.
+     */
     VALUE_CORRUPTED = 8,
     /*
      * 9 Reserved - formerly "undefined action" was never used
@@ -77,4 +81,10 @@ enum ResponseCode {
      * amount of data that we except in a single transaction to 32KiB.
      */
     TOO_MUCH_DATA = 21,
+
+    /**
+     * Indicates that the attestation key pool does not have any signed attestation keys
+     * available. This can be thrown during attempts to generate a key.
+     */
+    OUT_OF_KEYS = 22,
 }
