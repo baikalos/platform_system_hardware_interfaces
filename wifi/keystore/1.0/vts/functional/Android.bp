@@ -25,7 +25,6 @@ cc_test {
         "VtsHalWifiKeystoreV1_0TargetTest.cpp",
     ],
     shared_libs: [
-        "android.system.keystore2-V1-ndk_platform",
         "libkeymint_support",
         "libbase",
         "liblog",
@@ -36,8 +35,9 @@ cc_test {
         "libbinder_ndk",
     ],
     static_libs: [
-        "VtsHalHidlTargetTestBase",
+        "android.system.keystore2-V1-ndk_platform",
         "android.system.wifi.keystore@1.0",
+        "VtsHalHidlTargetTestBase",
     ],
     cflags: [
         "-O0",
