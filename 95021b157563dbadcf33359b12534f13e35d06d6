@@ -254,6 +254,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "227eae7a_708b221e",
+        "filename": "omapi/aidl/android/se/omapi/ISecureElementChannel.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1043663
+      },
+      "writtenOn": "2021-05-03T22:44:04Z",
+      "side": 1,
+      "message": "Yes, they\u0027re at different abstraction levels.  ISecureElement is a hardware abstraction, this is an interface to a system component.",
+      "parentUuid": "446c9a04_998861d9",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "95021b157563dbadcf33359b12534f13e35d06d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "195d299e_306f0f91",
