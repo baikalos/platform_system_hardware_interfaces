@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4143704b_a4d33264",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-05-21T10:19:30Z",
+      "side": 1,
+      "message": "As of now, the AIDL compiler can\u0027t handle \"check api\" with imported references. b/188878102\n",
+      "revId": "a51af07058881e9d6a0c85a4064cf4ffb7d942bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
