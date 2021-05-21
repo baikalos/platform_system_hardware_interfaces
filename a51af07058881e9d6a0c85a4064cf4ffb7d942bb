@@ -16,6 +16,23 @@
       "message": "As of now, the AIDL compiler can\u0027t handle \"check api\" with imported references. b/188878102\n",
       "revId": "a51af07058881e9d6a0c85a4064cf4ffb7d942bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b02f20_c599d4ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-05-21T22:48:50Z",
+      "side": 1,
+      "message": "even though aosp/1715794 is a fix forward, I\u0027d like to proceed with this one first and then re-revert it after the fix is verified.",
+      "revId": "a51af07058881e9d6a0c85a4064cf4ffb7d942bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
