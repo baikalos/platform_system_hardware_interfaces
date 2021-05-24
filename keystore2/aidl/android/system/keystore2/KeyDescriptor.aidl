@@ -52,7 +52,7 @@ import android.system.keystore2.Domain;
 @VintfStability
 @RustDerive(Clone=true, Eq=true, PartialEq=true, Ord=true, PartialOrd=true)
 parcelable KeyDescriptor {
-    Domain domain = Domain.APP;
+    Domain domain;
     long nspace; /* namespace is a keyword in C++, so we had a to pick a different field name. */
     /**
      * A free form string denoting the key, chosen by the client.

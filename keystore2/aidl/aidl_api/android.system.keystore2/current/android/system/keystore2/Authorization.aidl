@@ -35,6 +35,6 @@ package android.system.keystore2;
 /* @hide */
 @VintfStability
 parcelable Authorization {
-  android.hardware.security.keymint.SecurityLevel securityLevel = android.hardware.security.keymint.SecurityLevel.SOFTWARE;
+  android.hardware.security.keymint.SecurityLevel securityLevel;
   android.hardware.security.keymint.KeyParameter keyParameter;
 }

@@ -29,7 +29,7 @@ parcelable AuthenticatorSpec {
     /**
      * The type of the authenticator in question.
      */
-    HardwareAuthenticatorType authenticatorType = HardwareAuthenticatorType.NONE;
+    HardwareAuthenticatorType authenticatorType;
     /**
      * The secure user id by which the given authenticator knows the
      * user that a key should be bound to.
