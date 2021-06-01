@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c95627db_d31c8a50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611900
+      },
+      "writtenOn": "2021-06-01T21:09:58Z",
+      "side": 1,
+      "message": "OMAPI vendor stable service - Adding VTS tests",
+      "revId": "6bdba1937657e5ca9b29532a71757bad8f8adbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
