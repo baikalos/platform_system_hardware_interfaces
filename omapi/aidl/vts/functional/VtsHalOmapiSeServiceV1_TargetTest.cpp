@@ -21,6 +21,7 @@
 #include <aidl/android/system/omapi/ISecureElementSession.h>
 #include <aidl/android/system/omapi/SecureElementErrorCode.h>
 
+#include <VtsCoreUtil.h>
 #include <aidl/Gtest.h>
 #include <aidl/Vintf.h>
 #include <android-base/logging.h>
@@ -63,6 +64,24 @@ class OMAPISEServiceHalTest : public TestWithParam<std::string> {
         }
     }
 
+    std::shared_ptr<::aidl::android::system::omapi::ISecureElementReader> getUiccReader(
+        int slotNumber) {
+        if (slotNumber < 1) {
+            LOG(ERROR) << "slotNumber should be larger than 0";
+            return 0;
+        }
+
+        std::string readerName = UICC_READER_PREFIX + std::to_string(slotNumber);
+        auto searchReader = mVSReaders.find(readerName);
+
+        if (searchReader != mVSReaders.end()) {
+            LOG(ERROR) << "Reader:" + readerName + " doesn't exist";
+            return 0;
+        }
+
+        return searchReader->second;
+    }
+
     void SetUp() override {
         ::ndk::SpAIBinder ks2Binder(AServiceManager_getService(omapiServiceName));
         omapiSeService = aidl::android::system::omapi::ISecureElementService::fromBinder(ks2Binder);
@@ -101,6 +120,9 @@ class OMAPISEServiceHalTest : public TestWithParam<std::string> {
     static inline std::string const UICC_READER_PREFIX = "SIM";
     static inline std::string const ESE_READER_PREFIX = "eSE";
     static inline std::string const SD_READER_PREFIX = "SD";
+    static inline std::string const FEATURE_SE_OMAPI_UICC = "android.hardware.se.omapi.uicc";
+    static inline std::string const FEATURE_SE_OMAPI_ESE = "android.hardware.se.omapi.ese";
+    static inline std::string const FEATURE_SE_OMAPI_SD = "android.hardware.se.omapi.sd";
 
     constexpr static const char omapiServiceName[] =
         "android.system.omapi.ISecureElementService/default";
@@ -146,6 +168,41 @@ TEST_P(OMAPISEServiceHalTest, TestGetReaders) {
         if (name.rfind(SD_READER_PREFIX, 0)) {
             sdReaders.push_back(reader);
         }
+    }
+
+    if (deviceSupportsFeature(FEATURE_SE_OMAPI_UICC.c_str())) {
+        ASSERT_GE(uiccReaders.size(), 1);
+        // Test API getUiccReader(int slotNumber)
+        // The result should be the same as getReaders() with UICC reader prefix
+        for (int i = 0; i < uiccReaders.size(); i++) {
+            std::shared_ptr<aidl::android::system::omapi::ISecureElementReader> uiccReader =
+                getUiccReader((i + 1));
+            if (uiccReader) {
+                if (uiccReaders[i] != uiccReader) {
+                    LOG(ERROR) << "Incorrect reader object - getUiccReader(" +
+                                      std::to_string(i + 1) + ")";
+                    return;
+                }
+            } else {
+                LOG(ERROR) << "Fail to get Reader object by calling getUiccReader(" +
+                                  std::to_string(i + 1) + ")";
+                return;
+            }
+        }
+    } else {
+        ASSERT_TRUE(uiccReaders.size() == 0);
+    }
+
+    if (deviceSupportsFeature(FEATURE_SE_OMAPI_ESE.c_str())) {
+        ASSERT_GE(eseReaders.size(), 1);
+    } else {
+        ASSERT_TRUE(eseReaders.size() == 0);
+    }
+
+    if (deviceSupportsFeature(FEATURE_SE_OMAPI_SD.c_str())) {
+        ASSERT_GE(sdReaders.size(), 1);
+    } else {
+        ASSERT_TRUE(sdReaders.size() == 0);
     }
 
     EXPECT_EQ(result, true);
