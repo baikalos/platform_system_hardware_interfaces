@@ -3,6 +3,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0780e1e_9b96a9e0",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-06-09T20:22:47Z",
+      "side": 1,
+      "message": "Do we really need this?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6cd2ca6_cb8cad68",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-06-09T20:22:47Z",
+      "side": 1,
+      "message": "Please move to a utility function instead of copy-n-pasting.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 72
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867a14eb_14f6516d",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-06-09T20:22:47Z",
+      "side": 1,
+      "message": "We\u0027d be better off slowly gobbling up slots, rather than waiting for all prior ops to free. Else, anything wanting exclusive access will just be starved out.",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 58
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f2ba58_c40f7e4b",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-06-09T20:22:47Z",
+      "side": 1,
+      "message": "This would be a lot more obvious/readable with a name. Maybe `num_ops` or something?",
+      "range": {
+        "startLine": 87,
+        "startChar": 37,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae3ff86_14b5af64",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-06-09T20:22:47Z",
+      "side": 1,
+      "message": "Why not name it? key_params, maybe?",
+      "range": {
+        "startLine": 110,
+        "startChar": 13,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "125cdbe7_807403f5",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-06-09T20:22:47Z",
+      "side": 1,
+      "message": "Missing coverage for importKey, importWrappedKey, and convertStorageKeyToEphemeral.\n\nIs the plan to add those later?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 9
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74b81eb6_7be90e40",
         "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
         "patchSetId": 9
@@ -19,6 +157,52 @@
         "startChar": 79,
         "endLine": 175,
         "endChar": 86
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ad5476_8fab5870",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-06-09T20:22:47Z",
+      "side": 1,
+      "message": "Seems like this is a clear case where a basic \"if\" is cleaner than a match:\n\nif s.service_specific_error() \u003c 0 {\n  Error:Km(ErrorCode(s.service_specific_error()))\n} else {\n  Error::Rc(ResponseCode(s.service_specific_error()))\n}",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 21
+      },
+      "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d58d0c9b_2b4ec08e",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-06-09T20:22:47Z",
+      "side": 1,
+      "message": "Should we use max_ops here?\n\nOr are forced ops allowed to prune other forced ops (before pruning non-forced)? If that\u0027s the case, how do we know 100 ops is enough? Seems like we\u0027re running purely on chance here.",
+      "range": {
+        "startLine": 329,
+        "startChar": 36,
+        "endLine": 329,
+        "endChar": 39
       },
       "revId": "a13f198ef69a30acfb7c26262740de22f1db5d1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
