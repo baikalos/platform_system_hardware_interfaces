@@ -1,3 +1,4 @@
+#include <aidl/android/security/legacykeystore/ILegacyKeystore.h>
 #include <aidl/android/system/keystore2/IKeystoreService.h>
 #include <android-base/logging.h>
 #include <android-base/strings.h>
@@ -21,6 +22,7 @@
 #define AT __func__ << ":" << __LINE__ << " "
 
 namespace ks2 = ::aidl::android::system::keystore2;
+namespace lks = ::aidl::android::security::legacykeystore;
 namespace KMV1 = ::aidl::android::hardware::security::keymint;
 
 namespace {
@@ -28,6 +30,7 @@ namespace {
 constexpr const int64_t KS2_NAMESPACE_WIFI = 102;
 
 constexpr const char kKeystore2ServiceName[] = "android.system.keystore2.IKeystoreService/default";
+constexpr const char kLegacyKeystoreServiceName[] = "android.security.legacykeystore";
 
 const std::string keystore2_grant_id_prefix("ks2_keystore-engine_grant_id:");
 
@@ -79,8 +82,8 @@ ks2::KeyDescriptor mkKeyDescriptor(const std::string& alias) {
             LOG(ERROR) << AT << "Couldn't parse grant name: " << alias;
         }
         return {
-            .nspace = static_cast<int64_t>(tmp),
             .domain = ks2::Domain::GRANT,
+            .nspace = static_cast<int64_t>(tmp),
             .alias = std::nullopt,
             .blob = std::nullopt,
         };
@@ -191,7 +194,7 @@ std::optional<std::vector<uint8_t>> keyStore2GetPubKey(const hidl_string& key) {
     }
 
     std::optional<std::vector<uint8_t>> pub_key(extractPubKey(*response.metadata.certificate));
-    return std::move(pub_key);
+    return pub_key;
 }
 
 std::optional<std::vector<uint8_t>> keyStore2Sign(const hidl_string& key,
@@ -294,6 +297,25 @@ std::optional<std::vector<uint8_t>> keyStore2Sign(const hidl_string& key,
     return output;
 }
 
+std::optional<std::vector<uint8_t>> getLegacyKeystoreBlob(const hidl_string& key) {
+    ::ndk::SpAIBinder keystoreBinder(AServiceManager_checkService(kLegacyKeystoreServiceName));
+    auto legacyKeystore = lks::ILegacyKeystore::fromBinder(keystoreBinder);
+
+    if (!legacyKeystore) {
+        LOG(WARNING) << AT << "Unable to connect to LegacyKeystore";
+        return std::nullopt;
+    }
+
+    std::optional<std::vector<uint8_t>> blob(std::vector<uint8_t>{});
+    auto rc = legacyKeystore->get(key, AID_WIFI, &*blob);
+    if (!rc.isOk()) {
+        LOG(ERROR) << AT << "Failed to get legacy keystore entry for alias \"" << key
+                   << "\": " << rc.getDescription();
+        return std::nullopt;
+    }
+    return blob;
+}
+
 };  // namespace
 
 
@@ -303,11 +325,12 @@ namespace wifi {
 namespace keystore {
 namespace V1_0 {
 namespace implementation {
-
 // Methods from ::android::hardware::wifi::keystore::V1_0::IKeystore follow.
 Return<void> Keystore::getBlob(const hidl_string& key, getBlob_cb _hidl_cb) {
     if (auto ks2_cert = keyStore2GetCert(key)) {
         _hidl_cb(KeystoreStatusCode::SUCCESS, std::move(*ks2_cert));
+    } else if (auto blob = getLegacyKeystoreBlob(key)) {
+        _hidl_cb(KeystoreStatusCode::SUCCESS, *blob);
     } else {
         LOG(ERROR) << AT << "Failed to get certificate.";
         _hidl_cb(KeystoreStatusCode::ERROR_UNKNOWN, {});
