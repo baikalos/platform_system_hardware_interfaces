@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7d1a33_0d28617f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611900
+      },
+      "writtenOn": "2021-06-22T23:02:26Z",
+      "side": 1,
+      "message": "VTS tests Added: OMAPI CTS tests are ported to VTS. \n",
+      "revId": "346ea4648ffa077a25828fa9d54b98fb6411c820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
