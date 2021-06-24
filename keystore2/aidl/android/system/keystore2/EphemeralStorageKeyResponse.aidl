@@ -1,5 +1,5 @@
 /*
- * Copyright 2020, The Android Open Source Project
+ * Copyright 2021, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,23 +16,20 @@
 
 package android.system.keystore2;
 
-import android.hardware.security.keymint.HardwareAuthenticatorType;
-
 /**
- * The authenticator spec is used by `IKeystoreSecurityLevel::importWrappedKey`
- * to specify the sid of each possible authenticator type, e.g., password or
- * biometric authenticator, that the imported key may be bound to.
+ * Includes the ephemeral storage key and an optional upgraded key blob if the storage key
+ * needed an upgrade.
  * @hide
  */
 @VintfStability
-parcelable AuthenticatorSpec {
+parcelable EphemeralStorageKeyResponse {
     /**
-     * The type of the authenticator in question.
+     * The ephemeral storage key.
      */
-    HardwareAuthenticatorType authenticatorType = HardwareAuthenticatorType.NONE;
+    byte[] ephemeralKey;
     /**
-     * The secure user id by which the given authenticator knows the
-     * user that a key should be bound to.
+     * An optional opaque blob. If the key given to ISecurityLevel::convertStorageKeyToEphemeral
+     * was upgraded, then this field is present, and represents the upgraded version of that key.
      */
-    long authenticatorId;
+    @nullable byte[] upgradedBlob;
 }
