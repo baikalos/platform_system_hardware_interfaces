@@ -22,6 +22,30 @@
       },
       "revId": "d52479ccc162d738727c97d2271f3ee37825124f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e0282b_76ac17f0",
+        "filename": "wifi/keystore/1.0/default/keystore.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-06-30T22:24:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6d53a049_07c4fa06",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 334,
+        "endChar": 12
+      },
+      "revId": "d52479ccc162d738727c97d2271f3ee37825124f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
