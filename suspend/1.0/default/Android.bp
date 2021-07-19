@@ -21,6 +21,7 @@ cc_defaults {
     shared_libs: [
         "libbase",
         "libbinder",
+        "libbinder_ndk",
         "libcutils",
         "libhidlbase",
         "liblog",
@@ -51,6 +52,7 @@ cc_binary {
     init_rc: ["android.system.suspend@1.0-service.rc"],
     vintf_fragments: ["android.system.suspend@1.0-service.xml"],
     shared_libs: [
+        "android.system.suspend-V1-ndk_platform",
         "android.system.suspend.control-V1-cpp",
         "android.system.suspend.control.internal-cpp",
         "android.system.suspend@1.0",
@@ -61,6 +63,7 @@ cc_binary {
         "SuspendControlService.cpp",
         "SystemSuspend.cpp",
         "SystemSuspendHidl.cpp",
+        "SystemSuspendAidl.cpp",
         "WakeLockEntryList.cpp",
         "WakeupList.cpp",
     ],
@@ -75,16 +78,16 @@ cc_test {
         "system_suspend_stats_defaults",
     ],
     static_libs: [
+        "android.system.suspend-V1-ndk_platform",
         "android.system.suspend.control-V1-cpp",
         "android.system.suspend.control.internal-cpp",
-        "android.system.suspend@1.0",
         "libgmock",
         "SuspendProperties",
     ],
     srcs: [
         "SuspendControlService.cpp",
         "SystemSuspend.cpp",
-        "SystemSuspendHidl.cpp",
+        "SystemSuspendAidl.cpp",
         "SystemSuspendUnitTest.cpp",
         "WakeLockEntryList.cpp",
         "WakeupList.cpp",
@@ -120,7 +123,7 @@ cc_benchmark {
     shared_libs: [
         "android.system.suspend.control-V1-cpp",
         "android.system.suspend.control.internal-cpp",
-        "android.system.suspend@1.0",
+        "android.system.suspend-V1-ndk_platform",
     ],
     srcs: [
         "SystemSuspendBenchmark.cpp",

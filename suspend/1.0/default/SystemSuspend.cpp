@@ -16,9 +16,13 @@
 
 #include "SystemSuspend.h"
 
+#include <aidl/android/system/suspend/ISystemSuspend.h>
+#include <aidl/android/system/suspend/IWakeLock.h>
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/strings.h>
+#include <android/binder_manager.h>
+
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -26,6 +30,9 @@
 #include <string>
 #include <thread>
 
+using ::aidl::android::system::suspend::ISystemSuspend;
+using ::aidl::android::system::suspend::IWakeLock;
+using ::aidl::android::system::suspend::WakeLockType;
 using ::android::base::Error;
 using ::android::base::ReadFdToString;
 using ::android::base::WriteStringToFd;
@@ -352,10 +359,15 @@ Result<SuspendStats> SystemSuspend::getSuspendStats() {
     struct dirent* de;
 
     // Grab a wakelock before reading suspend stats, to ensure a consistent snapshot.
-    // TODO: Replace with the AIDL suspend service once it's implemented
-    sp<ISystemSuspend> suspendService = ISystemSuspend::getService();
-    sp<IWakeLock> suspendStatsLock =
-        suspendService->acquireWakeLock(WakeLockType::PARTIAL, "suspend_stats_lock");
+    const std::string suspendInstance = std::string() + ISystemSuspend::descriptor + "/default";
+    auto suspendService = ISystemSuspend::fromBinder(
+        ndk::SpAIBinder(AServiceManager_checkService(suspendInstance.c_str())));
+
+    std::shared_ptr<IWakeLock> wl = nullptr;
+    if (suspendService) {
+        auto status =
+            suspendService->acquireWakeLock(WakeLockType::PARTIAL, "suspend_stats_lock", &wl);
+    }
 
     while ((de = readdir(dp.get()))) {
         std::string statName(de->d_name);

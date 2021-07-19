@@ -19,7 +19,6 @@
 
 #include <android-base/result.h>
 #include <android-base/unique_fd.h>
-#include <android/system/suspend/1.0/ISystemSuspend.h>
 #include <android/system/suspend/internal/SuspendInfo.h>
 #include <utils/RefBase.h>
 
