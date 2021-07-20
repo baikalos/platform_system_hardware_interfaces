@@ -1,5 +1,5 @@
 <manifest version="1.0" type="framework">
-    <hal>
+    <hal max-level="6">
         <name>android.system.suspend</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
