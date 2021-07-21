@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0380e1a3_c3499380",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-21T23:50:35Z",
+      "side": 1,
+      "message": "is it good? any other perf results we should check? I know some failed when this originally switched to HIDL. Maybe we can check again?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "78c352b58d1bb3a5a1ae9671dbbe7d9a90b08876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9531a8ec_8c92729c",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-21T23:50:35Z",
+      "side": 1,
+      "message": "nit: note also you can do CHECK_EQ(..., ...) which will also print what the error is",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 9
+      },
+      "revId": "78c352b58d1bb3a5a1ae9671dbbe7d9a90b08876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
