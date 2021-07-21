@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91467f80_e4c3c178",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-21T23:40:07Z",
+      "side": 1,
+      "message": "we are losing the time for the lock take. Was that why \u0027timeNow\u0027 was passed as an argument? Or should you move getting the time above the lock, same below",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 49
+      },
+      "revId": "d822562a15d2a8ef92cf8e87d46f3c446927f322",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
