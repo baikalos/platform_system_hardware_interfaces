@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2abc63d_64cc227c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-07-21T23:48:24Z",
+      "side": 1,
+      "message": "Removed from topic. Will merge this one after migrating all the clients (libpower, PowerManagerService, bluetooth native wakelock)",
+      "revId": "b16ecfc11613f05817273b4ecb59de1e96fcd521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
