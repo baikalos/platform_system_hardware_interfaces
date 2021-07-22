@@ -22,6 +22,30 @@
       },
       "revId": "d822562a15d2a8ef92cf8e87d46f3c446927f322",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1ee16e_35634c6f",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-07-22T13:46:47Z",
+      "side": 1,
+      "message": "Done. Also modified to do the stats update right after suspend_counter is incremented/decremented.",
+      "parentUuid": "91467f80_e4c3c178",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 49
+      },
+      "revId": "d822562a15d2a8ef92cf8e87d46f3c446927f322",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
