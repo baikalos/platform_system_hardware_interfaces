@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98a4a470_89d99421",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-07-22T13:48:39Z",
+      "side": 1,
+      "message": "I\u0027m not aware of any other perf tests for this. The benchmark seems to be noisy but both HIDL and AIDL are on the order of ns.",
+      "parentUuid": "0380e1a3_c3499380",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "78c352b58d1bb3a5a1ae9671dbbe7d9a90b08876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9531a8ec_8c92729c",
         "filename": "suspend/1.0/default/main.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-21T23:50:35Z",
       "side": 1,
       "message": "nit: note also you can do CHECK_EQ(..., ...) which will also print what the error is",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 9
+      },
+      "revId": "78c352b58d1bb3a5a1ae9671dbbe7d9a90b08876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e5ce93_47099f78",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-07-22T13:48:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9531a8ec_8c92729c",
       "range": {
         "startLine": 160,
         "startChar": 4,
