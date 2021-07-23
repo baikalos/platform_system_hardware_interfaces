@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e21077_a6e67f96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-07-23T18:00:03Z",
+      "side": 1,
+      "message": "This should resolve itself after aosp/1772438. Let\u0027s wait for that. ",
+      "revId": "c9d78f4f9d003d4213963318a3799841af41ca9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
