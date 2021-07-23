@@ -37,6 +37,8 @@ namespace V1_0 {
 using android::base::unique_fd;
 using TimestampType = int64_t;
 
+TimestampType getTimeNow();
+
 /*
  * WakeLockEntryList to collect wake lock stats.
  * This class is thread safe.
@@ -44,8 +46,8 @@ using TimestampType = int64_t;
 class WakeLockEntryList {
    public:
     WakeLockEntryList(size_t capacity, unique_fd kernelWakelockStatsFd);
-    void updateOnAcquire(const std::string& name, int pid);
-    void updateOnRelease(const std::string& name, int pid);
+    void updateOnAcquire(const std::string& name, int pid, TimestampType timeNow);
+    void updateOnRelease(const std::string& name, int pid, TimestampType timeNow);
     // updateNow() should be called before getWakeLockStats() to ensure stats are
     // updated wrt the current time.
     void updateNow();

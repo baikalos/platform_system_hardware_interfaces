@@ -301,9 +301,7 @@ void WakeLockEntryList::getKernelWakelockStats(std::vector<WakeLockInfo>* aidl_r
     }
 }
 
-void WakeLockEntryList::updateOnAcquire(const std::string& name, int pid) {
-    TimestampType timeNow = getTimeNow();
-
+void WakeLockEntryList::updateOnAcquire(const std::string& name, int pid, TimestampType timeNow) {
     std::lock_guard<std::mutex> lock(mStatsLock);
 
     auto key = std::make_pair(name, pid);
@@ -327,9 +325,7 @@ void WakeLockEntryList::updateOnAcquire(const std::string& name, int pid) {
     }
 }
 
-void WakeLockEntryList::updateOnRelease(const std::string& name, int pid) {
-    TimestampType timeNow = getTimeNow();
-
+void WakeLockEntryList::updateOnRelease(const std::string& name, int pid, TimestampType timeNow) {
     std::lock_guard<std::mutex> lock(mStatsLock);
 
     auto key = std::make_pair(name, pid);

@@ -31,7 +31,6 @@
 
 #include "SuspendControlService.h"
 #include "SystemSuspend.h"
-#include "SystemSuspendHidl.h"
 
 using android::sp;
 using android::status_t;
@@ -44,7 +43,6 @@ using android::system::suspend::V1_0::SleepTimeConfig;
 using android::system::suspend::V1_0::SuspendControlService;
 using android::system::suspend::V1_0::SuspendControlServiceInternal;
 using android::system::suspend::V1_0::SystemSuspend;
-using android::system::suspend::V1_0::SystemSuspendHidl;
 using namespace std::chrono_literals;
 using namespace ::android::sysprop;
 
@@ -147,10 +145,9 @@ int main() {
         std::move(kernelWakelockStatsFd), std::move(wakeupReasonsFd), std::move(suspendTimeFd),
         sleepTimeConfig, suspendControl, suspendControlInternal, true /* mUseSuspendCounter*/);
 
-    sp<SystemSuspendHidl> suspendHidl = new SystemSuspendHidl(suspend.get());
-    status_t status = suspendHidl->registerAsService();
+    status_t status = suspend->registerAsService();
     if (android::OK != status) {
-        LOG(FATAL) << "Unable to register system-suspend HIDL service: " << status;
+        LOG(FATAL) << "Unable to register system-suspend service: " << status;
     }
 
     joinRpcThreadpool();

@@ -21,7 +21,7 @@
 #include <android-base/unique_fd.h>
 #include <android/system/suspend/1.0/ISystemSuspend.h>
 #include <android/system/suspend/internal/SuspendInfo.h>
-#include <utils/RefBase.h>
+#include <hidl/HidlTransportSupport.h>
 
 #include <atomic>
 #include <condition_variable>
@@ -39,6 +39,9 @@ namespace V1_0 {
 
 using ::android::base::Result;
 using ::android::base::unique_fd;
+using ::android::hardware::hidl_string;
+using ::android::hardware::interfacesEqual;
+using ::android::hardware::Return;
 using ::android::system::suspend::internal::SuspendInfo;
 
 using namespace std::chrono_literals;
@@ -73,7 +76,23 @@ struct SleepTimeConfig {
 
 std::string readFd(int fd);
 
-class SystemSuspend : public RefBase {
+class WakeLock : public IWakeLock {
+   public:
+    WakeLock(SystemSuspend* systemSuspend, const std::string& name, int pid);
+    ~WakeLock();
+
+    Return<void> release();
+
+   private:
+    inline void releaseOnce();
+    std::once_flag mReleased;
+
+    SystemSuspend* mSystemSuspend;
+    std::string mName;
+    int mPid;
+};
+
+class SystemSuspend : public ISystemSuspend {
    public:
     SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
                   size_t maxStatsEntries, unique_fd kernelWakelockStatsFd,
@@ -82,6 +101,7 @@ class SystemSuspend : public RefBase {
                   const sp<SuspendControlService>& controlService,
                   const sp<SuspendControlServiceInternal>& controlServiceInternal,
                   bool useSuspendCounter = true);
+    Return<sp<IWakeLock>> acquireWakeLock(WakeLockType type, const hidl_string& name) override;
     void incSuspendCounter(const std::string& name);
     void decSuspendCounter(const std::string& name);
     bool enableAutosuspend();
@@ -89,8 +109,7 @@ class SystemSuspend : public RefBase {
 
     const WakeupList& getWakeupList() const;
     const WakeLockEntryList& getStatsList() const;
-    void updateWakeLockStatOnAcquire(const std::string& name, int pid);
-    void updateWakeLockStatOnRelease(const std::string& name, int pid);
+    void updateWakeLockStatOnRelease(const std::string& name, int pid, TimestampType timeNow);
     void updateStatsNow();
     Result<SuspendStats> getSuspendStats();
     void getSuspendInfo(SuspendInfo* info);
