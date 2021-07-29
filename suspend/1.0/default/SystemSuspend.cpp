@@ -16,22 +16,26 @@
 
 #include "SystemSuspend.h"
 
+#include <aidl/android/system/suspend/ISystemSuspend.h>
+#include <aidl/android/system/suspend/IWakeLock.h>
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/strings.h>
+#include <android/binder_manager.h>
+
 #include <fcntl.h>
-#include <hidl/Status.h>
-#include <hwbinder/IPCThreadState.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
 #include <string>
 #include <thread>
 
+using ::aidl::android::system::suspend::ISystemSuspend;
+using ::aidl::android::system::suspend::IWakeLock;
+using ::aidl::android::system::suspend::WakeLockType;
 using ::android::base::Error;
 using ::android::base::ReadFdToString;
 using ::android::base::WriteStringToFd;
-using ::android::hardware::Void;
 using ::std::string;
 
 namespace android {
@@ -59,10 +63,6 @@ string readFd(int fd) {
     ssize_t n = TEMP_FAILURE_RETRY(read(fd, &buf[0], sizeof(buf)));
     if (n < 0) return "";
     return string{buf, static_cast<size_t>(n)};
-}
-
-static inline int getCallingPid() {
-    return ::android::hardware::IPCThreadState::self()->getCallingPid();
 }
 
 static std::vector<std::string> readWakeupReasons(int fd) {
@@ -116,27 +116,6 @@ static struct SuspendTime readSuspendTime(int fd) {
                 std::chrono::duration<double>(suspendOverhead)),
             std::chrono::duration_cast<std::chrono::nanoseconds>(
                 std::chrono::duration<double>(suspendTime))};
-}
-
-WakeLock::WakeLock(SystemSuspend* systemSuspend, const string& name, int pid)
-    : mReleased(), mSystemSuspend(systemSuspend), mName(name), mPid(pid) {
-    mSystemSuspend->incSuspendCounter(mName);
-}
-
-WakeLock::~WakeLock() {
-    releaseOnce();
-}
-
-Return<void> WakeLock::release() {
-    releaseOnce();
-    return Void();
-}
-
-void WakeLock::releaseOnce() {
-    std::call_once(mReleased, [this]() {
-        mSystemSuspend->decSuspendCounter(mName);
-        mSystemSuspend->updateWakeLockStatOnRelease(mName, mPid, getTimeNow());
-    });
 }
 
 SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
@@ -200,16 +179,6 @@ bool SystemSuspend::forceSuspend() {
         PLOG(VERBOSE) << "error writing to /sys/power/state for forceSuspend";
     }
     return success;
-}
-
-Return<sp<IWakeLock>> SystemSuspend::acquireWakeLock(WakeLockType /* type */,
-                                                     const hidl_string& name) {
-    auto pid = getCallingPid();
-    auto timeNow = getTimeNow();
-    IWakeLock* wl = new WakeLock{this, name, pid};
-    mControlService->notifyWakelock(name, true);
-    mStatsList.updateOnAcquire(name, pid, timeNow);
-    return wl;
 }
 
 void SystemSuspend::incSuspendCounter(const string& name) {
@@ -346,10 +315,18 @@ void SystemSuspend::updateSleepTime(bool success, const struct SuspendTime& susp
     mNumConsecutiveBadSuspends++;
 }
 
-void SystemSuspend::updateWakeLockStatOnRelease(const std::string& name, int pid,
-                                                TimestampType timeNow) {
+void SystemSuspend::updateWakeLockStatOnAcquire(const std::string& name, int pid) {
+    // Update the stats first so that the stat time is right after
+    // suspend counter being incremented.
+    mStatsList.updateOnAcquire(name, pid);
+    mControlService->notifyWakelock(name, true);
+}
+
+void SystemSuspend::updateWakeLockStatOnRelease(const std::string& name, int pid) {
+    // Update the stats first so that the stat time is right after
+    // suspend counter being decremented.
+    mStatsList.updateOnRelease(name, pid);
     mControlService->notifyWakelock(name, false);
-    mStatsList.updateOnRelease(name, pid, timeNow);
 }
 
 const WakeLockEntryList& SystemSuspend::getStatsList() const {
@@ -385,9 +362,16 @@ Result<SuspendStats> SystemSuspend::getSuspendStats() {
 
     struct dirent* de;
 
-    // Grab a wakelock before reading suspend stats,
-    // to ensure a consistent snapshot.
-    sp<IWakeLock> suspendStatsLock = acquireWakeLock(WakeLockType::PARTIAL, "suspend_stats_lock");
+    // Grab a wakelock before reading suspend stats, to ensure a consistent snapshot.
+    const std::string suspendInstance = std::string() + ISystemSuspend::descriptor + "/default";
+    auto suspendService = ISystemSuspend::fromBinder(
+        ndk::SpAIBinder(AServiceManager_checkService(suspendInstance.c_str())));
+
+    std::shared_ptr<IWakeLock> wl = nullptr;
+    if (suspendService) {
+        auto status =
+            suspendService->acquireWakeLock(WakeLockType::PARTIAL, "suspend_stats_lock", &wl);
+    }
 
     while ((de = readdir(dp.get()))) {
         std::string statName(de->d_name);

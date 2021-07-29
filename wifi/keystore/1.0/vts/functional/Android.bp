@@ -35,8 +35,8 @@ cc_test {
     ],
     static_libs: [
         "VtsHalHidlTargetTestBase",
-        "android.hardware.security.keymint-V1-ndk_platform",
-        "android.system.keystore2-V1-ndk_platform",
+        "android.hardware.security.keymint-V1-ndk",
+        "android.system.keystore2-V1-ndk",
         "android.system.wifi.keystore@1.0",
         "libkeymint_support",
     ],

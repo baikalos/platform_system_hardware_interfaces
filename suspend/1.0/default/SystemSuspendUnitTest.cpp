@@ -18,6 +18,8 @@
 #include <android-base/logging.h>
 #include <android-base/result.h>
 #include <android-base/unique_fd.h>
+#include <android/binder_manager.h>
+#include <android/binder_stability.h>
 #include <android/system/suspend/BnSuspendCallback.h>
 #include <android/system/suspend/BnWakelockCallback.h>
 #include <binder/IPCThreadState.h>
@@ -42,8 +44,13 @@
 
 #include "SuspendControlService.h"
 #include "SystemSuspend.h"
+#include "SystemSuspendAidl.h"
 #include "WakeupList.h"
 
+using aidl::android::system::suspend::ISystemSuspend;
+using aidl::android::system::suspend::IWakeLock;
+using aidl::android::system::suspend::SystemSuspendAidl;
+using aidl::android::system::suspend::WakeLockType;
 using android::sp;
 using android::base::Result;
 using android::base::Socketpair;
@@ -60,9 +67,6 @@ using android::system::suspend::ISuspendControlService;
 using android::system::suspend::internal::ISuspendControlServiceInternal;
 using android::system::suspend::internal::WakeLockInfo;
 using android::system::suspend::internal::WakeupInfo;
-using android::system::suspend::V1_0::getTimeNow;
-using android::system::suspend::V1_0::ISystemSuspend;
-using android::system::suspend::V1_0::IWakeLock;
 using android::system::suspend::V1_0::readFd;
 using android::system::suspend::V1_0::SleepTimeConfig;
 using android::system::suspend::V1_0::SuspendControlService;
@@ -70,7 +74,6 @@ using android::system::suspend::V1_0::SuspendControlServiceInternal;
 using android::system::suspend::V1_0::SuspendStats;
 using android::system::suspend::V1_0::SystemSuspend;
 using android::system::suspend::V1_0::TimestampType;
-using android::system::suspend::V1_0::WakeLockType;
 using android::system::suspend::V1_0::WakeupList;
 using namespace std::chrono_literals;
 
@@ -119,15 +122,18 @@ class SystemSuspendTest : public ::testing::Test {
             suspendTimeFd =
                 unique_fd(TEMP_FAILURE_RETRY(open(suspendTimeFile.path, O_CLOEXEC | O_RDONLY)));
 
-            sp<ISystemSuspend> suspend = new SystemSuspend(
+            systemSuspend = new SystemSuspend(
                 std::move(wakeupCountFds[1]), std::move(stateFds[1]),
                 unique_fd(-1) /*suspendStatsFd*/, 1 /* maxNativeStatsEntries */,
                 unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
                 std::move(suspendTimeFd), kSleepTimeConfig, suspendControl, suspendControlInternal);
-            status_t status = suspend->registerAsService(kServiceName);
-            if (android::OK != status) {
-                LOG(FATAL) << "Unable to register service: " << status;
-            }
+
+            std::shared_ptr<SystemSuspendAidl> suspendAidl =
+                ndk::SharedRefBase::make<SystemSuspendAidl>(systemSuspend.get());
+            auto aidlBinder = suspendAidl->asBinder();
+            AIBinder_forceDowngradeToLocalStability(aidlBinder.get());
+            auto aidlStatus = AServiceManager_addService(aidlBinder.get(), kServiceName);
+            CHECK(aidlStatus == STATUS_OK);
 
             joinRpcThreadpool();
         });
@@ -139,8 +145,8 @@ class SystemSuspendTest : public ::testing::Test {
         Socketpair(SOCK_STREAM, &stateFds[0], &stateFds[1]);
 
         registerTestService();
-        ::android::hardware::details::waitForHwService(ISystemSuspend::descriptor, kServiceName);
-        sp<ISystemSuspend> suspendService = ISystemSuspend::getService(kServiceName);
+        std::shared_ptr<ISystemSuspend> suspendService = ISystemSuspend::fromBinder(
+            ndk::SpAIBinder(AServiceManager_waitForService(kServiceName)));
         ASSERT_NE(suspendService, nullptr) << "failed to get suspend service";
 
         sp<IBinder> control =
@@ -162,8 +168,8 @@ class SystemSuspendTest : public ::testing::Test {
 
    public:
     virtual void SetUp() override {
-        ::android::hardware::details::waitForHwService(ISystemSuspend::descriptor, kServiceName);
-        suspendService = ISystemSuspend::getService(kServiceName);
+        suspendService = ISystemSuspend::fromBinder(
+            ndk::SpAIBinder(AServiceManager_waitForService(kServiceName)));
         ASSERT_NE(suspendService, nullptr) << "failed to get suspend service";
 
         sp<IBinder> control =
@@ -198,8 +204,10 @@ class SystemSuspendTest : public ::testing::Test {
 
     bool isSystemSuspendBlocked(int timeout_ms = 20) { return isReadBlocked(stateFd, timeout_ms); }
 
-    sp<IWakeLock> acquireWakeLock(const std::string& name = "TestLock") {
-        return suspendService->acquireWakeLock(WakeLockType::PARTIAL, name);
+    std::shared_ptr<IWakeLock> acquireWakeLock(const std::string& name = "TestLock") {
+        std::shared_ptr<IWakeLock> wl = nullptr;
+        auto status = suspendService->acquireWakeLock(WakeLockType::PARTIAL, name, &wl);
+        return wl;
     }
 
     size_t getActiveWakeLockCount() {
@@ -222,7 +230,7 @@ class SystemSuspendTest : public ::testing::Test {
 
     void checkWakelockLoop(int numIter, const std::string name) {
         for (int i = 0; i < numIter; i++) {
-            sp<IWakeLock> testLock = acquireWakeLock(name);
+            std::shared_ptr<IWakeLock> testLock = acquireWakeLock(name);
             testLock->release();
         }
     }
@@ -237,18 +245,18 @@ class SystemSuspendTest : public ::testing::Test {
     }
 
     void checkSleepTime(std::chrono::milliseconds expected) {
-        SystemSuspend* s = static_cast<SystemSuspend*>(suspendService.get());
         // There is a race window where sleepTime can be checked in the tests,
         // before it is updated in autoSuspend
         while (!isReadBlocked(wakeupCountFd)) {
         }
-        std::chrono::milliseconds actual = s->getSleepTime();
+        std::chrono::milliseconds actual = systemSuspend->getSleepTime();
         ASSERT_EQ(actual.count(), expected.count()) << "incorrect sleep time";
     }
 
-    sp<ISystemSuspend> suspendService;
+    std::shared_ptr<ISystemSuspend> suspendService;
     sp<ISuspendControlService> controlService;
     sp<ISuspendControlServiceInternal> controlServiceInternal;
+    static sp<SystemSuspend> systemSuspend;
     static unique_fd wakeupCountFds[2];
     static unique_fd stateFds[2];
     static unique_fd wakeupReasonsFd;
@@ -270,6 +278,7 @@ class SystemSuspendTest : public ::testing::Test {
 };
 
 // SystemSuspendTest test suite resources
+sp<SystemSuspend> SystemSuspendTest::systemSuspend;
 unique_fd SystemSuspendTest::wakeupCountFds[2];
 unique_fd SystemSuspendTest::stateFds[2];
 unique_fd SystemSuspendTest::wakeupReasonsFd;
@@ -293,7 +302,7 @@ TEST_F(SystemSuspendTest, AutosuspendLoop) {
 // Tests that upon WakeLock destruction SystemSuspend HAL is unblocked.
 TEST_F(SystemSuspendTest, WakeLockDestructor) {
     {
-        sp<IWakeLock> wl = acquireWakeLock();
+        std::shared_ptr<IWakeLock> wl = acquireWakeLock();
         ASSERT_NE(wl, nullptr);
         unblockSystemSuspendFromWakeupCount();
         ASSERT_TRUE(isSystemSuspendBlocked());
@@ -303,7 +312,7 @@ TEST_F(SystemSuspendTest, WakeLockDestructor) {
 
 // Tests that upon WakeLock::release() SystemSuspend HAL is unblocked.
 TEST_F(SystemSuspendTest, WakeLockRelease) {
-    sp<IWakeLock> wl = acquireWakeLock();
+    std::shared_ptr<IWakeLock> wl = acquireWakeLock();
     ASSERT_NE(wl, nullptr);
     unblockSystemSuspendFromWakeupCount();
     ASSERT_TRUE(isSystemSuspendBlocked());
@@ -314,12 +323,12 @@ TEST_F(SystemSuspendTest, WakeLockRelease) {
 // Tests that multiple WakeLocks correctly block SystemSuspend HAL.
 TEST_F(SystemSuspendTest, MultipleWakeLocks) {
     {
-        sp<IWakeLock> wl1 = acquireWakeLock();
+        std::shared_ptr<IWakeLock> wl1 = acquireWakeLock();
         ASSERT_NE(wl1, nullptr);
         ASSERT_TRUE(isSystemSuspendBlocked());
         unblockSystemSuspendFromWakeupCount();
         {
-            sp<IWakeLock> wl2 = acquireWakeLock();
+            std::shared_ptr<IWakeLock> wl2 = acquireWakeLock();
             ASSERT_NE(wl2, nullptr);
             ASSERT_TRUE(isSystemSuspendBlocked());
         }
@@ -331,7 +340,7 @@ TEST_F(SystemSuspendTest, MultipleWakeLocks) {
 // Tests that upon thread deallocation WakeLock is destructed and SystemSuspend HAL is unblocked.
 TEST_F(SystemSuspendTest, ThreadCleanup) {
     std::thread clientThread([this] {
-        sp<IWakeLock> wl = acquireWakeLock();
+        std::shared_ptr<IWakeLock> wl = acquireWakeLock();
         ASSERT_NE(wl, nullptr);
         unblockSystemSuspendFromWakeupCount();
         ASSERT_TRUE(isSystemSuspendBlocked());
@@ -345,7 +354,7 @@ TEST_F(SystemSuspendTest, ThreadCleanup) {
 TEST_F(SystemSuspendTest, CleanupOnAbort) {
     ASSERT_EXIT(
         {
-            sp<IWakeLock> wl = acquireWakeLock();
+            std::shared_ptr<IWakeLock> wl = acquireWakeLock();
             ASSERT_NE(wl, nullptr);
             std::abort();
         },
@@ -367,8 +376,8 @@ TEST_F(SystemSuspendTest, WakeLockStressTest) {
     for (int i = 0; i < numThreads; i++) {
         tds[i] = std::thread([this] {
             for (int j = 0; j < numLocks; j++) {
-                sp<IWakeLock> wl1 = acquireWakeLock();
-                sp<IWakeLock> wl2 = acquireWakeLock();
+                std::shared_ptr<IWakeLock> wl1 = acquireWakeLock();
+                std::shared_ptr<IWakeLock> wl2 = acquireWakeLock();
                 wl2->release();
             }
         });
@@ -674,7 +683,7 @@ TEST_F(SystemSuspendTest, DeadWakelockCallback) {
 
     // Dead process callback must still be dealt with either by unregistering it
     // or checking isOk() on every call.
-    sp<IWakeLock> testLock = acquireWakeLock("testLock");
+    std::shared_ptr<IWakeLock> testLock = acquireWakeLock("testLock");
     ASSERT_TRUE(testLock->release().isOk());
 }
 
@@ -738,8 +747,10 @@ TEST_F(SystemSuspendTest, CallbackNotifyWakelock) {
 
 class SystemSuspendSameThreadTest : public ::testing::Test {
    public:
-    sp<IWakeLock> acquireWakeLock(const std::string& name = "TestLock") {
-        return suspendService->acquireWakeLock(WakeLockType::PARTIAL, name);
+    std::shared_ptr<IWakeLock> acquireWakeLock(const std::string& name = "TestLock") {
+        std::shared_ptr<IWakeLock> wl = nullptr;
+        auto status = suspendService->acquireWakeLock(WakeLockType::PARTIAL, name, &wl);
+        return wl;
     }
 
     /**
@@ -908,9 +919,7 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
     /**
      * Returns suspend stats.
      */
-    Result<SuspendStats> getSuspendStats() {
-        return reinterpret_cast<SystemSuspend*>(suspendService.get())->getSuspendStats();
-    }
+    Result<SuspendStats> getSuspendStats() { return systemSuspend->getSuspendStats(); }
 
     virtual void SetUp() override {
         kernelWakelockStatsFd = unique_fd(TEMP_FAILURE_RETRY(
@@ -931,12 +940,14 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
             new SuspendControlServiceInternal();
         controlService = suspendControl;
         controlServiceInternal = suspendControlInternal;
-        suspendService =
+        systemSuspend =
             new SystemSuspend(unique_fd(-1) /* wakeupCountFd */, unique_fd(-1) /* stateFd */,
                               unique_fd(dup(suspendStatsFd)), 1 /* maxNativeStatsEntries */,
                               unique_fd(dup(kernelWakelockStatsFd.get())),
                               unique_fd(-1) /* wakeupReasonsFd */, unique_fd(-1) /*suspendTimeFd*/,
                               kSleepTimeConfig, suspendControl, suspendControlInternal);
+
+        suspendService = ndk::SharedRefBase::make<SystemSuspendAidl>(systemSuspend.get());
     }
 
     virtual void TearDown() override {
@@ -944,7 +955,8 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
         ASSERT_TRUE(clearDirectory(suspendStatsDir.path));
     }
 
-    sp<ISystemSuspend> suspendService;
+    sp<SystemSuspend> systemSuspend;
+    std::shared_ptr<ISystemSuspend> suspendService;
     sp<ISuspendControlService> controlService;
     sp<ISuspendControlServiceInternal> controlServiceInternal;
     unique_fd kernelWakelockStatsFd;
@@ -967,7 +979,7 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
 TEST_F(SystemSuspendSameThreadTest, GetNativeWakeLockStats) {
     std::string fakeWlName = "FakeLock";
     {
-        sp<IWakeLock> fakeLock = acquireWakeLock(fakeWlName);
+        std::shared_ptr<IWakeLock> fakeLock = acquireWakeLock(fakeWlName);
         std::vector<WakeLockInfo> wlStats = getWakelockStats();
         ASSERT_EQ(wlStats.size(), 1);
 
@@ -1065,7 +1077,7 @@ TEST_F(SystemSuspendSameThreadTest, GetNativeAndKernelWakeLockStats) {
     addKernelWakelock(fakeKwlName);
 
     {
-        sp<IWakeLock> fakeLock = acquireWakeLock(fakeNwlName);
+        std::shared_ptr<IWakeLock> fakeLock = acquireWakeLock(fakeNwlName);
         std::vector<WakeLockInfo> wlStats = getWakelockStats();
         ASSERT_EQ(wlStats.size(), 2);
 
@@ -1207,11 +1219,11 @@ class SuspendWakeupTest : public ::testing::Test {
         wakeupReasonsFd =
             unique_fd(TEMP_FAILURE_RETRY(open(wakeupReasonsFile.path, O_CLOEXEC | O_RDONLY)));
 
-        suspend = new SystemSuspend(std::move(wakeupCountServiceFd), std::move(stateServiceFd),
-                                    unique_fd(-1) /*suspendStatsFd*/, 100 /* maxStatsEntries */,
-                                    unique_fd(-1) /* kernelWakelockStatsFd */,
-                                    std::move(wakeupReasonsFd), std::move(suspendTimeFd),
-                                    kSleepTimeConfig, suspendControl, suspendControlInternal);
+        systemSuspend = new SystemSuspend(
+            std::move(wakeupCountServiceFd), std::move(stateServiceFd),
+            unique_fd(-1) /*suspendStatsFd*/, 100 /* maxStatsEntries */,
+            unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
+            std::move(suspendTimeFd), kSleepTimeConfig, suspendControl, suspendControlInternal);
 
         // Start auto-suspend.
         bool enabled = false;
@@ -1256,10 +1268,8 @@ class SuspendWakeupTest : public ::testing::Test {
     }
 
     void checkSuspendInfo(const SuspendInfo& expected) {
-        SystemSuspend* s = static_cast<SystemSuspend*>(suspend.get());
-
         SuspendInfo actual;
-        s->getSuspendInfo(&actual);
+        systemSuspend->getSuspendInfo(&actual);
 
         ASSERT_EQ(actual.suspendAttemptCount, expected.suspendAttemptCount);
         ASSERT_EQ(actual.failedSuspendCount, expected.failedSuspendCount);
@@ -1285,7 +1295,7 @@ class SuspendWakeupTest : public ::testing::Test {
     TemporaryFile wakeupCountFile;
     sp<SuspendControlService> suspendControl;
     sp<SuspendControlServiceInternal> suspendControlInternal;
-    sp<ISystemSuspend> suspend;
+    sp<SystemSuspend> systemSuspend;
 
     const SleepTimeConfig kSleepTimeConfig = {
         .baseSleepTime = 100ms,
