@@ -42,6 +42,7 @@
 #include <string>
 #include <thread>
 
+#include "FileHandler.h"
 #include "SuspendControlService.h"
 #include "SystemSuspend.h"
 #include "SystemSuspendAidl.h"
@@ -67,6 +68,7 @@ using android::system::suspend::ISuspendControlService;
 using android::system::suspend::internal::ISuspendControlServiceInternal;
 using android::system::suspend::internal::WakeLockInfo;
 using android::system::suspend::internal::WakeupInfo;
+using android::system::suspend::V1_0::FileHandler;
 using android::system::suspend::V1_0::readFd;
 using android::system::suspend::V1_0::SleepTimeConfig;
 using android::system::suspend::V1_0::SuspendControlService;
@@ -116,17 +118,42 @@ class SystemSuspendTest : public ::testing::Test {
             sp<android::ProcessState> ps{android::ProcessState::self()};
             ps->startThreadPool();
 
-            wakeupReasonsFd =
-                unique_fd(TEMP_FAILURE_RETRY(open(wakeupReasonsFile.path, O_CLOEXEC | O_RDONLY)));
+            pFileHandlers[FileHandler::SysPowerWakeupCount] =
+                FileHandler::Create(FileHandler::SysPowerWakeupCount, "", 0);
+            pFileHandlers[FileHandler::SysPowerWakeupCount]->fd = std::move(wakeupCountFds[1]);
 
-            suspendTimeFd =
-                unique_fd(TEMP_FAILURE_RETRY(open(suspendTimeFile.path, O_CLOEXEC | O_RDONLY)));
+            pFileHandlers[FileHandler::SysPowerState] =
+                FileHandler::Create(FileHandler::SysPowerState, "", 0);
+            pFileHandlers[FileHandler::SysPowerState]->fd = std::move(stateFds[1]);
 
-            systemSuspend = new SystemSuspend(
-                std::move(wakeupCountFds[1]), std::move(stateFds[1]),
-                unique_fd(-1) /*suspendStatsFd*/, 1 /* maxNativeStatsEntries */,
-                unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
-                std::move(suspendTimeFd), kSleepTimeConfig, suspendControl, suspendControlInternal);
+            pFileHandlers[FileHandler::SysClassWakeup] =
+                FileHandler::Create(FileHandler::SysClassWakeup, "", 0);
+            pFileHandlers[FileHandler::SysClassWakeup]->fd = unique_fd(-1);
+
+            pFileHandlers[FileHandler::SysPowerSuspendStats] =
+                FileHandler::Create(FileHandler::SysPowerSuspendStats, "", 0);
+            pFileHandlers[FileHandler::SysPowerSuspendStats]->fd = unique_fd(-1);
+
+            pFileHandlers[FileHandler::SysKernelWakeupReasons] = FileHandler::Create(
+                FileHandler::SysKernelWakeupReasons, wakeupReasonsFile.path, O_CLOEXEC | O_RDONLY);
+            if (!pFileHandlers[FileHandler::SysKernelWakeupReasons]->openFile()) {
+                PLOG(FATAL) << "SystemSuspend: Failed to open wakeup reason file.";
+            }
+
+            pFileHandlers[FileHandler::SysKernelSuspendTime] = FileHandler::Create(
+                FileHandler::SysKernelSuspendTime, suspendTimeFile.path, O_CLOEXEC | O_RDONLY);
+            if (!pFileHandlers[FileHandler::SysKernelSuspendTime]->openFile()) {
+                PLOG(FATAL) << "SystemSuspend: Failed to open Suspend time file.";
+            }
+
+            systemSuspend =
+                new SystemSuspend(std::move(pFileHandlers[FileHandler::SysPowerWakeupCount]),
+                                  std::move(pFileHandlers[FileHandler::SysPowerState]),
+                                  std::move(pFileHandlers[FileHandler::SysPowerSuspendStats]), 1,
+                                  std::move(pFileHandlers[FileHandler::SysClassWakeup]),
+                                  std::move(pFileHandlers[FileHandler::SysKernelWakeupReasons]),
+                                  std::move(pFileHandlers[FileHandler::SysKernelSuspendTime]),
+                                  kSleepTimeConfig, suspendControl, suspendControlInternal);
 
             std::shared_ptr<SystemSuspendAidl> suspendAidl =
                 ndk::SharedRefBase::make<SystemSuspendAidl>(systemSuspend.get());
@@ -259,8 +286,7 @@ class SystemSuspendTest : public ::testing::Test {
     static sp<SystemSuspend> systemSuspend;
     static unique_fd wakeupCountFds[2];
     static unique_fd stateFds[2];
-    static unique_fd wakeupReasonsFd;
-    static unique_fd suspendTimeFd;
+    static FileHandler* pFileHandlers[FileHandler::TotalFileIds];
     static int wakeupCountFd;
     static int stateFd;
     static TemporaryFile wakeupReasonsFile;
@@ -281,8 +307,7 @@ class SystemSuspendTest : public ::testing::Test {
 sp<SystemSuspend> SystemSuspendTest::systemSuspend;
 unique_fd SystemSuspendTest::wakeupCountFds[2];
 unique_fd SystemSuspendTest::stateFds[2];
-unique_fd SystemSuspendTest::wakeupReasonsFd;
-unique_fd SystemSuspendTest::suspendTimeFd;
+FileHandler* SystemSuspendTest::pFileHandlers[FileHandler::TotalFileIds];
 int SystemSuspendTest::wakeupCountFd;
 int SystemSuspendTest::stateFd;
 TemporaryFile SystemSuspendTest::wakeupReasonsFile;
@@ -836,7 +861,7 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
                          int64_t failedResumeNoirq = 42,
                          const std::string& lastFailedDev = "fakeDev", int64_t lastFailedErrno = 42,
                          const std::string& lastFailedStep = "fakeStep") {
-        int fd = suspendStatsFd.get();
+        int fd = pFileHandlers[FileHandler::SysPowerSuspendStats]->fd.get();
 
         return writeStatToFile(fd, "success", success) && writeStatToFile(fd, "fail", fail) &&
                writeStatToFile(fd, "failed_freeze", failedFreeze) &&
@@ -922,16 +947,37 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
     Result<SuspendStats> getSuspendStats() { return systemSuspend->getSuspendStats(); }
 
     virtual void SetUp() override {
-        kernelWakelockStatsFd = unique_fd(TEMP_FAILURE_RETRY(
-            open(kernelWakelockStatsDir.path, O_DIRECTORY | O_CLOEXEC | O_RDONLY)));
-        if (kernelWakelockStatsFd < 0) {
+        pFileHandlers[FileHandler::SysPowerWakeupCount] =
+            FileHandler::Create(FileHandler::SysPowerWakeupCount, "", 0);
+        pFileHandlers[FileHandler::SysPowerWakeupCount]->fd = unique_fd(-1);
+
+        pFileHandlers[FileHandler::SysPowerState] =
+            FileHandler::Create(FileHandler::SysPowerState, "", 0);
+        pFileHandlers[FileHandler::SysPowerState]->fd = unique_fd(-1);
+
+        pFileHandlers[FileHandler::SysKernelWakeupReasons] =
+            FileHandler::Create(FileHandler::SysKernelWakeupReasons, "", 0);
+        pFileHandlers[FileHandler::SysKernelWakeupReasons]->fd = unique_fd(-1);
+
+        pFileHandlers[FileHandler::SysKernelSuspendTime] =
+            FileHandler::Create(FileHandler::SysKernelSuspendTime, "", 0);
+        pFileHandlers[FileHandler::SysKernelSuspendTime]->fd = unique_fd(-1);
+
+        pFileHandlers[FileHandler::SysClassWakeup] =
+            FileHandler::Create(FileHandler::SysClassWakeup, kernelWakelockStatsDir.path,
+                                O_DIRECTORY | O_CLOEXEC | O_RDONLY);
+        if (!pFileHandlers[FileHandler::SysClassWakeup]->openFile()) {
             PLOG(FATAL) << "SystemSuspend: Failed to open kernel wakelock stats directory";
+            kernelWakelockStatsFd = unique_fd(-1);
+        } else {
+            kernelWakelockStatsFd = unique_fd(dup(pFileHandlers[FileHandler::SysClassWakeup]->fd));
         }
 
-        suspendStatsFd = unique_fd(
-            TEMP_FAILURE_RETRY(open(suspendStatsDir.path, O_DIRECTORY | O_CLOEXEC | O_RDONLY)));
-        if (suspendStatsFd < 0) {
-            PLOG(FATAL) << "SystemSuspend: Failed to open suspend_stats directory";
+        pFileHandlers[FileHandler::SysPowerSuspendStats] =
+            FileHandler::Create(FileHandler::SysPowerSuspendStats, suspendStatsDir.path,
+                                O_DIRECTORY | O_CLOEXEC | O_RDONLY);
+        if (!pFileHandlers[FileHandler::SysPowerSuspendStats]->openFile()) {
+            PLOG(FATAL) << "SystemSuspend: Failed to open power suspend stats directory";
         }
 
         // Set up same thread suspend services
@@ -941,10 +987,12 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
         controlService = suspendControl;
         controlServiceInternal = suspendControlInternal;
         systemSuspend =
-            new SystemSuspend(unique_fd(-1) /* wakeupCountFd */, unique_fd(-1) /* stateFd */,
-                              unique_fd(dup(suspendStatsFd)), 1 /* maxNativeStatsEntries */,
-                              unique_fd(dup(kernelWakelockStatsFd.get())),
-                              unique_fd(-1) /* wakeupReasonsFd */, unique_fd(-1) /*suspendTimeFd*/,
+            new SystemSuspend(std::move(pFileHandlers[FileHandler::SysPowerWakeupCount]),
+                              std::move(pFileHandlers[FileHandler::SysPowerState]),
+                              std::move(pFileHandlers[FileHandler::SysPowerSuspendStats]), 1,
+                              std::move(pFileHandlers[FileHandler::SysClassWakeup]),
+                              std::move(pFileHandlers[FileHandler::SysKernelWakeupReasons]),
+                              std::move(pFileHandlers[FileHandler::SysKernelSuspendTime]),
                               kSleepTimeConfig, suspendControl, suspendControlInternal);
 
         suspendService = ndk::SharedRefBase::make<SystemSuspendAidl>(systemSuspend.get());
@@ -960,7 +1008,7 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
     sp<ISuspendControlService> controlService;
     sp<ISuspendControlServiceInternal> controlServiceInternal;
     unique_fd kernelWakelockStatsFd;
-    unique_fd suspendStatsFd;
+    FileHandler* pFileHandlers[FileHandler::TotalFileIds];
     TemporaryDir kernelWakelockStatsDir;
     TemporaryDir suspendStatsDir;
 
@@ -1213,17 +1261,41 @@ class SuspendWakeupTest : public ::testing::Test {
 
         suspendControlInternal = new SuspendControlServiceInternal();
 
-        suspendTimeFd =
-            unique_fd(TEMP_FAILURE_RETRY(open(suspendTimeFile.path, O_CLOEXEC | O_RDONLY)));
+        pFileHandlers[FileHandler::SysClassWakeup] =
+            FileHandler::Create(FileHandler::SysClassWakeup, "", 0);
+        pFileHandlers[FileHandler::SysClassWakeup]->fd = unique_fd(-1);
 
-        wakeupReasonsFd =
-            unique_fd(TEMP_FAILURE_RETRY(open(wakeupReasonsFile.path, O_CLOEXEC | O_RDONLY)));
+        pFileHandlers[FileHandler::SysPowerSuspendStats] =
+            FileHandler::Create(FileHandler::SysPowerSuspendStats, "", 0);
+        pFileHandlers[FileHandler::SysPowerSuspendStats]->fd = unique_fd(-1);
 
-        systemSuspend = new SystemSuspend(
-            std::move(wakeupCountServiceFd), std::move(stateServiceFd),
-            unique_fd(-1) /*suspendStatsFd*/, 100 /* maxStatsEntries */,
-            unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
-            std::move(suspendTimeFd), kSleepTimeConfig, suspendControl, suspendControlInternal);
+        pFileHandlers[FileHandler::SysPowerWakeupCount] =
+            FileHandler::Create(FileHandler::SysPowerWakeupCount, "", 0);
+        pFileHandlers[FileHandler::SysPowerWakeupCount]->fd = std::move(wakeupCountServiceFd);
+
+        pFileHandlers[FileHandler::SysPowerState] =
+            FileHandler::Create(FileHandler::SysPowerState, "", 0);
+        pFileHandlers[FileHandler::SysPowerState]->fd = std::move(stateServiceFd);
+
+        pFileHandlers[FileHandler::SysKernelSuspendTime] = FileHandler::Create(
+            FileHandler::SysKernelSuspendTime, suspendTimeFile.path, O_CLOEXEC | O_RDONLY);
+        if (!pFileHandlers[FileHandler::SysKernelSuspendTime]->openFile()) {
+            PLOG(FATAL) << "SystemSuspend: Failed to open kernel suspend time file.";
+        }
+
+        pFileHandlers[FileHandler::SysKernelWakeupReasons] = FileHandler::Create(
+            FileHandler::SysKernelWakeupReasons, wakeupReasonsFile.path, O_CLOEXEC | O_RDONLY);
+        if (!pFileHandlers[FileHandler::SysKernelWakeupReasons]->openFile()) {
+            PLOG(FATAL) << "SystemSuspend: Failed to open wakeup reason file.";
+        }
+
+        systemSuspend = new SystemSuspend(std::move(pFileHandlers[FileHandler::SysPowerWakeupCount]),
+                                    std::move(pFileHandlers[FileHandler::SysPowerState]),
+                                    std::move(pFileHandlers[FileHandler::SysPowerSuspendStats]),
+                                    100, std::move(pFileHandlers[FileHandler::SysClassWakeup]),
+                                    std::move(pFileHandlers[FileHandler::SysKernelWakeupReasons]),
+                                    std::move(pFileHandlers[FileHandler::SysKernelSuspendTime]),
+                                    kSleepTimeConfig, suspendControl, suspendControlInternal);
 
         // Start auto-suspend.
         bool enabled = false;
@@ -1287,8 +1359,7 @@ class SuspendWakeupTest : public ::testing::Test {
     unique_fd stateServiceFd;
     unique_fd stateTestFd;
     unique_fd wakeupCountTestFd;
-    unique_fd wakeupReasonsFd;
-    unique_fd suspendTimeFd;
+    FileHandler* pFileHandlers[FileHandler::TotalFileIds];
     TemporaryFile wakeupReasonsFile;
     TemporaryFile suspendTimeFile;
     TemporaryFile stateFile;

@@ -30,6 +30,7 @@
 
 #include <SuspendProperties.sysprop.h>
 
+#include "FileHandler.h"
 #include "SuspendControlService.h"
 #include "SystemSuspend.h"
 #include "SystemSuspendAidl.h"
@@ -43,6 +44,7 @@ using android::base::Socketpair;
 using android::base::unique_fd;
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
+using android::system::suspend::V1_0::FileHandler;
 using android::system::suspend::V1_0::ISystemSuspend;
 using android::system::suspend::V1_0::SleepTimeConfig;
 using android::system::suspend::V1_0::SuspendControlService;
@@ -70,31 +72,42 @@ static constexpr bool kDefaultFailedSuspendBackoffEnabled = true;
 static constexpr bool kDefaultShortSuspendBackoffEnabled = false;
 
 int main() {
-    unique_fd wakeupCountFd{TEMP_FAILURE_RETRY(open(kSysPowerWakeupCount, O_CLOEXEC | O_RDWR))};
-    if (wakeupCountFd < 0) {
-        PLOG(ERROR) << "error opening " << kSysPowerWakeupCount;
+    FileHandler* pFileHandlers[FileHandler::TotalFileIds];
+
+    pFileHandlers[FileHandler::SysPowerWakeupCount] = FileHandler::Create(
+        FileHandler::SysPowerWakeupCount, kSysPowerWakeupCount, O_CLOEXEC | O_RDWR);
+    if (!pFileHandlers[FileHandler::SysPowerWakeupCount]->openFile()) {
+        PLOG(ERROR) << "SystemSuspend: Error opening " << kSysPowerWakeupCount;
     }
-    unique_fd stateFd{TEMP_FAILURE_RETRY(open(kSysPowerState, O_CLOEXEC | O_RDWR))};
-    if (stateFd < 0) {
-        PLOG(ERROR) << "error opening " << kSysPowerState;
+
+    pFileHandlers[FileHandler::SysPowerState] =
+        FileHandler::Create(FileHandler::SysPowerState, kSysPowerState, O_CLOEXEC | O_RDWR);
+    if (!pFileHandlers[FileHandler::SysPowerState]->openFile()) {
+        PLOG(ERROR) << "SystemSuspend: Error opening " << kSysPowerState;
     }
-    unique_fd kernelWakelockStatsFd{
-        TEMP_FAILURE_RETRY(open(kSysClassWakeup, O_DIRECTORY | O_CLOEXEC | O_RDONLY))};
-    if (kernelWakelockStatsFd < 0) {
+
+    pFileHandlers[FileHandler::SysClassWakeup] = FileHandler::Create(
+        FileHandler::SysClassWakeup, kSysClassWakeup, O_DIRECTORY | O_CLOEXEC | O_RDONLY);
+    if (!pFileHandlers[FileHandler::SysClassWakeup]->openFile()) {
         PLOG(ERROR) << "SystemSuspend: Error opening " << kSysClassWakeup;
     }
-    unique_fd suspendStatsFd{
-        TEMP_FAILURE_RETRY(open(kSysPowerSuspendStats, O_DIRECTORY | O_CLOEXEC | O_RDONLY))};
-    if (suspendStatsFd < 0) {
+
+    pFileHandlers[FileHandler::SysPowerSuspendStats] =
+        FileHandler::Create(FileHandler::SysPowerSuspendStats, kSysPowerSuspendStats,
+                            O_DIRECTORY | O_CLOEXEC | O_RDONLY);
+    if (!pFileHandlers[FileHandler::SysPowerSuspendStats]->openFile()) {
         PLOG(ERROR) << "SystemSuspend: Error opening " << kSysPowerSuspendStats;
     }
-    unique_fd wakeupReasonsFd{
-        TEMP_FAILURE_RETRY(open(kSysKernelWakeupReasons, O_CLOEXEC | O_RDONLY))};
-    if (wakeupReasonsFd < 0) {
+
+    pFileHandlers[FileHandler::SysKernelWakeupReasons] = FileHandler::Create(
+        FileHandler::SysKernelWakeupReasons, kSysKernelWakeupReasons, O_CLOEXEC | O_RDONLY);
+    if (!pFileHandlers[FileHandler::SysKernelWakeupReasons]->openFile()) {
         PLOG(ERROR) << "SystemSuspend: Error opening " << kSysKernelWakeupReasons;
     }
-    unique_fd suspendTimeFd{TEMP_FAILURE_RETRY(open(kSysKernelSuspendTime, O_CLOEXEC | O_RDONLY))};
-    if (wakeupReasonsFd < 0) {
+
+    pFileHandlers[FileHandler::SysKernelSuspendTime] = FileHandler::Create(
+        FileHandler::SysKernelSuspendTime, kSysKernelSuspendTime, O_CLOEXEC | O_RDONLY);
+    if (!pFileHandlers[FileHandler::SysKernelSuspendTime]->openFile()) {
         PLOG(ERROR) << "SystemSuspend: Error opening " << kSysKernelSuspendTime;
     }
 
@@ -103,9 +116,11 @@ int main() {
     // requests, collect stats, but won't suspend the device. We want this behavior on devices
     // (hosts) where system suspend should not be handles by Android platform e.g. ARC++, Android
     // virtual devices.
-    if (wakeupCountFd < 0 || stateFd < 0) {
+    if (pFileHandlers[FileHandler::SysPowerWakeupCount]->fd < 0 ||
+        pFileHandlers[FileHandler::SysPowerState]->fd < 0) {
         // This will block all reads/writes to these fds from the suspend thread.
-        Socketpair(SOCK_STREAM, &wakeupCountFd, &stateFd);
+        Socketpair(SOCK_STREAM, &pFileHandlers[FileHandler::SysPowerWakeupCount]->fd,
+                   &pFileHandlers[FileHandler::SysPowerState]->fd);
     }
 
     SleepTimeConfig sleepTimeConfig = {
@@ -147,9 +162,13 @@ int main() {
     ps->startThreadPool();
 
     sp<SystemSuspend> suspend = new SystemSuspend(
-        std::move(wakeupCountFd), std::move(stateFd), std::move(suspendStatsFd), kStatsCapacity,
-        std::move(kernelWakelockStatsFd), std::move(wakeupReasonsFd), std::move(suspendTimeFd),
-        sleepTimeConfig, suspendControl, suspendControlInternal, true /* mUseSuspendCounter*/);
+        std::move(pFileHandlers[FileHandler::SysPowerWakeupCount]),
+        std::move(pFileHandlers[FileHandler::SysPowerState]),
+        std::move(pFileHandlers[FileHandler::SysPowerSuspendStats]), kStatsCapacity,
+        std::move(pFileHandlers[FileHandler::SysClassWakeup]),
+        std::move(pFileHandlers[FileHandler::SysKernelWakeupReasons]),
+        std::move(pFileHandlers[FileHandler::SysKernelSuspendTime]), sleepTimeConfig,
+        suspendControl, suspendControlInternal, true /* mUseSuspendCounter*/);
 
     std::shared_ptr<SystemSuspendAidl> suspendAidl =
         ndk::SharedRefBase::make<SystemSuspendAidl>(suspend.get());

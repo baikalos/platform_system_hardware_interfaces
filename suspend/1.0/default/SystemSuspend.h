@@ -27,6 +27,7 @@
 #include <mutex>
 #include <string>
 
+#include "FileHandler.h"
 #include "SuspendControlService.h"
 #include "WakeLockEntryList.h"
 #include "WakeupList.h"
@@ -74,9 +75,12 @@ std::string readFd(int fd);
 
 class SystemSuspend : public RefBase {
    public:
-    SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
-                  size_t maxStatsEntries, unique_fd kernelWakelockStatsFd,
-                  unique_fd wakeupReasonsFd, unique_fd suspendTimeFd,
+    SystemSuspend(FileHandler* pFileHandlerSysPowerWakeupCount,
+                  FileHandler* pFileHandlerSysPowerState,
+                  FileHandler* pFileHandlerSysPowerSuspendStats, size_t maxStatsEntries,
+                  FileHandler* pFileHandlerSysClassWakeup,
+                  FileHandler* pFileHandlerSysKernelWakeupReasons,
+                  FileHandler* pFileHandlerSysKernelSuspendTime,
                   const SleepTimeConfig& sleepTimeConfig,
                   const sp<SuspendControlService>& controlService,
                   const sp<SuspendControlServiceInternal>& controlServiceInternal,
@@ -101,11 +105,12 @@ class SystemSuspend : public RefBase {
     std::mutex mCounterLock;
     std::condition_variable mCounterCondVar;
     uint32_t mSuspendCounter;
-    unique_fd mWakeupCountFd;
-    unique_fd mStateFd;
-
-    unique_fd mSuspendStatsFd;
-    unique_fd mSuspendTimeFd;
+    FileHandler* mpFileHandlerSysPowerWakeupCount;
+    FileHandler* mpFileHandlerSysPowerState;
+    FileHandler* mpFileHandlerSysPowerSuspendStats;
+    FileHandler* mpFileHandlerSysClassWakeup;
+    FileHandler* mpFileHandlerSysKernelWakeupReasons;
+    FileHandler* mpFileHandlerSysKernelSuspendTime;
 
     std::mutex mSuspendInfoLock;
     SuspendInfo mSuspendInfo;
@@ -131,7 +136,6 @@ class SystemSuspend : public RefBase {
     bool mUseSuspendCounter;
     unique_fd mWakeLockFd;
     unique_fd mWakeUnlockFd;
-    unique_fd mWakeupReasonsFd;
 
     std::atomic_flag mAutosuspendEnabled = ATOMIC_FLAG_INIT;
 };

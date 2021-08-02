@@ -118,29 +118,30 @@ static struct SuspendTime readSuspendTime(int fd) {
                 std::chrono::duration<double>(suspendTime))};
 }
 
-SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_fd suspendStatsFd,
-                             size_t maxStatsEntries, unique_fd kernelWakelockStatsFd,
-                             unique_fd wakeupReasonsFd, unique_fd suspendTimeFd,
-                             const SleepTimeConfig& sleepTimeConfig,
-                             const sp<SuspendControlService>& controlService,
-                             const sp<SuspendControlServiceInternal>& controlServiceInternal,
-                             bool useSuspendCounter)
+SystemSuspend::SystemSuspend(
+    FileHandler* pFileHandlerSysPowerWakeupCount, FileHandler* pFileHandlerSysPowerState,
+    FileHandler* pFileHandlerSysPowerSuspendStats, size_t maxStatsEntries,
+    FileHandler* pFileHandlerSysClassWakeup, FileHandler* pFileHandlerSysKernelWakeupReasons,
+    FileHandler* pFileHandlerSysKernelSuspendTime, const SleepTimeConfig& sleepTimeConfig,
+    const sp<SuspendControlService>& controlService,
+    const sp<SuspendControlServiceInternal>& controlServiceInternal, bool useSuspendCounter)
     : mSuspendCounter(0),
-      mWakeupCountFd(std::move(wakeupCountFd)),
-      mStateFd(std::move(stateFd)),
-      mSuspendStatsFd(std::move(suspendStatsFd)),
-      mSuspendTimeFd(std::move(suspendTimeFd)),
+      mpFileHandlerSysPowerWakeupCount(std::move(pFileHandlerSysPowerWakeupCount)),
+      mpFileHandlerSysPowerState(std::move(pFileHandlerSysPowerState)),
+      mpFileHandlerSysPowerSuspendStats(std::move(pFileHandlerSysPowerSuspendStats)),
+      mpFileHandlerSysClassWakeup(std::move(pFileHandlerSysClassWakeup)),
+      mpFileHandlerSysKernelWakeupReasons(std::move(pFileHandlerSysKernelWakeupReasons)),
+      mpFileHandlerSysKernelSuspendTime(std::move(pFileHandlerSysKernelSuspendTime)),
       kSleepTimeConfig(sleepTimeConfig),
       mSleepTime(sleepTimeConfig.baseSleepTime),
       mNumConsecutiveBadSuspends(0),
       mControlService(controlService),
       mControlServiceInternal(controlServiceInternal),
-      mStatsList(maxStatsEntries, std::move(kernelWakelockStatsFd)),
+      mStatsList(maxStatsEntries, std::move(pFileHandlerSysClassWakeup->fd)),
       mWakeupList(maxStatsEntries),
       mUseSuspendCounter(useSuspendCounter),
       mWakeLockFd(-1),
-      mWakeUnlockFd(-1),
-      mWakeupReasonsFd(std::move(wakeupReasonsFd)) {
+      mWakeUnlockFd(-1) {
     mControlServiceInternal->setSuspendService(this);
 
     if (!mUseSuspendCounter) {
@@ -172,7 +173,7 @@ bool SystemSuspend::forceSuspend() {
     //  returns from suspend, the wakelocks and SuspendCounter will not have
     //  changed.
     auto counterLock = std::unique_lock(mCounterLock);
-    bool success = WriteStringToFd(kSleepState, mStateFd);
+    bool success = WriteStringToFd(kSleepState, mpFileHandlerSysPowerState->fd);
     counterLock.unlock();
 
     if (!success) {
@@ -209,8 +210,8 @@ void SystemSuspend::initAutosuspend() {
     std::thread autosuspendThread([this] {
         while (true) {
             std::this_thread::sleep_for(mSleepTime);
-            lseek(mWakeupCountFd, 0, SEEK_SET);
-            const string wakeupCount = readFd(mWakeupCountFd);
+            lseek(mpFileHandlerSysPowerWakeupCount->fd, 0, SEEK_SET);
+            const string wakeupCount = readFd(mpFileHandlerSysPowerWakeupCount->fd);
             if (wakeupCount.empty()) {
                 PLOG(ERROR) << "error reading from /sys/power/wakeup_count";
                 continue;
@@ -222,24 +223,35 @@ void SystemSuspend::initAutosuspend() {
             // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before we
             // write to /sys/power/state.
 
-            if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
+            if (!WriteStringToFd(wakeupCount, mpFileHandlerSysPowerWakeupCount->fd)) {
                 PLOG(VERBOSE) << "error writing from /sys/power/wakeup_count";
                 continue;
             }
-            bool success = WriteStringToFd(kSleepState, mStateFd);
+            bool success = WriteStringToFd(kSleepState, mpFileHandlerSysPowerState->fd);
             counterLock.unlock();
 
             if (!success) {
                 PLOG(VERBOSE) << "error writing to /sys/power/state";
             }
 
-            struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
+            struct SuspendTime suspendTime = readSuspendTime(mpFileHandlerSysKernelSuspendTime->fd);
             updateSleepTime(success, suspendTime);
 
-            std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
+            std::vector<std::string> wakeupReasons =
+                readWakeupReasons(mpFileHandlerSysKernelWakeupReasons->fd);
+            if (wakeupReasons == std::vector<std::string>({kUnknownWakeup})) {
+                LOG(INFO) << "Unknown/empty wakeup reason. Re-opening wakeup_reason file.";
+                if (!mpFileHandlerSysKernelWakeupReasons->openFile()) {
+                    PLOG(ERROR) << "Error opening wakeup_reason file";
+                }
+            }
             mWakeupList.update(wakeupReasons);
 
             mControlService->notifyWakeup(success, wakeupReasons);
+            LOG(VERBOSE) << "Wakeup reason(s):";
+            for (auto reason : wakeupReasons) {
+                LOG(VERBOSE) << reason << ' ';
+            }
         }
     });
     autosuspendThread.detach();
@@ -352,7 +364,8 @@ const WakeupList& SystemSuspend::getWakeupList() const {
  */
 Result<SuspendStats> SystemSuspend::getSuspendStats() {
     SuspendStats stats;
-    std::unique_ptr<DIR, decltype(&closedir)> dp(fdopendir(dup(mSuspendStatsFd.get())), &closedir);
+    std::unique_ptr<DIR, decltype(&closedir)> dp(
+        fdopendir(dup(mpFileHandlerSysPowerSuspendStats->fd.get())), &closedir);
     if (!dp) {
         return stats;
     }
@@ -379,8 +392,8 @@ Result<SuspendStats> SystemSuspend::getSuspendStats() {
             continue;
         }
 
-        unique_fd statFd{TEMP_FAILURE_RETRY(
-            openat(mSuspendStatsFd.get(), statName.c_str(), O_CLOEXEC | O_RDONLY))};
+        unique_fd statFd{TEMP_FAILURE_RETRY(openat(mpFileHandlerSysPowerSuspendStats->fd.get(),
+                                                   statName.c_str(), O_CLOEXEC | O_RDONLY))};
         if (statFd < 0) {
             return Error() << "Failed to open " << statName;
         }

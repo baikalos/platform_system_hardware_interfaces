@@ -66,6 +66,7 @@ cc_binary {
         "SystemSuspendAidl.cpp",
         "WakeLockEntryList.cpp",
         "WakeupList.cpp",
+        "FileHandler.cpp",
     ],
 }
 
@@ -91,6 +92,7 @@ cc_test {
         "SystemSuspendUnitTest.cpp",
         "WakeLockEntryList.cpp",
         "WakeupList.cpp",
+        "FileHandler.cpp",
     ],
     test_suites: ["device-tests"],
     require_root: true,
