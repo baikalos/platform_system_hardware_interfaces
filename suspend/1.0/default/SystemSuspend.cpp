@@ -20,6 +20,7 @@
 #include <aidl/android/system/suspend/IWakeLock.h>
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android/binder_manager.h>
 
@@ -70,8 +71,8 @@ static std::vector<std::string> readWakeupReasons(int fd) {
     std::string reasonlines;
 
     lseek(fd, 0, SEEK_SET);
-    if (!ReadFdToString(fd, &reasonlines)) {
-        LOG(ERROR) << "failed to read wakeup reasons";
+    if (!ReadFdToString(fd, &reasonlines) || reasonlines.empty()) {
+        PLOG(ERROR) << "failed to read wakeup reasons";
         // Return unknown wakeup reason if we fail to read
         return {kUnknownWakeup};
     }
@@ -237,6 +238,20 @@ void SystemSuspend::initAutosuspend() {
             updateSleepTime(success, suspendTime);
 
             std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
+            if (wakeupReasons == std::vector<std::string>({kUnknownWakeup})) {
+                LOG(INFO) << "Unknown/empty wakeup reason. Re-opening wakeup_reason file.";
+
+                string filePath =
+                    android::base::StringPrintf("/proc/self/fd/%d", mWakeupReasonsFd.get());
+
+                unique_fd tempFd{TEMP_FAILURE_RETRY(open(filePath.c_str(), O_CLOEXEC | O_RDONLY))};
+                if (tempFd < 0) {
+                    PLOG(ERROR) << "SystemSuspend: Error opening wakeup reason file, using path: "
+                                << filePath;
+                } else {
+                    mWakeupReasonsFd = std::move(tempFd);
+                }
+            }
             mWakeupList.update(wakeupReasons);
 
             mControlService->notifyWakeup(success, wakeupReasons);
