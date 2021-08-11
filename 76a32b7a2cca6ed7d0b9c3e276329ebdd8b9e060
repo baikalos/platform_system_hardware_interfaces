@@ -52,6 +52,24 @@
       "parentUuid": "4ddfff85_8fa910eb",
       "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606c2969_411fc7f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2021-08-11T19:29:08Z",
+      "side": 1,
+      "message": "Sorry, I think I should have explained my thought better.  I\u0027m not advocating for the factory method... I think what you have in the code now is much simpler and definitely better.\n\nWhat I\u0027m asking is whether the reopening logic could be factored out into a standalone helper method, and tests added to cover it.  That should still be much simpler than the factory approach.",
+      "parentUuid": "f8e4b0fb_6a2b18c6",
+      "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
