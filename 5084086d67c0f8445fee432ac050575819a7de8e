@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb47a006_2ec2390e",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1855559
+      },
+      "writtenOn": "2021-08-11T17:45:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d15a038_ca079fe6",
+      "range": {
+        "startLine": 243,
+        "startChar": 16,
+        "endLine": 244,
+        "endChar": 97
+      },
+      "revId": "5084086d67c0f8445fee432ac050575819a7de8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df1064c4_b7661ed0",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "Do we really need to log these? It could lead to some log spam if we log on after every suspend attempt.",
       "parentUuid": "df1064c4_b7661ed0",
+      "revId": "5084086d67c0f8445fee432ac050575819a7de8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ce754f_7b0031d9",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1855559
+      },
+      "writtenOn": "2021-08-11T17:45:40Z",
+      "side": 1,
+      "message": "Ack - will remove them.",
+      "parentUuid": "f68c81b7_4a407bc0",
       "revId": "5084086d67c0f8445fee432ac050575819a7de8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
