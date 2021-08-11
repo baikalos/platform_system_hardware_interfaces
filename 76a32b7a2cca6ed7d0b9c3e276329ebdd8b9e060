@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd95a638_9e99e65a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2021-08-11T19:03:30Z",
+      "side": 1,
+      "message": "I really like this approach technically; it\u0027s much simpler than what we had discussed as a possibility.\n\nIs it worth factoring the FD reopening out into a standalone function, generalizing it, and adding one or more tests covering it?  Embedding the functionality in the initAutoSuspend loop seems to preclude the possibility of reusing it in other places down the road, and considering the issue the new code aims to fix, having some test coverage seems desirable.",
+      "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
