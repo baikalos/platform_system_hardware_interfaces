@@ -34,6 +34,24 @@
       "parentUuid": "dd95a638_9e99e65a",
       "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e4b0fb_6a2b18c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1855559
+      },
+      "writtenOn": "2021-08-11T19:21:36Z",
+      "side": 1,
+      "message": "*SC release timeline :)",
+      "parentUuid": "4ddfff85_8fa910eb",
+      "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
