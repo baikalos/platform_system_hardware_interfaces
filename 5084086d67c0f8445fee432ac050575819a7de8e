@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1064c4_b7661ed0",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1855559
+      },
+      "writtenOn": "2021-08-11T00:18:06Z",
+      "side": 1,
+      "message": "I am open to remove this (or mark as \"VERBOSE\") if anyone think it\u0027s too verbose.",
+      "revId": "5084086d67c0f8445fee432ac050575819a7de8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
