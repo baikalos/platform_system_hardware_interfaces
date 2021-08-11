@@ -16,6 +16,24 @@
       "message": "I really like this approach technically; it\u0027s much simpler than what we had discussed as a possibility.\n\nIs it worth factoring the FD reopening out into a standalone function, generalizing it, and adding one or more tests covering it?  Embedding the functionality in the initAutoSuspend loop seems to preclude the possibility of reusing it in other places down the road, and considering the issue the new code aims to fix, having some test coverage seems desirable.",
       "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ddfff85_8fa910eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1855559
+      },
+      "writtenOn": "2021-08-11T19:18:16Z",
+      "side": 1,
+      "message": "Hi Kelly,\n\nI have that change (to use factory method, based on your suggestion), and it is almost ready (ag/15445241), it\u0027s just magnitude of change was holding me back if we want to push it quickly to possibly meet the sc-dev timeline.\n\nBut I am open if that sounds like more appropriate solution.",
+      "parentUuid": "dd95a638_9e99e65a",
+      "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
