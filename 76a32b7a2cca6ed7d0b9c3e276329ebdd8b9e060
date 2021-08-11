@@ -70,6 +70,24 @@
       "parentUuid": "f8e4b0fb_6a2b18c6",
       "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b7aa89_24c22dc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1880210
+      },
+      "writtenOn": "2021-08-11T21:46:35Z",
+      "side": 1,
+      "message": "The test could also cover the absence of the fd for the pid and failure to open case",
+      "parentUuid": "606c2969_411fc7f3",
+      "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
