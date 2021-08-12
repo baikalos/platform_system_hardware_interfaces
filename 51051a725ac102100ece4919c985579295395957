@@ -16,6 +16,23 @@
       "message": "You may need to check with jdanis@ about who best should own the test going forward.",
       "revId": "51051a725ac102100ece4919c985579295395957",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46218bb6_36558290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-08-12T15:54:46Z",
+      "side": 1,
+      "message": "I would nominate Hai and Etan as owners.",
+      "revId": "51051a725ac102100ece4919c985579295395957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
