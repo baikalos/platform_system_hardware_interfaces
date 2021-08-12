@@ -33,6 +33,29 @@
       "message": "I would nominate Hai and Etan as owners.",
       "revId": "51051a725ac102100ece4919c985579295395957",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b5fea4_5321e7fb",
+        "filename": "wifi/keystore/1.0/vts/functional/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-08-12T15:59:00Z",
+      "side": 1,
+      "message": "Also this component does not exist any more. Etan, Hai, can you suggest a suitable component?",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "51051a725ac102100ece4919c985579295395957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
