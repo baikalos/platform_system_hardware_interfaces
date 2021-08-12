@@ -146,6 +146,30 @@
       },
       "revId": "51051a725ac102100ece4919c985579295395957",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3302b6_931fc3e0",
+        "filename": "wifi/keystore/1.0/vts/functional/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-08-12T20:01:04Z",
+      "side": 1,
+      "message": "I am on the team that owns keystore. But this keystore-wifi bridge is owned by wifi, though I am touching it from time to time.",
+      "parentUuid": "dc662a23_7653030d",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "51051a725ac102100ece4919c985579295395957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
