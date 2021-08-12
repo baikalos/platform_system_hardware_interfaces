@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "088077e9_eb39c7e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-08-12T19:29:02Z",
+      "side": 1,
+      "message": "Updated the owner list. If Hai and Etan won\u0027t reject I assume they accept your nomination.",
+      "parentUuid": "46218bb6_36558290",
+      "revId": "51051a725ac102100ece4919c985579295395957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10b5fea4_5321e7fb",
@@ -96,6 +114,30 @@
       "side": 1,
       "message": "We have a new set of components. But this is not owned by our team. It is owned by Wifi really.",
       "parentUuid": "b23ff373_c3df2474",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "51051a725ac102100ece4919c985579295395957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc662a23_7653030d",
+        "filename": "wifi/keystore/1.0/vts/functional/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-08-12T19:29:02Z",
+      "side": 1,
+      "message": "Interesting. Is your team not working on Wifi? VtsHalWifiKeystoreV1_0TargetTest looks related to Wifi.",
+      "parentUuid": "8d33fd9a_17c7e1f7",
       "range": {
         "startLine": 1,
         "startChar": 17,
