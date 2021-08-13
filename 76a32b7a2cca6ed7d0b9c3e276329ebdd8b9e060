@@ -88,6 +88,23 @@
       "parentUuid": "606c2969_411fc7f3",
       "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f3e70e_f6266d2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2021-08-13T02:04:49Z",
+      "side": 1,
+      "message": "Going ahead w/ +2 after Manish filled me in on the obstacles to testing a refactored \"reopenFd\" method.",
+      "revId": "76a32b7a2cca6ed7d0b9c3e276329ebdd8b9e060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
