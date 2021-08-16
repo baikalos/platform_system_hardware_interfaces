@@ -16,6 +16,47 @@
       "message": "Is this a cherry-pick on an internal CL?",
       "revId": "51cfd51c96a94be99d99f43eb1ac83032dfa8be2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ffb490_4d0f84b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2021-08-16T17:47:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9263063e_3cf0e43b",
+      "revId": "51cfd51c96a94be99d99f43eb1ac83032dfa8be2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32ec021_48f7b31c",
+        "filename": "wifi/keystore/1.0/default/test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2021-08-16T17:47:52Z",
+      "side": 1,
+      "message": "Out of curiosity - why is this necessary? I.e. are you calling new methods from this library in the test?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "51cfd51c96a94be99d99f43eb1ac83032dfa8be2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
