@@ -16,12 +16,13 @@ aidl_interface {
     },
 }
 
-
 aidl_interface {
     name: "android.system.suspend.control",
     local_include_dir: ".",
     srcs: [
-        "android/system/suspend/*.aidl",
+        "android/system/suspend/ISuspendControlService.aidl",
+        "android/system/suspend/ISuspendCallback.aidl",
+        "android/system/suspend/IWakelockCallback.aidl",
     ],
     backend: {
         ndk: {
@@ -32,6 +33,30 @@ aidl_interface {
         },
         java: {
             sdk_version: "28",
+        },
+    },
+}
+
+aidl_interface {
+    name: "android.system.suspend",
+    vendor_available: true,
+    stability: "vintf",
+    srcs: [
+        "android/system/suspend/ISystemSuspend.aidl",
+        "android/system/suspend/IWakeLock.aidl",
+        "android/system/suspend/WakeLockType.aidl",
+    ],
+    backend: {
+        cpp: {
+            enabled: false,
+        },
+        java: {
+            enabled: false,
+        },
+        ndk: {
+            vndk: {
+                enabled: true,
+            },
         },
     },
 }
