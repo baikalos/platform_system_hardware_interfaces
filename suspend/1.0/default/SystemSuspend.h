@@ -94,6 +94,7 @@ class SystemSuspend : public RefBase {
     Result<SuspendStats> getSuspendStats();
     void getSuspendInfo(SuspendInfo* info);
     std::chrono::milliseconds getSleepTime() const;
+    unique_fd reopenFileUsingFd(const int fd, int permission);
 
    private:
     void initAutosuspend();
