@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 The Android Open Source Project
+// Copyright (C) 2021 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,11 +19,11 @@ package {
 }
 
 cc_test {
-    name: "VtsHalWifiKeystoreV1_0TargetTest",
-    defaults: ["VtsHalTargetTestDefaults"],
+    name: "WifiLegacyKeystoreIntegrationTest",
     srcs: [
-        "VtsHalWifiKeystoreV1_0TargetTest.cpp",
+        "WifiLegacyKeystoreIntegrationTest.cpp",
     ],
+    defaults: ["VtsHalTargetTestDefaults"],
     shared_libs: [
         "libbase",
         "liblog",
@@ -36,6 +36,7 @@ cc_test {
     static_libs: [
         "VtsHalHidlTargetTestBase",
         "android.hardware.security.keymint-V1-ndk",
+        "android.security.legacykeystore-ndk",
         "android.system.keystore2-V1-ndk",
         "android.system.wifi.keystore@1.0",
         "libkeymint_support",
@@ -46,5 +47,5 @@ cc_test {
         "-Wall",
         "-Werror",
     ],
-    test_suites: ["general-tests", "vts"],
+    test_suites: ["general-tests"],
 }

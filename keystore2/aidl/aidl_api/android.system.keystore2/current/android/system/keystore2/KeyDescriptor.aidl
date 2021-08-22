@@ -35,7 +35,7 @@ package android.system.keystore2;
 /* @hide */
 @RustDerive(Clone=true, Eq=true, Ord=true, PartialEq=true, PartialOrd=true) @VintfStability
 parcelable KeyDescriptor {
-  android.system.keystore2.Domain domain;
+  android.system.keystore2.Domain domain = android.system.keystore2.Domain.APP;
   long nspace;
   @nullable String alias;
   @nullable byte[] blob;

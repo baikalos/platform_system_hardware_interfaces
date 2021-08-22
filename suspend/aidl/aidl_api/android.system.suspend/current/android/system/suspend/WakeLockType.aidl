@@ -1,11 +1,11 @@
 /*
- * Copyright 2020, The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31,10 +31,9 @@
 // with such a backward incompatible change, it has a high risk of breaking
 // later when a module using the interface is updated, e.g., Mainline modules.
 
-package android.system.keystore2;
-/* @hide */
+package android.system.suspend;
 @VintfStability
-parcelable Authorization {
-  android.hardware.security.keymint.SecurityLevel securityLevel = android.hardware.security.keymint.SecurityLevel.SOFTWARE;
-  android.hardware.security.keymint.KeyParameter keyParameter;
+enum WakeLockType {
+  PARTIAL = 0,
+  FULL = 1,
 }
