@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "234de5b3_0c2498cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611900
+      },
+      "writtenOn": "2021-08-25T23:11:08Z",
+      "side": 1,
+      "message": "OMAPI Vendor stable service  VTS tests",
+      "revId": "b6ce37ad2c1c0dbce8ebe8702f712a87ae99fae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
