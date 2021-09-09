@@ -20,9 +20,10 @@
 #include <binder/IServiceManager.h>
 #include <binder/ProcessState.h>
 #include <cutils/native_handle.h>
-#include <fcntl.h>
 #include <hidl/HidlTransportSupport.h>
 #include <hwbinder/ProcessState.h>
+
+#include <fcntl.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -163,7 +164,8 @@ int main() {
     sp<SystemSuspendHidl> suspendHidl = new SystemSuspendHidl(suspend.get());
     status_t hidlStatus = suspendHidl->registerAsService();
     if (android::OK != hidlStatus) {
-        LOG(FATAL) << "Unable to register system-suspend HIDL service: " << hidlStatus;
+        LOG(INFO) << "system-suspend HIDL hal not supported, use the AIDL suspend hal for "
+                     "requesting wakelocks";
     }
 
     joinRpcThreadpool();
