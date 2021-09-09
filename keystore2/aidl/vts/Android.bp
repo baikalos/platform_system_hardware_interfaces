@@ -22,11 +22,18 @@ rust_test {
     auto_gen_config: true,
 
     rustlibs: [
+        "libandroid_logger",
+        "libnix",
+        "libkeystore2_selinux",
+        "libserde",
+        "libserde_cbor",
+
         "android.system.keystore2-V1-rust",
         "android.hardware.security.keymint-V1-rust",
         "libanyhow",
         "libbinder_rs",
         "liblazy_static",
+        "liblog_rust",
         "liblibc",
         "libthiserror",
     ],

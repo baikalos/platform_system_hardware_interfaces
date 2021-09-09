@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #![allow(dead_code)]
+mod subprocess;
 
 use android_hardware_security_keymint::aidl::android::hardware::security::keymint::{
     Algorithm::Algorithm,
@@ -170,8 +171,19 @@ mod tests {
     };
     use anyhow::{anyhow, Result};
     use std::convert::TryFrom;
+    use keystore2_selinux::Context as SeContext;
+    use nix::unistd::{Uid, Gid};
 
     use android_system_keystore2::binder::{ExceptionCode, Result as BinderResult};
+
+    use serde::{Serialize, Deserialize};
+
+    #[derive(Debug, Serialize, Deserialize)]
+    struct SomeResult {
+        a: u32,
+        b: u64,
+        c: String,
+    }
 
     static KS2_SERVICE_NAME: &str = "android.system.keystore2.IKeystoreService/default";
     const SELINUX_SHELL_NAMESPACE: i64 = 1;
@@ -243,6 +255,81 @@ mod tests {
             key_metadata.certificate,
             key_metadata.certificateChain,
         ))
+    }
+
+    fn make_ec_signing_key_app<S: IKeystoreSecurityLevel + ?Sized>(
+        sec_level: &S,
+        alias: &str,
+    ) -> Result<(KeyDescriptor, Option<Vec<u8>>, Option<Vec<u8>>)> {
+        let gen_params = AuthSetBuilder::new()
+            .no_auth_required(true)
+            .algorithm(Algorithm::EC)
+            .purpose(KeyPurpose::SIGN)
+            .purpose(KeyPurpose::VERIFY)
+            .digest(Digest::SHA_2_256)
+            .ec_curve(EcCurve::P_256);
+
+        let key_metadata = map_ks_error(sec_level.generateKey(
+            &KeyDescriptor {
+                domain: Domain::APP,
+                nspace: -1,
+                alias: Some(alias.to_string()),
+                blob: None,
+            },
+            None,
+            &gen_params,
+            0,
+            b"entropy",
+        ))?;
+
+        Ok((
+            key_metadata.key,
+            key_metadata.certificate,
+            key_metadata.certificateChain,
+        ))
+    }
+
+    #[test]
+    fn run_as_test() -> Result<()> {
+        android_logger::init_once(
+            android_logger::Config::default()
+                .with_tag("keystore2_vts_tests_parent")
+                .with_min_level(log::Level::Debug),
+        );
+
+        let result = subprocess::run_as(
+            SeContext::new("u:r:untrusted_app:s0:c91,c256,c10,c20").unwrap(),
+            Uid::from_raw(10020),
+            Gid::from_raw(10020),
+            || {
+                // println!("Test output");
+                // let keystore2 = get_connection();
+                // let sec_level =
+                //     map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT))
+                //         .unwrap();
+                // let (key, cert, cert_chain) =
+                //     make_ec_signing_key_app(&*sec_level, "EC_KEY").unwrap();
+                // assert!(cert.is_some());
+                // assert!(cert_chain.is_none());
+
+                // let _op_guard = OP_LIMIT.get(SecurityLevel::TRUSTED_ENVIRONMENT);
+
+                // let result = map_ks_error(
+                //     sec_level.createOperation(
+                //         &key,
+                //         &AuthSetBuilder::new()
+                //             .purpose(KeyPurpose::SIGN)
+                //             .digest(Digest::SHA_2_256),
+                //         true, // forced
+                //     ),
+                // );
+
+                // assert_eq!(result.unwrap_err(), Error::Rc(ResponseCode::PERMISSION_DENIED));
+                SomeResult{a: 543, b: 62345, c: "blah".to_owned()}
+            },
+        );
+        panic!("Result: {:?}", result);
+        // Ok(())
     }
 
     #[test]
