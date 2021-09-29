@@ -218,6 +218,30 @@
       },
       "revId": "51051a725ac102100ece4919c985579295395957",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95de2fef_eff9dfd7",
+        "filename": "wifi/keystore/1.0/vts/functional/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-09-29T21:54:30Z",
+      "side": 1,
+      "message": "Since this module belongs to wifi team, can we use their component Android \u003e Android OS \u0026 Apps \u003e Systems \u003e wifi to triage issues with this module?",
+      "parentUuid": "cdad928a_ca34094c",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "51051a725ac102100ece4919c985579295395957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
