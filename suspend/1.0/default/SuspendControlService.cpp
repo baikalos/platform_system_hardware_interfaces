@@ -48,16 +48,18 @@ binder::Status SuspendControlService::registerCallback(const sp<ISuspendCallback
 
     auto l = std::lock_guard(mCallbackLock);
     sp<IBinder> cb = IInterface::asBinder(callback);
+
     // Only remote binders can be linked to death
-    if (cb->remoteBinder() != nullptr) {
-        if (findCb(cb) == mCallbacks.end()) {
-            auto status = cb->linkToDeath(this);
-            if (status != NO_ERROR) {
-                LOG(ERROR) << __func__ << " Cannot link to death: " << status;
-                return retOk(false, _aidl_return);
-            }
-        }
+    if (cb->remoteBinder() == nullptr || find(cb) != mCallbacks.end()) {
+        return retOk(false, _aidl_return);
     }
+
+    auto status = cb->linkToDeath(this);
+    if (status != NO_ERROR) {
+        LOG(ERROR) << __func__ << " Cannot link to death: " << status;
+        return retOk(false, _aidl_return);
+    }
+
     mCallbacks.push_back(callback);
     return retOk(true, _aidl_return);
 }
