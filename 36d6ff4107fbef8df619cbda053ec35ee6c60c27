@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a76ec1be_d066fd1a",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-10-05T00:38:10Z",
+      "side": 1,
+      "message": "suggest \"as an opaque\" instead of \"as raw\" -- IIUC, the blob value is opaque and should not be interpreted by the caller.",
+      "range": {
+        "startLine": 104,
+        "startChar": 46,
+        "endLine": 104,
+        "endChar": 53
+      },
+      "revId": "36d6ff4107fbef8df619cbda053ec35ee6c60c27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce9b83e0_667c114b",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-10-05T00:38:10Z",
+      "side": 1,
+      "message": "suggest \"KeyMetadata\" instead of \"resultKey\". The variable \"resultKey\" isn\u0027t defined anywhere here, and this seems to be referring to the field of KeyMetadata.",
+      "range": {
+        "startLine": 104,
+        "startChar": 73,
+        "endLine": 104,
+        "endChar": 82
+      },
+      "revId": "36d6ff4107fbef8df619cbda053ec35ee6c60c27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
