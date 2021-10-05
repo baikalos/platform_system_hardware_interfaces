@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9377573_d0151700",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-10-05T08:25:31Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "c8e9b861fb989af3a7d7cce0edd884a4c5cd1496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827641cc_ef346a4e",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreSecurityLevel.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-10-05T08:25:31Z",
+      "side": 1,
+      "message": "uber-nit: the second colon should be a space, I think, if this is sepolicy.",
+      "range": {
+        "startLine": 109,
+        "startChar": 80,
+        "endLine": 109,
+        "endChar": 81
+      },
+      "revId": "c8e9b861fb989af3a7d7cce0edd884a4c5cd1496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
