@@ -19,8 +19,8 @@ package {
 aidl_interface {
     name: "android.system.keystore2",
     vendor_available: true,
-    srcs: [ "android/system/keystore2/*.aidl" ],
-    imports: [ "android.hardware.security.keymint" ],
+    srcs: ["android/system/keystore2/*.aidl"],
+    imports: ["android.hardware.security.keymint"],
     stability: "vintf",
     backend: {
         java: {
@@ -41,4 +41,5 @@ aidl_interface {
             ],
         },
     },
+    versions: ["1"],
 }
