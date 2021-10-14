@@ -242,6 +242,30 @@
       },
       "revId": "51051a725ac102100ece4919c985579295395957",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ea6b5f_e1ee3422",
+        "filename": "wifi/keystore/1.0/vts/functional/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-10-14T16:50:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95de2fef_eff9dfd7",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "51051a725ac102100ece4919c985579295395957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
