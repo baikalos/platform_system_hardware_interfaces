@@ -23,13 +23,14 @@
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android/binder_manager.h>
-
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include <chrono>
 #include <string>
 #include <thread>
+using namespace std::chrono_literals;
 
 using ::aidl::android::system::suspend::ISystemSuspend;
 using ::aidl::android::system::suspend::IWakeLock;
@@ -156,14 +157,58 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
     }
 }
 
-bool SystemSuspend::enableAutosuspend() {
-    if (mAutosuspendEnabled.test_and_set()) {
+bool SystemSuspend::enableAutosuspend(const sp<IBinder>& token) {
+    auto autosuspendLock = std::lock_guard(mAutosuspendLock);
+
+    bool hasToken = std::find(mDisableAutosuspendTokens.begin(), mDisableAutosuspendTokens.end(),
+                              token) != mDisableAutosuspendTokens.end();
+
+    if (!hasToken) {
+        mDisableAutosuspendTokens.push_back(token);
+    }
+
+    if (mAutosuspendEnabled) {
         LOG(ERROR) << "Autosuspend already started.";
         return false;
     }
 
-    initAutosuspend();
+    mAutosuspendEnabled = true;
+    initAutosuspendLocked();
     return true;
+}
+
+void SystemSuspend::disableAutosuspendLocked() {
+    mDisableAutosuspendTokens.clear();
+    if (mAutosuspendEnabled) {
+        mAutosuspendEnabled = false;
+        mAutosuspendCondVar.notify_all();
+        LOG(INFO) << "automatic system suspend disabled";
+    }
+}
+
+void SystemSuspend::disableAutosuspend() {
+    auto autosuspendLock = std::lock_guard(mAutosuspendLock);
+    disableAutosuspendLocked();
+}
+
+bool SystemSuspend::hasAliveAutosuspendTokenLocked() {
+    mDisableAutosuspendTokens.erase(
+        std::remove_if(mDisableAutosuspendTokens.begin(), mDisableAutosuspendTokens.end(),
+                       [](const sp<IBinder>& token) { return token->pingBinder() != OK; }),
+        mDisableAutosuspendTokens.end());
+
+    return !mDisableAutosuspendTokens.empty();
+}
+
+SystemSuspend::~SystemSuspend(void) {
+    auto autosuspendLock = std::unique_lock(mAutosuspendLock);
+
+    // signal autosuspend thread to shut down
+    disableAutosuspendLocked();
+
+    // wait for autosuspend thread to exit
+    mAutosuspendCondVar.wait_for(autosuspendLock, 100ms,
+                                 [this] { return !mAutosuspendThreadCreated; });
 }
 
 bool SystemSuspend::forceSuspend() {
@@ -172,9 +217,9 @@ bool SystemSuspend::forceSuspend() {
     //  or reset mSuspendCounter, it just ignores them.  When the system
     //  returns from suspend, the wakelocks and SuspendCounter will not have
     //  changed.
-    auto counterLock = std::unique_lock(mCounterLock);
+    auto autosuspendLock = std::unique_lock(mAutosuspendLock);
     bool success = WriteStringToFd(kSleepState, mStateFd);
-    counterLock.unlock();
+    autosuspendLock.unlock();
 
     if (!success) {
         PLOG(VERBOSE) << "error writing to /sys/power/state for forceSuspend";
@@ -183,7 +228,7 @@ bool SystemSuspend::forceSuspend() {
 }
 
 void SystemSuspend::incSuspendCounter(const string& name) {
-    auto l = std::lock_guard(mCounterLock);
+    auto l = std::lock_guard(mAutosuspendLock);
     if (mUseSuspendCounter) {
         mSuspendCounter++;
     } else {
@@ -194,10 +239,10 @@ void SystemSuspend::incSuspendCounter(const string& name) {
 }
 
 void SystemSuspend::decSuspendCounter(const string& name) {
-    auto l = std::lock_guard(mCounterLock);
+    auto l = std::lock_guard(mAutosuspendLock);
     if (mUseSuspendCounter) {
         if (--mSuspendCounter == 0) {
-            mCounterCondVar.notify_one();
+            mAutosuspendCondVar.notify_one();
         }
     } else {
         if (!WriteStringToFd(name, mWakeUnlockFd)) {
@@ -217,10 +262,25 @@ unique_fd SystemSuspend::reopenFileUsingFd(const int fd, const int permission) {
     return tempFd;
 }
 
-void SystemSuspend::initAutosuspend() {
+void SystemSuspend::initAutosuspendLocked() {
+    if (mAutosuspendThreadCreated) {
+        LOG(INFO) << "Autosuspend thread already started.";
+        return;
+    }
+
     std::thread autosuspendThread([this] {
         while (true) {
-            std::this_thread::sleep_for(mSleepTime);
+            auto autosuspendLock = std::unique_lock(mAutosuspendLock);
+            if (!mAutosuspendEnabled) {
+                mAutosuspendThreadCreated = false;
+                return;
+            }
+
+            mAutosuspendCondVar.wait_for(autosuspendLock, mSleepTime,
+                                         [this] { return !mAutosuspendEnabled; });
+            if (!mAutosuspendEnabled) continue;
+            autosuspendLock.unlock();
+
             lseek(mWakeupCountFd, 0, SEEK_SET);
             const string wakeupCount = readFd(mWakeupCountFd);
             if (wakeupCount.empty()) {
@@ -228,18 +288,26 @@ void SystemSuspend::initAutosuspend() {
                 continue;
             }
 
-            auto counterLock = std::unique_lock(mCounterLock);
-            mCounterCondVar.wait(counterLock, [this] { return mSuspendCounter == 0; });
+            autosuspendLock.lock();
+            mAutosuspendCondVar.wait(
+                autosuspendLock, [this] { return mSuspendCounter == 0 || !mAutosuspendEnabled; });
             // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
             // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before we
             // write to /sys/power/state.
+
+            if (!mAutosuspendEnabled) continue;
+
+            if (!hasAliveAutosuspendTokenLocked()) {
+                disableAutosuspendLocked();
+                continue;
+            }
 
             if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
                 PLOG(VERBOSE) << "error writing from /sys/power/wakeup_count";
                 continue;
             }
             bool success = WriteStringToFd(kSleepState, mStateFd);
-            counterLock.unlock();
+            autosuspendLock.unlock();
 
             if (!success) {
                 PLOG(VERBOSE) << "error writing to /sys/power/state";
@@ -261,6 +329,7 @@ void SystemSuspend::initAutosuspend() {
         }
     });
     autosuspendThread.detach();
+    mAutosuspendThreadCreated = true;
     LOG(INFO) << "automatic system suspend enabled";
 }
 
