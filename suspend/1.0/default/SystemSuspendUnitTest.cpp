@@ -144,6 +144,9 @@ class SystemSuspendTest : public ::testing::Test {
         Socketpair(SOCK_STREAM, &wakeupCountFds[0], &wakeupCountFds[1]);
         Socketpair(SOCK_STREAM, &stateFds[0], &stateFds[1]);
 
+        wakeupCountFd = wakeupCountFds[0];
+        stateFd = stateFds[0];
+
         registerTestService();
         std::shared_ptr<ISystemSuspend> suspendService = ISystemSuspend::fromBinder(
             ndk::SpAIBinder(AServiceManager_waitForService(kServiceName)));
@@ -162,8 +165,13 @@ class SystemSuspendTest : public ::testing::Test {
 
         // Start auto-suspend.
         bool enabled = false;
-        controlServiceInternal->enableAutosuspend(&enabled);
+        controlServiceInternal->enableAutosuspend(new BBinder(), &enabled);
         ASSERT_EQ(enabled, true) << "failed to start autosuspend";
+    }
+
+    static void TearDownTestSuite() {
+        unblockSystemSuspendFromWakeupCount();
+        systemSuspend->disableAutosuspend();
     }
 
    public:
@@ -182,8 +190,7 @@ class SystemSuspendTest : public ::testing::Test {
         ASSERT_NE(controlInternal, nullptr) << "failed to get the suspend control internal service";
         controlServiceInternal = interface_cast<ISuspendControlServiceInternal>(controlInternal);
 
-        wakeupCountFd = wakeupCountFds[0];
-        stateFd = stateFds[0];
+        systemSuspend->enableAutosuspend(new BBinder());
 
         // SystemSuspend HAL should not have written back to wakeupCountFd or stateFd yet.
         ASSERT_TRUE(isReadBlocked(wakeupCountFd));
@@ -197,7 +204,7 @@ class SystemSuspendTest : public ::testing::Test {
         ASSERT_TRUE(isReadBlocked(stateFd));
     }
 
-    void unblockSystemSuspendFromWakeupCount() {
+    static void unblockSystemSuspendFromWakeupCount() {
         std::string wakeupCount = std::to_string(rand());
         ASSERT_TRUE(WriteStringToFd(wakeupCount, wakeupCountFd));
     }
@@ -291,8 +298,41 @@ TemporaryFile SystemSuspendTest::suspendTimeFile;
 // Tests that autosuspend thread can only be enabled once.
 TEST_F(SystemSuspendTest, OnlyOneEnableAutosuspend) {
     bool enabled = false;
-    controlServiceInternal->enableAutosuspend(&enabled);
+    controlServiceInternal->enableAutosuspend(new BBinder(), &enabled);
     ASSERT_EQ(enabled, false);
+}
+
+// Tests that autosuspend thread can only enabled again after its been disabled.
+TEST_F(SystemSuspendTest, EnableAutosuspendAfterDisableAutosuspend) {
+    bool enabled = false;
+    unblockSystemSuspendFromWakeupCount();
+    systemSuspend->disableAutosuspend();
+    controlServiceInternal->enableAutosuspend(new BBinder(), &enabled);
+    ASSERT_EQ(enabled, true);
+}
+
+TEST_F(SystemSuspendTest, DisableAutosuspendBlocksSuspend) {
+    checkLoop(1);
+    systemSuspend->disableAutosuspend();
+    ASSERT_TRUE(isSystemSuspendBlocked());
+}
+
+TEST_F(SystemSuspendTest, BlockAutosuspendIfBinderIsDead) {
+    class DeadBinder : public BBinder {
+        android::status_t pingBinder() override { return android::UNKNOWN_ERROR; }
+    };
+
+    auto token = sp<DeadBinder>::make();
+
+    systemSuspend->disableAutosuspend();
+    unblockSystemSuspendFromWakeupCount();
+    ASSERT_TRUE(isSystemSuspendBlocked());
+
+    bool enabled = false;
+    controlServiceInternal->enableAutosuspend(token, &enabled);
+    unblockSystemSuspendFromWakeupCount();
+
+    ASSERT_TRUE(isSystemSuspendBlocked(150));
 }
 
 TEST_F(SystemSuspendTest, AutosuspendLoop) {
@@ -940,17 +980,18 @@ class SystemSuspendSameThreadTest : public ::testing::Test {
             new SuspendControlServiceInternal();
         controlService = suspendControl;
         controlServiceInternal = suspendControlInternal;
-        systemSuspend =
-            new SystemSuspend(unique_fd(-1) /* wakeupCountFd */, unique_fd(-1) /* stateFd */,
-                              unique_fd(dup(suspendStatsFd)), 1 /* maxNativeStatsEntries */,
-                              unique_fd(dup(kernelWakelockStatsFd.get())),
-                              unique_fd(-1) /* wakeupReasonsFd */, unique_fd(-1) /*suspendTimeFd*/,
-                              kSleepTimeConfig, suspendControl, suspendControlInternal);
+        systemSuspend = new SystemSuspend(
+            unique_fd(-1) /* wakeupCountFd */, unique_fd(-1) /* stateFd */,
+            unique_fd(dup(suspendStatsFd)), 1 /* maxNativeStatsEntries */,
+            unique_fd(dup(kernelWakelockStatsFd.get())), unique_fd(-1) /* wakeupReasonsFd */,
+            unique_fd(-1) /* suspendTimeFd */, kSleepTimeConfig, suspendControl,
+            suspendControlInternal);
 
         suspendService = ndk::SharedRefBase::make<SystemSuspendAidl>(systemSuspend.get());
     }
 
     virtual void TearDown() override {
+        systemSuspend->disableAutosuspend();
         ASSERT_TRUE(clearDirectory(kernelWakelockStatsDir.path));
         ASSERT_TRUE(clearDirectory(suspendStatsDir.path));
     }
@@ -1221,17 +1262,24 @@ class SuspendWakeupTest : public ::testing::Test {
 
         systemSuspend = new SystemSuspend(
             std::move(wakeupCountServiceFd), std::move(stateServiceFd),
-            unique_fd(-1) /*suspendStatsFd*/, 100 /* maxStatsEntries */,
+            unique_fd(-1) /* suspendStatsFd */, 100 /* maxStatsEntries */,
             unique_fd(-1) /* kernelWakelockStatsFd */, std::move(wakeupReasonsFd),
             std::move(suspendTimeFd), kSleepTimeConfig, suspendControl, suspendControlInternal);
 
         // Start auto-suspend.
         bool enabled = false;
-        suspendControlInternal->enableAutosuspend(&enabled);
+        suspendControlInternal->enableAutosuspend(new BBinder(), &enabled);
         ASSERT_EQ(enabled, true) << "failed to start autosuspend";
     }
 
-    virtual void TearDown() override {}
+    virtual void TearDown() override { systemSuspend->disableAutosuspend(); }
+
+    std::shared_ptr<IWakeLock> acquireWakeLock(const std::string& name = "TestLock") {
+        auto suspendService = ndk::SharedRefBase::make<SystemSuspendAidl>(systemSuspend.get());
+        std::shared_ptr<IWakeLock> wl = nullptr;
+        auto status = suspendService->acquireWakeLock(WakeLockType::PARTIAL, name, &wl);
+        return wl;
+    }
 
     void wakeup(std::string wakeupReason) {
         ASSERT_TRUE(WriteStringToFile(wakeupReason, wakeupReasonsFile.path));
