@@ -269,6 +269,8 @@ void SystemSuspend::initAutosuspendLocked() {
     }
 
     std::thread autosuspendThread([this] {
+        bool shouldSleep = true;
+
         while (true) {
             auto autosuspendLock = std::unique_lock(mAutosuspendLock);
             if (!mAutosuspendEnabled) {
@@ -276,8 +278,11 @@ void SystemSuspend::initAutosuspendLocked() {
                 return;
             }
 
-            mAutosuspendCondVar.wait_for(autosuspendLock, mSleepTime,
-                                         [this] { return !mAutosuspendEnabled; });
+            if (shouldSleep) {
+                mAutosuspendCondVar.wait_for(autosuspendLock, mSleepTime,
+                                             [this] { return !mAutosuspendEnabled; });
+            }
+
             if (!mAutosuspendEnabled) continue;
             autosuspendLock.unlock();
 
@@ -287,6 +292,8 @@ void SystemSuspend::initAutosuspendLocked() {
                 PLOG(ERROR) << "error reading from /sys/power/wakeup_count";
                 continue;
             }
+
+            shouldSleep = false;
 
             autosuspendLock.lock();
             mAutosuspendCondVar.wait(
@@ -307,6 +314,7 @@ void SystemSuspend::initAutosuspendLocked() {
                 continue;
             }
             bool success = WriteStringToFd(kSleepState, mStateFd);
+            shouldSleep = true;
             autosuspendLock.unlock();
 
             if (!success) {
