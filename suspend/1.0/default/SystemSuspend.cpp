@@ -269,6 +269,7 @@ void SystemSuspend::initAutosuspendLocked() {
     }
 
     std::thread autosuspendThread([this] {
+        bool attemptedSuspend = true;
         while (true) {
             auto autosuspendLock = std::unique_lock(mAutosuspendLock);
             if (!mAutosuspendEnabled) {
@@ -276,8 +277,15 @@ void SystemSuspend::initAutosuspendLocked() {
                 return;
             }
 
-            mAutosuspendCondVar.wait_for(autosuspendLock, mSleepTime,
-                                         [this] { return !mAutosuspendEnabled; });
+            // Only sleep if the last iteration of the autosuspend loop
+            // attempted a suspend operation.
+            if (attemptedSuspend) {
+                mAutosuspendCondVar.wait_for(autosuspendLock, mSleepTime,
+                                             [this] { return !mAutosuspendEnabled; });
+            }
+
+            attemptedSuspend = false;
+
             if (!mAutosuspendEnabled) continue;
             autosuspendLock.unlock();
 
@@ -307,6 +315,7 @@ void SystemSuspend::initAutosuspendLocked() {
                 continue;
             }
             bool success = WriteStringToFd(kSleepState, mStateFd);
+            attemptedSuspend = true;
             autosuspendLock.unlock();
 
             if (!success) {
