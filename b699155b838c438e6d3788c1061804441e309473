@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f2beb2c_f0879f45",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1446383
+      },
+      "writtenOn": "2021-10-28T22:34:31Z",
+      "side": 1,
+      "message": "Do you want to move this to be after the read of wakeup_count? That read should really never fail? And if it fails do we want a busy loop of reads?",
+      "range": {
+        "startLine": 287,
+        "startChar": 12,
+        "endLine": 287,
+        "endChar": 28
+      },
+      "revId": "b699155b838c438e6d3788c1061804441e309473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4867e2_f9195d46",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1446383
+      },
+      "writtenOn": "2021-10-28T22:34:31Z",
+      "side": 1,
+      "message": "No idea what this path is for, but again, we\u0027ll end up busy looping with no sleep with this.",
+      "range": {
+        "startLine": 289,
+        "startChar": 17,
+        "endLine": 289,
+        "endChar": 36
+      },
+      "revId": "b699155b838c438e6d3788c1061804441e309473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe87dfde_3a734e7a",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1446383
+      },
+      "writtenOn": "2021-10-28T22:34:31Z",
+      "side": 1,
+      "message": "So you might want to set attemptedSuspend \u003d false after this read?\n\nAt which point, the variable probably needs a better name? Maybe \"shouldSleep\"?",
+      "range": {
+        "startLine": 293,
+        "startChar": 46,
+        "endLine": 293,
+        "endChar": 60
+      },
+      "revId": "b699155b838c438e6d3788c1061804441e309473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
