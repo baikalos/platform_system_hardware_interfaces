@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b01ee76_1f78fd5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-28T23:46:18Z",
+      "side": 1,
+      "message": "the predicate version of wait is immune to spurious wakeups. What is going on here?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ebdc1d_ce737a9b",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-28T23:46:18Z",
+      "side": 1,
+      "message": "nit: this is a bit odd - we drop the lock, then reacquire it immediately and return",
+      "range": {
+        "startLine": 305,
+        "startChar": 17,
+        "endLine": 305,
+        "endChar": 36
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be93c0c_cc0a8a0c",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-28T23:46:18Z",
+      "side": 1,
+      "message": "same - any thought to moving the lock outside of the loop? (and relocking it at L336 - since it is unlocked at L318)",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 13
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbd8c4a_ac8e7fe0",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-28T23:46:18Z",
+      "side": 1,
+      "message": "so if this fails, we reread wakeupCount and try to write it again?",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 13
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
