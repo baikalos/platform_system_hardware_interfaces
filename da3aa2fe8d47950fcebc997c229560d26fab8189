@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02f346b_9ebdcb37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-10-29T16:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abf49760_9ceef609",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8ebdc1d_ce737a9b",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-10-28T23:46:18Z",
       "side": 1,
       "message": "nit: this is a bit odd - we drop the lock, then reacquire it immediately and return",
+      "range": {
+        "startLine": 305,
+        "startChar": 17,
+        "endLine": 305,
+        "endChar": 36
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bbc8a90_f3e00bd1",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-10-29T16:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ebdc1d_ce737a9b",
       "range": {
         "startLine": 305,
         "startChar": 17,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "Yes I think this would the extra unlock and lock. I\u0027ll  post it as a separate change.",
       "parentUuid": "2be93c0c_cc0a8a0c",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 13
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac839f8f_2b70737e",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-10-29T16:51:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe171686_eb6fb37f",
       "range": {
         "startLine": 306,
         "startChar": 0,
@@ -179,6 +251,30 @@
       "side": 1,
       "message": "nit: maybe comment",
       "parentUuid": "e4cf6f2b_75444514",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 13
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b02c11_54426b60",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-10-29T16:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b10387d6_bbb9b3a6",
       "range": {
         "startLine": 312,
         "startChar": 0,
