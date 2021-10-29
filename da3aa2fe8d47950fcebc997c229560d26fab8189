@@ -163,6 +163,30 @@
       },
       "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10387d6_bbb9b3a6",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-29T01:21:26Z",
+      "side": 1,
+      "message": "nit: maybe comment",
+      "parentUuid": "e4cf6f2b_75444514",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 13
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
