@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abf49760_9ceef609",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-10-29T00:58:10Z",
+      "side": 1,
+      "message": "I think \u0027suprious\u0027 here is a bit confusing. It doesn\u0027t relate to the wait. It\u0027s referring to the auto suspend back off sleep.",
+      "parentUuid": "8b01ee76_1f78fd5e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8ebdc1d_ce737a9b",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe171686_eb6fb37f",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-10-29T00:58:10Z",
+      "side": 1,
+      "message": "Yes I think this would the extra unlock and lock. I\u0027ll  post it as a separate change.",
+      "parentUuid": "2be93c0c_cc0a8a0c",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 13
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fbd8c4a_ac8e7fe0",
         "filename": "suspend/1.0/default/SystemSuspend.cpp",
         "patchSetId": 2
@@ -83,6 +131,30 @@
       "writtenOn": "2021-10-28T23:46:18Z",
       "side": 1,
       "message": "so if this fails, we reread wakeupCount and try to write it again?",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 13
+      },
+      "revId": "da3aa2fe8d47950fcebc997c229560d26fab8189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4cf6f2b_75444514",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-10-29T00:58:10Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the idea. If the kernel isn\u0027t ready the read will block and if userspace isn\u0027t ready we will be blocked on the wait until userspace wakelock count drops to 0. The sleep time is only for cases where we attempted the suspend, since suspends also have a power cost we back off for some time and try again later. But in this case the frequent kernel wakeup sources getting activated can cause this write to fail and we would effectively cause the sleep without an attempt to suspend.",
+      "parentUuid": "8fbd8c4a_ac8e7fe0",
       "range": {
         "startLine": 312,
         "startChar": 0,
