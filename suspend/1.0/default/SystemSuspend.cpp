@@ -269,10 +269,10 @@ void SystemSuspend::initAutosuspendLocked() {
     }
 
     std::thread autosuspendThread([this] {
+        auto autosuspendLock = std::unique_lock(mAutosuspendLock);
         bool shouldSleep = true;
 
         while (true) {
-            auto autosuspendLock = std::unique_lock(mAutosuspendLock);
             if (!mAutosuspendEnabled) {
                 mAutosuspendThreadCreated = false;
                 return;
@@ -291,6 +291,8 @@ void SystemSuspend::initAutosuspendLocked() {
             const string wakeupCount = readFd(mWakeupCountFd);
             if (wakeupCount.empty()) {
                 PLOG(ERROR) << "error reading from /sys/power/wakeup_count";
+                // Take the lock before returning to the start of the loop
+                autosuspendLock.lock();
                 continue;
             }
 
@@ -335,6 +337,9 @@ void SystemSuspend::initAutosuspendLocked() {
             mWakeupList.update(wakeupReasons);
 
             mControlService->notifyWakeup(success, wakeupReasons);
+
+            // Take the lock before returning to the start of the loop
+            autosuspendLock.lock();
         }
     });
     autosuspendThread.detach();
