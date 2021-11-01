@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c86332_ad374a74",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-01T21:32:20Z",
+      "side": 1,
+      "message": "nit, prefer:\n\n{\n    autosuspendLock.unlock();\n\n    lseek(mWakeupCountFd, 0, SEEK_SET); // TODO: check error\n    const string wakeupCount \u003d readFd(mWakeupCountFd);\n\n    autosuspendLock.lock();\n}\n\nif (...empty()) { PLOG....; continue; }\n\n\n(lol - we should request a \u0027std::unique_unlock\u0027 class?)",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 35
+      },
+      "revId": "9ba24bc2bbd86c3d86acaa6c15e7e88025f6a72b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f68866a_ab4e07ff",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-01T21:32:20Z",
+      "side": 1,
+      "message": "same, could block ({...}) the unlock",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 70
+      },
+      "revId": "9ba24bc2bbd86c3d86acaa6c15e7e88025f6a72b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
