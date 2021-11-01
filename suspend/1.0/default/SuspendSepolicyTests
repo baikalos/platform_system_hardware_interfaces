@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# Copyright (C) 2021 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Check that sysfs wakeup nodes are correctly labeled by the
+# device's sepolicy.
+
+adb_sh() { #args
+    adb shell $@
+}
+
+get_wakeup_paths() {
+    adb_sh '
+        wakeup_paths=()
+        wakeup_dir="/sys/class/wakeup"
+        cd $wakeup_dir
+        for file in $wakeup_dir/*; do
+            while [ -L "$file" ]; do
+                file=$(readlink $file)
+            done
+            wakeup_paths+=( $(realpath $file) )
+        done
+        echo "${wakeup_paths[@]}"
+        '
+}
+wakeup_paths=( $wakeup_paths )
+
+has_wakeup_label() { #path
+    adb_sh ls -d -Z "$1" | grep -q "$wakeup_label"
+    return $?
+}
+
+get_unlabeled_paths() {
+    for path in ${wakeup_paths[@]}; do
+        has_wakeup_label $path || unlabeled_paths+=( $path )
+    done
+}
+
+print_missing_labels() {
+    nr_unlabeled="${#unlabeled_paths[@]}"
+
+    if [ "$nr_unlabeled" == "0" ]; then
+        return 1
+    fi
+
+    echo ""
+    echo "Unlabeled wakeup nodes found, your device is likely missing"
+    echo "device/oem specific selinux genfscon rules for suspend."
+    echo ""
+    echo "Please review and add the following generated rules to the"
+    echo "device specific genfs_contexts:"
+    echo ""
+
+    for path in ${unlabeled_paths[@]}; do
+        echo "genfscon sysfs ${path#/sys/} $wakeup_label"
+    done
+
+    echo ""
+
+    return 0
+}
+
+fail() { #msg
+    echo $1
+    exit 1
+}
+
+pass() { #msg
+    echo $1
+    exit 0
+}
+
+# Test unlabeled sysfs_wakeup nodes
+wakeup_paths=( $(get_wakeup_paths) )
+get_unlabeled_paths
+print_missing_labels && fail "Missing sysfs_wakeup labels" || pass "No missing sysfs_wakeup labels"
