@@ -115,6 +115,16 @@ cc_test {
     require_root: true,
 }
 
+sh_test {
+    name: "SuspendSepolicyTests",
+    src: "SuspendSepolicyTests.sh",
+    test_suites: [
+        "device-tests",
+        "vts",
+    ],
+    test_config: "suspend-sepolicy-tests.xml",
+}
+
 cc_benchmark {
     name: "SystemSuspendBenchmark",
     defaults: [
