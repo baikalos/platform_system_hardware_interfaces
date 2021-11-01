@@ -5,6 +5,9 @@
     },
     {
       "name": "SystemSuspendV1_0AidlTest"
+    },
+    {
+      "name": "SuspendSepolicyTests"
     }
   ]
 }
