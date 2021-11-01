@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3828e354_ec4dad77",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-01T22:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11c86332_ad374a74",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 35
+      },
+      "revId": "9ba24bc2bbd86c3d86acaa6c15e7e88025f6a72b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f68866a_ab4e07ff",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-01T21:32:20Z",
       "side": 1,
       "message": "same, could block ({...}) the unlock",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 70
+      },
+      "revId": "9ba24bc2bbd86c3d86acaa6c15e7e88025f6a72b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0256bf_14640625",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-01T22:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f68866a_ab4e07ff",
       "range": {
         "startLine": 341,
         "startChar": 0,
