@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6178ae75_c98c7960",
+        "filename": "suspend/1.0/default/SuspendSepolicyTests",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-03T00:04:25Z",
+      "side": 1,
+      "message": "I think something like that could also work but might be less informative.\n\nThe nodes under /sys/class/wakeup/* should be labeled correctly. But mostly those are links so when we do the read on, for example, /sys/class/wakeup1 -\u003e /sys/devices/virtual/wakeup/wakeup1. And we get an error because the /sys/devices/virtual/wakeup/wakeup1 doesn\u0027t have the label. \n\nThe test will print out the missing genfs_context label after resolving links in the path:\n\ngenfscon sysfs devices/virtual/wakeup/wakeup1 u:object_r:sysfs_wakeup:s0",
+      "parentUuid": "42b92629_d1af6368",
+      "revId": "73b37e32ccc0fe6ce612af4e7f00e6dae33d04d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fe2b474_08d86fc4",
         "filename": "suspend/1.0/default/suspend-sepolicy-tests.xml",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-02T23:27:43Z",
       "side": 1,
       "message": "nit: spaces",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "73b37e32ccc0fe6ce612af4e7f00e6dae33d04d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a305ff_2a4a9446",
+        "filename": "suspend/1.0/default/suspend-sepolicy-tests.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-03T00:04:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1fe2b474_08d86fc4",
       "range": {
         "startLine": 21,
         "startChar": 0,
