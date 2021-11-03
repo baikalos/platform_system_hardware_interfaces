@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c22b37_84709d5b",
+        "filename": "suspend/1.0/default/SuspendSepolicyTests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-03T02:29:12Z",
+      "side": 1,
+      "message": "I\u0027ll need to fix up the failures, some places label the sub directories (wakeup1, ... wakeupN). We can reduce these to just label the parent wakeup dir (i.e wakeup/{wakeup1, ..., wakeupN})",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 70
+      },
+      "revId": "7adb4d1babff024cce130063f1b62f58a7d46b96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
