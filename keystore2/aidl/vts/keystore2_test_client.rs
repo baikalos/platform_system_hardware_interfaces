@@ -31,6 +31,8 @@ use std::{
     sync::{Condvar, Mutex},
 };
 
+use keystore2_test_utils::run_as;
+
 lazy_static! {
     static ref OP_LIMIT: OperationLimiter = OperationLimiter::new();
 }
@@ -155,6 +157,10 @@ impl Deref for AuthSetBuilder {
 mod tests {
 
     use super::*;
+    use rustutils::users::AID_USER_OFFSET;
+    use nix::unistd::{pipe, close, read, write, getgid, getuid, getpid, Gid, Uid};
+    use nix::sys::wait::{wait};
+
     use android_hardware_security_keymint::aidl::android::hardware::security::keymint::{
         Algorithm::Algorithm,
         Digest::Digest,
@@ -227,7 +233,7 @@ mod tests {
 
         let key_metadata = map_ks_error(sec_level.generateKey(
             &KeyDescriptor {
-                domain: Domain::SELINUX,
+                domain: Domain::APP,
                 nspace: SELINUX_SHELL_NAMESPACE,
                 alias: Some(alias.to_string()),
                 blob: None,
@@ -243,6 +249,163 @@ mod tests {
             key_metadata.certificate,
             key_metadata.certificateChain,
         ))
+    }
+
+    fn read_from_pipe(read_fd: &i32) -> Result<Vec<u8>, nix::Error> {
+        let mut buffer = [0u8; 1];
+        let mut result = Vec::<u8>::new();
+
+        let bytes = read(*read_fd, &mut buffer)?;
+        result.extend_from_slice(&buffer[0..bytes]);
+
+        Ok(result)
+    }
+
+    fn write_to_pipe(write_fd: &i32, data: &[u8]) -> Result<usize, nix::Error> {
+        write(*write_fd, data)
+    }
+
+    /*
+     * This test varifies that backend service throws BACKENDBUSY error when all
+     * operations slots are full. This test creates operations in child processes and
+     * collects the status of operations performed in each child proc and determines
+     * whether any child proc exited with error status.
+     */
+    #[test]
+    fn keystore2_runas_pruning_test() {
+        let _exclusive_ops = OP_LIMIT.get_exclusive(SecurityLevel::TRUSTED_ENVIRONMENT);
+
+        const MAX_OPS: i32 = 17;
+        const EXIT_STAT: u8 = 0;
+        const SUCCESS_STAT: u8 = 1;
+        const FAIL_STAT: u8 = 2;
+
+        static EXITCHILD: [u8; 1] = [EXIT_STAT];
+        static SUCCESSCHILD: [u8; 1]  = [SUCCESS_STAT];
+        static FAILEDCHILD: [u8; 1] = [FAIL_STAT];
+
+        let mut loop_count = 0;
+        let mut auid = 99 * AID_USER_OFFSET + 10001;
+        let mut agid = 99 * AID_USER_OFFSET + 10001;
+        static TARGET_CTX: &str = "u:r:untrusted_app:s0:c91,c256,c10,c20";
+
+        let (parent_read_fd, child_write_fd) = pipe().expect("Failed to create pipe.");
+        let (child_read_fd, parent_write_fd) = pipe().expect("Failed to create pipe.");
+
+        loop {
+            run_as::run_as_app(TARGET_CTX, Uid::from_raw(auid), Gid::from_raw(agid), move || {
+                let keystore2 = get_connection();
+                let sec_level =
+                    map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT))
+                    .unwrap();
+                let alias = format!("{}{}", "ks_prune_op_test_key", getuid_fromc());
+                let (key, cert, cert_chain) =
+                    make_ec_signing_key(&*sec_level, &alias).unwrap();
+                assert!(cert.is_some());
+                assert!(cert_chain.is_none());
+
+                println!("OPERATION :  getuid {} , getgid {}",  getuid(), getgid());
+                // ops: used to hold reference to this opearation result till the end this block
+                let mut ops: Vec<CreateOperationResponse> = Vec::new();
+
+                close(parent_read_fd).unwrap();
+                close(parent_write_fd).unwrap();
+
+                let result = sec_level.createOperation(
+                    &key,
+                    &AuthSetBuilder::new()
+                    .purpose(KeyPurpose::SIGN)
+                    .digest(Digest::SHA_2_256),
+                    false,
+                    );
+
+                match result {
+                    Err(s) => {
+                        assert_eq!(ExceptionCode::SERVICE_SPECIFIC, s.exception_code());
+                        assert_eq!(ResponseCode::BACKEND_BUSY.0, s.service_specific_error());
+                        write_to_pipe(&child_write_fd, &FAILEDCHILD)
+                            .expect("Failed to send success result to parent.");
+                    }
+                    Ok(op) => {
+                        ops.push(op);
+                        write_to_pipe(&child_write_fd, &SUCCESSCHILD)
+                            .expect("Failed to send error result to parent.");
+                    }
+                }
+
+                close(child_write_fd).unwrap();
+
+                let cmd = read_from_pipe(&child_read_fd).expect("Child failed to read");
+                match cmd[0] {
+                    EXIT_STAT => {
+                        close(child_read_fd).unwrap();
+                        println!("Child exiting: {}", getpid());
+                        std::process::exit(0);
+                    }
+                    _ => {
+                        println!("No matching command received in child");
+                    }
+                }
+            });
+            loop_count += 1;
+            auid += 1;
+            agid += 1;
+            if loop_count == MAX_OPS {
+                break;
+            }
+        }
+
+        close(child_read_fd).unwrap();
+        close(child_write_fd).unwrap();
+
+        // Parent waits for all child procs ops status
+        let mut ops_success = 0;
+        let mut ops_failed = 0;
+        loop {
+            let _cmd = read_from_pipe(&parent_read_fd).expect("parent failed to read");
+
+            match _cmd[0] {
+                SUCCESS_STAT => {
+                    ops_success +=1;
+                }
+                FAIL_STAT => {
+                    ops_failed += 1;
+                }
+                _ => {
+                    panic!("No matching command received from child");
+                }
+            }
+            if (ops_success + ops_failed) == MAX_OPS {
+                println!("parent got all child procs ops status!");
+                break;
+            }
+        }
+
+        // make all child exit
+        for _ in 0..MAX_OPS {
+            write_to_pipe(&parent_write_fd, &EXITCHILD)
+                .expect("Failed to send exit command to child proc.");
+        }
+
+        // Wait till all child get exit
+        loop {
+            match wait() {
+                Err(_) => {
+                    break;
+                }
+                Ok(_) => {
+                    continue;
+                }
+            }
+        }
+
+        println!("Succefull operations: {}", ops_success);
+        println!("Failed operations: {}", ops_failed);
+
+        close(parent_read_fd).unwrap();
+        close(parent_write_fd).unwrap();
+
+        assert!(ops_failed != 0);
     }
 
     #[test]
@@ -497,7 +660,7 @@ mod tests {
         assert!(cert.is_some());
         assert!(cert_chain.is_none());
 
-        if let Ok(key_descriptors) = keystore2.listEntries(Domain::SELINUX, SELINUX_SHELL_NAMESPACE)
+        if let Ok(key_descriptors) = keystore2.listEntries(Domain::APP, SELINUX_SHELL_NAMESPACE)
         {
             let mut key_exists = false;
             for key_descriptor in key_descriptors {
@@ -565,14 +728,14 @@ mod tests {
         }
     }
 
-    fn getuid() -> i32 {
+    fn getuid_fromc() -> i32 {
         unsafe { i32::try_from(libc::getuid()).unwrap() }
     }
 
     #[test]
     fn grant_success() {
         let test_alias = "grant_success_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -631,7 +794,7 @@ mod tests {
     #[test]
     fn grant_missing_key_failure() {
         let test_alias = "grant_missing_key_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -662,7 +825,7 @@ mod tests {
     // #[test]
     fn ungrant_success() {
         let test_alias = "ungrant_success_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -684,7 +847,7 @@ mod tests {
     // #[test]
     fn ungrant_no_key_failure() {
         let test_alias = "ungrant_no_key_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
 
         let keystore2 = get_connection();
         let sec_level =
@@ -709,7 +872,7 @@ mod tests {
     #[test]
     fn ungrant_no_grant_failure() {
         let test_alias = "ungrant_no_grant_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
 
         let keystore2 = get_connection();
         let sec_level =
