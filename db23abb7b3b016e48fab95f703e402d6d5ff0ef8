@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda2c24c_e38416cc",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-11-04T17:18:41Z",
+      "side": 1,
+      "message": "Do not run as Android user 0, choose a higher android user id.",
+      "revId": "db23abb7b3b016e48fab95f703e402d6d5ff0ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e0658b_33f924e9",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-11-04T17:18:41Z",
+      "side": 1,
+      "message": "The test has to run as root (context \"su\"). But we don\u0027t want the closure to run as \"su\" but as \"untrusted_app\".",
+      "range": {
+        "startLine": 262,
+        "startChar": 31,
+        "endLine": 262,
+        "endChar": 48
+      },
+      "revId": "db23abb7b3b016e48fab95f703e402d6d5ff0ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
