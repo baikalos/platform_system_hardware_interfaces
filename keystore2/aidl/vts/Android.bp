@@ -24,10 +24,14 @@ rust_test {
     rustlibs: [
         "android.system.keystore2-V1-rust",
         "android.hardware.security.keymint-V1-rust",
+	"librustutils",
+	"libkeystore2_test_utils",
+	"libnix",
         "libanyhow",
         "libbinder_rs",
         "liblazy_static",
         "liblibc",
         "libthiserror",
     ],
+    require_root: true,
 }
