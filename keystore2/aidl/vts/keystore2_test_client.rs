@@ -31,6 +31,8 @@ use std::{
     sync::{Condvar, Mutex},
 };
 
+use keystore2_test_utils::run_as;
+
 lazy_static! {
     static ref OP_LIMIT: OperationLimiter = OperationLimiter::new();
 }
@@ -124,7 +126,7 @@ impl AuthSetBuilder {
         self.0.push(KeyParameter {
             tag: Tag::ALGORITHM,
             value: KeyParameterValue::Algorithm(a),
-        });
+       });
         self
     }
     fn ec_curve(mut self, e: EcCurve) -> Self {
@@ -155,6 +157,13 @@ impl Deref for AuthSetBuilder {
 mod tests {
 
     use super::*;
+    use rustutils::users::AID_USER_OFFSET;
+    use nix::unistd::{getgid, getuid, Gid, Uid, Pid};
+    use nix::sys::signal::{sigaction, SaFlags, SigAction, SigHandler, SigSet, SIGCHLD};
+    use nix::sys::wait::{waitpid, WaitStatus};
+    use std::sync::atomic::{AtomicBool, Ordering};
+
+
     use android_hardware_security_keymint::aidl::android::hardware::security::keymint::{
         Algorithm::Algorithm,
         Digest::Digest,
@@ -170,6 +179,8 @@ mod tests {
     };
     use anyhow::{anyhow, Result};
     use std::convert::TryFrom;
+    use std::thread::sleep;
+    use std::time::Duration;
 
     use android_system_keystore2::binder::{ExceptionCode, Result as BinderResult};
 
@@ -227,7 +238,7 @@ mod tests {
 
         let key_metadata = map_ks_error(sec_level.generateKey(
             &KeyDescriptor {
-                domain: Domain::SELINUX,
+                domain: Domain::APP,
                 nspace: SELINUX_SHELL_NAMESPACE,
                 alias: Some(alias.to_string()),
                 blob: None,
@@ -243,6 +254,114 @@ mod tests {
             key_metadata.certificate,
             key_metadata.certificateChain,
         ))
+    }
+
+    lazy_static!{
+        static  ref CHILD_PROCS: Mutex<Vec<WaitStatus>> = Mutex::new(Vec::new());
+    }
+    static CHILD_PROC_ERR: AtomicBool = AtomicBool::new(false);
+
+    /*
+     * SIGCHLD handler - collects child procs status
+     */
+    extern "C" fn handle_sigchld(_: libc::c_int) {
+        let mut child_ops = CHILD_PROCS.lock().unwrap();
+
+        match waitpid(Pid::from_raw(-1), None) {
+            Ok(status) => {
+                println!("Child exited with status {:?}", status);
+
+                if status.eq(&WaitStatus::Exited(status.pid().unwrap(), 0)) {
+                    child_ops.push(status);
+                } else {
+                    CHILD_PROC_ERR.store(true, Ordering::Relaxed);
+                    println!("Error status returned from child proc.");
+                }
+            }
+            Err(err) => {
+                panic!("waitpid() failed: {}", err);
+            }
+        }
+    }
+
+    /*
+     * This test varifies that backend service throws BACKENDBUSY error when all
+     * operations slots are full. This test creates operations in child processes and
+     * collects the child proc status and determines whether any child proc exited with error
+     * status.
+     */
+    #[test]
+    fn keystore2_runas_pruning_test() {
+        let _exclusive_ops = OP_LIMIT.get_exclusive(SecurityLevel::TRUSTED_ENVIRONMENT);
+
+        let mut loop_count = 0;
+        let mut auid = 99 * AID_USER_OFFSET + 10001;
+        let mut agid = 99 * AID_USER_OFFSET + 10001;
+        static TARGET_CTX: &str = "u:r:untrusted_app:s0:c91,c256,c10,c20";
+
+        // Register SIGCHLD handler
+        let sig_action = SigAction::new(
+            SigHandler::Handler(handle_sigchld),
+            SaFlags::empty(),
+            SigSet::empty(),
+            );
+        if let Err(err) = unsafe { sigaction(SIGCHLD, &sig_action) } {
+            panic!("sigaction() failed: {}", err);
+        };
+
+        loop {
+            println!("Loop: Create Operation: {} {}", loop_count, auid);
+            run_as::run_as_app(TARGET_CTX, Uid::from_raw(auid), Gid::from_raw(agid), || {
+                let keystore2 = get_connection();
+                let sec_level =
+                    map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT))
+                    .unwrap();
+                let alias = format!("{}{}", "ks_prune_op_test_key", getuid_fromc());
+                let (key, cert, cert_chain) =
+                    make_ec_signing_key(&*sec_level, &alias).unwrap();
+                assert!(cert.is_some());
+                assert!(cert_chain.is_none());
+
+                println!("OPERATION :  getuid {} , getgid {}",  getuid(), getgid());
+                // ops: used to hold reference to this opearation result till the end this block
+                let mut ops: Vec<CreateOperationResponse> = Vec::new();
+
+                let result = sec_level.createOperation(
+                    &key,
+                    &AuthSetBuilder::new()
+                    .purpose(KeyPurpose::SIGN)
+                    .digest(Digest::SHA_2_256),
+                    false,
+                    );
+
+                match result {
+                    Err(s) => {
+                        println!("Opearation failed {}", getuid());
+                        assert_eq!(ExceptionCode::SERVICE_SPECIFIC, s.exception_code());
+                        assert_eq!(ResponseCode::BACKEND_BUSY.0, s.service_specific_error());
+                        panic!("Opearations slots are full, BACKEND_BUSY occurred");
+                    }
+                    Ok(op) => {
+                        println!("Opearation success {}", getuid());
+                        ops.push(op);
+                    }
+                }
+
+                // sleep for few secs to let other operations slots get filled.
+                sleep(Duration::from_secs(5));
+            });
+            loop_count += 1;
+            auid += 1;
+            agid += 1;
+            if loop_count == 17 {
+                break;
+            }
+        }
+
+        while !CHILD_PROC_ERR.load(Ordering::Relaxed) {
+            sleep(Duration::from_secs(1));
+        }
+        assert!(CHILD_PROC_ERR.load(Ordering::Relaxed));
     }
 
     #[test]
@@ -497,7 +616,7 @@ mod tests {
         assert!(cert.is_some());
         assert!(cert_chain.is_none());
 
-        if let Ok(key_descriptors) = keystore2.listEntries(Domain::SELINUX, SELINUX_SHELL_NAMESPACE)
+        if let Ok(key_descriptors) = keystore2.listEntries(Domain::APP, SELINUX_SHELL_NAMESPACE)
         {
             let mut key_exists = false;
             for key_descriptor in key_descriptors {
@@ -565,14 +684,14 @@ mod tests {
         }
     }
 
-    fn getuid() -> i32 {
+    fn getuid_fromc() -> i32 {
         unsafe { i32::try_from(libc::getuid()).unwrap() }
     }
 
     #[test]
     fn grant_success() {
         let test_alias = "grant_success_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -631,7 +750,7 @@ mod tests {
     #[test]
     fn grant_missing_key_failure() {
         let test_alias = "grant_missing_key_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -662,7 +781,7 @@ mod tests {
     // #[test]
     fn ungrant_success() {
         let test_alias = "ungrant_success_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -684,7 +803,7 @@ mod tests {
     // #[test]
     fn ungrant_no_key_failure() {
         let test_alias = "ungrant_no_key_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
 
         let keystore2 = get_connection();
         let sec_level =
@@ -709,7 +828,7 @@ mod tests {
     #[test]
     fn ungrant_no_grant_failure() {
         let test_alias = "ungrant_no_grant_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
 
         let keystore2 = get_connection();
         let sec_level =
