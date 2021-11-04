@@ -31,6 +31,8 @@ use std::{
     sync::{Condvar, Mutex},
 };
 
+use keystore2_test_utils::run_as;
+
 lazy_static! {
     static ref OP_LIMIT: OperationLimiter = OperationLimiter::new();
 }
@@ -124,7 +126,7 @@ impl AuthSetBuilder {
         self.0.push(KeyParameter {
             tag: Tag::ALGORITHM,
             value: KeyParameterValue::Algorithm(a),
-        });
+       });
         self
     }
     fn ec_curve(mut self, e: EcCurve) -> Self {
@@ -155,6 +157,9 @@ impl Deref for AuthSetBuilder {
 mod tests {
 
     use super::*;
+    use keystore2_selinux as selinux;
+    use nix::unistd::{getgid, getuid, Gid, Uid};
+
     use android_hardware_security_keymint::aidl::android::hardware::security::keymint::{
         Algorithm::Algorithm,
         Digest::Digest,
@@ -170,6 +175,8 @@ mod tests {
     };
     use anyhow::{anyhow, Result};
     use std::convert::TryFrom;
+    use std::thread::sleep;
+    use std::time::Duration;
 
     use android_system_keystore2::binder::{ExceptionCode, Result as BinderResult};
 
@@ -243,6 +250,83 @@ mod tests {
             key_metadata.certificate,
             key_metadata.certificateChain,
         ))
+    }
+
+    #[test]
+    fn keystore2_runas_pruning_test() {
+        let _exclusive_ops = OP_LIMIT.get_exclusive(SecurityLevel::TRUSTED_ENVIRONMENT);
+
+        let mut loop_count = 0;
+        let mut id = 10020;
+        loop {
+            run_as::run_as_app(selinux::getcon().unwrap().to_str().unwrap(), Uid::from_raw(id), Gid::from_raw(id), || {
+                let keystore2 = get_connection();
+                let sec_level =
+                    map_ks_error(keystore2.getSecurityLevel(SecurityLevel::TRUSTED_ENVIRONMENT)).unwrap();
+                let alias = format!("{}{}", "keystore2_pruning_test__key", getuid_fromc());
+                let (key, cert, cert_chain) =
+                    make_ec_signing_key(&*sec_level, &alias).unwrap();
+                assert!(cert.is_some());
+                assert!(cert_chain.is_none());
+
+                println!("OPERATION :  getuid {} , getgid {}",  getuid(), getgid());
+                let mut ops: Vec<CreateOperationResponse> = Vec::new();
+
+                let first_op = map_ks_error(
+                    sec_level.createOperation(
+                        &key,
+                        &AuthSetBuilder::new()
+                        .purpose(KeyPurpose::SIGN)
+                        .digest(Digest::SHA_2_256),
+                        false,
+                        ),
+                        )
+                    .unwrap();
+
+                let result = sec_level.createOperation(
+                    &key,
+                    &AuthSetBuilder::new()
+                    .purpose(KeyPurpose::SIGN)
+                    .digest(Digest::SHA_2_256),
+                    false,
+                    );
+
+                match result {
+                    Err(s) => {
+                        assert_eq!(ExceptionCode::SERVICE_SPECIFIC, s.exception_code());
+                        assert_eq!(ResponseCode::BACKEND_BUSY.0, s.service_specific_error());
+                        println!(
+                            "BackendBusy reached after {} operation creations.",
+                            ops.len()
+                            );
+                    }
+                    Ok(op) => {
+                        ops.push(op);
+                    }
+                }
+                // sleep for few secs to let other operations slots get filled.
+                sleep(Duration::from_secs(5));
+
+                if let CreateOperationResponse {
+                    iOperation: Some(op),
+                    operationChallenge: challenge,
+                    parameters: _,
+                    ..
+                } = first_op
+                {
+                    assert!(challenge.is_none());
+                    assert_eq!(
+                        Err(Error::Km(ErrorCode::INVALID_OPERATION_HANDLE)),
+                        map_ks_error(op.update(b"my message"))
+                        );
+                }
+            });
+            loop_count += 1;
+            id += 1;
+            if loop_count == 18 {
+                break;
+            }
+        }
     }
 
     #[test]
@@ -565,14 +649,14 @@ mod tests {
         }
     }
 
-    fn getuid() -> i32 {
+    fn getuid_fromc() -> i32 {
         unsafe { i32::try_from(libc::getuid()).unwrap() }
     }
 
     #[test]
     fn grant_success() {
         let test_alias = "grant_success_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -631,7 +715,7 @@ mod tests {
     #[test]
     fn grant_missing_key_failure() {
         let test_alias = "grant_missing_key_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -662,7 +746,7 @@ mod tests {
     // #[test]
     fn ungrant_success() {
         let test_alias = "ungrant_success_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
         let test_access_vector = 0;
 
         let keystore2 = get_connection();
@@ -684,7 +768,7 @@ mod tests {
     // #[test]
     fn ungrant_no_key_failure() {
         let test_alias = "ungrant_no_key_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
 
         let keystore2 = get_connection();
         let sec_level =
@@ -709,7 +793,7 @@ mod tests {
     #[test]
     fn ungrant_no_grant_failure() {
         let test_alias = "ungrant_no_grant_failure_key";
-        let test_uid = getuid();
+        let test_uid = getuid_fromc();
 
         let keystore2 = get_connection();
         let sec_level =
