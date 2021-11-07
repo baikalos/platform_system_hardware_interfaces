@@ -269,10 +269,10 @@ void SystemSuspend::initAutosuspendLocked() {
     }
 
     std::thread autosuspendThread([this] {
+        auto autosuspendLock = std::unique_lock(mAutosuspendLock);
         bool shouldSleep = true;
 
         while (true) {
-            auto autosuspendLock = std::unique_lock(mAutosuspendLock);
             if (!mAutosuspendEnabled) {
                 mAutosuspendThreadCreated = false;
                 return;
@@ -285,10 +285,17 @@ void SystemSuspend::initAutosuspendLocked() {
             }
 
             if (!mAutosuspendEnabled) continue;
-            autosuspendLock.unlock();
 
-            lseek(mWakeupCountFd, 0, SEEK_SET);
-            const string wakeupCount = readFd(mWakeupCountFd);
+            string wakeupCount;
+            {
+                autosuspendLock.unlock();
+
+                lseek(mWakeupCountFd, 0, SEEK_SET);
+                wakeupCount = readFd(mWakeupCountFd);
+
+                autosuspendLock.lock();
+            }
+
             if (wakeupCount.empty()) {
                 PLOG(ERROR) << "error reading from /sys/power/wakeup_count";
                 continue;
@@ -296,7 +303,6 @@ void SystemSuspend::initAutosuspendLocked() {
 
             shouldSleep = false;
 
-            autosuspendLock.lock();
             mAutosuspendCondVar.wait(
                 autosuspendLock, [this] { return mSuspendCounter == 0 || !mAutosuspendEnabled; });
             // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
@@ -316,25 +322,31 @@ void SystemSuspend::initAutosuspendLocked() {
             }
             bool success = WriteStringToFd(kSleepState, mStateFd);
             shouldSleep = true;
-            autosuspendLock.unlock();
 
-            if (!success) {
-                PLOG(VERBOSE) << "error writing to /sys/power/state";
+            {
+                autosuspendLock.unlock();
+
+                if (!success) {
+                    PLOG(VERBOSE) << "error writing to /sys/power/state";
+                }
+
+                struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
+                updateSleepTime(success, suspendTime);
+
+                std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
+                if (wakeupReasons == std::vector<std::string>({kUnknownWakeup})) {
+                    LOG(INFO) << "Unknown/empty wakeup reason. Re-opening wakeup_reason file.";
+
+                    mWakeupReasonsFd =
+                        std::move(reopenFileUsingFd(mWakeupReasonsFd.get(), O_CLOEXEC | O_RDONLY));
+                }
+                mWakeupList.update(wakeupReasons);
+
+                mControlService->notifyWakeup(success, wakeupReasons);
+
+                // Take the lock before returning to the start of the loop
+                autosuspendLock.lock();
             }
-
-            struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
-            updateSleepTime(success, suspendTime);
-
-            std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
-            if (wakeupReasons == std::vector<std::string>({kUnknownWakeup})) {
-                LOG(INFO) << "Unknown/empty wakeup reason. Re-opening wakeup_reason file.";
-
-                mWakeupReasonsFd =
-                    std::move(reopenFileUsingFd(mWakeupReasonsFd.get(), O_CLOEXEC | O_RDONLY));
-            }
-            mWakeupList.update(wakeupReasons);
-
-            mControlService->notifyWakeup(success, wakeupReasons);
         }
     });
     autosuspendThread.detach();

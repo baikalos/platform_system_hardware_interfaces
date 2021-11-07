@@ -37,6 +37,7 @@ cc_test {
     static_libs: [
         "VtsHalHidlTargetTestBase",
         "android.hardware.security.keymint-V1-ndk",
+        "android.hardware.security.secureclock-V1-ndk",
         "android.security.legacykeystore-ndk",
         "android.system.keystore2-V1-ndk",
         "android.system.wifi.keystore@1.0",
