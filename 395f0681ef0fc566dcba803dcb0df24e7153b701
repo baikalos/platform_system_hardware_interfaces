@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017036395",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1880788?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "8f79c8e9_ab6f7dc4",
+          "description": "Change to \"keystore2/aidl/vts/keystore2_test_client.rs\"",
+          "replacements": [
+            {
+              "path": "keystore2/aidl/vts/keystore2_test_client.rs",
+              "range": {
+                "startLine": 367,
+                "startChar": 31,
+                "endLine": 367,
+                "endChar": 38
+              },
+              "replacement": "occurred"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ee033da0_5bc1806f",
+        "filename": "keystore2/aidl/vts/keystore2_test_client.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-09T02:26:19Z",
+      "side": 1,
+      "message": "Common typo found: \"occured\" -- should it be \"occurred\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 367,
+        "startChar": 31,
+        "endLine": 367,
+        "endChar": 38
+      },
+      "revId": "395f0681ef0fc566dcba803dcb0df24e7153b701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
