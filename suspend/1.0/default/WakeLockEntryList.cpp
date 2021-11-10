@@ -219,7 +219,13 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
     unique_fd wakelockFd{TEMP_FAILURE_RETRY(
         openat(mKernelWakelockStatsFd, kwlId.c_str(), O_DIRECTORY | O_CLOEXEC | O_RDONLY))};
     if (wakelockFd < 0) {
-        PLOG(ERROR) << "Error opening kernel wakelock stats for: " << kwlId;
+        char buf[PATH_MAX];
+        ssize_t data_length =
+            readlinkat(mKernelWakelockStatsFd, kwlId.c_str(), buf, sizeof(buf) - 1);
+        if (data_length <= 0 || strncmp(kwlId.c_str(), buf, kwlId.length()) == 0) {
+            buf[0] = '\0';
+        }
+        PLOG(ERROR) << "Error opening kernel wakelock stats for: " << kwlId << " (" << buf << ")";
     }
 
     std::unique_ptr<DIR, decltype(&closedir)> wakelockDp(fdopendir(dup(wakelockFd.get())),
