@@ -277,6 +277,10 @@ void SystemSuspend::initAutosuspendLocked() {
                 mAutosuspendThreadCreated = false;
                 return;
             }
+            {
+                std::scoped_lock lock(mSuspendInfoLock);
+                mSuspendInfo.suspendThreadLoopCount++;
+            }
             // If we got here by a failed write to /sys/power/wakeup_count; don't sleep
             // since we didn't attempt to suspend on the last cycle of this loop.
             if (shouldSleep) {
@@ -298,6 +302,10 @@ void SystemSuspend::initAutosuspendLocked() {
 
             if (wakeupCount.empty()) {
                 PLOG(ERROR) << "error reading from /sys/power/wakeup_count";
+                {
+                    std::scoped_lock lock(mSuspendInfoLock);
+                    mSuspendInfo.wakeupDuringReadingOccurTimes++;
+                }
                 continue;
             }
 
@@ -318,6 +326,10 @@ void SystemSuspend::initAutosuspendLocked() {
 
             if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
                 PLOG(VERBOSE) << "error writing from /sys/power/wakeup_count";
+                {
+                    std::scoped_lock lock(mSuspendInfoLock);
+                    mSuspendInfo.wakeupWhenTryingSuspendOccurTimes++;
+                }
                 continue;
             }
             bool success = WriteStringToFd(kSleepState, mStateFd);
