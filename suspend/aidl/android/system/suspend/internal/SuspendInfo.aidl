@@ -55,4 +55,13 @@ parcelable SuspendInfo {
 
     /* Total time, in milliseconds, that system has waited between suspend attempts */
     long sleepTimeMillis;
+
+    /* Total number of times that suspend thread loops */
+    long suspendThreadLoopCount;
+
+    /* Total number of times wake event occour during report wakeup count to user spacce */
+    long wakeupDuringReadingOccurTimes;
+
+    /* Total number of times wake event occour during tryng suspend */
+    long wakeupWhenTryingSuspendOccurTimes;
 }
