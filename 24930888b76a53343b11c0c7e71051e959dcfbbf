@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8e85d4_5d9695b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1928236
+      },
+      "writtenOn": "2021-12-01T01:54:03Z",
+      "side": 1,
+      "message": "I have test this code myself by hand. \nI changed sysfs name from \"/sys/kernel/wakeup_reasons/last_suspend_time\" to \"/sys/kernel/wakeup_reasons/last_suspend_timex\" in kernel (ACK).\nThen When machine (db845c) start, I can see the error log: \"330   330 E android.system.suspend@1.0-service: SystemSuspend: Error opening /sys/kernel/wakeup_reasons/last_suspend_time: No such file or directory\".\n\nWhich I think the code is working!",
+      "revId": "24930888b76a53343b11c0c7e71051e959dcfbbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
