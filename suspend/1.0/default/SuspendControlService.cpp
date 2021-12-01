@@ -321,6 +321,12 @@ status_t SuspendControlServiceInternal::dump(int fd, const Vector<String16>& arg
         suspendInfo << "backoff continuations: " << info.backoffContinueCount << std::endl;
         suspendInfo << "total sleep time between suspends: " << info.sleepTimeMillis << " ms"
                     << std::endl;
+        suspendInfo << "suspend try loops: " << info.suspendThreadLoopCount << std::endl;
+        suspendInfo << "wakeup during read occur counts:" << info.wakeupDuringReadingOccurTimes
+                    << std::endl;
+        suspendInfo << "wakeup during try suspend occur counts: "
+                    << info.wakeupWhenTryingSuspendOccurTimes << std::endl;
+
         dprintf(fd, "Suspend Info:\n%s\n", suspendInfo.str().c_str());
     }
 

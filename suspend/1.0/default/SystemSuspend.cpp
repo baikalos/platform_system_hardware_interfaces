@@ -273,6 +273,10 @@ void SystemSuspend::initAutosuspendLocked() {
         bool shouldSleep = true;
 
         while (true) {
+            {
+                std::scoped_lock lock(mSuspendInfoLock);
+                mSuspendInfo.suspendThreadLoopCount++;
+            }
             if (!mAutosuspendEnabled) {
                 mAutosuspendThreadCreated = false;
                 return;
@@ -298,6 +302,10 @@ void SystemSuspend::initAutosuspendLocked() {
 
             if (wakeupCount.empty()) {
                 PLOG(ERROR) << "error reading from /sys/power/wakeup_count";
+                {
+                    std::scoped_lock lock(mSuspendInfoLock);
+                    mSuspendInfo.wakeupDuringReadingOccurTimes++;
+                }
                 continue;
             }
 
@@ -318,6 +326,10 @@ void SystemSuspend::initAutosuspendLocked() {
 
             if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
                 PLOG(VERBOSE) << "error writing from /sys/power/wakeup_count";
+                {
+                    std::scoped_lock lock(mSuspendInfoLock);
+                    mSuspendInfo.wakeupWhenTryingSuspendOccurTimes++;
+                }
                 continue;
             }
             bool success = WriteStringToFd(kSleepState, mStateFd);
