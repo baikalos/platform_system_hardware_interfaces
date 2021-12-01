@@ -33,6 +33,24 @@
       "message": "I have read the commit history, which almost commit with a \"test result\" line, like \"Test: atest SuspendSepolicyTests\" and \"Test: m\". \nBut I test it by hand, so what should I do with the \"test result\" part? \n\nAnd what else I should do next?\n",
       "revId": "24930888b76a53343b11c0c7e71051e959dcfbbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090c4836_a4b37cb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-12-01T02:04:42Z",
+      "side": 1,
+      "message": "Hi Zichar. Thanks for the fix. You can add something like \"Test: Manual\" to satisfy the lint checks.",
+      "parentUuid": "000e71f3_7a0318b9",
+      "revId": "24930888b76a53343b11c0c7e71051e959dcfbbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
