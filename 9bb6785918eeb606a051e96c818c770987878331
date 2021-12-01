@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436e7361_0ba02216",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1928236
+      },
+      "writtenOn": "2021-12-01T02:07:28Z",
+      "side": 1,
+      "message": "Added the \"test result\" line in commit message.",
+      "revId": "9bb6785918eeb606a051e96c818c770987878331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
