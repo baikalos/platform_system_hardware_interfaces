@@ -95,7 +95,7 @@ int main() {
         PLOG(ERROR) << "SystemSuspend: Error opening " << kSysKernelWakeupReasons;
     }
     unique_fd suspendTimeFd{TEMP_FAILURE_RETRY(open(kSysKernelSuspendTime, O_CLOEXEC | O_RDONLY))};
-    if (wakeupReasonsFd < 0) {
+    if (suspendTimeFd < 0) {
         PLOG(ERROR) << "SystemSuspend: Error opening " << kSysKernelSuspendTime;
     }
 
