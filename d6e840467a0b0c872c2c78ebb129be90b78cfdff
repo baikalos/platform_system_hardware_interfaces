@@ -33,6 +33,24 @@
       "message": "may use strncmp()",
       "revId": "d6e840467a0b0c872c2c78ebb129be90b78cfdff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0547dbe6_80544996",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1295801
+      },
+      "writtenOn": "2021-12-14T02:20:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0bf9d29_2d9323df",
+      "revId": "d6e840467a0b0c872c2c78ebb129be90b78cfdff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
