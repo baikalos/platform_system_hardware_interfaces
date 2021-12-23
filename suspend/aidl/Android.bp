@@ -30,6 +30,7 @@ aidl_interface {
                 "//apex_available:platform",
                 "com.android.bluetooth",
             ],
+            min_sdk_version: "Tiramisu",
         },
         java: {
             sdk_version: "28",
