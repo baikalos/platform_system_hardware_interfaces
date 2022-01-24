@@ -59,7 +59,8 @@ static constexpr char kSysPowerSuspendStats[] = "/sys/power/suspend_stats";
 static constexpr char kSysPowerWakeupCount[] = "/sys/power/wakeup_count";
 static constexpr char kSysPowerState[] = "/sys/power/state";
 // TODO(b/120445600): Use upstream mechanism for wakeup reasons once available
-static constexpr char kSysKernelWakeupReasons[] = "/sys/kernel/wakeup_reasons/last_resume_reason";
+static constexpr char kSysKernelWakeupReasons[] = "/sys/power/last_wakeup_reason";
+static constexpr char kSysKernelWakeupReasonsOld[] = "/sys/kernel/wakeup_reasons/last_resume_reason";
 static constexpr char kSysKernelSuspendTime[] = "/sys/kernel/wakeup_reasons/last_suspend_time";
 
 static constexpr uint32_t kDefaultMaxSleepTimeMillis = 60000;
@@ -93,6 +94,12 @@ int main() {
         TEMP_FAILURE_RETRY(open(kSysKernelWakeupReasons, O_CLOEXEC | O_RDONLY))};
     if (wakeupReasonsFd < 0) {
         PLOG(ERROR) << "SystemSuspend: Error opening " << kSysKernelWakeupReasons;
+        PLOG(ERROR) << "Try old wakeup reason file";
+        unique_fd wakeupReasonsFd{
+            TEMP_FAILURE_RETRY(open(kSysKernelWakeupReasonsOld, O_CLOEXEC | O_RDONLY))};
+        if (wakeupReasonsFd < 0) {
+            PLOG(ERROR) << "SystemSuspend: Error opening " << kSysKernelWakeupReasons;
+        }
     }
     unique_fd suspendTimeFd{TEMP_FAILURE_RETRY(open(kSysKernelSuspendTime, O_CLOEXEC | O_RDONLY))};
     if (suspendTimeFd < 0) {
