@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ef8e28_fdb72691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2022-01-24T17:16:39Z",
+      "side": 1,
+      "message": "Marking -1 as this is WIP to support Zichar\u0027s efforts for a upstream wakeup_reason interface. This can be used for testing the new interface and will be properly reworked and resubmitted once an upstream solution is in place.  ",
+      "revId": "435e4ac8a34e8a60781d3e954ba216a3e4d6baff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
