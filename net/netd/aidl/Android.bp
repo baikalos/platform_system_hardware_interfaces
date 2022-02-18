@@ -1,0 +1,26 @@
+// This is the expected build file, but it may not be right in all cases
+
+aidl_interface {
+    name: "android.system.net.netd",
+    vendor_available: true,
+    srcs: ["android/system/net/netd/*.aidl"],
+    stability: "vintf",
+    backend: {
+        cpp: {
+            // FIXME should this be disabled?
+            // prefer NDK backend which can be used anywhere
+            // If you disable this, you also need to delete the C++
+            // translate code.
+            enabled: true,
+        },
+        java: {
+            sdk_version: "module_current",
+        },
+        ndk: {
+            vndk: {
+                enabled: true,
+            },
+        },
+    },
+}
+
