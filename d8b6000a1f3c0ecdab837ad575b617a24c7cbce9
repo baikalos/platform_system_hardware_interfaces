@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57f17ae_3bcf83e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1295801
+      },
+      "writtenOn": "2022-02-18T07:26:30Z",
+      "side": 1,
+      "message": "Hi Kelly, \n\nThis is first part of patch\nAnd follwing part is in Adapter and main apps",
+      "revId": "d8b6000a1f3c0ecdab837ad575b617a24c7cbce9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
