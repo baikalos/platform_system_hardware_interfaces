@@ -84,6 +84,9 @@ cc_test {
         "libgmock",
         "SuspendProperties",
     ],
+    tidy_timeout_srcs: [
+        "SystemSuspendUnitTest.cpp",
+    ],
     srcs: [
         "SuspendControlService.cpp",
         "SystemSuspend.cpp",
