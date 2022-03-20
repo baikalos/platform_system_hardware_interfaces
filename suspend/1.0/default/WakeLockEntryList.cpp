@@ -18,10 +18,15 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/parseint.h>
+#include <android-base/stringprintf.h>
 
 #include <iomanip>
 
+using android::base::ParseInt;
 using android::base::ReadFdToString;
+using android::base::Readlink;
+using android::base::StringPrintf;
 
 namespace android {
 namespace system {
@@ -258,7 +263,17 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
                 continue;
             }
 
-            int64_t statVal = std::stoll(valStr);
+            int64_t statVal;
+            if (!ParseInt(valStr, &statVal)) {
+                std::string path;
+                if (Readlink(StringPrintf("/proc/self/fd/%d", statFd.get()), &path)) {
+                    LOG(ERROR) << "Unexpected format for wakelock stat value (" << valStr
+                               << ") from file: " << path;
+                } else {
+                    LOG(ERROR) << "Unexpected format for wakelock stat value (" << valStr << ")";
+                }
+                continue;
+            }
 
             if (statName == "active_count") {
                 info.activeCount = statVal;
