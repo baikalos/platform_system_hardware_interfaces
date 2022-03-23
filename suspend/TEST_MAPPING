@@ -9,5 +9,16 @@
     {
       "name": "SuspendSepolicyTests"
     }
+  ],
+  "hwasan-postsubmit": [
+    {
+      "name": "SystemSuspendV1_0UnitTest"
+    },
+    {
+      "name": "SystemSuspendV1_0AidlTest"
+    },
+    {
+      "name": "SuspendSepolicyTests"
+    }
   ]
 }
