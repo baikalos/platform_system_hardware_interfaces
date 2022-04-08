@@ -1,12 +1,9 @@
-// FIXME: license file, or use the -l option to generate the files with the header.
-
 package android.system.net.netd;
 
 /**
  * This is the root of the HAL module and is the interface returned when
  * loading an implementation of the INetd HAL.
  */
-// Interface inherits from android.system.net.netd@1.0::INetd but AIDL does not support interface inheritance.
 @VintfStability
 interface INetd {
     /**
@@ -22,8 +19,7 @@ interface INetd {
         PERMISSION_DENIED,
         UNKNOWN_ERROR,
     }
-    // FIXME: AIDL has built-in status types. Do we need the status type here?
-    // Adding return type to method instead of out param StatusCode status since there is only one return value.
+
     /**
      * Add interface to a specified OEM network
      *
@@ -34,8 +30,6 @@ interface INetd {
      */
     StatusCode addInterfaceToOemNetwork(in long networkHandle, in String ifname);
 
-    // FIXME: AIDL has built-in status types. Do we need the status type here?
-    // Adding return type to method instead of out param StatusCode status since there is only one return value.
     /**
      * Add route to a specified OEM network
      * Either both, or one of the ifname and nexthop must be specified.
@@ -57,25 +51,27 @@ interface INetd {
     StatusCode addRouteToOemNetwork(in long networkHandle, in String ifname, in String destination,
         in String nexthop);
 
-    // FIXME: AIDL does not allow long to be an out parameter.
-    // Move it to return, or add it to a Parcelable.
-    // FIXME: AIDL does not allow int to be an out parameter.
-    // Move it to return, or add it to a Parcelable.
-    // FIXME: AIDL has built-in status types. Do we need the status type here?
+    parcelable OemNetwork {
+       /**
+        * A handle to the OEM network.
+        * Zero implies no networks are available and created
+        */
+        long networkHandle;
+       /**
+        * The packet mark that vendor network stack configuration code must use when
+        * routing packets to this network. No applications may use this mark. They must
+        * instead pass the networkHandle to the android_set*network LL-NDK APIs.
+        */
+        int packetMark;
+    }
+
     /**
      * Creates a physical network to be used for interfaces managed by the OEM
      *
-     * @param out networkHandle a handle to the OEM network. Zero implies
-     *             no networks are available and created
-     * @param out packetMark The packet mark that vendor network stack configuration code must use when
-     *             routing packets to this network. No applications may use this mark. They must
-     *             instead pass the networkHandle to the android_set*network LL-NDK APIs.
-     * @param out status operation status
+     * @param out network The PhysicalNetwork that was created.
      */
-    void createOemNetwork(out long networkHandle, out int packetMark, out StatusCode status);
+    StatusCode createOemNetwork(out OemNetwork network);
 
-    // FIXME: AIDL has built-in status types. Do we need the status type here?
-    // Adding return type to method instead of out param StatusCode status since there is only one return value.
     /**
      * Destroys the specified network previously created using createOemNetwork()
      *
@@ -83,8 +79,6 @@ interface INetd {
      */
     StatusCode destroyOemNetwork(in long networkHandle);
 
-    // FIXME: AIDL has built-in status types. Do we need the status type here?
-    // Adding return type to method instead of out param StatusCode status since there is only one return value.
     /**
      * Remove interface from a specified OEM network.
      *
@@ -95,8 +89,6 @@ interface INetd {
      */
     StatusCode removeInterfaceFromOemNetwork(in long networkHandle, in String ifname);
 
-    // FIXME: AIDL has built-in status types. Do we need the status type here?
-    // Adding return type to method instead of out param StatusCode status since there is only one return value.
     /**
      * Remove route from a specified OEM network.
      * Either both, or one of the ifname and nexthop must be specified.
@@ -118,8 +110,6 @@ interface INetd {
     StatusCode removeRouteFromOemNetwork(in long networkHandle, in String ifname,
         in String destination, in String nexthop);
 
-    // FIXME: AIDL has built-in status types. Do we need the status type here?
-    // Adding return type to method instead of out param StatusCode status since there is only one return value.
     /**
      * Enables forwarding between two interfaces, one of which must be in an
      * OEM network.
@@ -132,8 +122,6 @@ interface INetd {
     StatusCode setForwardingBetweenInterfaces(in String inputIfName, in String outputIfName,
         in boolean enable);
 
-    // FIXME: AIDL has built-in status types. Do we need the status type here?
-    // Adding return type to method instead of out param StatusCode status since there is only one return value.
     /**
      * Enable IP forwarding on the system. Client must disable forwarding when
      * it's no longer needed.
