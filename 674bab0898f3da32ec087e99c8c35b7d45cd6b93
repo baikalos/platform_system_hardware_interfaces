@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe90a197_9d93dd0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-20T18:38:33Z",
+      "side": 1,
+      "message": "lg, a few qqs:\n- does this change reflect the existing users?\n- can there be a VTS test?",
+      "revId": "674bab0898f3da32ec087e99c8c35b7d45cd6b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
