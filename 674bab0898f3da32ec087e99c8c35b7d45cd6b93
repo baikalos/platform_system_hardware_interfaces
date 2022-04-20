@@ -16,6 +16,24 @@
       "message": "lg, a few qqs:\n- does this change reflect the existing users?\n- can there be a VTS test?",
       "revId": "674bab0898f3da32ec087e99c8c35b7d45cd6b93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9733fa2_f53672c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611900
+      },
+      "writtenOn": "2022-04-20T18:48:20Z",
+      "side": 1,
+      "message": "does this change reflect the existing users?  \u003d\u003e No.\n\ncan there be a VTS test? \u003d\u003e Yes, I added a native test to verify this in another CL which is created for adding keystore2 client tests. (https://android-review.googlesource.com/c/platform/system/security/+/2065142/4/keystore2/tests/keystore2_backend_tests.rs#3922)",
+      "parentUuid": "fe90a197_9d93dd0c",
+      "revId": "674bab0898f3da32ec087e99c8c35b7d45cd6b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
