@@ -52,6 +52,24 @@
       "parentUuid": "b9733fa2_f53672c5",
       "revId": "674bab0898f3da32ec087e99c8c35b7d45cd6b93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ca121a_c3255190",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611900
+      },
+      "writtenOn": "2022-04-21T21:00:52Z",
+      "side": 1,
+      "message": "This is not a new requirement. This is to fix the documentation only. As per its implementation it expects GET_INFO permission instead of UPDATE permission. So this CL is for correcting its documentation accordingly.\n(https://cs.android.com/android/platform/superproject/+/master:system/security/keystore2/src/service.rs;l\u003d131-145)",
+      "parentUuid": "8f39da64_db44ee38",
+      "revId": "674bab0898f3da32ec087e99c8c35b7d45cd6b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
