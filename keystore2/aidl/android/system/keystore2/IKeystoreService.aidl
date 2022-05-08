@@ -62,7 +62,7 @@ interface IKeystoreService {
      *
      * ## Error conditions
      * `ResponseCode::KEY_NOT_FOUND` if the key did not exist.
-     * `ResponseCode::PERMISSION_DENIED` if the caller does not possess the `UPDATE` permission
+     * `ResponseCode::PERMISSION_DENIED` if the caller does not possess the `GET_INFO` permission
      *                 for the specified key.
      *
      * @param key Describes the key entry that is to be loaded.
