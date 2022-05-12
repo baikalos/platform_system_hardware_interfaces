@@ -22,6 +22,30 @@
       },
       "revId": "5c4e2f462bb243b8a202a6ed53caefc7afc2ae03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba263994_7c85d335",
+        "filename": "net/netd/aidl/android/system/net/netd/INetd.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-12T00:21:58Z",
+      "side": 1,
+      "message": "I was wondering about that. \nAll of the current clients check that binder call returned OK, then checked the status from the service.\nI guess if there is a ServiceSpecificException the clients can assume the binder call was still OK and the service has something to say?\nSo the same information will come across but there will be a bit change for the clients.",
+      "parentUuid": "557ec1a0_f63010d2",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "5c4e2f462bb243b8a202a6ed53caefc7afc2ae03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
