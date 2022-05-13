@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ee9f09_7d724f8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611900
+      },
+      "writtenOn": "2022-05-13T19:32:08Z",
+      "side": 1,
+      "message": "Will abandon this change as we are making this change in system/security project. ",
+      "revId": "8352054d953de3d5fe0d85e969dd5430dd278393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62b0a503_2313fde2",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-05-13T05:53:00Z",
       "side": 1,
       "message": "I think this would be better (or at least more consistent!) if it lived next to the equivalent `cc_defaults` in `system/security/keystore2/aidl/Android.bp`",
+      "revId": "8352054d953de3d5fe0d85e969dd5430dd278393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53951c93_01f8ff1c",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1611900
+      },
+      "writtenOn": "2022-05-13T19:32:08Z",
+      "side": 1,
+      "message": "OK. Will create a new CL under `system/security/` for this change.",
+      "parentUuid": "62b0a503_2313fde2",
       "revId": "8352054d953de3d5fe0d85e969dd5430dd278393",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
