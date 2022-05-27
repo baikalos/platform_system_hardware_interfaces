@@ -43,7 +43,7 @@ cc_defaults {
 }
 
 cc_binary {
-    name: "android.system.suspend@1.0-service",
+    name: "android.system.suspend-service",
     relative_install_path: "hw",
     defaults: [
         "system_suspend_defaults",
