@@ -91,6 +91,44 @@ pass() { #msg
     exit 0
 }
 
+get_prop() { # name, default
+    local prop=`adb shell getprop $1`
+    if [ "$prop" == "" ]; then
+        echo "$2"
+    else
+        echo "$prop"
+    fi
+}
+
+min_api_level() {
+    local __ANDROID_API_T__=33
+    echo $__ANDROID_API_T__
+}
+
+product_api_level() {
+    local prop=$(get_prop "ro.product.first_api_level" $(get_prop "ro.build.version.sdk" $(min_api_level)))
+    echo "$prop"
+}
+
+board_api_level() {
+    local prop=$(get_prop "ro.board.api_level" $(get_prop "ro.board.first_api_level" $(min_api_level)))
+    echo "$prop"
+}
+
+api_level() {
+    local product=$(product_api_level)
+    local board=$(board_api_level)
+    local level=$board
+    if [ "$product" -lt "$board" ]; then
+        level=$product
+    fi
+    echo $level
+}
+
+if [ "$(api_level)" -lt "$(min_api_level)" ]; then
+    pass "Test skipped: api_level ($(api_level)) < min_api_level ($(min_api_level))"
+fi
+
 # Test unlabeled sysfs_wakeup nodes
 wakeup_paths+=( $(get_wakeup_paths) )
 get_unlabeled_wakeup_paths
