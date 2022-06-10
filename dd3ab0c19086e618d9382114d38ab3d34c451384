@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23461fb_4b626548",
+        "filename": "suspend/1.0/default/SuspendSepolicyTests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-06-10T20:51:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "522b2b12_7279eca1",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 33
+      },
+      "revId": "dd3ab0c19086e618d9382114d38ab3d34c451384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44445681_98345c6a",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7e9ca5_ef9fbd9a",
+        "filename": "suspend/1.0/default/SuspendSepolicyTests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-06-10T20:51:42Z",
+      "side": 1,
+      "message": "\u003e Should read \u0027ro.vendor.api_level\u0027 (init computes this and includes additional variables).\nAhh right. Justin added this.\n\n\n\u003e If there are instructions or another piece of code showing the other variables, could you correct them as well?\nFor the tests on older desserts we shouldn\u0027t change it since the \u0027ro.vendor.api_level\u0027 won\u0027t be implemented there",
+      "parentUuid": "44445681_98345c6a",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "dd3ab0c19086e618d9382114d38ab3d34c451384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f7feeb9_c09d81fd",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-10T19:50:49Z",
       "side": 1,
       "message": "so suggest:\n\n    # requirement added in T (33)\n    if [ \"$(adb shell getprop ro.vendor.api_level 33)\" -lt 33 ]; then",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 50
+      },
+      "revId": "dd3ab0c19086e618d9382114d38ab3d34c451384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32290cd_004374eb",
+        "filename": "suspend/1.0/default/SuspendSepolicyTests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-06-10T20:51:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f7feeb9_c09d81fd",
       "range": {
         "startLine": 128,
         "startChar": 0,
