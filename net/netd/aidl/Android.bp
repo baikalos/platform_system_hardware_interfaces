@@ -1,0 +1,18 @@
+aidl_interface {
+    name: "android.system.net.netd",
+    vendor_available: true,
+    srcs: ["android/system/net/netd/*.aidl"],
+    stability: "vintf",
+    backend: {
+        cpp: {
+            enabled: false,
+        },
+        java: {
+            sdk_version: "module_current",
+        },
+        ndk: {
+            enabled: true,
+        },
+    },
+}
+
