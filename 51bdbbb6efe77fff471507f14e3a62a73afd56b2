@@ -1,5 +1,52 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "682c96aa_0e77a333",
+        "filename": "net/netd/aidl/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-06-15T15:07:30Z",
+      "side": 1,
+      "message": "Nit: did the old HIDL HAL support this? I thought all its callers were C or C++.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "51bdbbb6efe77fff471507f14e3a62a73afd56b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659aab15_1d4754c7",
+        "filename": "net/netd/aidl/android/system/net/netd/INetd.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-06-15T15:07:30Z",
+      "side": 1,
+      "message": "It would be better to use errno values directly. All the ServiceSpecificExeptions in networking code have errno values as the code.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "51bdbbb6efe77fff471507f14e3a62a73afd56b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
