@@ -63,7 +63,7 @@ static constexpr char kSysKernelWakeupReasons[] = "/sys/kernel/wakeup_reasons/la
 static constexpr char kSysKernelSuspendTime[] = "/sys/kernel/wakeup_reasons/last_suspend_time";
 
 static constexpr uint32_t kDefaultMaxSleepTimeMillis = 60000;
-static constexpr uint32_t kDefaultBaseSleepTimeMillis = 100;
+static constexpr uint32_t kDefaultBaseSleepTimeMillis = 500;
 static constexpr double kDefaultSleepTimeScaleFactor = 2.0;
 static constexpr uint32_t kDefaultBackoffThresholdCount = 0;
 static constexpr uint32_t kDefaultShortSuspendThresholdMillis = 0;
