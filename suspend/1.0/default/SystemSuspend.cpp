@@ -158,13 +158,14 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
 }
 
 bool SystemSuspend::enableAutosuspend(const sp<IBinder>& token) {
+    auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
     auto autosuspendLock = std::lock_guard(mAutosuspendLock);
 
-    bool hasToken = std::find(mDisableAutosuspendTokens.begin(), mDisableAutosuspendTokens.end(),
-                              token) != mDisableAutosuspendTokens.end();
+    bool hasToken = std::find(mAutosuspendClientTokens.begin(), mAutosuspendClientTokens.end(),
+                              token) != mAutosuspendClientTokens.end();
 
     if (!hasToken) {
-        mDisableAutosuspendTokens.push_back(token);
+        mAutosuspendClientTokens.push_back(token);
     }
 
     if (mAutosuspendEnabled) {
@@ -178,7 +179,7 @@ bool SystemSuspend::enableAutosuspend(const sp<IBinder>& token) {
 }
 
 void SystemSuspend::disableAutosuspendLocked() {
-    mDisableAutosuspendTokens.clear();
+    mAutosuspendClientTokens.clear();
     if (mAutosuspendEnabled) {
         mAutosuspendEnabled = false;
         mAutosuspendCondVar.notify_all();
@@ -187,20 +188,28 @@ void SystemSuspend::disableAutosuspendLocked() {
 }
 
 void SystemSuspend::disableAutosuspend() {
+    auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
     auto autosuspendLock = std::lock_guard(mAutosuspendLock);
     disableAutosuspendLocked();
 }
 
-bool SystemSuspend::hasAliveAutosuspendTokenLocked() {
-    mDisableAutosuspendTokens.erase(
-        std::remove_if(mDisableAutosuspendTokens.begin(), mDisableAutosuspendTokens.end(),
+void SystemSuspend::checkAutosuspendClientsLivenessLocked() {
+    // Ping autosuspend client tokens, remove any dead tokens from the list.
+    // mAutosuspendLock must not be held when calling this, as that could lead to a deadlock
+    // if pingBinder() can't be processed by system_server because it's Binder thread pool is
+    // exhausted and blocked on acquire/release wakelock calls.
+    mAutosuspendClientTokens.erase(
+        std::remove_if(mAutosuspendClientTokens.begin(), mAutosuspendClientTokens.end(),
                        [](const sp<IBinder>& token) { return token->pingBinder() != OK; }),
-        mDisableAutosuspendTokens.end());
+        mAutosuspendClientTokens.end());
+}
 
-    return !mDisableAutosuspendTokens.empty();
+bool SystemSuspend::hasAliveAutosuspendTokenLocked() {
+    return !mAutosuspendClientTokens.empty();
 }
 
 SystemSuspend::~SystemSuspend(void) {
+    auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
     auto autosuspendLock = std::unique_lock(mAutosuspendLock);
 
     // signal autosuspend thread to shut down
@@ -305,16 +314,29 @@ void SystemSuspend::initAutosuspendLocked() {
 
             mAutosuspendCondVar.wait(
                 autosuspendLock, [this] { return mSuspendCounter == 0 || !mAutosuspendEnabled; });
-            // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
-            // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before we
-            // write to /sys/power/state.
 
             if (!mAutosuspendEnabled) continue;
+
+            autosuspendLock.unlock();
+
+            auto tokensLock = std::unique_lock(mAutosuspendClientTokensLock);
+            checkAutosuspendClientsLivenessLocked();
+
+            autosuspendLock.lock();
 
             if (!hasAliveAutosuspendTokenLocked()) {
                 disableAutosuspendLocked();
                 continue;
             }
+
+            // Check suspend counter hasn't increased while checking client liveness
+            if (mSuspendCounter > 0) {
+                continue;
+            }
+
+            // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
+            // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before we
+            // write to /sys/power/state.
 
             if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
                 PLOG(VERBOSE) << "error writing from /sys/power/wakeup_count";
@@ -325,6 +347,7 @@ void SystemSuspend::initAutosuspendLocked() {
 
             {
                 autosuspendLock.unlock();
+                tokensLock.unlock();
 
                 if (!success) {
                     PLOG(VERBOSE) << "error writing to /sys/power/state";
