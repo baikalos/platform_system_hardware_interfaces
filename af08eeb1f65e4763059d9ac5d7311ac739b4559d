@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "254e25c4_97013af6",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1468761
+      },
+      "writtenOn": "2022-07-01T19:27:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ce516cb_0947c7a8",
+      "range": {
+        "startLine": 357,
+        "startChar": 31,
+        "endLine": 357,
+        "endChar": 37
+      },
+      "revId": "af08eeb1f65e4763059d9ac5d7311ac739b4559d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "417511bc_2d1d6fac",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9f79a7_d669e4ca",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1468761
+      },
+      "writtenOn": "2022-07-01T19:27:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "417511bc_2d1d6fac",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 64
+      },
+      "revId": "af08eeb1f65e4763059d9ac5d7311ac739b4559d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "691210cc_91ea793c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-01T16:54:59Z",
       "side": 1,
       "message": "It\u0027s not really guarded by mAutosuspendLock. When we are updating the sleepTime in updateSleepTime we don\u0027t have the mAutoSuspendLock.",
+      "range": {
+        "startLine": 134,
+        "startChar": 30,
+        "endLine": 134,
+        "endChar": 69
+      },
+      "revId": "af08eeb1f65e4763059d9ac5d7311ac739b4559d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876f7542_ce792ea6",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1468761
+      },
+      "writtenOn": "2022-07-01T19:27:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "691210cc_91ea793c",
       "range": {
         "startLine": 134,
         "startChar": 30,
