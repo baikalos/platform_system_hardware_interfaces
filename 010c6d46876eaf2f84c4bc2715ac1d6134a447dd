@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3881ca55_85a3e48f",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-01T23:40:12Z",
+      "side": 1,
+      "message": "nit: kalesh or separately - we can remove this since this is the default now right?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5126e4c0_8d33c381",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-01T23:40:12Z",
+      "side": 1,
+      "message": "it seems like -Wthread-safety is not here. Did you check the GUARDED_BY annotations report an error when they are violated?\n\n(honestly - maybe we should have a separate bug if they are used without being enabled - this silent behavior is itself errorprone)",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
