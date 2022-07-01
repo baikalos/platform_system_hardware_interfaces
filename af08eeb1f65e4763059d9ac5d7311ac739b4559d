@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce516cb_0947c7a8",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-07-01T16:54:59Z",
+      "side": 1,
+      "message": "The caller of updateSleepTime doesn\u0027t hold any of the locks, to let acquire/releasing wakelocks progress, while we do this book keeping.",
+      "range": {
+        "startLine": 357,
+        "startChar": 31,
+        "endLine": 357,
+        "endChar": 37
+      },
+      "revId": "af08eeb1f65e4763059d9ac5d7311ac739b4559d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417511bc_2d1d6fac",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-07-01T16:54:59Z",
+      "side": 1,
+      "message": "Reading/updating the suspend accounting doesn\u0027t need to take mAutosuspendLock.",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 64
+      },
+      "revId": "af08eeb1f65e4763059d9ac5d7311ac739b4559d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691210cc_91ea793c",
+        "filename": "suspend/1.0/default/SystemSuspend.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-07-01T16:54:59Z",
+      "side": 1,
+      "message": "It\u0027s not really guarded by mAutosuspendLock. When we are updating the sleepTime in updateSleepTime we don\u0027t have the mAutoSuspendLock.",
+      "range": {
+        "startLine": 134,
+        "startChar": 30,
+        "endLine": 134,
+        "endChar": 69
+      },
+      "revId": "af08eeb1f65e4763059d9ac5d7311ac739b4559d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93a4c1d_4f32c9d8",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-07-01T16:54:59Z",
+      "side": 1,
+      "message": "I don\u0027t think the release() issubject to the same deadlock. Since it\u0027s a oneway binder call. The caller wouldn\u0027t block on it.",
+      "range": {
+        "startLine": 338,
+        "startChar": 63,
+        "endLine": 338,
+        "endChar": 70
+      },
+      "revId": "af08eeb1f65e4763059d9ac5d7311ac739b4559d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
