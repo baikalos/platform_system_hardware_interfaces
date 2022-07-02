@@ -45,6 +45,30 @@
       },
       "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2bc3d5e_02a15245",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1468761
+      },
+      "writtenOn": "2022-07-02T06:54:29Z",
+      "side": 1,
+      "message": "Added `-Wthread-safety`, and fixed some remaining warnings:\n- Added REQUIRES annotation on condition_variable lambdas\n- Changed scopes in the autosuspendThread loop to match autosuspendLock locking, and added ScopedLockAssertion in those scopes. std::unique_lock is required for std::condition_variables, but since they\u0027re movable \u0026 unlockable they aren\u0027t supported by clang thread analysis.",
+      "parentUuid": "5126e4c0_8d33c381",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
