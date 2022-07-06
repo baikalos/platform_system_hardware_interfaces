@@ -72,11 +72,13 @@ static std::vector<std::string> readWakeupReasons(int fd) {
     std::string reasonlines;
 
     lseek(fd, 0, SEEK_SET);
-    if (!ReadFdToString(fd, &reasonlines) || reasonlines.empty()) {
+
+    if (!ReadFdToString(fd, &reasonlines))
         PLOG(ERROR) << "failed to read wakeup reasons";
-        // Return unknown wakeup reason if we fail to read
+
+    // Return unknown wakeup reason if wakeup reasons is empty
+    if (reasonlines.empty())
         return {kUnknownWakeup};
-    }
 
     std::stringstream ss(reasonlines);
     for (std::string reasonline; std::getline(ss, reasonline);) {
