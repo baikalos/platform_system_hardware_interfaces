@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92774779_11e5e6ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-06T18:29:23Z",
+      "side": 1,
+      "message": "This CL also changes the behavior if ReadFdToString fails after it has started reading into reasonlines. The behavior of ReadFdToString doesn\u0027t seem to guarantee (it may modify the argument and return an error).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
