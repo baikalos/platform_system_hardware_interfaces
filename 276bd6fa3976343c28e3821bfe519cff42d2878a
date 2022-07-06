@@ -22,6 +22,30 @@
       },
       "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1217193f_410a483d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-07-06T18:35:05Z",
+      "side": 1,
+      "message": "You\u0027re right. I updated to it to check the return as well.",
+      "parentUuid": "92774779_11e5e6ca",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
