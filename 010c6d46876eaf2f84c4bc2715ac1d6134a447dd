@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b0d1e5_e99cd3f3",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-07-06T15:02:03Z",
+      "side": 1,
+      "message": "Thanks Steven. I can remove this separately.",
+      "parentUuid": "3881ca55_85a3e48f",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5126e4c0_8d33c381",
