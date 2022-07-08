@@ -94,6 +94,30 @@
       },
       "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ca830c_52f8bf72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-08T22:26:48Z",
+      "side": 1,
+      "message": "I see the tests here include wakeupReasonsFd. Could we add a test that the FD disconnects or has another error? (I\u0027m not sure if there is a test with no wakeup reasons).\n\nOr if this code path never happens, should we abort when there is an error reading the wakeup reasons?",
+      "parentUuid": "e14376ed_77362283",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
