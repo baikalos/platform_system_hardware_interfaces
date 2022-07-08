@@ -93,6 +93,30 @@
       },
       "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e17a0f_77771a57",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-08T22:19:44Z",
+      "side": 1,
+      "message": "thanks! (waiting on Kalesh for the full review, who is more familiar with the stack)\n\nDo you know if we will make unique_lock work with thread analysis? I\u0027ve run into this same problem before.",
+      "parentUuid": "f2bc3d5e_02a15245",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
