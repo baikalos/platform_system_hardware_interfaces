@@ -117,6 +117,30 @@
       },
       "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97faf4ec_d938cc71",
+        "filename": "suspend/1.0/default/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1468761
+      },
+      "writtenOn": "2022-07-11T08:16:46Z",
+      "side": 1,
+      "message": "No, I don\u0027t know of any efforts to make unique_lock work with thread safety analysis.\n\nResolving as Kalesh already reviewed the latest patchset.",
+      "parentUuid": "75e17a0f_77771a57",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "010c6d46876eaf2f84c4bc2715ac1d6134a447dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
