@@ -142,6 +142,30 @@
       },
       "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175d2c80_b4de7fb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-12T01:06:16Z",
+      "side": 1,
+      "message": "Hey it\u0027s a bit strange wakeupReason0 variable there is unused (only mentioned in the comment).\n\nThough that wouldn\u0027t have helped check this issue. You might start a kernel email thread for some test devices that create errors (/dev/null). Maybe we could use fuse to achieve custom behavior here? I\u0027ll cc you to a thread with some of the fuzzing team.",
+      "parentUuid": "4ac73a10_5fd2a13c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
