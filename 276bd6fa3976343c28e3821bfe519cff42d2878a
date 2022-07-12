@@ -166,6 +166,30 @@
       },
       "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fefa4f0_3ec6686d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-07-12T05:58:37Z",
+      "side": 1,
+      "message": "\u003e Hey it\u0027s a bit strange wakeupReason0 variable there is unused (only mentioned in the comment).\n\nYou\u0027re right. Technically it should have been written to the fd before the first assert. (but the tmp file was empty to begin, so we got lucky, will fix separately)\n\n\u003e I\u0027ll cc you to a thread with some of the fuzzing team.\n\nSounds good.",
+      "parentUuid": "175d2c80_b4de7fb8",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "276bd6fa3976343c28e3821bfe519cff42d2878a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
