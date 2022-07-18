@@ -335,6 +335,57 @@ TEST_F(SystemSuspendTest, BlockAutosuspendIfBinderIsDead) {
     ASSERT_TRUE(isSystemSuspendBlocked(150));
 }
 
+TEST_F(SystemSuspendTest, UnresponsiveClientDoesNotBlockAcquireRelease) {
+    static std::mutex _lock;
+    static std::condition_variable inPingBinderCondVar;
+    static bool inPingBinder = false;
+
+    class UnresponsiveBinder : public BBinder {
+        android::status_t pingBinder() override {
+            auto lock = std::unique_lock(_lock);
+            inPingBinder = true;
+            inPingBinderCondVar.notify_all();
+
+            // Block pingBinder until test finishes and releases its lock
+            inPingBinderCondVar.wait(lock);
+            return android::UNKNOWN_ERROR;
+        }
+    };
+
+    systemSuspend->disableAutosuspend();
+    unblockSystemSuspendFromWakeupCount();
+    ASSERT_TRUE(isSystemSuspendBlocked());
+
+    auto token = sp<UnresponsiveBinder>::make();
+    bool enabled = false;
+    controlServiceInternal->enableAutosuspend(token, &enabled);
+    unblockSystemSuspendFromWakeupCount();
+
+    auto lock = std::unique_lock(_lock);
+    // wait until pingBinder has been called.
+    if (!inPingBinder) {
+        inPingBinderCondVar.wait(lock);
+    }
+    // let pingBinder finish once we release the test lock
+    inPingBinderCondVar.notify_all();
+
+    std::condition_variable wakeLockAcquired;
+    std::thread(
+        [this](std::condition_variable& wakeLockAcquired) {
+            std::shared_ptr<IWakeLock> testLock = acquireWakeLock("testLock");
+            testLock->release();
+            wakeLockAcquired.notify_all();
+        },
+        std::ref(wakeLockAcquired))
+        .detach();
+
+    std::mutex _acquireReleaseLock;
+    auto acquireReleaseLock = std::unique_lock(_acquireReleaseLock);
+    bool timedOut = wakeLockAcquired.wait_for(acquireReleaseLock, 200ms) == std::cv_status::timeout;
+
+    ASSERT_FALSE(timedOut);
+}
+
 TEST_F(SystemSuspendTest, AutosuspendLoop) {
     checkLoop(5);
 }
