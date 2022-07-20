@@ -34,6 +34,24 @@
       "parentUuid": "347959c1_e57b2138",
       "revId": "ec98bb6baf0e63e88b293fb28430441a4668464b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ad2d78_011f7ae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2022-07-20T06:32:48Z",
+      "side": 1,
+      "message": "Is the implication that an OWNERS file should be updated with those names? The only owners Gerrit reports are from systems, which is why I\u0027ve added Steven.",
+      "parentUuid": "4b381483_23c4f3a2",
+      "revId": "ec98bb6baf0e63e88b293fb28430441a4668464b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
