@@ -52,6 +52,24 @@
       "parentUuid": "4b381483_23c4f3a2",
       "revId": "ec98bb6baf0e63e88b293fb28430441a4668464b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea72479c_55b514aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-20T15:03:49Z",
+      "side": 1,
+      "message": "This owners file should probably import one of the platform/security/* owners files for keystore.\n\nHowever, the reason I ask: I want someone from keystore to talk about whether this API should be used, or whether there is an NDK alternative API that the virt APEX could use. For instance, I would expect them to ask (or know) the answer to the question: are you writing custom client code against the keystore interface? As this API evolves, and based on the specific nature of the interface, this could change the number of places that need to be modified.",
+      "parentUuid": "38ad2d78_011f7ae8",
+      "revId": "ec98bb6baf0e63e88b293fb28430441a4668464b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
