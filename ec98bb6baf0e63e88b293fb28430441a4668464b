@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33f20405_a85c11c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2022-07-22T09:26:01Z",
+      "side": 1,
+      "message": "Can we have a bug number and a bit more verbose commit message please?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "ec98bb6baf0e63e88b293fb28430441a4668464b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "347959c1_e57b2138",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
