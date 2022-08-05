@@ -93,6 +93,24 @@
       "parentUuid": "38ad2d78_011f7ae8",
       "revId": "ec98bb6baf0e63e88b293fb28430441a4668464b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5ba520_d8ee8658",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2022-08-05T15:06:39Z",
+      "side": 1,
+      "message": "Hi Steven, I\u0027m the person to talk to about this right now (the previous owner left Google). I\u0027ll schedule us some time next week.",
+      "parentUuid": "ea72479c_55b514aa",
+      "revId": "ec98bb6baf0e63e88b293fb28430441a4668464b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
