@@ -72,11 +72,14 @@ static std::vector<std::string> readWakeupReasons(int fd) {
     std::string reasonlines;
 
     lseek(fd, 0, SEEK_SET);
-    if (!ReadFdToString(fd, &reasonlines) || reasonlines.empty()) {
+
+    bool ret = ReadFdToString(fd, &reasonlines);
+    if (!ret)
         PLOG(ERROR) << "failed to read wakeup reasons";
-        // Return unknown wakeup reason if we fail to read
+
+    // Return unknown wakeup reason if reading wakeup reasons fails or is empty
+    if (!ret || reasonlines.empty())
         return {kUnknownWakeup};
-    }
 
     std::stringstream ss(reasonlines);
     for (std::string reasonline; std::getline(ss, reasonline);) {
@@ -158,13 +161,14 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
 }
 
 bool SystemSuspend::enableAutosuspend(const sp<IBinder>& token) {
+    auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
     auto autosuspendLock = std::lock_guard(mAutosuspendLock);
 
-    bool hasToken = std::find(mDisableAutosuspendTokens.begin(), mDisableAutosuspendTokens.end(),
-                              token) != mDisableAutosuspendTokens.end();
+    bool hasToken = std::find(mAutosuspendClientTokens.begin(), mAutosuspendClientTokens.end(),
+                              token) != mAutosuspendClientTokens.end();
 
     if (!hasToken) {
-        mDisableAutosuspendTokens.push_back(token);
+        mAutosuspendClientTokens.push_back(token);
     }
 
     if (mAutosuspendEnabled) {
@@ -178,7 +182,7 @@ bool SystemSuspend::enableAutosuspend(const sp<IBinder>& token) {
 }
 
 void SystemSuspend::disableAutosuspendLocked() {
-    mDisableAutosuspendTokens.clear();
+    mAutosuspendClientTokens.clear();
     if (mAutosuspendEnabled) {
         mAutosuspendEnabled = false;
         mAutosuspendCondVar.notify_all();
@@ -187,28 +191,37 @@ void SystemSuspend::disableAutosuspendLocked() {
 }
 
 void SystemSuspend::disableAutosuspend() {
+    auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
     auto autosuspendLock = std::lock_guard(mAutosuspendLock);
     disableAutosuspendLocked();
 }
 
-bool SystemSuspend::hasAliveAutosuspendTokenLocked() {
-    mDisableAutosuspendTokens.erase(
-        std::remove_if(mDisableAutosuspendTokens.begin(), mDisableAutosuspendTokens.end(),
+void SystemSuspend::checkAutosuspendClientsLivenessLocked() {
+    // Ping autosuspend client tokens, remove any dead tokens from the list.
+    // mAutosuspendLock must not be held when calling this, as that could lead to a deadlock
+    // if pingBinder() can't be processed by system_server because it's Binder thread pool is
+    // exhausted and blocked on acquire/release wakelock calls.
+    mAutosuspendClientTokens.erase(
+        std::remove_if(mAutosuspendClientTokens.begin(), mAutosuspendClientTokens.end(),
                        [](const sp<IBinder>& token) { return token->pingBinder() != OK; }),
-        mDisableAutosuspendTokens.end());
+        mAutosuspendClientTokens.end());
+}
 
-    return !mDisableAutosuspendTokens.empty();
+bool SystemSuspend::hasAliveAutosuspendTokenLocked() {
+    return !mAutosuspendClientTokens.empty();
 }
 
 SystemSuspend::~SystemSuspend(void) {
+    auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
     auto autosuspendLock = std::unique_lock(mAutosuspendLock);
 
     // signal autosuspend thread to shut down
     disableAutosuspendLocked();
 
     // wait for autosuspend thread to exit
-    mAutosuspendCondVar.wait_for(autosuspendLock, 100ms,
-                                 [this] { return !mAutosuspendThreadCreated; });
+    mAutosuspendCondVar.wait_for(autosuspendLock, 100ms, [this]() REQUIRES(mAutosuspendLock) {
+        return !mAutosuspendThreadCreated;
+    });
 }
 
 bool SystemSuspend::forceSuspend() {
@@ -273,80 +286,99 @@ void SystemSuspend::initAutosuspendLocked() {
         bool shouldSleep = true;
 
         while (true) {
-            if (!mAutosuspendEnabled) {
-                mAutosuspendThreadCreated = false;
-                return;
-            }
-            // If we got here by a failed write to /sys/power/wakeup_count; don't sleep
-            // since we didn't attempt to suspend on the last cycle of this loop.
-            if (shouldSleep) {
-                mAutosuspendCondVar.wait_for(autosuspendLock, mSleepTime,
-                                             [this] { return !mAutosuspendEnabled; });
-            }
-
-            if (!mAutosuspendEnabled) continue;
-
-            string wakeupCount;
             {
-                autosuspendLock.unlock();
+                base::ScopedLockAssertion autosuspendLocked(mAutosuspendLock);
 
-                lseek(mWakeupCountFd, 0, SEEK_SET);
-                wakeupCount = readFd(mWakeupCountFd);
-
-                autosuspendLock.lock();
-            }
-
-            if (wakeupCount.empty()) {
-                PLOG(ERROR) << "error reading from /sys/power/wakeup_count";
-                continue;
-            }
-
-            shouldSleep = false;
-
-            mAutosuspendCondVar.wait(
-                autosuspendLock, [this] { return mSuspendCounter == 0 || !mAutosuspendEnabled; });
-            // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
-            // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before we
-            // write to /sys/power/state.
-
-            if (!mAutosuspendEnabled) continue;
-
-            if (!hasAliveAutosuspendTokenLocked()) {
-                disableAutosuspendLocked();
-                continue;
-            }
-
-            if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
-                PLOG(VERBOSE) << "error writing from /sys/power/wakeup_count";
-                continue;
-            }
-            bool success = WriteStringToFd(kSleepState, mStateFd);
-            shouldSleep = true;
-
-            {
-                autosuspendLock.unlock();
-
-                if (!success) {
-                    PLOG(VERBOSE) << "error writing to /sys/power/state";
+                if (!mAutosuspendEnabled) {
+                    mAutosuspendThreadCreated = false;
+                    return;
+                }
+                // If we got here by a failed write to /sys/power/wakeup_count; don't sleep
+                // since we didn't attempt to suspend on the last cycle of this loop.
+                if (shouldSleep) {
+                    mAutosuspendCondVar.wait_for(
+                        autosuspendLock, mSleepTime,
+                        [this]() REQUIRES(mAutosuspendLock) { return !mAutosuspendEnabled; });
                 }
 
-                struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
-                updateSleepTime(success, suspendTime);
-
-                std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
-                if (wakeupReasons == std::vector<std::string>({kUnknownWakeup})) {
-                    LOG(INFO) << "Unknown/empty wakeup reason. Re-opening wakeup_reason file.";
-
-                    mWakeupReasonsFd =
-                        std::move(reopenFileUsingFd(mWakeupReasonsFd.get(), O_CLOEXEC | O_RDONLY));
-                }
-                mWakeupList.update(wakeupReasons);
-
-                mControlService->notifyWakeup(success, wakeupReasons);
-
-                // Take the lock before returning to the start of the loop
-                autosuspendLock.lock();
+                if (!mAutosuspendEnabled) continue;
+                autosuspendLock.unlock();
             }
+
+            lseek(mWakeupCountFd, 0, SEEK_SET);
+            string wakeupCount = readFd(mWakeupCountFd);
+
+            {
+                autosuspendLock.lock();
+                base::ScopedLockAssertion autosuspendLocked(mAutosuspendLock);
+
+                if (wakeupCount.empty()) {
+                    PLOG(ERROR) << "error reading from /sys/power/wakeup_count";
+                    continue;
+                }
+
+                shouldSleep = false;
+
+                mAutosuspendCondVar.wait(autosuspendLock, [this]() REQUIRES(mAutosuspendLock) {
+                    return mSuspendCounter == 0 || !mAutosuspendEnabled;
+                });
+
+                if (!mAutosuspendEnabled) continue;
+                autosuspendLock.unlock();
+            }
+
+            bool success;
+            {
+                auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
+                checkAutosuspendClientsLivenessLocked();
+
+                autosuspendLock.lock();
+                base::ScopedLockAssertion autosuspendLocked(mAutosuspendLock);
+
+                if (!hasAliveAutosuspendTokenLocked()) {
+                    disableAutosuspendLocked();
+                    continue;
+                }
+
+                // Check suspend counter hasn't increased while checking client liveness
+                if (mSuspendCounter > 0) {
+                    continue;
+                }
+
+                // The mutex is locked and *MUST* remain locked until we write to /sys/power/state.
+                // Otherwise, a WakeLock might be acquired after we check mSuspendCounter and before
+                // we write to /sys/power/state.
+
+                if (!WriteStringToFd(wakeupCount, mWakeupCountFd)) {
+                    PLOG(VERBOSE) << "error writing to /sys/power/wakeup_count";
+                    continue;
+                }
+                success = WriteStringToFd(kSleepState, mStateFd);
+                shouldSleep = true;
+
+                autosuspendLock.unlock();
+            }
+
+            if (!success) {
+                PLOG(VERBOSE) << "error writing to /sys/power/state";
+            }
+
+            struct SuspendTime suspendTime = readSuspendTime(mSuspendTimeFd);
+            updateSleepTime(success, suspendTime);
+
+            std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
+            if (wakeupReasons == std::vector<std::string>({kUnknownWakeup})) {
+                LOG(INFO) << "Unknown/empty wakeup reason. Re-opening wakeup_reason file.";
+
+                mWakeupReasonsFd =
+                    std::move(reopenFileUsingFd(mWakeupReasonsFd.get(), O_CLOEXEC | O_RDONLY));
+            }
+            mWakeupList.update(wakeupReasons);
+
+            mControlService->notifyWakeup(success, wakeupReasons);
+
+            // Take the lock before returning to the start of the loop
+            autosuspendLock.lock();
         }
     });
     autosuspendThread.detach();
