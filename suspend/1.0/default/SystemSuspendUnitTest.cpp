@@ -83,7 +83,7 @@ static constexpr char kServiceName[] = "TestService";
 static constexpr char kControlServiceName[] = "TestControlService";
 static constexpr char kControlServiceInternalName[] = "TestControlServiceInternal";
 
-static bool isReadBlocked(int fd, int timeout_ms = 20) {
+static bool isReadBlocked(int fd, int timeout_ms = 30) {
     struct pollfd pfd {
         .fd = fd, .events = POLLIN,
     };
