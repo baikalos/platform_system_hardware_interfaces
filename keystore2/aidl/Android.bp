@@ -27,9 +27,6 @@ aidl_interface {
             platform_apis: true,
         },
         ndk: {
-            vndk: {
-                enabled: true,
-            },
             apps_enabled: false,
         },
         rust: {
@@ -40,5 +37,16 @@ aidl_interface {
             ],
         },
     },
-    versions: ["1"],
+    versions_with_info: [
+        {
+            version: "1",
+            imports: ["android.hardware.security.keymint-V1"],
+        },
+        {
+            version: "2",
+            imports: ["android.hardware.security.keymint-V2"],
+        },
+
+    ],
+
 }

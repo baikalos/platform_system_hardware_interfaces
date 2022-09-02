@@ -91,6 +91,12 @@ pass() { #msg
     exit 0
 }
 
+# requirement added in T (33)
+vendor_api_level="$(adb shell getprop ro.vendor.api_level 33)"
+if [ "$vendor_api_level" -lt 33 ]; then
+    pass "Test skipped: vendor_api_level ($vendor_api_level) < min_api_level (33)"
+fi
+
 # Test unlabeled sysfs_wakeup nodes
 wakeup_paths+=( $(get_wakeup_paths) )
 get_unlabeled_wakeup_paths
