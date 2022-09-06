@@ -198,8 +198,12 @@ class SystemSuspendTest : public ::testing::Test {
     }
 
     virtual void TearDown() override {
+        // Allow some time for the autosuspend loop to happen, if unblocked
+        std::this_thread::sleep_for(100ms);
+
         if (!isReadBlocked(wakeupCountFd)) readFd(wakeupCountFd);
-        if (!isReadBlocked(stateFd)) readFd(stateFd).empty();
+        if (!isReadBlocked(stateFd)) readFd(stateFd);
+
         ASSERT_TRUE(isReadBlocked(wakeupCountFd));
         ASSERT_TRUE(isReadBlocked(stateFd));
     }
@@ -209,7 +213,12 @@ class SystemSuspendTest : public ::testing::Test {
         ASSERT_TRUE(WriteStringToFd(wakeupCount, wakeupCountFd));
     }
 
-    bool isSystemSuspendBlocked(int timeout_ms = 20) { return isReadBlocked(stateFd, timeout_ms); }
+    bool isSystemSuspendBlocked(int timeout_ms = 20) {
+        // Allow some time for the autosuspend loop to happen, if unblocked
+        std::this_thread::sleep_for(100ms);
+
+        return isReadBlocked(stateFd, timeout_ms);
+    }
 
     std::shared_ptr<IWakeLock> acquireWakeLock(const std::string& name = "TestLock") {
         std::shared_ptr<IWakeLock> wl = nullptr;
@@ -305,15 +314,22 @@ TEST_F(SystemSuspendTest, OnlyOneEnableAutosuspend) {
 // Tests that autosuspend thread can only enabled again after its been disabled.
 TEST_F(SystemSuspendTest, EnableAutosuspendAfterDisableAutosuspend) {
     bool enabled = false;
-    unblockSystemSuspendFromWakeupCount();
-    systemSuspend->disableAutosuspend();
+
+    checkLoop(1);
     controlServiceInternal->enableAutosuspend(new BBinder(), &enabled);
-    ASSERT_EQ(enabled, true);
+    ASSERT_FALSE(enabled);
+
+    systemSuspend->disableAutosuspend();
+    unblockSystemSuspendFromWakeupCount();
+
+    controlServiceInternal->enableAutosuspend(new BBinder(), &enabled);
+    ASSERT_TRUE(enabled);
 }
 
 TEST_F(SystemSuspendTest, DisableAutosuspendBlocksSuspend) {
     checkLoop(1);
     systemSuspend->disableAutosuspend();
+    unblockSystemSuspendFromWakeupCount();
     ASSERT_TRUE(isSystemSuspendBlocked());
 }
 
@@ -417,10 +433,10 @@ TEST_F(SystemSuspendTest, MultipleWakeLocks) {
         std::shared_ptr<IWakeLock> wl1 = acquireWakeLock();
         ASSERT_NE(wl1, nullptr);
         ASSERT_TRUE(isSystemSuspendBlocked());
-        unblockSystemSuspendFromWakeupCount();
         {
             std::shared_ptr<IWakeLock> wl2 = acquireWakeLock();
             ASSERT_NE(wl2, nullptr);
+            unblockSystemSuspendFromWakeupCount();
             ASSERT_TRUE(isSystemSuspendBlocked());
         }
         ASSERT_TRUE(isSystemSuspendBlocked());
