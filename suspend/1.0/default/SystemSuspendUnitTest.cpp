@@ -199,7 +199,8 @@ class SystemSuspendTest : public ::testing::Test {
 
     virtual void TearDown() override {
         if (!isReadBlocked(wakeupCountFd)) readFd(wakeupCountFd);
-        if (!isReadBlocked(stateFd)) readFd(stateFd).empty();
+        if (!isReadBlocked(stateFd)) readFd(stateFd);
+
         ASSERT_TRUE(isReadBlocked(wakeupCountFd));
         ASSERT_TRUE(isReadBlocked(stateFd));
     }
@@ -305,16 +306,31 @@ TEST_F(SystemSuspendTest, OnlyOneEnableAutosuspend) {
 // Tests that autosuspend thread can only enabled again after its been disabled.
 TEST_F(SystemSuspendTest, EnableAutosuspendAfterDisableAutosuspend) {
     bool enabled = false;
-    unblockSystemSuspendFromWakeupCount();
-    systemSuspend->disableAutosuspend();
+
+    checkLoop(1);
     controlServiceInternal->enableAutosuspend(new BBinder(), &enabled);
-    ASSERT_EQ(enabled, true);
+    ASSERT_FALSE(enabled);
+
+    systemSuspend->disableAutosuspend();
+    unblockSystemSuspendFromWakeupCount();
+
+    controlServiceInternal->enableAutosuspend(new BBinder(), &enabled);
+    ASSERT_TRUE(enabled);
+
+    // The teardown can race with events on the sock stream, allow some
+    // buffer period to avoid flakes
+    std::this_thread::sleep_for(100ms);
 }
 
 TEST_F(SystemSuspendTest, DisableAutosuspendBlocksSuspend) {
     checkLoop(1);
     systemSuspend->disableAutosuspend();
+    unblockSystemSuspendFromWakeupCount();
     ASSERT_TRUE(isSystemSuspendBlocked());
+
+    // The teardown can race with events on the sock stream, allow some
+    // buffer period to avoid flakes
+    std::this_thread::sleep_for(100ms);
 }
 
 TEST_F(SystemSuspendTest, BlockAutosuspendIfBinderIsDead) {
@@ -333,6 +349,10 @@ TEST_F(SystemSuspendTest, BlockAutosuspendIfBinderIsDead) {
     unblockSystemSuspendFromWakeupCount();
 
     ASSERT_TRUE(isSystemSuspendBlocked(150));
+
+    // The teardown can race with events on the sock stream, allow some
+    // buffer period to avoid flakes
+    std::this_thread::sleep_for(100ms);
 }
 
 TEST_F(SystemSuspendTest, UnresponsiveClientDoesNotBlockAcquireRelease) {
@@ -384,6 +404,10 @@ TEST_F(SystemSuspendTest, UnresponsiveClientDoesNotBlockAcquireRelease) {
     bool timedOut = wakeLockAcquired.wait_for(acquireReleaseLock, 200ms) == std::cv_status::timeout;
 
     ASSERT_FALSE(timedOut);
+
+    // The teardown can race with events on the sock stream, allow some
+    // buffer period to avoid flakes
+    std::this_thread::sleep_for(100ms);
 }
 
 TEST_F(SystemSuspendTest, AutosuspendLoop) {
