@@ -16,7 +16,10 @@
 
 #include "SystemSuspendAidl.h"
 
+#include <android-base/stringprintf.h>
 #include <binder/IPCThreadState.h>
+
+using ::android::base::StringPrintf;
 
 namespace aidl {
 namespace android {
@@ -55,9 +58,15 @@ ndk::ScopedAStatus SystemSuspendAidl::acquireWakeLock(WakeLockType /* type */,
                                                       const std::string& name,
                                                       std::shared_ptr<IWakeLock>* _aidl_return) {
     auto pid = getCallingPid();
+
     if (_aidl_return == nullptr) {
-        return ndk::ScopedAStatus(AStatus_fromExceptionCode(EX_ILLEGAL_ARGUMENT));
+        std::string msg = StringPrintf(
+            "acquireWakeLock() failed: wakelock name = %s, calling pid = %d", name.c_str(), pid);
+
+        return ndk::ScopedAStatus(
+            AStatus_fromExceptionCodeWithMessage(EX_ILLEGAL_ARGUMENT, msg.c_str()));
     }
+
     *_aidl_return = ndk::SharedRefBase::make<WakeLock>(mSystemSuspend, name, pid);
     mSystemSuspend->updateWakeLockStatOnAcquire(name, pid);
     return ndk::ScopedAStatus::ok();
