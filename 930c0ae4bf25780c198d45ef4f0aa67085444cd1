@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7dc26e_a09e0d23",
+        "filename": "suspend/1.0/default/SystemSuspendAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-15T20:26:58Z",
+      "side": 1,
+      "message": "oh you know what - this case will never ever happen - it would mean the AIDL compiler is broken or an in-process call is bad",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "930c0ae4bf25780c198d45ef4f0aa67085444cd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
