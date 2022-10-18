@@ -83,7 +83,7 @@ enum AudioSource {
     /** Audio source for capturing broadcast FM tuner output. */
     FM_TUNER = 1998,
     /**
-     * A low-priority, preemptible audio source for for background software
+     * A low-priority, preemptible audio source for background software
      * hotword detection. Same tuning as VOICE_RECOGNITION.
      */
     HOTWORD = 1999,

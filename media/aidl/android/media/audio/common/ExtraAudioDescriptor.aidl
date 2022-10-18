@@ -20,7 +20,7 @@ import android.media.audio.common.AudioEncapsulationType;
 import android.media.audio.common.AudioStandard;
 
 /**
- * The audio descriptor that descibes playback/capture capabilities according to
+ * The audio descriptor that describes playback/capture capabilities according to
  * a particular standard.
  *
  * {@hide}
