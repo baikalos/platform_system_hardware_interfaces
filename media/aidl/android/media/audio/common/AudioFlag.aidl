@@ -38,10 +38,13 @@ enum AudioFlag {
      * was never made public, this value may be used for another flag.
      */
     /**
-     * Flag to enable when the stream is associated with SCO usage.
-     * Internal use only for dealing with legacy STREAM_BLUETOOTH_SCO
+     * Flag to enable when the stream is associated with SCO usage. Used for
+     * dealing with legacy STREAM_BLUETOOTH_SCO.
+     *
+     * Value reserved for system use only. HALs must never return this value to
+     * the system or accept it from the system.
      */
-    SCO = 0x1 << 2,
+    SYS_RESERVED_SCO = 0x1 << 2,
     /**
      * Flag defining a behavior where the system ensures that the playback of
      * the sound will be compatible with its use as a broadcast for surrounding
