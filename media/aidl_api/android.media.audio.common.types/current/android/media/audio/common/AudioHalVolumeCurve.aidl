@@ -32,23 +32,23 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-@Backing(type="int") @VintfStability
-enum AudioFlag {
-  NONE = 0,
-  AUDIBILITY_ENFORCED = 1,
-  SYS_RESERVED_SCO = 4,
-  BEACON = 8,
-  HW_AV_SYNC = 16,
-  HW_HOTWORD = 32,
-  BYPASS_INTERRUPTION_POLICY = 64,
-  BYPASS_MUTE = 128,
-  LOW_LATENCY = 256,
-  DEEP_BUFFER = 512,
-  NO_MEDIA_PROJECTION = 1024,
-  MUTE_HAPTIC = 2048,
-  NO_SYSTEM_CAPTURE = 4096,
-  CAPTURE_PRIVATE = 8192,
-  CONTENT_SPATIALIZED = 16384,
-  NEVER_SPATIALIZE = 32768,
-  CALL_REDIRECTION = 65536,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioHalVolumeCurve {
+  android.media.audio.common.AudioHalVolumeCurve.DeviceCategory deviceCategory = android.media.audio.common.AudioHalVolumeCurve.DeviceCategory.SPEAKER;
+  android.media.audio.common.AudioHalVolumeCurve.CurvePoint[] curvePoints;
+  @Backing(type="byte") @VintfStability
+  enum DeviceCategory {
+    HEADSET = 0,
+    SPEAKER = 1,
+    EARPIECE = 2,
+    EXT_MEDIA = 3,
+    HEARING_AID = 4,
+  }
+  @VintfStability
+  parcelable CurvePoint {
+    byte index;
+    int attenuationMb;
+    const byte MIN_INDEX = 0;
+    const byte MAX_INDEX = 100;
+  }
 }
