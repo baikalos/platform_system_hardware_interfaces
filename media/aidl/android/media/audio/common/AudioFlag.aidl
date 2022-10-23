@@ -38,8 +38,8 @@ enum AudioFlag {
      * was never made public, this value may be used for another flag.
      */
     /**
-     * Flag to enable when the stream is associated with SCO usage.
-     * Internal use only for dealing with legacy STREAM_BLUETOOTH_SCO
+     * Flag to enable when the stream is associated with SCO usage. Used for
+     * dealing with legacy STREAM_BLUETOOTH_SCO.
      */
     SCO = 0x1 << 2,
     /**
