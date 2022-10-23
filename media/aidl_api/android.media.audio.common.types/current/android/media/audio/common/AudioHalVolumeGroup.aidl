@@ -32,23 +32,11 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-@Backing(type="int") @VintfStability
-enum AudioFlag {
-  NONE = 0,
-  AUDIBILITY_ENFORCED = 1,
-  SYS_RESERVED_SCO = 4,
-  BEACON = 8,
-  HW_AV_SYNC = 16,
-  HW_HOTWORD = 32,
-  BYPASS_INTERRUPTION_POLICY = 64,
-  BYPASS_MUTE = 128,
-  LOW_LATENCY = 256,
-  DEEP_BUFFER = 512,
-  NO_MEDIA_PROJECTION = 1024,
-  MUTE_HAPTIC = 2048,
-  NO_SYSTEM_CAPTURE = 4096,
-  CAPTURE_PRIVATE = 8192,
-  CONTENT_SPATIALIZED = 16384,
-  NEVER_SPATIALIZE = 32768,
-  CALL_REDIRECTION = 65536,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioHalVolumeGroup {
+  @utf8InCpp String name;
+  int minIndex;
+  int maxIndex;
+  android.media.audio.common.AudioHalVolumeCurve[] volumeCurves;
+  const int INDEX_DEFERRED_TO_AUDIO_SERVICE = -1;
 }
