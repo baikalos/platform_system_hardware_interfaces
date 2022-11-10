@@ -52,6 +52,24 @@
       "parentUuid": "48f4a25e_e380a532",
       "revId": "b31baae920774272a4ec849eb9f6649a8c1d8bae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62454ce6_7a40cd2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-10T23:37:18Z",
+      "side": 1,
+      "message": "Correct. I agree that if the union has just a single \u0027unspecified\u0027 value, then making it\u0027s type \u0027boolean\u0027 is OK and looks clear. In fact, using \u0027boolean\u0027 was my first thing to try out, however in my case this ended up looking quite odd, I had to say in the comments something like \"\u0027boolean\u0027 variants are used for commands w/o arguments, the actual value is ignored in this case\", and then I thought—why not just define a special purpose parcelable with a clear name for that?",
+      "parentUuid": "efcb7258_0d9b1a82",
+      "revId": "b31baae920774272a4ec849eb9f6649a8c1d8bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
