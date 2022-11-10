@@ -16,6 +16,24 @@
       "message": "Devin, could you please do an API review.",
       "revId": "b31baae920774272a4ec849eb9f6649a8c1d8bae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f4a25e_e380a532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-10T22:38:55Z",
+      "side": 1,
+      "message": "Many interfaces use a bool for this right now with \"unspecified\" or \"noinit\" https://source.corp.google.com/search?q\u003dunspecified%20union\u0026ss\u003dpiper%2FGoogle%2Fandroid:system%2Fhardware%2Finterfaces%2Fmedia%2Faidl%2Fandroid%2F\n\nI\u0027m not explicitly opposed to this Void, but it might be unnecessary. WDYT?",
+      "parentUuid": "730d2a5d_9be06bcf",
+      "revId": "b31baae920774272a4ec849eb9f6649a8c1d8bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
