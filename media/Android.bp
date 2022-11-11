@@ -73,6 +73,7 @@ aidl_interface {
         "aidl/android/media/audio/common/Int.aidl",
         "aidl/android/media/audio/common/Long.aidl",
         "aidl/android/media/audio/common/PcmType.aidl",
+        "aidl/android/media/audio/common/Void.aidl",
     ],
     stability: "vintf",
     backend: {
