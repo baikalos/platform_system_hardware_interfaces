@@ -87,4 +87,24 @@ enum ResponseCode {
      * available. This can be thrown during attempts to generate a key.
      */
     OUT_OF_KEYS = 22,
+
+    /**
+     * The device is not registered with the key provisioning server.
+     * This error is returned only on devices that rely solely on remotely-provisioned keys (see
+     * <a href=
+     * "https://android-developers.googleblog.com/2022/03/upgrading-android-attestation-remote.html"
+     * >Remote Key Provisioning</a>).
+     *
+     * This is a permanent, non-transient, error.
+     */
+    OUT_OF_KEYS_DEVICE_UNREGISTERED = 23,
+
+    /**
+     * This device needs a software update and contains potentially vulnerable software.
+     * This error is returned only on devices that rely solely on remotely-provisioned keys (see
+     * <a href=
+     * "https://android-developers.googleblog.com/2022/03/upgrading-android-attestation-remote.html"
+     * >Remote Key Provisioning</a>).
+     */
+    OUT_OF_KEYS_POTENTIALLY_VULNERABLE = 24,
 }
