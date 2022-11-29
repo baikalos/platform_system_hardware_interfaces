@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2e6e6a_ef08a888",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2022-11-29T15:09:12Z",
+      "side": 1,
+      "message": "Nit: \"as it may contain\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 43,
+        "endLine": 92,
+        "endChar": 55
+      },
+      "revId": "c1145ad9f8252b7076e5a4bdc16774e12cd010a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
