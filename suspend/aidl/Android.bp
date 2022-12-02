@@ -67,6 +67,7 @@ aidl_interface {
             },
         },
     },
+    frozen: true,
     versions_with_info: [
         {
             version: "1",
