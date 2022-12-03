@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70bd33e_4bf9eba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-03T03:38:11Z",
+      "side": 1,
+      "message": "Is there any VTS test associated with this?",
+      "revId": "bcb9d0b7e2398e3cc1d8d1c0d9cbce961fdcd389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
