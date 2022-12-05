@@ -53,4 +53,5 @@ enum AudioOutputFlags {
   GAPLESS_OFFLOAD = 15,
   SPATIALIZER = 16,
   ULTRASOUND = 17,
+  BIT_PERFECT = 18,
 }
