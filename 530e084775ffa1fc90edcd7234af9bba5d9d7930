@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42b44332_ed16a5a8",
+        "filename": "media/aidl/android/media/audio/common/AudioHalVolumeCurve.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-06T02:10:28Z",
+      "side": 1,
+      "message": "I think it would be helpful to define these as constants here, otherwise we will end up duplicating these values both in implementations and in VTS code.",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "530e084775ffa1fc90edcd7234af9bba5d9d7930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b16a521_2be2a0df",
+        "filename": "media/aidl/android/media/audio/common/AudioProductStrategyType.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-06T02:10:28Z",
+      "side": 1,
+      "message": "nit: Please be consistent about ending sentences with a period.",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "530e084775ffa1fc90edcd7234af9bba5d9d7930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
