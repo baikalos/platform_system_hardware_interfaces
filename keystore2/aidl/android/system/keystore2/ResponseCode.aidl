@@ -87,4 +87,13 @@ enum ResponseCode {
      * available. This can be thrown during attempts to generate a key.
      */
     OUT_OF_KEYS = 22,
+
+    /**
+     * This device needs a software update as it may contain potentially vulnerable software.
+     * This error is returned only on devices that rely solely on remotely-provisioned keys (see
+     * <a href=
+     * "https://android-developers.googleblog.com/2022/03/upgrading-android-attestation-remote.html"
+     * >Remote Key Provisioning</a>).
+     */
+    OUT_OF_KEYS_REQUIRES_UPGRADE = 23,
 }
