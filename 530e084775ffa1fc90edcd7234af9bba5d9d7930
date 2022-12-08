@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a51a7a4_766501e2",
+        "filename": "media/aidl/android/media/audio/common/AudioHalVolumeCurve.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2022-12-08T02:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42b44332_ed16a5a8",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "530e084775ffa1fc90edcd7234af9bba5d9d7930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b16a521_2be2a0df",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-06T02:10:28Z",
       "side": 1,
       "message": "nit: Please be consistent about ending sentences with a period.",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "530e084775ffa1fc90edcd7234af9bba5d9d7930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd29e893_515bd6ff",
+        "filename": "media/aidl/android/media/audio/common/AudioProductStrategyType.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2022-12-08T02:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b16a521_2be2a0df",
       "range": {
         "startLine": 28,
         "startChar": 7,
