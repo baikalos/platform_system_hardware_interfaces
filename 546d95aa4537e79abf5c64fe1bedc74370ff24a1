@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a34fd2d5_301ee4a8",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterion.aidl",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2022-12-08T22:49:19Z",
+      "side": 1,
+      "message": "No. We just compare them for equality and print them.",
+      "parentUuid": "ff2805bd_2ee374f4",
+      "revId": "546d95aa4537e79abf5c64fe1bedc74370ff24a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f3e36f8_f6f8389b",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-12-08T20:21:05Z",
       "side": 1,
       "message": "are these also parsed? if so, we should include the exact format here",
+      "range": {
+        "startLine": 41,
+        "startChar": 60,
+        "endLine": 41,
+        "endChar": 74
+      },
+      "revId": "546d95aa4537e79abf5c64fe1bedc74370ff24a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b8a94a_cb06827b",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2022-12-08T22:49:19Z",
+      "side": 1,
+      "message": "No. We just compare them for equality and print them.",
+      "parentUuid": "2f3e36f8_f6f8389b",
       "range": {
         "startLine": 41,
         "startChar": 60,
