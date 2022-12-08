@@ -16,6 +16,29 @@
       "message": "CL was previously reviewed on https://r.android.com/2216823, but library was moved to system/hardware/interfaces, so had to abandon CL.",
       "revId": "546d95aa4537e79abf5c64fe1bedc74370ff24a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3e36f8_f6f8389b",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-08T20:21:05Z",
+      "side": 1,
+      "message": "are these also parsed? if so, we should include the exact format here",
+      "range": {
+        "startLine": 41,
+        "startChar": 60,
+        "endLine": 41,
+        "endChar": 74
+      },
+      "revId": "546d95aa4537e79abf5c64fe1bedc74370ff24a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
