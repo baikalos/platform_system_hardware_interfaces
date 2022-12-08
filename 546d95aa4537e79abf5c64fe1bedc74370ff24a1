@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff2805bd_2ee374f4",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterion.aidl",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-08T20:22:39Z",
+      "side": 1,
+      "message": "and also for this one",
+      "revId": "546d95aa4537e79abf5c64fe1bedc74370ff24a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f3e36f8_f6f8389b",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 11
