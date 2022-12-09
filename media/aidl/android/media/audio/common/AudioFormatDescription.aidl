@@ -59,9 +59,9 @@ parcelable AudioFormatDescription {
      * IEC-61937. Note that 'type == NON_PCM' in this case.
      *
      * Encoding names mostly follow IANA standards for media types (MIME), and
-     * frameworks/av/media/libstagefright/foundation/MediaDefs.cpp with the
-     * latter having priority.  Since there are still many audio types not found
-     * in any of these lists, the following rules are applied:
+     * frameworks/av/media/module/foundation/MediaDefs.cpp with the latter
+     * having priority. Since there are still many audio types not found in any
+     * of these lists, the following rules are applied:
      *
      *   - If there is a direct MIME type for the encoding, the MIME type name
      *     is used as is, e.g. "audio/eac3" for the EAC-3 format.
