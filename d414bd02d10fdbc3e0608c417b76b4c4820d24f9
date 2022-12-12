@@ -46,6 +46,30 @@
       },
       "revId": "d414bd02d10fdbc3e0608c417b76b4c4820d24f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25538c90_e9402e21",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2022-12-12T19:40:54Z",
+      "side": 1,
+      "message": "Accidentally unchecked the Resolved box.",
+      "parentUuid": "d08cdebe_217d567e",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "d414bd02d10fdbc3e0608c417b76b4c4820d24f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
