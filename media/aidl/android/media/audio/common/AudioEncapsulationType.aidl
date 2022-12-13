@@ -30,4 +30,10 @@ enum AudioEncapsulationType {
     NONE = 0,
     /** Encapsulation used the format defined in the standard IEC 61937. */
     IEC61937 = 1,
+    /**
+     * Encapsulation type that can be used by formats that can be wrapped in
+     * PCM frames. For instance, DSD(Direct Stream Digital) over PCM, see
+     * https://dsd-guide.com/dop-open-standard for more information.
+     */
+    PCM = 2,
 }
