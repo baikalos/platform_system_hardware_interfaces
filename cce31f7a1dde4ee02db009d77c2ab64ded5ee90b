@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52fe918a_5155b960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T21:25:33Z",
+      "side": 1,
+      "message": "Please also add to https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/aidl/default/config/audioPolicy/audio_policy_configuration.xsd;l\u003d183;drc\u003dbc585bd9869039885cc435f96fdbfefd6dce39c3. This is for the HAL implementation which gets the configuration from XML for easier transition for existing devices.",
+      "revId": "cce31f7a1dde4ee02db009d77c2ab64ded5ee90b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
