@@ -49,8 +49,8 @@ cc_binary {
         "system_suspend_defaults",
         "system_suspend_stats_defaults",
     ],
-    init_rc: ["android.system.suspend@1.0-service.rc"],
-    vintf_fragments: ["android.system.suspend@1.0-service.xml"],
+    init_rc: ["android.system.suspend-service.rc"],
+    vintf_fragments: ["android.system.suspend-service.xml"],
     shared_libs: [
         "android.system.suspend-V1-ndk",
         "android.system.suspend.control-V1-cpp",
