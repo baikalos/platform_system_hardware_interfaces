@@ -33,6 +33,24 @@
       "message": "Devin, could you also do owner review? Thanks,",
       "revId": "98365a0b045bb789bc7ef8570fbc96ecbc6c9279",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43dcbe9e_95c7631d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-16T21:17:09Z",
+      "side": 1,
+      "message": "oops! We should get an OWNERs file here in `system/hardware/interfaces/media` at some point.",
+      "parentUuid": "c5c80523_f480dc35",
+      "revId": "98365a0b045bb789bc7ef8570fbc96ecbc6c9279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
