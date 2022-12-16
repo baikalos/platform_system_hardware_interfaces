@@ -37,4 +37,5 @@ package android.media.audio.common;
 enum AudioEncapsulationType {
   NONE = 0,
   IEC61937 = 1,
+  PCM = 2,
 }
