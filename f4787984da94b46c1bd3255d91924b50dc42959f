@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28723acf_a1a11091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-12-19T17:20:23Z",
+      "side": 1,
+      "message": "Hi Steven, Rob,\n\nI would like to let this soak test for a while before cleaning up the binder token bits.\n\nThanks,\nKalesh",
+      "revId": "f4787984da94b46c1bd3255d91924b50dc42959f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
