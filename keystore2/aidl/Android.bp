@@ -20,7 +20,7 @@ aidl_interface {
     name: "android.system.keystore2",
     vendor_available: true,
     srcs: ["android/system/keystore2/*.aidl"],
-    imports: ["android.hardware.security.keymint"],
+    imports: ["android.hardware.security.keymint-V3"],
     stability: "vintf",
     backend: {
         java: {
