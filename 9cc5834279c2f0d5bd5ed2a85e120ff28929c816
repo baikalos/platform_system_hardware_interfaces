@@ -16,6 +16,23 @@
       "message": "Sorry, I forgot about this reference when I was reviewing your CL.",
       "revId": "9cc5834279c2f0d5bd5ed2a85e120ff28929c816",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeae8322_86c82f26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-30T01:31:13Z",
+      "side": 1,
+      "message": "Thanks Mikhail. I did not think about this.",
+      "revId": "9cc5834279c2f0d5bd5ed2a85e120ff28929c816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
