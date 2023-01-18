@@ -34,7 +34,7 @@
 package android.media.audio.common;
 @Backing(type="byte") @VintfStability
 enum AudioProductStrategyType {
-  SYS_RESERVED_NONE = -1,
+  SYS_RESERVED_NONE = (-1),
   MEDIA = 0,
   PHONE = 1,
   SONIFICATION = 2,

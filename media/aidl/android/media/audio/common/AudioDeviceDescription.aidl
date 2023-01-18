@@ -99,4 +99,8 @@ parcelable AudioDeviceDescription {
      * USB connection. The Android device is the USB Host.
      */
     const @utf8InCpp String CONNECTION_USB = "usb";
+    /**
+     * Used for virtual device connections such as Remote Submix Out.
+     */
+    const @utf8InCpp String CONNECTION_VIRTUAL = "virtual";
 }

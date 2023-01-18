@@ -35,7 +35,7 @@ package android.media.audio.common;
 /* @hide */
 @Backing(type="byte") @VintfStability
 enum AudioEncapsulationMode {
-  INVALID = -1,
+  INVALID = (-1),
   NONE = 0,
   ELEMENTARY_STREAM = 1,
   HANDLE = 2,

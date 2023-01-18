@@ -34,7 +34,7 @@
 package android.media.audio.common;
 @JavaDerive(equals=true, toString=true) @VintfStability
 parcelable AudioHalEngineConfig {
-  int defaultProductStrategyId = -1;
+  int defaultProductStrategyId = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE;
   android.media.audio.common.AudioHalProductStrategy[] productStrategies;
   android.media.audio.common.AudioHalVolumeGroup[] volumeGroups;
   @nullable android.media.audio.common.AudioHalEngineConfig.CapSpecificConfig capSpecificConfig;

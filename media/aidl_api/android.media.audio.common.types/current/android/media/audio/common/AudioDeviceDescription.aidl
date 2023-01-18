@@ -49,4 +49,5 @@ parcelable AudioDeviceDescription {
   const @utf8InCpp String CONNECTION_SPDIF = "spdif";
   const @utf8InCpp String CONNECTION_WIRELESS = "wireless";
   const @utf8InCpp String CONNECTION_USB = "usb";
+  const @utf8InCpp String CONNECTION_VIRTUAL = "virtual";
 }

@@ -36,7 +36,7 @@ package android.media.audio.common;
 @Backing(type="byte") @VintfStability
 enum AudioFormatType {
   DEFAULT = 0,
-  NON_PCM = 0,
+  NON_PCM = DEFAULT,
   PCM = 1,
-  SYS_RESERVED_INVALID = -1,
+  SYS_RESERVED_INVALID = (-1),
 }

@@ -37,6 +37,6 @@ parcelable AudioAttributes {
   android.media.audio.common.AudioContentType contentType = android.media.audio.common.AudioContentType.UNKNOWN;
   android.media.audio.common.AudioUsage usage = android.media.audio.common.AudioUsage.UNKNOWN;
   android.media.audio.common.AudioSource source = android.media.audio.common.AudioSource.DEFAULT;
-  int flags = 0;
+  int flags = android.media.audio.common.AudioFlag.NONE;
   @utf8InCpp String[] tags;
 }

@@ -45,7 +45,7 @@ parcelable AudioPlaybackRate {
   }
   @Backing(type="int") @VintfStability
   enum TimestretchFallbackMode {
-    SYS_RESERVED_CUT_REPEAT = -1,
+    SYS_RESERVED_CUT_REPEAT = (-1),
     SYS_RESERVED_DEFAULT = 0,
     MUTE = 1,
     FAIL = 2,

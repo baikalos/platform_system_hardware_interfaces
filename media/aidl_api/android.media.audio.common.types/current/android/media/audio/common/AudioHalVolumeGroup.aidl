@@ -38,5 +38,5 @@ parcelable AudioHalVolumeGroup {
   int minIndex;
   int maxIndex;
   android.media.audio.common.AudioHalVolumeCurve[] volumeCurves;
-  const int INDEX_DEFERRED_TO_AUDIO_SERVICE = -1;
+  const int INDEX_DEFERRED_TO_AUDIO_SERVICE = (-1);
 }
