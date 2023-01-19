@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f17d3f8_a44b82f3",
+        "filename": "media/aidl/android/media/audio/common/AudioDeviceDescription.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2023-01-19T20:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b97e20f2_31676b21",
+      "revId": "4d105f91e34ad570cddd2b9a661c19e1538329a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6244964c_74f8cb6c",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-01-19T05:48:42Z",
       "side": 1,
       "message": "I would clarify this as follows: \"Virtual connection. Used with devices that do not require a physical connection, but nevertheless are not considered as always available. One example of such device is the Remote Submix output.\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 69
+      },
+      "revId": "4d105f91e34ad570cddd2b9a661c19e1538329a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b6ffed_dedfb6e7",
+        "filename": "media/aidl/android/media/audio/common/AudioDeviceDescription.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2023-01-19T20:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6244964c_74f8cb6c",
       "range": {
         "startLine": 103,
         "startChar": 7,
