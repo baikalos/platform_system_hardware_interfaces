@@ -83,10 +83,28 @@ enum ResponseCode {
     TOO_MUCH_DATA = 21,
 
     /**
-     * Indicates that the attestation key pool does not have any signed attestation keys
-     * available. This can be thrown during attempts to generate a key.
+     * Deprecated, replaced by OUT_OF_KEYS_TRANSIENT_ERROR.
+     * Previous to OUT_OF_KEYS_TRANSIENT_ERROR, all failures to generate a key due to
+     * the exhaustion of the remotely provisioned key pool were reflected as OUT_OF_KEYS.
+     * The client simply had to retry. Starting with API 34, this enum value has been
+     * replaced by OUT_OF_KEYS_TRANSIENT_ERROR.
      */
     OUT_OF_KEYS = 22,
+
+    /**
+     * Indicates that the attestation key pool temporarily does not have any signed
+     * attestation keys available. This can be thrown during attempts to generate a key.
+     * This error indicates key generation may be retried with back-off.
+     */
+    OUT_OF_KEYS_TRANSIENT_ERROR = 22,
+
+    /**
+     * Indicates that this device will never attestation key from the remote provsisioning
+     * server. This may be due to multiple causes, such as the device is not registered
+     * with the remote provisioning backend or the device has been permanently revoked.
+     * Clients who receive this error should not attempt to retry key creation.
+     */
+    OUT_OF_KEYS_PERMANENT_ERROR = 23,
 
     /**
      * This device needs a software update as it may contain potentially vulnerable software.
@@ -95,5 +113,12 @@ enum ResponseCode {
      * "https://android-developers.googleblog.com/2022/03/upgrading-android-attestation-remote.html"
      * >Remote Key Provisioning</a>).
      */
-    OUT_OF_KEYS_REQUIRES_UPGRADE = 23,
+    OUT_OF_KEYS_REQUIRES_SECURITY_PATCH = 24,
+
+    /**
+     * Indicates that the attestation key pool has been exhausted, and the remote key
+     * provisioning server cannot currently be reached. Clients should wait for the
+     * device to have connectivity, then retry.
+     */
+    OUT_OF_KEYS_PENDING_INTERNET_CONNECTIVITY = 25,
 }
