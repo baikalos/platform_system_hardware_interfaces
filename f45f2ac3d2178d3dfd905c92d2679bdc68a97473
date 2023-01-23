@@ -22,6 +22,30 @@
       },
       "revId": "f45f2ac3d2178d3dfd905c92d2679bdc68a97473",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c9546f_17f95ecc",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-01-23T20:07:35Z",
+      "side": 1,
+      "message": "Nope, because we haven\u0027t shipped the old name in a stable API yet. So we\u0027re free to rename it up until the API freeze (which will happen after the split to udc-dev).\n\nLMK if this new name makes sense or if you have better suggestions. I do think it\u0027s important to indicate it\u0027s a security issue, not just a patching issue.",
+      "parentUuid": "dad428c2_483d39e5",
+      "range": {
+        "startLine": 116,
+        "startChar": 42,
+        "endLine": 116,
+        "endChar": 44
+      },
+      "revId": "f45f2ac3d2178d3dfd905c92d2679bdc68a97473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
