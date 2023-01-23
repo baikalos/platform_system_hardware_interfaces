@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca51204_a3475ef0",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-23T23:15:17Z",
+      "side": 1,
+      "message": "nit: I might suggest avoiding this, so we don\u0027t forget that it\u0027s actually ambiguous",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 37
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
