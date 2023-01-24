@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac8df7f8_3e637950",
+        "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-01-24T16:13:18Z",
+      "side": 1,
+      "message": "Given that we have errors 22, 24 and 25, do we need these two \"generic\" errors ?\n\nSpecifically this transient error - it does not tell the caller _when_ they should re-try. So I\u0027d rather avoid introducing these two.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0431d8_d92a6ff6",
+        "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-01-24T16:13:18Z",
+      "side": 1,
+      "message": "We agreed on the original name in https://android-review.git.corp.google.com/c/platform/system/hardware/interfaces/+/2317849\n\nNot a big deal to change, but we should reconcile reasoning.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ca51204_a3475ef0",
         "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
         "patchSetId": 3
