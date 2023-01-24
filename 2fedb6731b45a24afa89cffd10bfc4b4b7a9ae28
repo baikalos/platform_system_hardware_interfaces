@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "82dbd4af_e531bc0d",
+        "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-01-24T19:32:41Z",
+      "side": 1,
+      "message": "I just realized \"23\" is ambiguous because of renumbering in the iterstions, haha. Specifically \"OUT_OF_KEYS_PERMANENT_ERROR\" means \"don\u0027t retry\".\n\n\"OUT_OF_KEYS_TRANSIENT_ERROR\" means \"something odd happened, maybe it\u0027ll work later\".",
+      "parentUuid": "bfb9c61d_953aaf82",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ad0431d8_d92a6ff6",
