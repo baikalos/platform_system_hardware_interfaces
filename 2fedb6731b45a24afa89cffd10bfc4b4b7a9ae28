@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bcdc626_2c751c26",
+        "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-01-24T18:19:43Z",
+      "side": 1,
+      "message": "There will always be some bucket of errors that indicate \"something bad happened, just try again later\".\n\nNow, this _shouldn\u0027t_ happen, but it could. I don\u0027t know how else to convey this information to the caller.",
+      "parentUuid": "ac8df7f8_3e637950",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ad0431d8_d92a6ff6",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01f6ba03_71e073af",
+        "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-01-24T18:19:43Z",
+      "side": 1,
+      "message": "The old error didn\u0027t indicate what kind of upgrade was needed. I think it\u0027s important to indicate that a security update is required.\n\nAlso, I had a very slight concern about confusion with the KEY_REQUIRES_UPGRADE response from keymint.",
+      "parentUuid": "ad0431d8_d92a6ff6",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ca51204_a3475ef0",
         "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
         "patchSetId": 3
@@ -77,6 +125,30 @@
       "writtenOn": "2023-01-23T23:15:17Z",
       "side": 1,
       "message": "nit: I might suggest avoiding this, so we don\u0027t forget that it\u0027s actually ambiguous",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 37
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a5af1cd_9a1ce5f1",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-01-24T18:19:43Z",
+      "side": 1,
+      "message": "Agreed on ambiguity here... I decided to just keep the old value around, even though it\u0027ll never be returned by keystore.\n\nIn hindsight, I feel like this API should never have been vendor stable.",
+      "parentUuid": "1ca51204_a3475ef0",
       "range": {
         "startLine": 98,
         "startChar": 7,
