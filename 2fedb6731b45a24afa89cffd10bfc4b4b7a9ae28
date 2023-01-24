@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27857d22_d6923a80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2023-01-24T00:39:03Z",
+      "side": 1,
+      "message": "It\u0027s also possible for keystore to error out if it fails to store key with RKPD here. https://android.googlesource.com/platform/system/security/+/refs/heads/master/keystore2/src/security_level.rs#621\n\nThis is a very likely scenario though. So maybe we could just fold this case into SYSTEM_ERROR \u003d 4.",
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ca51204_a3475ef0",
