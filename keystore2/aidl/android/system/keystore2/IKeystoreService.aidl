@@ -188,4 +188,57 @@ interface IKeystoreService {
      *               for the designated key.
      */
     void ungrant(in KeyDescriptor key, in int granteeUid);
+
+    /**
+     * Get the number of entries in the given `domain` and `nspace`.
+     *
+     * Callers must have the `GET_INFO` permission for the requested namespace to list all the
+     * entries.
+     *
+     * ## Error conditions
+     * `ResponseCode::INVALID_ARGUMENT` if `domain` is other than `Domain::APP` or `Domain::SELINUX`
+     * `ResponseCode::PERMISSION_DENIED` if the caller does not have the permission `GET_INFO`
+     *               For the requested namespace.
+     *
+     * @param domain If `Domain::APP` is passed, returns all keys associated with the caller's UID and
+     *               the namespace parameter is ignored.
+     *               If `Domain::SELINUX` is passed, returns all keys associated with the given
+     *               namespace.
+     *
+     * @param nspace The SELinux keystore2_key namespace if `domain` is `Domain::SELINUX`,
+     *               ignored otherwise.
+     *
+     * @return Number of entries.
+     */
+    int getNumberOfEntries(in Domain domain, in long nspace);
+
+    /**
+     * List `numEntries` entries, or less, accessible by the caller in the given `domain` and
+     * `nspace`, starting with `startingPastAlias`.
+     *
+     * See the `listEntries` variant above for calling permissions and documentation of the
+     * `domain` and `nspace` parameters.
+     *
+     * Notes:
+     * Consistency: This method guarantees no stability for the list of entries returned
+     * across calls. If entries have been deleted or added to Keystore between calls to
+     * this method, then some entries may be missing from the listing or repeated.
+     * The order of the entries returned is, however, stable.
+     *
+     * Length of returned list: If Keystore estimates that the returned list would exceed
+     * the binder transaction size limit, it will return a smaller number of entries than
+     * are available. Subsequent calls to this method need to be made with different
+     * starting points.
+     *
+     * @param domain See `listEntries`
+     *
+     * @param nspace See `listEntries`
+     *
+     * @param startingPastAlias Only return aliases lexicographically bigger than this value.
+     *
+     * @return List of KeyDescriptors.
+     */
+    KeyDescriptor[] listEntriesBatched(in Domain domain, in long nspace,
+            in @nullable String startingPastAlias);
+
 }
