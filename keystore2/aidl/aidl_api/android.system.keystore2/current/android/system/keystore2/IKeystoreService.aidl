@@ -42,4 +42,6 @@ interface IKeystoreService {
   void deleteKey(in android.system.keystore2.KeyDescriptor key);
   android.system.keystore2.KeyDescriptor grant(in android.system.keystore2.KeyDescriptor key, in int granteeUid, in int accessVector);
   void ungrant(in android.system.keystore2.KeyDescriptor key, in int granteeUid);
+  int getNumberOfEntries(in android.system.keystore2.Domain domain, in long nspace);
+  android.system.keystore2.KeyDescriptor[] listEntriesBatched(in android.system.keystore2.Domain domain, in long nspace, in int startEntry, in int numEntries);
 }
