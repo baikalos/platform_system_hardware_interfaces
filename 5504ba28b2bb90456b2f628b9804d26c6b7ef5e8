@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ab6ebe_62dd9ec0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-01-26T15:00:04Z",
+      "side": 1,
+      "message": "LGTM, minor nit.",
+      "revId": "5504ba28b2bb90456b2f628b9804d26c6b7ef5e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934768df_ec23eb85",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-01-26T15:00:04Z",
+      "side": 1,
+      "message": "For this and the \"permanent error below\":\n\nPlease add language that indicates these errors should not be used unless necessary to convey an error from rkpd that is not tied to a platform upgrade.\n\nWe should always prefer to add specific error codes than use these generic ones, because even for re-triable errors, re-tries may need to happen at different conditions.\n\nSuggestion:\n```\nNOTE: Always prefer adding an explicit error code to returning this error code. This error code is a generic one that is meant to be used for RKP errors that we need to add in between Android releases.\n```",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 37
+      },
+      "revId": "5504ba28b2bb90456b2f628b9804d26c6b7ef5e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

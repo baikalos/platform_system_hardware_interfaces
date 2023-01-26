@@ -139,6 +139,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cdf72526_6edc9be8",
+        "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-01-26T15:00:04Z",
+      "side": 1,
+      "message": "We\u0027re in agreement that it\u0027s better do deprecate OUT_OF_KEYS rather than keep it as \"unknown error\" (we treated it as \"temporarily out of keys\").",
+      "parentUuid": "abe8b183_5d1d0a30",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ad0431d8_d92a6ff6",
         "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
         "patchSetId": 3
@@ -174,6 +198,30 @@
       "side": 1,
       "message": "The old error didn\u0027t indicate what kind of upgrade was needed. I think it\u0027s important to indicate that a security update is required.\n\nAlso, I had a very slight concern about confusion with the KEY_REQUIRES_UPGRADE response from keymint.",
       "parentUuid": "ad0431d8_d92a6ff6",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "2fedb6731b45a24afa89cffd10bfc4b4b7a9ae28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5dd31a_1fb21260",
+        "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-01-26T15:00:04Z",
+      "side": 1,
+      "message": "This was intentional that the old error didn\u0027t indicate what kind of upgrade was needed, so we don\u0027t paint ourselves into a corner.\n\nI don\u0027t feel strongly about the name though, more that it\u0027s reflected to the client as \"take the update you have pending\".",
+      "parentUuid": "01f6ba03_71e073af",
       "range": {
         "startLine": 52,
         "startChar": 2,
