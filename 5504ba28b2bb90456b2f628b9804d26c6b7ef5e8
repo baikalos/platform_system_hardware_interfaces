@@ -39,6 +39,30 @@
       },
       "revId": "5504ba28b2bb90456b2f628b9804d26c6b7ef5e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd90fce_b684f2f6",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-01-27T00:17:59Z",
+      "side": 1,
+      "message": "Note added.\n\nHowever, there will always been some tail of errors that are \"just plain weird\", and we cannot reflect those. e.g. we might see an internet \"hiccup\" that causes a failure for unknown reasons. In that case, I don\u0027t find it useful to distinguish, to a caller, that this happened. Instead, we just tell them \"oops, try again later\". That\u0027s what this error is supposed to handle.",
+      "parentUuid": "934768df_ec23eb85",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 37
+      },
+      "revId": "5504ba28b2bb90456b2f628b9804d26c6b7ef5e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
