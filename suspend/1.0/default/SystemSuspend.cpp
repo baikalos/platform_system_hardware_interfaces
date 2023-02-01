@@ -56,6 +56,12 @@ static const char kSleepState[] = "mem";
 static constexpr char kSysPowerWakeLock[] = "/sys/power/wake_lock";
 static constexpr char kSysPowerWakeUnlock[] = "/sys/power/wake_unlock";
 static constexpr char kUnknownWakeup[] = "unknown";
+// This is used to disable autosuspend when zygote is restarted
+// it allows the system to make progress before autosuspend is kicked
+// NOTE: If the name of this wakelock is changed then also update the name
+// in rootdir/init.zygote32.rc, rootdir/init.zygote64.rc, and
+// rootdir/init.zygote64_32.rc
+static constexpr char kZygoteKernelWakelock[] = "zygote_kwl";
 
 // This function assumes that data in fd is small enough that it can be read in one go.
 // We use this function instead of the ones available in libbase because it doesn't block
@@ -153,16 +159,25 @@ SystemSuspend::SystemSuspend(unique_fd wakeupCountFd, unique_fd stateFd, unique_
         if (mWakeLockFd < 0) {
             PLOG(ERROR) << "error opening " << kSysPowerWakeLock;
         }
-        mWakeUnlockFd.reset(TEMP_FAILURE_RETRY(open(kSysPowerWakeUnlock, O_CLOEXEC | O_RDWR)));
-        if (mWakeUnlockFd < 0) {
-            PLOG(ERROR) << "error opening " << kSysPowerWakeUnlock;
-        }
+    }
+
+    mWakeUnlockFd.reset(TEMP_FAILURE_RETRY(open(kSysPowerWakeUnlock, O_CLOEXEC | O_RDWR)));
+    if (mWakeUnlockFd < 0) {
+        PLOG(ERROR) << "error opening " << kSysPowerWakeUnlock;
     }
 }
 
 bool SystemSuspend::enableAutosuspend(const sp<IBinder>& token) {
     auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
     auto autosuspendLock = std::lock_guard(mAutosuspendLock);
+
+    // Disable zygote kernel wakelock, since explicitly attempting to
+    // enable autosuspend. This should be done even if autosuspend is
+    // already enabled, since it could be the case that the framework
+    // is restarting and connecting to the existing suspend service.
+    if (!WriteStringToFd(kZygoteKernelWakelock, mWakeUnlockFd)) {
+        PLOG(ERROR) << "error writing " << kZygoteKernelWakelock << " to " << kSysPowerWakeUnlock;
+    }
 
     bool hasToken = std::find(mAutosuspendClientTokens.begin(), mAutosuspendClientTokens.end(),
                               token) != mAutosuspendClientTokens.end();
@@ -330,7 +345,8 @@ void SystemSuspend::initAutosuspendLocked() {
             bool success;
             {
                 auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
-                checkAutosuspendClientsLivenessLocked();
+                // TODO: Clean up client tokens after soaking the new approach
+                // checkAutosuspendClientsLivenessLocked();
 
                 autosuspendLock.lock();
                 base::ScopedLockAssertion autosuspendLocked(mAutosuspendLock);
