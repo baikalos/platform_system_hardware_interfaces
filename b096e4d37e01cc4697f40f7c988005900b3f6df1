@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "603f76ef_6081cb04",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-02-09T11:01:14Z",
+      "side": 1,
+      "message": "does this need the \"accessible by the caller\" text that\u0027s on the other entrypoints?",
+      "revId": "b096e4d37e01cc4697f40f7c988005900b3f6df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632276d0_7d4f1a04",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-02-09T11:01:14Z",
+      "side": 1,
+      "message": "s/list all the entries/determine the number of entries/",
+      "revId": "b096e4d37e01cc4697f40f7c988005900b3f6df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57d7f1d_f0209e7d",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-02-09T11:01:14Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "b096e4d37e01cc4697f40f7c988005900b3f6df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ad50411_cb66e778",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-02-09T11:01:14Z",
+      "side": 1,
+      "message": "\"no stability\" might be a bit too strong -- presumably the ordering of entries is expected to be the same (modulo additions/deletions) between calls?\n\nMore generally, it feels like there should be a more reliable way of getting all the entries in batches.  For example, if there was a defined ordering for the entries, you could have \"list up to N entries that order \u003e X\", where X is either null or the final entry from the previous call.  (Also, this must be a common problem with async list APIs, so maybe there\u0027s a best practice design pattern out there?)",
+      "revId": "b096e4d37e01cc4697f40f7c988005900b3f6df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
