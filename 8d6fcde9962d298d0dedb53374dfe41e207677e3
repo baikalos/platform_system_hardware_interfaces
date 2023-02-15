@@ -16,6 +16,23 @@
       "message": "CP of ag/21359223",
       "revId": "8d6fcde9962d298d0dedb53374dfe41e207677e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33140089_d8bfbf3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-15T21:15:32Z",
+      "side": 1,
+      "message": "*I didn\u0027t diff the AIDL files between CLs and I\u0027m assuming they are just moved without changes.",
+      "revId": "8d6fcde9962d298d0dedb53374dfe41e207677e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
