@@ -105,4 +105,10 @@ enum AudioOutputFlags{
      * Output is used for transmitting ultrasound audio.
      */
     ULTRASOUND = 17,
+    /**
+     * Output stream is bit perfect: the implementation guarantees that PCM
+     * samples are carried untouched from audio HAL to hardware interface
+     * or DAC.
+     */
+    BIT_PERFECT = 18,
 }
