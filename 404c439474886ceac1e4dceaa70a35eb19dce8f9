@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec58981a_26a818eb",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-03-01T14:42:11Z",
+      "side": 1,
+      "message": "nit: s/binder/Binder/",
+      "range": {
+        "startLine": 113,
+        "startChar": 90,
+        "endLine": 113,
+        "endChar": 96
+      },
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ac559b_78eac663",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-03-01T14:42:11Z",
+      "side": 1,
+      "message": "I thought we decided that `getNumberOfEntries` wasn\u0027t needed?  Or am I misremembering?",
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "109c2340_158df031",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-03-01T14:42:11Z",
+      "side": 1,
+      "message": "nit: s/binder/Binder/",
+      "range": {
+        "startLine": 221,
+        "startChar": 90,
+        "endLine": 221,
+        "endChar": 96
+      },
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b00431f6_233f2311",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-03-01T14:42:11Z",
+      "side": 1,
+      "message": "I don\u0027t think that repeated entries in the combined list are possible with the current semantics.",
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cca203c_6f2db563",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2023-03-01T14:42:11Z",
+      "side": 1,
+      "message": "Maybe \"combined listing\" to make it even clearer that the gaps come from needing repeated calls?",
+      "range": {
+        "startLine": 230,
+        "startChar": 62,
+        "endLine": 230,
+        "endChar": 69
+      },
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
