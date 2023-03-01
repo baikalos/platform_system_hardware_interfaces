@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2d93e41_f0cb9f89",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-03-01T16:37:38Z",
+      "side": 1,
+      "message": "Is this plan to deprecate this?\n\nOnce frameworks flips over to using the batch API, I\u0027m not sure there\u0027s any reason to keep this one around, is there?",
+      "range": {
+        "startLine": 137,
+        "startChar": 20,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55ac559b_78eac663",
         "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
         "patchSetId": 3
