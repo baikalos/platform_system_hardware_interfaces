@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50eddb0d_1b75de3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-01T16:52:14Z",
+      "side": 1,
+      "message": "Eric, we will also need to extend audio_latency_mode_t, so that internal conversions still work. I will do that once you are OK with this change.",
+      "revId": "a18ecb47cd2ea6e063797f04d3308a56b217c29f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
