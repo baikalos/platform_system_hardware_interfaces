@@ -36,7 +36,7 @@ package android.media.audio.common;
 @Backing(type="byte") @VintfStability
 enum PcmType {
   DEFAULT = 0,
-  UINT_8_BIT = DEFAULT,
+  UINT_8_BIT = DEFAULT /* 0 */,
   INT_16_BIT = 1,
   INT_32_BIT = 2,
   FIXED_Q_8_24 = 3,

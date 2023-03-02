@@ -35,7 +35,7 @@ package android.media.audio.common;
 /* @hide */
 @Backing(type="int") @VintfStability
 enum AudioUsage {
-  INVALID = (-1),
+  INVALID = (-1) /* -1 */,
   UNKNOWN = 0,
   MEDIA = 1,
   VOICE_COMMUNICATION = 2,

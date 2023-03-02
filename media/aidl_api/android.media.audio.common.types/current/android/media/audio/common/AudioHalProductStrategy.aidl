@@ -34,7 +34,7 @@
 package android.media.audio.common;
 @JavaDerive(equals=true, toString=true) @VintfStability
 parcelable AudioHalProductStrategy {
-  int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE;
+  int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
   android.media.audio.common.AudioHalAttributesGroup[] attributesGroups;
   const int VENDOR_STRATEGY_ID_START = 1000;
 }

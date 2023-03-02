@@ -35,7 +35,7 @@ package android.media.audio.common;
 /* @hide */
 @Backing(type="int") @VintfStability
 enum AudioSource {
-  SYS_RESERVED_INVALID = (-1),
+  SYS_RESERVED_INVALID = (-1) /* -1 */,
   DEFAULT = 0,
   MIC = 1,
   VOICE_UPLINK = 2,

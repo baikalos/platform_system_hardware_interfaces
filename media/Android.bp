@@ -83,6 +83,8 @@ aidl_interface {
         "aidl/android/media/audio/common/Double.aidl",
         "aidl/android/media/audio/common/Int.aidl",
         "aidl/android/media/audio/common/Long.aidl",
+        "aidl/android/media/audio/common/MicrophoneDynamicInfo.aidl",
+        "aidl/android/media/audio/common/MicrophoneInfo.aidl",
         "aidl/android/media/audio/common/PcmType.aidl",
         "aidl/android/media/audio/common/Void.aidl",
     ],
