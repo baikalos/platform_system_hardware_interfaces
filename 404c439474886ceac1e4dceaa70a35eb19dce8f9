@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa635ca_9c63a2e9",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-03-02T10:25:58Z",
+      "side": 1,
+      "message": "Done (throughout)",
+      "parentUuid": "ec58981a_26a818eb",
+      "range": {
+        "startLine": 113,
+        "startChar": 90,
+        "endLine": 113,
+        "endChar": 96
+      },
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2d93e41_f0cb9f89",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-01T16:37:38Z",
       "side": 1,
       "message": "Is this plan to deprecate this?\n\nOnce frameworks flips over to using the batch API, I\u0027m not sure there\u0027s any reason to keep this one around, is there?",
+      "range": {
+        "startLine": 137,
+        "startChar": 20,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3921ad8_2cd14e90",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-03-02T10:25:58Z",
+      "side": 1,
+      "message": "Done (marked as deprecated)",
+      "parentUuid": "b2d93e41_f0cb9f89",
       "range": {
         "startLine": 137,
         "startChar": 20,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "080066c0_2851dfd4",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-03-02T10:25:58Z",
+      "side": 1,
+      "message": "It\u0027s not needed for batch listing the key descriptors.\n\nHowever the JCA requires the engine to return the number of keys in Keystore. It used to be implemented by returning the `length` of the array returned by `listEntries`. But with `listEntries` not returning all entries, we need a more reliable method.",
+      "parentUuid": "55ac559b_78eac663",
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "109c2340_158df031",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-03-01T14:42:11Z",
       "side": 1,
       "message": "nit: s/binder/Binder/",
+      "range": {
+        "startLine": 221,
+        "startChar": 90,
+        "endLine": 221,
+        "endChar": 96
+      },
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a51652_c4f6c6f1",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-03-02T10:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109c2340_158df031",
       "range": {
         "startLine": 221,
         "startChar": 90,
@@ -117,6 +207,48 @@
       "writtenOn": "2023-03-01T14:42:11Z",
       "side": 1,
       "message": "Maybe \"combined listing\" to make it even clearer that the gaps come from needing repeated calls?",
+      "range": {
+        "startLine": 230,
+        "startChar": 62,
+        "endLine": 230,
+        "endChar": 69
+      },
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "943d1c34_76270bfd",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-03-02T10:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b00431f6_233f2311",
+      "revId": "404c439474886ceac1e4dceaa70a35eb19dce8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561dc3dc_5131ef65",
+        "filename": "keystore2/aidl/android/system/keystore2/IKeystoreService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-03-02T10:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cca203c_6f2db563",
       "range": {
         "startLine": 230,
         "startChar": 62,
