@@ -16,6 +16,23 @@
       "message": "Eric, we will also need to extend audio_latency_mode_t, so that internal conversions still work. I will do that once you are OK with this change.",
       "revId": "a18ecb47cd2ea6e063797f04d3308a56b217c29f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876c64b3_3a080bd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-03T19:32:25Z",
+      "side": 1,
+      "message": "Eric, ping. Is this change still needed?",
+      "revId": "a18ecb47cd2ea6e063797f04d3308a56b217c29f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
