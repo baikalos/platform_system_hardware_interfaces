@@ -35,8 +35,8 @@ package android.media.audio.common;
 /* @hide */
 @Backing(type="int") @VintfStability
 enum AudioMode {
-  SYS_RESERVED_INVALID = (-2),
-  SYS_RESERVED_CURRENT = (-1),
+  SYS_RESERVED_INVALID = (-2) /* -2 */,
+  SYS_RESERVED_CURRENT = (-1) /* -1 */,
   NORMAL = 0,
   RINGTONE = 1,
   IN_CALL = 2,
