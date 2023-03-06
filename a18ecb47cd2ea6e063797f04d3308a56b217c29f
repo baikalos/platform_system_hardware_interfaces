@@ -67,6 +67,24 @@
       "message": "At least this place needs an adjustment: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/audioaidlconversion/AidlConversionCppNdk.cpp;drc\u003db950334a053d01b02ebfea551bdcea34ffa9c7ec;l\u003d2706",
       "revId": "a18ecb47cd2ea6e063797f04d3308a56b217c29f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d425790_cdb01c15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-06T17:24:05Z",
+      "side": 1,
+      "message": "Thanks Devin! Yes, I\u0027m aware of that, I uploaded an AIDL-only patch to get Eric\u0027s opinion on it before diving into more technical stuff.",
+      "parentUuid": "a6078339_7a95fe79",
+      "revId": "a18ecb47cd2ea6e063797f04d3308a56b217c29f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
