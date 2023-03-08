@@ -37,6 +37,16 @@ parcelable AudioPortDeviceExt {
      * hardware.
      */
     AudioFormatDescription[] encodedFormats;
+    /**
+     * Mask of supported encapsulation modes. Specified for ports that accept
+     * compressed data. The field is a bitmask indexed by AudioEncapsulationMode.
+     */
+    int encapsulationModes;
+    /**
+     * Mask of supported metadata types used for encapsulated compressed data.
+     * This field is a bitmask indexed by AudioEncapsulationMetadataType.
+     */
+    int encapsulationMetadataTypes;
 
     /**
      * A default device port is fallback used when the preference for the device
