@@ -16,6 +16,24 @@
       "message": "hey - this is past API Freeze. Is this change needed?",
       "revId": "9c043f617ed8f69651064469702b58b5f6598cd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f46427_a3d2ce97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-03-22T12:49:24Z",
+      "side": 1,
+      "message": "Yes it is (and sorry for not having it ready earlier). I will send an internal email with more explanation.",
+      "parentUuid": "ae75205a_2ec9be42",
+      "revId": "9c043f617ed8f69651064469702b58b5f6598cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
