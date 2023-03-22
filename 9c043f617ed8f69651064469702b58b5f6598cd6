@@ -34,6 +34,23 @@
       "parentUuid": "ae75205a_2ec9be42",
       "revId": "9c043f617ed8f69651064469702b58b5f6598cd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c2fbed_90152843",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-22T18:11:43Z",
+      "side": 1,
+      "message": "Since it\u0027s an API available but not implemented by vendors, that is why we can still accept it based on partner feedback. Thanks.",
+      "revId": "9c043f617ed8f69651064469702b58b5f6598cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
