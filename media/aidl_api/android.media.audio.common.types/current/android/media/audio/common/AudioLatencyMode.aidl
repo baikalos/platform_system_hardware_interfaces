@@ -36,4 +36,6 @@ package android.media.audio.common;
 enum AudioLatencyMode {
   FREE = 0,
   LOW = 1,
+  DYNAMIC_SPATIAL_AUDIO_SOFTWARE = 2,
+  DYNAMIC_SPATIAL_AUDIO_HARDWARE = 3,
 }

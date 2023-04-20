@@ -26,4 +26,8 @@ enum AudioLatencyMode {
     FREE = 0,
     /** A relatively low latency compatible with head tracking operation (e.g less than 100ms) */
     LOW = 1,
+    /** Dynamic Spatial Audio via software path */
+    DYNAMIC_SPATIAL_AUDIO_SOFTWARE = 2,
+    /** Dynamic Spatial Audio via hardware path */
+    DYNAMIC_SPATIAL_AUDIO_HARDWARE = 3
 }
