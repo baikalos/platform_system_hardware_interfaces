@@ -32,7 +32,7 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-@Backing(type="byte") @VintfStability
+@Backing(type="byte") @SuppressWarnings(value={"redundant-name"}) @VintfStability
 enum AudioLatencyMode {
   FREE = 0,
   LOW = 1,

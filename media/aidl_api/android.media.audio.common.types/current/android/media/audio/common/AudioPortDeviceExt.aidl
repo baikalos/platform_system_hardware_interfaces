@@ -33,7 +33,7 @@
 
 package android.media.audio.common;
 /* @hide */
-@JavaDerive(equals=true, toString=true) @VintfStability
+@JavaDerive(equals=true, toString=true) @SuppressWarnings(value={"redundant-name"}) @VintfStability
 parcelable AudioPortDeviceExt {
   android.media.audio.common.AudioDevice device;
   int flags;

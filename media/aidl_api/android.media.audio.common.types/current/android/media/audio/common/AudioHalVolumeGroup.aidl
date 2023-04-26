@@ -32,7 +32,7 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-@JavaDerive(equals=true, toString=true) @VintfStability
+@JavaDerive(equals=true, toString=true) @SuppressWarnings(value={"redundant-name"}) @VintfStability
 parcelable AudioHalVolumeGroup {
   @utf8InCpp String name;
   int minIndex;
