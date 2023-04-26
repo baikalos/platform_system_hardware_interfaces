@@ -40,5 +40,5 @@ parcelable AudioPortDeviceExt {
   android.media.audio.common.AudioFormatDescription[] encodedFormats;
   int encapsulationModes;
   int encapsulationMetadataTypes;
-  const int FLAG_INDEX_DEFAULT_DEVICE = 0;
+  const @SuppressWarnings(value={"redundant-name"}) int FLAG_INDEX_DEFAULT_DEVICE = 0;
 }

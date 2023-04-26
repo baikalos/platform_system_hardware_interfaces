@@ -57,5 +57,6 @@ parcelable AudioPortDeviceExt {
      * (AudioDeviceDescription.connection == ''). There can be no more than one
      * default device port in a HAL module in each I/O direction.
      */
+    @SuppressWarnings(value={"redundant-name"})
     const int FLAG_INDEX_DEFAULT_DEVICE = 0;
 }
