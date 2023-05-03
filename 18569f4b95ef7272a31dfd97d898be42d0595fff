@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3637e71_3446a989",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-05-03T22:07:33Z",
+      "side": 1,
+      "message": "I actually don\u0027t like these defaults for interfaces that `import` other interfaces.\n\nIt becomes more difficult to bump this `shared_libs` if the next `keystore2` version imports a new version of `keymint`. (which we can see in the build failures)\n\nI\u0027d either include the keymint lib along with the keystore lib here, or just remove the default since it likely doesn\u0027t really make less work.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
