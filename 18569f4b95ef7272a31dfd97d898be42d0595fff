@@ -22,6 +22,30 @@
       },
       "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c608fe6d_b5be6700",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2023-05-03T22:56:54Z",
+      "side": 1,
+      "message": "There\u0027s a few places that use keystore and specify V1, V3, etc.\nAssigning a default benefits in not having to go around the codebase whenever a new version releases, so I like more the idea of having a default.\n\nWould there be another way of achieving this `default` option?\n\nAs for keymint, since keystore2 needs it, isn\u0027t it better to import a default keymint version in the default for keystore2 (As done in this PS)?\n\nIf ever keystore2 would need an older version of keymint, then that can be specified in 1 area and again without having to go around the codebase.",
+      "parentUuid": "a3637e71_3446a989",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
