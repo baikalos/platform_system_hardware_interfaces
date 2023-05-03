@@ -50,3 +50,13 @@ aidl_interface {
     ],
 
 }
+
+// cc_defaults that includes the latest KeyStore AIDL library.
+// Modiles that depend on KeyStore directly can include this cc_defaults to avoid
+// managing dependency versions explicitly.
+cc_defaults {
+    name: "keystore_use_latest_hal_aidl_ndk_shared",
+    shared_libs: [
+        "android.system.keystore2-V3-ndk",
+    ],
+}
