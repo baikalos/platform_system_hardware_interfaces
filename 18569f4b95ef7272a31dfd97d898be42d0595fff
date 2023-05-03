@@ -46,6 +46,30 @@
       },
       "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd58e4db_86e630c6",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-05-03T23:23:41Z",
+      "side": 1,
+      "message": "\u003e As for keymint, since keystore2 needs it, isn\u0027t it better to import a default keymint version in the default for keystore2 (As done in this PS)?\n\nNot necessarily, because we only care which version of keymint keystore2 imports. It doesn\u0027t need to bump its import just because there is a new version of keymint. Ideally those are the same, but they don\u0027t need to be. Adding a default to a default like this will force it to happen. Maybe the team would want that, maybe they want to develop these separately.\n\n\u003e If ever keystore2 would need an older version of keymint, then that can be specified in 1 area and again without having to go around the codebase.\n\nYeah, this is the ideal case if everyone was using only this single default and not including keymint explicitly. But any module can include a specific version of keymint and then require changes in order to update the defaults.\n\n\nHaving a widely used default like this also forces all of the modules using this default to be able to handle the upgrade right then. Adding a method to a callback in this interface will force us to go around and update all of the users to implement this new callback before we could submit the interface change.",
+      "parentUuid": "c608fe6d_b5be6700",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
