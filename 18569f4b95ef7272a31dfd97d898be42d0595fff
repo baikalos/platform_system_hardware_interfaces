@@ -70,6 +70,30 @@
       },
       "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e26999_43f69d7b",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-05-04T20:52:08Z",
+      "side": 1,
+      "message": "Since the security team already has the keymint defaults, I\u0027m guessing they are ok with this. @sethmo@google.com can be the one to +2",
+      "parentUuid": "bd58e4db_86e630c6",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
