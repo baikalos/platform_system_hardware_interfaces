@@ -94,6 +94,30 @@
       },
       "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e03cae_b21962de",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-05-04T21:22:35Z",
+      "side": 1,
+      "message": "We found that the defaults for keymint made it much easier to update. Things that pull in the keymint AIDL interfaces often ended up needing to all upgrade at once anyway due to how the deps work out. So the keymint defaults solved a very real maintenance pain point for our team.\n\nI\u0027m a little less sure about upgrading the keystore2 NDK AIDL library. I believe very few things are depending on this library, and there\u0027s not really a great reason (that I can see) to force them to all upgrade at the same time.\n\nPlus, AFAICT, the current patch is insufficient? Looks like we still have a bunch of mismatched deps.",
+      "parentUuid": "d0e26999_43f69d7b",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
