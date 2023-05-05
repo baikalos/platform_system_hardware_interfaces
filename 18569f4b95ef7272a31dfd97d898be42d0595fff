@@ -118,6 +118,30 @@
       },
       "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ccf88aa_df5eed3f",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-05T23:39:46Z",
+      "side": 1,
+      "message": "There may be code changes required to update things. So, if we can update different dependency groups independently, it makes certain types of changes easier.",
+      "parentUuid": "09e03cae_b21962de",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "18569f4b95ef7272a31dfd97d898be42d0595fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
