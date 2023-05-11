@@ -57,7 +57,8 @@ static std::ostream& operator<<(std::ostream& out, const WakeLockInfo& entry) {
         << std::right << std::setw(20)
         << ((kernelWakelock) ? std::to_string(entry.preventSuspendTime) + "ms" : notApplicable)
         << sep
-        << std::right << std::setw(16) << std::to_string(entry.lastChange) + "ms" << sep;
+        << std::right << std::setw(16) << std::to_string(entry.lastChange) + "ms" << sep
+        << std::right << std::setw(12) << entry.releaseCount << sep;
     // clang-format on
 
     return out;
@@ -96,6 +97,7 @@ std::ostream& operator<<(std::ostream& out, const WakeLockEntryList& list) {
         << std::left << std::setw(12) << "EXPIRE COUNT" << sep
         << std::left << std::setw(20) << "PREVENT SUSPEND TIME" << sep
         << std::left << std::setw(16) << "LAST CHANGE" << sep
+        << std::left << std::setw(12) << "RELEASE COUNT" << sep
         << "\n";
     // clang-format on
 
@@ -183,6 +185,7 @@ WakeLockInfo WakeLockEntryList::createNativeEntry(const std::string& name, int p
     info.expireCount = 0;
     info.preventSuspendTime = 0;
     info.wakeupCount = 0;
+    info.releaseCount = 0;
 
     return info;
 }
@@ -220,6 +223,7 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
     info.expireCount = 0;
     info.preventSuspendTime = 0;
     info.wakeupCount = 0;
+    info.releaseCount = 0;
 
     unique_fd wakelockFd{TEMP_FAILURE_RETRY(
         openat(mKernelWakelockStatsFd, kwlId.c_str(), O_DIRECTORY | O_CLOEXEC | O_RDONLY))};
@@ -370,6 +374,7 @@ void WakeLockEntryList::updateOnRelease(const std::string& name, int pid) {
         updatedEntry.activeTime = 0;  // No longer active
         updatedEntry.totalTime += timeDelta;
         updatedEntry.lastChange = timeNow;
+        updatedEntry.releaseCount++;
 
         deleteEntry(staleEntry);
         insertEntry(std::move(updatedEntry));
