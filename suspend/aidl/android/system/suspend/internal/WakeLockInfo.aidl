@@ -63,4 +63,5 @@ parcelable WakeLockInfo {
     long expireCount;
     long preventSuspendTime;
     long wakeupCount;
+    long releaseCount;
 }
