@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd504a51_1ba2b4fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-13T00:03:58Z",
+      "side": 1,
+      "message": "Would this or the other cause the fuzzer to go to sleep?",
+      "revId": "51003ab67d603b4dce1903aad434746f363bf0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
