@@ -16,6 +16,24 @@
       "message": "Would this or the other cause the fuzzer to go to sleep?",
       "revId": "51003ab67d603b4dce1903aad434746f363bf0e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ca050b_0cdc7e97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-15T19:35:29Z",
+      "side": 1,
+      "message": "I think if it fuzzer calls functions like forceSuspend (https://source.corp.google.com/android-internal/system/hardware/interfaces/suspend/1.0/default/SystemSuspend.cpp;l\u003d242;bpv\u003d0;bpt\u003d1;rcl\u003deeae447b7baf32568765801cb304d72dadfcd739) it may cause the device to sleep. But infra should be handle these cases as max_timeout is set while fuzzing.",
+      "parentUuid": "dd504a51_1ba2b4fa",
+      "revId": "51003ab67d603b4dce1903aad434746f363bf0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
