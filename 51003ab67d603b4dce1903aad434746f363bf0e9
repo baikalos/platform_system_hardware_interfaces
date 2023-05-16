@@ -34,6 +34,23 @@
       "parentUuid": "dd504a51_1ba2b4fa",
       "revId": "51003ab67d603b4dce1903aad434746f363bf0e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "959d3eb8_1c65bf85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-16T19:45:00Z",
+      "side": 1,
+      "message": "Does suspend service has bug component? It needs to be added in OWNERS file",
+      "revId": "51003ab67d603b4dce1903aad434746f363bf0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
