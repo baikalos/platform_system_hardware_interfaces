@@ -51,6 +51,24 @@
       "message": "Does suspend service has bug component? It needs to be added in OWNERS file",
       "revId": "51003ab67d603b4dce1903aad434746f363bf0e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76e2f60_3288b060",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-17T00:06:01Z",
+      "side": 1,
+      "message": "Stubbed out force suspend in fuzzing mode : https://android-review.git.corp.google.com/c/platform/system/hardware/interfaces/+/2592011/1",
+      "parentUuid": "02ca050b_0cdc7e97",
+      "revId": "51003ab67d603b4dce1903aad434746f363bf0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
