@@ -185,3 +185,13 @@ cc_fuzz {
         "fuzzers/SuspendServiceFuzzer.cpp",
     ],
 }
+
+cc_fuzz {
+    name: "suspend_service_internal_fuzzer",
+    defaults: [
+        "suspend_fuzzer_defaults",
+    ],
+    srcs: [
+        "fuzzers/SuspendServiceInternalFuzzer.cpp",
+    ],
+}
