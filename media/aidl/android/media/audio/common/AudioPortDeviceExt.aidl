@@ -24,6 +24,7 @@ import android.media.audio.common.AudioFormatDescription;
  *
  * {@hide}
  */
+@SuppressWarnings(value={"redundant-name"}) // for *DEFAULT_DEVICE
 @JavaDerive(equals=true, toString=true)
 @VintfStability
 parcelable AudioPortDeviceExt {

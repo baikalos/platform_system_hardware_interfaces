@@ -33,7 +33,7 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
+@Backing(type="int") @SuppressWarnings(value={"redundant-name"}) @VintfStability
 enum AudioDeviceType {
   NONE = 0,
   IN_DEFAULT = 1,
