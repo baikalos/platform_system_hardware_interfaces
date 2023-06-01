@@ -240,6 +240,7 @@ SystemSuspend::~SystemSuspend(void) {
 }
 
 bool SystemSuspend::forceSuspend() {
+#ifndef FUZZ_MODE_SUSPEND_SERVICE
     //  We are forcing the system to suspend. This particular call ignores all
     //  existing wakelocks (full or partial). It does not cancel the wakelocks
     //  or reset mSuspendCounter, it just ignores them.  When the system
@@ -253,6 +254,9 @@ bool SystemSuspend::forceSuspend() {
         PLOG(VERBOSE) << "error writing to /sys/power/state for forceSuspend";
     }
     return success;
+#else
+    return false;
+#endif  // !FUZZ_MODE_SUSPEND_SERVICE
 }
 
 void SystemSuspend::incSuspendCounter(const string& name) {
