@@ -246,4 +246,13 @@ interface IKeystoreService {
     KeyDescriptor[] listEntriesBatched(in Domain domain, in long nspace,
             in @nullable String startingPastAlias);
 
+    /**
+     * 
+     *
+     * ## Error conditions
+     * `ErrorCode::HARDWARE_TYPE_UNAVAILABLE` if the requested security level does not exist.
+     *
+     * @return None.
+     */
+    void useCtsTestKeymintForSecurityLevel(in boolean useTestKeymint);
 }
