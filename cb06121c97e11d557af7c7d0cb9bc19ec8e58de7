@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eaa1ec5_6c103b2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2023-08-24T16:37:30Z",
+      "side": 1,
+      "message": "The component for bugs in this area should be part of Android, and the proposed new component is not.",
+      "revId": "cb06121c97e11d557af7c7d0cb9bc19ec8e58de7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
