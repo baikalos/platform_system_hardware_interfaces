@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c9bfdf_6b0a6eab",
+        "filename": "suspend/1.0/default/SuspendSepolicyTests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-05T22:18:45Z",
+      "side": 1,
+      "message": "this can be removed now?",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "aaf1f170b13bed73d43fca8dc958be1a0b550609",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
