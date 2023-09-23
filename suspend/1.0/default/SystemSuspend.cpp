@@ -23,6 +23,8 @@
 #include <aidl/android/system/suspend/IWakeLock.h>
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/no_destructor.h>
+#include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android/binder_manager.h>
@@ -31,6 +33,7 @@
 #include <sys/types.h>
 
 #include <chrono>
+#include <cstdlib>
 #include <string>
 #include <thread>
 using namespace std::chrono_literals;
@@ -38,7 +41,9 @@ using namespace std::chrono_literals;
 using ::aidl::android::system::suspend::ISystemSuspend;
 using ::aidl::android::system::suspend::IWakeLock;
 using ::aidl::android::system::suspend::WakeLockType;
+using ::android::base::CachedProperty;
 using ::android::base::Error;
+using ::android::base::NoDestructor;
 using ::android::base::ReadFdToString;
 using ::android::base::StringPrintf;
 using ::android::base::WriteStringToFd;
@@ -400,6 +405,8 @@ void SystemSuspend::initAutosuspendLocked() {
 
             mControlService->notifyWakeup(success, wakeupReasons);
 
+            logKernelWakeLockStats();
+
             // Take the lock before returning to the start of the loop
             autosuspendLock.lock();
         }
@@ -407,6 +414,25 @@ void SystemSuspend::initAutosuspendLocked() {
     autosuspendThread.detach();
     mAutosuspendThreadCreated = true;
     LOG(INFO) << "automatic system suspend enabled";
+}
+
+void SystemSuspend::logKernelWakeLockStats() {
+    static NoDestructor<CachedProperty> log_stats_prop("debug.systemsuspend.logwakestats");
+    std::vector<WakeLockInfo> wlStats;
+    std::stringstream klStats;
+
+    const char* prop = log_stats_prop->Get(NULL);
+    long int pval = strtol(prop, NULL, 0);
+    if (pval != 1) return;
+
+    klStats << "Kernel wakesource stats: ";
+    mStatsList.getWakeLockStats(&wlStats);
+    for (WakeLockInfo wake : wlStats) {
+        if ((wake.isKernelWakelock) && (wake.activeCount > 0)) {
+            klStats << wake.name << "," << wake.totalTime << "," << wake.activeCount << ";";
+        }
+    }
+    LOG(ERROR) << klStats.rdbuf() << std::endl;
 }
 
 /**

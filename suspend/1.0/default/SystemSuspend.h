@@ -112,6 +112,7 @@ class SystemSuspend : public RefBase {
     void checkAutosuspendClientsLivenessLocked()
         EXCLUSIVE_LOCKS_REQUIRED(mAutosuspendClientTokensLock);
     bool hasAliveAutosuspendTokenLocked() EXCLUSIVE_LOCKS_REQUIRED(mAutosuspendClientTokensLock);
+    void logKernelWakeLockStats();
 
     std::condition_variable mAutosuspendCondVar GUARDED_BY(mAutosuspendLock);
     uint32_t mSuspendCounter GUARDED_BY(mAutosuspendLock);
