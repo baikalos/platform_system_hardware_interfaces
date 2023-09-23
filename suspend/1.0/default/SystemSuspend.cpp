@@ -23,6 +23,7 @@
 #include <aidl/android/system/suspend/IWakeLock.h>
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android/binder_manager.h>
@@ -31,6 +32,7 @@
 #include <sys/types.h>
 
 #include <chrono>
+#include <cstdlib>
 #include <string>
 #include <thread>
 using namespace std::chrono_literals;
@@ -38,6 +40,7 @@ using namespace std::chrono_literals;
 using ::aidl::android::system::suspend::ISystemSuspend;
 using ::aidl::android::system::suspend::IWakeLock;
 using ::aidl::android::system::suspend::WakeLockType;
+using ::android::base::CachedProperty;
 using ::android::base::Error;
 using ::android::base::ReadFdToString;
 using ::android::base::StringPrintf;
@@ -400,6 +403,8 @@ void SystemSuspend::initAutosuspendLocked() {
 
             mControlService->notifyWakeup(success, wakeupReasons);
 
+            logKernelWakeLockStats();
+
             // Take the lock before returning to the start of the loop
             autosuspendLock.lock();
         }
@@ -407,6 +412,25 @@ void SystemSuspend::initAutosuspendLocked() {
     autosuspendThread.detach();
     mAutosuspendThreadCreated = true;
     LOG(INFO) << "automatic system suspend enabled";
+}
+
+void SystemSuspend::logKernelWakeLockStats() {
+    [[clang::no_destroy]] static CachedProperty logStatsProp("debug.systemsuspend.logwakestats");
+    const char* prop = logStatsProp.Get(NULL);
+    long int pval = strtol(prop, NULL, 0);
+    if (pval != 1) return;
+
+    std::stringstream klStats;
+    klStats << "Kernel wakesource stats: ";
+    std::vector<WakeLockInfo> wlStats;
+    mStatsList.getWakeLockStats(&wlStats);
+
+    for (const WakeLockInfo& wake : wlStats) {
+        if ((wake.isKernelWakelock) && (wake.activeCount > 0)) {
+            klStats << wake.name << "," << wake.totalTime << "," << wake.activeCount << ";";
+        }
+    }
+    LOG(INFO) << klStats.rdbuf();
 }
 
 /**
