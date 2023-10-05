@@ -33,10 +33,11 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+union AudioDeviceAddress {
+  @utf8InCpp String id;
+  byte[] mac;
+  byte[] ipv4;
+  int[] ipv6;
+  int[] alsa;
 }

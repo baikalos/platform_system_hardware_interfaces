@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,17 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@Backing(type="byte") @VintfStability
+enum AudioProductStrategyType {
+  SYS_RESERVED_NONE = (-1) /* -1 */,
+  MEDIA = 0,
+  PHONE = 1,
+  SONIFICATION = 2,
+  SONIFICATION_RESPECTFUL = 3,
+  DTMF = 4,
+  ENFORCED_AUDIBLE = 5,
+  TRANSMITTED_THROUGH_SPEAKER = 6,
+  ACCESSIBILITY = 7,
+  SYS_RESERVED_REROUTING = 8,
+  SYS_RESERVED_CALL_ASSISTANT = 9,
 }

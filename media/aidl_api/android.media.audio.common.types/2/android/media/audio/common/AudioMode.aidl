@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,9 +34,14 @@
 package android.media.audio.common;
 /* @hide */
 @Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+enum AudioMode {
+  SYS_RESERVED_INVALID = (-2) /* -2 */,
+  SYS_RESERVED_CURRENT = (-1) /* -1 */,
+  NORMAL = 0,
+  RINGTONE = 1,
+  IN_CALL = 2,
+  IN_COMMUNICATION = 3,
+  CALL_SCREEN = 4,
+  SYS_RESERVED_CALL_REDIRECT = 5,
+  SYS_RESERVED_COMMUNICATION_REDIRECT = 6,
 }

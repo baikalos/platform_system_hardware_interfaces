@@ -1,11 +1,11 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright 2020, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31,12 +31,21 @@
 // with such a backward incompatible change, it has a high risk of breaking
 // later when a module using the interface is updated, e.g., Mainline modules.
 
-package android.media.audio.common;
+package android.system.keystore2;
 /* @hide */
 @Backing(type="int") @VintfStability
-enum AudioStandard {
+enum KeyPermission {
   NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+  DELETE = 0x1,
+  GEN_UNIQUE_ID = 0x2,
+  GET_INFO = 0x4,
+  GRANT = 0x8,
+  MANAGE_BLOB = 0x10,
+  REBIND = 0x20,
+  REQ_FORCED_OP = 0x40,
+  UPDATE = 0x80,
+  USE = 0x100,
+  USE_DEV_ID = 0x200,
+  USE_NO_LSKF_BINDING = 0x400,
+  CONVERT_STORAGE_KEY_TO_EPHEMERAL = 0x800,
 }

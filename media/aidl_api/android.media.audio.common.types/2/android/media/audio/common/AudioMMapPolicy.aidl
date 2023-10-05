@@ -34,9 +34,9 @@
 package android.media.audio.common;
 /* @hide */
 @Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+enum AudioMMapPolicy {
+  UNSPECIFIED = 0,
+  NEVER = 1,
+  AUTO = 2,
+  ALWAYS = 3,
 }

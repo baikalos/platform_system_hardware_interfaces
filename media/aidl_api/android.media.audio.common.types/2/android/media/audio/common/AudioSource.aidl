@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,9 +34,21 @@
 package android.media.audio.common;
 /* @hide */
 @Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+enum AudioSource {
+  SYS_RESERVED_INVALID = (-1) /* -1 */,
+  DEFAULT = 0,
+  MIC = 1,
+  VOICE_UPLINK = 2,
+  VOICE_DOWNLINK = 3,
+  VOICE_CALL = 4,
+  CAMCORDER = 5,
+  VOICE_RECOGNITION = 6,
+  VOICE_COMMUNICATION = 7,
+  REMOTE_SUBMIX = 8,
+  UNPROCESSED = 9,
+  VOICE_PERFORMANCE = 10,
+  ECHO_REFERENCE = 1997,
+  FM_TUNER = 1998,
+  HOTWORD = 1999,
+  ULTRASOUND = 2000,
 }

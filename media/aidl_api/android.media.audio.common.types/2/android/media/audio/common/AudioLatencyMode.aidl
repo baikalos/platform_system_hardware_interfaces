@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,10 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@Backing(type="byte") @VintfStability
+enum AudioLatencyMode {
+  FREE = 0,
+  LOW = 1,
+  DYNAMIC_SPATIAL_AUDIO_SOFTWARE = 2,
+  DYNAMIC_SPATIAL_AUDIO_HARDWARE = 3,
 }

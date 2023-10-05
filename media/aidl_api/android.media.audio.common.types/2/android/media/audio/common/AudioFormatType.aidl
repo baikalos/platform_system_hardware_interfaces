@@ -33,10 +33,10 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@Backing(type="byte") @VintfStability
+enum AudioFormatType {
+  DEFAULT = 0,
+  NON_PCM = DEFAULT /* 0 */,
+  PCM = 1,
+  SYS_RESERVED_INVALID = (-1) /* -1 */,
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,22 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioPlaybackRate {
+  float speed;
+  float pitch;
+  android.media.audio.common.AudioPlaybackRate.TimestretchMode timestretchMode = android.media.audio.common.AudioPlaybackRate.TimestretchMode.DEFAULT;
+  android.media.audio.common.AudioPlaybackRate.TimestretchFallbackMode fallbackMode = android.media.audio.common.AudioPlaybackRate.TimestretchFallbackMode.SYS_RESERVED_DEFAULT;
+  @Backing(type="int") @VintfStability
+  enum TimestretchMode {
+    DEFAULT = 0,
+    VOICE = 1,
+  }
+  @Backing(type="int") @VintfStability
+  enum TimestretchFallbackMode {
+    SYS_RESERVED_CUT_REPEAT = (-1) /* -1 */,
+    SYS_RESERVED_DEFAULT = 0,
+    MUTE = 1,
+    FAIL = 2,
+  }
 }

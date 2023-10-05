@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,23 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioHalVolumeCurve {
+  android.media.audio.common.AudioHalVolumeCurve.DeviceCategory deviceCategory = android.media.audio.common.AudioHalVolumeCurve.DeviceCategory.SPEAKER;
+  android.media.audio.common.AudioHalVolumeCurve.CurvePoint[] curvePoints;
+  @Backing(type="byte") @VintfStability
+  enum DeviceCategory {
+    HEADSET = 0,
+    SPEAKER = 1,
+    EARPIECE = 2,
+    EXT_MEDIA = 3,
+    HEARING_AID = 4,
+  }
+  @VintfStability
+  parcelable CurvePoint {
+    byte index;
+    int attenuationMb;
+    const byte MIN_INDEX = 0;
+    const byte MAX_INDEX = 100;
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,11 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioAttributes {
+  android.media.audio.common.AudioContentType contentType = android.media.audio.common.AudioContentType.UNKNOWN;
+  android.media.audio.common.AudioUsage usage = android.media.audio.common.AudioUsage.UNKNOWN;
+  android.media.audio.common.AudioSource source = android.media.audio.common.AudioSource.DEFAULT;
+  int flags = android.media.audio.common.AudioFlag.NONE /* 0 */;
+  @utf8InCpp String[] tags;
 }

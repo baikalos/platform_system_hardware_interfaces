@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,14 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable MicrophoneDynamicInfo {
+  @utf8InCpp String id;
+  android.media.audio.common.MicrophoneDynamicInfo.ChannelMapping[] channelMapping;
+  @Backing(type="int") @VintfStability
+  enum ChannelMapping {
+    UNUSED = 0,
+    DIRECT = 1,
+    PROCESSED = 2,
+  }
 }

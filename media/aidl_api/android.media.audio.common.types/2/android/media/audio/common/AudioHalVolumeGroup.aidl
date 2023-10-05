@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,11 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioHalVolumeGroup {
+  @utf8InCpp String name;
+  int minIndex;
+  int maxIndex;
+  android.media.audio.common.AudioHalVolumeCurve[] volumeCurves;
+  const int INDEX_DEFERRED_TO_AUDIO_SERVICE = (-1) /* -1 */;
 }
