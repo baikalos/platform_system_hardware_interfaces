@@ -21,6 +21,8 @@ package android.media.audio.common;
  * Such information about the content of the stream may be found, for example, in
  * ITU T-REC-J.94-201610 A.6.2.3 Component descriptor.
  * This enum corresponds to AudioTrack.DUAL_MONO_MODE_* constants in the SDK.
+ *
+ * {@hide}
  */
 @Backing(type="int")
 @VintfStability
