@@ -33,10 +33,21 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioDeviceDescription {
+  android.media.audio.common.AudioDeviceType type = android.media.audio.common.AudioDeviceType.NONE;
+  @utf8InCpp String connection;
+  const @utf8InCpp String CONNECTION_ANALOG = "analog";
+  const @utf8InCpp String CONNECTION_BT_A2DP = "bt-a2dp";
+  const @utf8InCpp String CONNECTION_BT_LE = "bt-le";
+  const @utf8InCpp String CONNECTION_BT_SCO = "bt-sco";
+  const @utf8InCpp String CONNECTION_BUS = "bus";
+  const @utf8InCpp String CONNECTION_HDMI = "hdmi";
+  const @utf8InCpp String CONNECTION_HDMI_ARC = "hdmi-arc";
+  const @utf8InCpp String CONNECTION_HDMI_EARC = "hdmi-earc";
+  const @utf8InCpp String CONNECTION_IP_V4 = "ip-v4";
+  const @utf8InCpp String CONNECTION_SPDIF = "spdif";
+  const @utf8InCpp String CONNECTION_WIRELESS = "wireless";
+  const @utf8InCpp String CONNECTION_USB = "usb";
+  const @utf8InCpp String CONNECTION_VIRTUAL = "virtual";
 }

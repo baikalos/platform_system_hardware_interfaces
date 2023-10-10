@@ -34,9 +34,24 @@
 package android.media.audio.common;
 /* @hide */
 @Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+enum AudioOutputFlags {
+  DIRECT = 0,
+  PRIMARY = 1,
+  FAST = 2,
+  DEEP_BUFFER = 3,
+  COMPRESS_OFFLOAD = 4,
+  NON_BLOCKING = 5,
+  HW_AV_SYNC = 6,
+  TTS = 7,
+  RAW = 8,
+  SYNC = 9,
+  IEC958_NONAUDIO = 10,
+  DIRECT_PCM = 11,
+  MMAP_NOIRQ = 12,
+  VOIP_RX = 13,
+  INCALL_MUSIC = 14,
+  GAPLESS_OFFLOAD = 15,
+  SPATIALIZER = 16,
+  ULTRASOUND = 17,
+  BIT_PERFECT = 18,
 }

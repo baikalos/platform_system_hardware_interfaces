@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,51 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable MicrophoneInfo {
+  @utf8InCpp String id;
+  android.media.audio.common.AudioDevice device;
+  android.media.audio.common.MicrophoneInfo.Location location = android.media.audio.common.MicrophoneInfo.Location.UNKNOWN;
+  int group = GROUP_UNKNOWN /* -1 */;
+  int indexInTheGroup = INDEX_IN_THE_GROUP_UNKNOWN /* -1 */;
+  @nullable android.media.audio.common.MicrophoneInfo.Sensitivity sensitivity;
+  android.media.audio.common.MicrophoneInfo.Directionality directionality = android.media.audio.common.MicrophoneInfo.Directionality.UNKNOWN;
+  android.media.audio.common.MicrophoneInfo.FrequencyResponsePoint[] frequencyResponse;
+  @nullable android.media.audio.common.MicrophoneInfo.Coordinate position;
+  @nullable android.media.audio.common.MicrophoneInfo.Coordinate orientation;
+  const int GROUP_UNKNOWN = (-1) /* -1 */;
+  const int INDEX_IN_THE_GROUP_UNKNOWN = (-1) /* -1 */;
+  @Backing(type="int") @VintfStability
+  enum Location {
+    UNKNOWN = 0,
+    MAINBODY = 1,
+    MAINBODY_MOVABLE = 2,
+    PERIPHERAL = 3,
+  }
+  @VintfStability
+  parcelable Sensitivity {
+    float leveldBFS;
+    float maxSpldB;
+    float minSpldB;
+  }
+  @Backing(type="int") @VintfStability
+  enum Directionality {
+    UNKNOWN = 0,
+    OMNI = 1,
+    BI_DIRECTIONAL = 2,
+    CARDIOID = 3,
+    HYPER_CARDIOID = 4,
+    SUPER_CARDIOID = 5,
+  }
+  @VintfStability
+  parcelable FrequencyResponsePoint {
+    float frequencyHz;
+    float leveldB;
+  }
+  @VintfStability
+  parcelable Coordinate {
+    float x;
+    float y;
+    float z;
+  }
 }

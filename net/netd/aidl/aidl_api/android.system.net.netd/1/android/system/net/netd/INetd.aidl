@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2021 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 ///////////////////////////////////////////////////////////////////////////////
 // THIS FILE IS IMMUTABLE. DO NOT EDIT IN ANY CASE.                          //
 ///////////////////////////////////////////////////////////////////////////////
@@ -31,12 +16,24 @@
 // with such a backward incompatible change, it has a high risk of breaking
 // later when a module using the interface is updated, e.g., Mainline modules.
 
-package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+package android.system.net.netd;
+@VintfStability
+interface INetd {
+  void addInterfaceToOemNetwork(in long networkHandle, in String ifname);
+  void addRouteToOemNetwork(in long networkHandle, in String ifname, in String destination, in String nexthop);
+  android.system.net.netd.INetd.OemNetwork createOemNetwork();
+  void destroyOemNetwork(in long networkHandle);
+  void removeInterfaceFromOemNetwork(in long networkHandle, in String ifname);
+  void removeRouteFromOemNetwork(in long networkHandle, in String ifname, in String destination, in String nexthop);
+  void setForwardingBetweenInterfaces(in String inputIfName, in String outputIfName, in boolean enable);
+  void setIpForwardEnable(in boolean enable);
+  const int STATUS_INVALID_ARGUMENTS = 1;
+  const int STATUS_NO_NETWORK = 2;
+  const int STATUS_ALREADY_EXISTS = 3;
+  const int STATUS_PERMISSION_DENIED = 4;
+  const int STATUS_UNKNOWN_ERROR = 5;
+  parcelable OemNetwork {
+    long networkHandle;
+    int packetMark;
+  }
 }

@@ -33,10 +33,9 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+union AudioPortMixExtUseCase {
+  boolean unspecified;
+  android.media.audio.common.AudioStreamType stream;
+  android.media.audio.common.AudioSource source;
 }

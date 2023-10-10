@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,10 +33,18 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioOffloadInfo {
+  android.media.audio.common.AudioConfigBase base;
+  android.media.audio.common.AudioStreamType streamType = android.media.audio.common.AudioStreamType.INVALID;
+  int bitRatePerSecond;
+  long durationUs;
+  boolean hasVideo;
+  boolean isStreaming;
+  int bitWidth = 16;
+  int offloadBufferSize;
+  android.media.audio.common.AudioUsage usage = android.media.audio.common.AudioUsage.INVALID;
+  android.media.audio.common.AudioEncapsulationMode encapsulationMode = android.media.audio.common.AudioEncapsulationMode.INVALID;
+  int contentId;
+  int syncId;
 }

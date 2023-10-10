@@ -33,10 +33,9 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioFormatDescription {
+  android.media.audio.common.AudioFormatType type = android.media.audio.common.AudioFormatType.DEFAULT;
+  android.media.audio.common.PcmType pcm = android.media.audio.common.PcmType.DEFAULT;
+  @utf8InCpp String encoding;
 }

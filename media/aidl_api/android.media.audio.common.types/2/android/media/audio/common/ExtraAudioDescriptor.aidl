@@ -33,10 +33,9 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable ExtraAudioDescriptor {
+  android.media.audio.common.AudioStandard standard = android.media.audio.common.AudioStandard.NONE;
+  byte[] audioDescriptor;
+  android.media.audio.common.AudioEncapsulationType encapsulationType = android.media.audio.common.AudioEncapsulationType.NONE;
 }

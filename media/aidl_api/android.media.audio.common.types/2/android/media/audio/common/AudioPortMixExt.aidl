@@ -33,10 +33,11 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioPortMixExt {
+  int handle;
+  android.media.audio.common.AudioPortMixExtUseCase usecase;
+  int maxOpenStreamCount;
+  int maxActiveStreamCount;
+  int recommendedMuteDurationMs;
 }

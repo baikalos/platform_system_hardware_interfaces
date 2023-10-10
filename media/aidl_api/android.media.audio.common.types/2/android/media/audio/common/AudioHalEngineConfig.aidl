@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,15 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
-/* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioHalEngineConfig {
+  int defaultProductStrategyId = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
+  android.media.audio.common.AudioHalProductStrategy[] productStrategies;
+  android.media.audio.common.AudioHalVolumeGroup[] volumeGroups;
+  @nullable android.media.audio.common.AudioHalEngineConfig.CapSpecificConfig capSpecificConfig;
+  @VintfStability
+  parcelable CapSpecificConfig {
+    android.media.audio.common.AudioHalCapCriterion[] criteria;
+    android.media.audio.common.AudioHalCapCriterionType[] criterionTypes;
+  }
 }

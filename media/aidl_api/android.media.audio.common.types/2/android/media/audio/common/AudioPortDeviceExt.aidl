@@ -33,10 +33,12 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioPortDeviceExt {
+  android.media.audio.common.AudioDevice device;
+  int flags;
+  android.media.audio.common.AudioFormatDescription[] encodedFormats;
+  int encapsulationModes;
+  int encapsulationMetadataTypes;
+  const int FLAG_INDEX_DEFAULT_DEVICE = 0;
 }

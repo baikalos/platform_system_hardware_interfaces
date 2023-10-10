@@ -33,10 +33,15 @@
 
 package android.media.audio.common;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum AudioStandard {
-  NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioGain {
+  int mode;
+  android.media.audio.common.AudioChannelLayout channelMask;
+  int minValue;
+  int maxValue;
+  int defaultValue;
+  int stepValue;
+  int minRampMs;
+  int maxRampMs;
+  boolean useForVolume;
 }

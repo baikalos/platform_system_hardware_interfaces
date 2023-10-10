@@ -34,9 +34,8 @@
 package android.media.audio.common;
 /* @hide */
 @Backing(type="int") @VintfStability
-enum AudioStandard {
+enum AudioEncapsulationType {
   NONE = 0,
-  EDID = 1,
-  SADB = 2,
-  VSADB = 3,
+  IEC61937 = 1,
+  PCM = 2,
 }
