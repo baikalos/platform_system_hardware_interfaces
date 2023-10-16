@@ -349,8 +349,7 @@ void SystemSuspend::initAutosuspendLocked() {
             bool success;
             {
                 auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
-                // TODO: Clean up client tokens after soaking the new approach
-                // checkAutosuspendClientsLivenessLocked();
+                checkAutosuspendClientsLivenessLocked();
 
                 autosuspendLock.lock();
                 base::ScopedLockAssertion autosuspendLocked(mAutosuspendLock);

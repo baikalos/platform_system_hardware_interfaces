@@ -247,6 +247,7 @@ WakeLockInfo WakeLockEntryList::createKernelEntry(const std::string& kwlId) cons
                 TEMP_FAILURE_RETRY(openat(wakelockFd, statName.c_str(), O_CLOEXEC | O_RDONLY))};
             if (statFd < 0) {
                 PLOG(ERROR) << "Error opening " << statName << " for " << kwlId;
+                continue;
             }
 
             std::string valStr;

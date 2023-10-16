@@ -49,13 +49,15 @@ check_wakeup_dup() { # wakeup_path
 
 get_unlabeled_wakeup_paths() {
     for path in ${wakeup_paths[@]}; do
+        wakeup_path="$path"
+        has_wakeup_attr "$wakeup_path" && continue
+
         # If there exists a common wakeup parent directory, label that instead
         # of each wakeupN directory
-        wakeup_path="$path"
         dir_path="$(dirname $path)"
         [ "$(basename $dir_path)" == "wakeup" ] && wakeup_path="$dir_path"
-        has_wakeup_attr "$wakeup_path" || check_wakeup_dup $wakeup_path \
-            || unlabeled_paths+=( $wakeup_path )
+
+        check_wakeup_dup $wakeup_path || unlabeled_paths+=( $wakeup_path )
     done
 }
 
