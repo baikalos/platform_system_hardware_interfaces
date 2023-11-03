@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d51bc87_f6b9f7e5",
+        "filename": "media/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-03T17:17:24Z",
+      "side": 1,
+      "message": "Hi Yoel,\n\nDid you figure out why V3 is being created here? In the Android U release, V2 was the last frozen version, an the package is still frozen (line `133`).\n\nAlso if we actually have to use V3 as the latest version, then we need to change the variable on the line `138`.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 79
+      },
+      "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
