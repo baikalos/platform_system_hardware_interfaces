@@ -166,6 +166,30 @@
       },
       "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7446d1b7_a8164af7",
+        "filename": "media/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1903905
+      },
+      "writtenOn": "2023-11-03T18:43:59Z",
+      "side": 1,
+      "message": "Nope, I was mistaken, this indeed only happens against main.  @yoelg@meta.com I think we can close this out, but we should definitely follow up with the aidl patch.",
+      "parentUuid": "2741272a_9dbdbe96",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 79
+      },
+      "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
