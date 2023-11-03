@@ -190,6 +190,30 @@
       },
       "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe2fbf6_f480040f",
+        "filename": "media/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-03T18:51:43Z",
+      "side": 1,
+      "message": "I can repro this behavior and I don\u0027t see an interesting diff between V2 and V3 either. Created b/309135568 for this.\nThanks for bringing it to our attention!",
+      "parentUuid": "7446d1b7_a8164af7",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 79
+      },
+      "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
