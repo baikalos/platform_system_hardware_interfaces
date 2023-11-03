@@ -46,6 +46,30 @@
       },
       "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb57869a_f2728d45",
+        "filename": "media/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 2037182
+      },
+      "writtenOn": "2023-11-03T17:28:13Z",
+      "side": 1,
+      "message": "running `diff -qr 2/ 3/` yield the following:\n```\nFiles 2/android/media/audio/common/AudioChannelLayout.aidl and 3/android/media/audio/common/AudioChannelLayout.aidl differ\nFiles 2/android/media/audio/common/AudioDeviceType.aidl and 3/android/media/audio/common/AudioDeviceType.aidl differ\nFiles 2/android/media/audio/common/AudioHalProductStrategy.aidl and 3/android/media/audio/common/AudioHalProductStrategy.aidl differ\nFiles 2/android/media/audio/common/AudioHalVolumeGroup.aidl and 3/android/media/audio/common/AudioHalVolumeGroup.aidl differ\nFiles 2/android/media/audio/common/AudioLatencyMode.aidl and 3/android/media/audio/common/AudioLatencyMode.aidl differ\nFiles 2/android/media/audio/common/AudioPortDeviceExt.aidl and 3/android/media/audio/common/AudioPortDeviceExt.aidl differ\nFiles 2/.hash and 3/.hash differ\n```",
+      "parentUuid": "8cbd76d6_d70ce162",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 79
+      },
+      "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
