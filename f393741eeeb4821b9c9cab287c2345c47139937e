@@ -22,6 +22,30 @@
       },
       "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cbd76d6_d70ce162",
+        "filename": "media/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 2037182
+      },
+      "writtenOn": "2023-11-03T17:23:23Z",
+      "side": 1,
+      "message": "I do not know why this is created, need to compare the two folders to double check.",
+      "parentUuid": "8d51bc87_f6b9f7e5",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 79
+      },
+      "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
