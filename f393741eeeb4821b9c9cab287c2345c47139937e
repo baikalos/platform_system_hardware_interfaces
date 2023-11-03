@@ -94,6 +94,30 @@
       },
       "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2ceb61_c812ac32",
+        "filename": "media/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-03T18:09:08Z",
+      "side": 1,
+      "message": "Thanks for digging into this, Yoel! It seems that this attribute was added here: https://r.android.com/2565431. I would expect, this shouldn\u0027t really affect the version as this is effectively a change in metadata about the AIDL file. Perhaps, Steven or Devin could comment on this.\n\nWe are actually working on a set of CLs that update this package and unfreeze it: ag/25011602. It is done internal-first due to deep dependencies, we will upstream relevant parts afterwards.\n\nIn any case, I think we plan to actually freeze this package later this year. That means, `V3` should be the current unstable version, not a frozen one, until that time.\n\nI would ask opinion of the Treble team on how it\u0027s better to handle this situation. I don\u0027t know the reason why you are running `m aidl-freeze-api` at this moment.",
+      "parentUuid": "272d688a_d0aaa3de",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 79
+      },
+      "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
