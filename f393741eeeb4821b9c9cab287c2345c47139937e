@@ -118,6 +118,30 @@
       },
       "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5837c9_7dddc615",
+        "filename": "media/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-03T18:33:00Z",
+      "side": 1,
+      "message": "We should be ignoring the @SuppressWarning annotation when checking to see if an interface needs to be frozen.\n\nIs that the only diff Yoel? If so, then that sounds like a bug in AIDL. Can you create one?\n\nEither way, I don\u0027t think we want to be these freezing interfaces on AOSP right now. We don\u0027t expect `m aidl-freeze-api` to be a no-op on AOSP. That should only be the case on a release branch.",
+      "parentUuid": "4e2ceb61_c812ac32",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 79
+      },
+      "revId": "f393741eeeb4821b9c9cab287c2345c47139937e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
