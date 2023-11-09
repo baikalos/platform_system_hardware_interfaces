@@ -20,6 +20,8 @@ package android.media.audio.common;
  * AudioHalCapCriterion is a wrapper for a CriterionType and its default value.
  * This is to be used exclusively for the Configurable Audio Policy (CAP) engine
  * configuration.
+ *
+ * {@hide}
  */
 @JavaDerive(equals=true, toString=true)
 @VintfStability

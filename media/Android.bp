@@ -81,11 +81,13 @@ aidl_interface {
         "aidl/android/media/audio/common/ExtraAudioDescriptor.aidl",
         "aidl/android/media/audio/common/Float.aidl",
         "aidl/android/media/audio/common/Double.aidl",
+        "aidl/android/media/audio/common/HeadTracking.aidl",
         "aidl/android/media/audio/common/Int.aidl",
         "aidl/android/media/audio/common/Long.aidl",
         "aidl/android/media/audio/common/MicrophoneDynamicInfo.aidl",
         "aidl/android/media/audio/common/MicrophoneInfo.aidl",
         "aidl/android/media/audio/common/PcmType.aidl",
+        "aidl/android/media/audio/common/Spatialization.aidl",
         "aidl/android/media/audio/common/Void.aidl",
     ],
     stability: "vintf",
@@ -126,12 +128,12 @@ aidl_interface {
         // IMPORTANT: Update latest_android_media_audio_common_types every time
         // you add the latest frozen version to versions_with_info
     ],
-    frozen: true,
+    frozen: false,
 
 }
 
 // Note: This should always be one version ahead of the last frozen version
-latest_android_media_audio_common_types = "android.media.audio.common.types-V2"
+latest_android_media_audio_common_types = "android.media.audio.common.types-V3"
 
 // Modules that depend on android.media.audio.common.types directly can include
 // the following cc_defaults to avoid explicitly managing dependency versions
@@ -195,6 +197,13 @@ cc_defaults {
     },
 }
 
+aidl_interface_defaults {
+    name: "latest_android_media_audio_common_types_import_interface",
+    imports: [
+        latest_android_media_audio_common_types,
+    ],
+}
+
 aidl_interface {
     name: "android.media.soundtrigger.types",
     vendor_available: true,
@@ -232,7 +241,7 @@ aidl_interface {
         },
     },
     imports: [
-        "android.media.audio.common.types-V2",
+        latest_android_media_audio_common_types,
     ],
     versions_with_info: [
         {
@@ -241,4 +250,73 @@ aidl_interface {
         },
     ],
 
+}
+
+// Note: This should always be one version ahead of the last frozen version
+latest_android_media_soundtrigger_types = "android.media.soundtrigger.types-V2"
+
+cc_defaults {
+    name: "latest_android_media_soundtrigger_types_cpp_shared",
+    shared_libs: [
+        latest_android_media_soundtrigger_types + "-cpp",
+    ],
+}
+
+cc_defaults {
+    name: "latest_android_media_soundtrigger_types_cpp_export_shared",
+    defaults: [
+        "latest_android_media_soundtrigger_types_cpp_shared",
+    ],
+    export_shared_lib_headers: [
+        latest_android_media_soundtrigger_types + "-cpp",
+    ],
+}
+
+cc_defaults {
+    name: "latest_android_media_soundtrigger_types_cpp_static",
+    static_libs: [
+        latest_android_media_soundtrigger_types + "-cpp",
+    ],
+}
+
+cc_defaults {
+    name: "latest_android_media_soundtrigger_types_cpp_export_static",
+    defaults: [
+        "latest_android_media_soundtrigger_types_cpp_static",
+    ],
+    export_static_lib_headers: [
+        latest_android_media_soundtrigger_types + "-cpp",
+    ],
+}
+
+cc_defaults {
+    name: "latest_android_media_soundtrigger_types_ndk_shared",
+    shared_libs: [
+        latest_android_media_soundtrigger_types + "-ndk",
+    ],
+}
+
+cc_defaults {
+    name: "latest_android_media_soundtrigger_types_ndk_static",
+    static_libs: [
+        latest_android_media_soundtrigger_types + "-ndk",
+    ],
+}
+
+cc_defaults {
+    name: "latest_android_media_soundtrigger_types_cpp_target_shared",
+    target: {
+        android: {
+            shared_libs: [
+                latest_android_media_soundtrigger_types + "-cpp",
+            ],
+        },
+    },
+}
+
+aidl_interface_defaults {
+    name: "latest_android_media_soundtrigger_types_import_interface",
+    imports: [
+        latest_android_media_soundtrigger_types,
+    ],
 }

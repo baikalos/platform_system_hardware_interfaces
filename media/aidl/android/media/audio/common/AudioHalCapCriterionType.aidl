@@ -22,6 +22,8 @@ import android.media.audio.common.AudioDeviceType;
  * AudioHalCapCriterionType contains a criterion's possible numerical values
  * and their corresponding string literal representations. This is to be used
  * exclusively for the Configurable Audio Policy (CAP) engine configuration.
+ *
+ * {@hide}
  */
 @JavaDerive(equals=true, toString=true)
 @VintfStability
@@ -42,6 +44,5 @@ parcelable AudioHalCapCriterionType {
      * string literals. These strings must only contain alphanumeric characters,
      * and the client must never attempt to parse them.
      */
-     @utf8InCpp String[] values;
+    @utf8InCpp String[] values;
 }
-

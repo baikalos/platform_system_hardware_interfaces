@@ -26,7 +26,7 @@ package android.media.audio.common;
  */
 @VintfStability
 @Backing(type="int")
-enum AudioOutputFlags{
+enum AudioOutputFlags {
     /**
      * Output must not be altered by the framework, it bypasses software mixers.
      */

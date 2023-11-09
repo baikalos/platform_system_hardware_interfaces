@@ -22,6 +22,8 @@ import android.media.audio.common.AudioProductStrategyType;
 /**
  * AudioHalProductStrategy is a grouping of AudioHalAttributesGroups that will
  * share the same audio routing and volume policy.
+ *
+ * {@hide}
  */
 @SuppressWarnings(value={"redundant-name"}) // for VENDOR_STRATEGY*
 @JavaDerive(equals=true, toString=true)

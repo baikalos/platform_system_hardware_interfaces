@@ -22,6 +22,8 @@ import android.media.audio.common.AudioHalVolumeCurve;
  * AudioHalVolumeGroup is a software volume control concept that associates
  * volume on the UI (where volume index is incremented or decremented by steps
  * of 1) to a set of volume curves.
+ *
+ * {@hide}
  */
 @SuppressWarnings(value={"redundant-name"}) // for *AUDIO_SERVICE
 @JavaDerive(equals=true, toString=true)
