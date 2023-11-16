@@ -16,6 +16,24 @@
       "message": "I understand the intention here, and I can see how it would be a powerful troubleshooting tool.  But my first thought is about whether it makes sense to merge a non-production troubleshooting feature like this into AOSP.  It might be completely okay, or there might be other preferred alternatives (e.g. only deploying locally to internal product builds, vs the entire AOSP universe around the globe); I lack the context to say one way or another.\n\nSo before commenting on the implementation, I\u0027d like to know what the Android-focused reviewers think about the idea.",
       "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2312e71_32b16ed9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949510
+      },
+      "writtenOn": "2023-11-16T01:34:22Z",
+      "side": 1,
+      "message": "Completely fair, I\u0027d argue that it\u0027s really useful in development and testing while benign in production(being opt-in). I hope that it would help other developers out there, not just internally. But like you said, let\u0027s hear other opinions.",
+      "parentUuid": "a9a27015_2222e772",
+      "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
