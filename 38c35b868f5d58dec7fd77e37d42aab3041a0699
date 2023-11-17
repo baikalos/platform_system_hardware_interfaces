@@ -22,6 +22,30 @@
       },
       "revId": "38c35b868f5d58dec7fd77e37d42aab3041a0699",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db69ac5e_adb4be74",
+        "filename": "media/aidl_api/android.media.audio.common.types/current/android/media/audio/common/HeadTracking.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-11-17T16:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e80a65_65d47d00",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "38c35b868f5d58dec7fd77e37d42aab3041a0699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
