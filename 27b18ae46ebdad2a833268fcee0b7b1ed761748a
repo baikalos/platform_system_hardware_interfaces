@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8651cc_c7dfd4f3",
+        "filename": "media/aidl/android/media/audio/common/HeadTracking.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:24:44Z",
+      "side": 1,
+      "message": "I would avoid use of \"we\". I would rephrase as:\n\n\"In the current version, the only format for the sensor data is \"head-to-stage\". Other formats can be added in future versions, hence a union is used.\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 52
+      },
+      "revId": "27b18ae46ebdad2a833268fcee0b7b1ed761748a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f06fa61_f5ddcd43",
+        "filename": "media/aidl/android/media/audio/common/HeadTracking.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:24:44Z",
+      "side": 1,
+      "message": "Fixed size arrays are mapped to `std::array` for C++ and to arrays in Java (https://source.android.com/docs/core/architecture/aidl/aidl-backends#types, footnote 6), thus the code will have access to the size. I don\u0027t think having a constant adds any benefit.",
+      "range": {
+        "startLine": 102,
+        "startChar": 18,
+        "endLine": 102,
+        "endChar": 40
+      },
+      "revId": "27b18ae46ebdad2a833268fcee0b7b1ed761748a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
