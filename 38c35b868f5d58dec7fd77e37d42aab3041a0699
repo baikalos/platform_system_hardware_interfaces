@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e80a65_65d47d00",
+        "filename": "media/aidl_api/android.media.audio.common.types/current/android/media/audio/common/HeadTracking.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-17T03:31:44Z",
+      "side": 1,
+      "message": "does this need an /* @hide */?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "38c35b868f5d58dec7fd77e37d42aab3041a0699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
