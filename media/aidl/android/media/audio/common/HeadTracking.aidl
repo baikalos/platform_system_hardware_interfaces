@@ -54,4 +54,52 @@ parcelable HeadTracking {
          */
         RELATIVE_SCREEN = 3,
     }
+
+    /**
+     * The head tracking sensor connection modes.
+     * {@hide}
+     */
+    @Backing(type="byte")
+    enum ConnectionMode {
+        /**
+         * The audio framework provides pre-processed IMU (Inertial Measurement Unit) data in
+         * head-to-stage vector format to HAL.
+         */
+        FRAMEWORK_PROCESSED = 0,
+
+        /**
+         * The Spatializer effect directly connects to the sensor via the sensor software stack.
+         * The audio framework just controls the enabled state of the sensor.
+         *
+         * Can be used by software implementations which do not want to benefit from the
+         * AOSP libheadtracking IMU data preprocessing.
+         * Can also be used by DSP offloaded Spatializer implementations.
+         */
+        DIRECT_TO_SENSOR_SW = 1,
+
+        /**
+         * The Spatializer effect directly connects to the sensor via hardware tunneling.
+         * The audio framework just controls the enabled state of the sensor.
+         *
+         * Can be used by DSP offloaded Spatializer implementations.
+         */
+        DIRECT_TO_SENSOR_TUNNEL = 2,
+    }
+
+    /**
+     * The Headtracking sensor data.
+     * The only Headtracking data format framework send to HAL Spatializer is head-to-stage for
+     * now.
+     * In case we need other data format in further, the union tag can be used to identify the data
+     * format.
+     * {@hide}
+     */
+    union SensorData {
+        /**
+         * Vector representing of the head-to-stage pose with six floats: first three are a
+         * translation vector, and the last three are a rotation vector.
+         */
+        const int HEAD_TO_STAGE_VEC_SIZE = 6;
+        float[HEAD_TO_STAGE_VEC_SIZE] headToStage = {0f, 0f, 0f, 0f, 0f, 0f};
+    }
 }
