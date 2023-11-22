@@ -32,6 +32,7 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
+/* @hide */
 @Backing(type="int") @VintfStability
 enum AudioFlag {
   NONE = 0x0,

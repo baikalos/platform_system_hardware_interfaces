@@ -19,6 +19,8 @@ package android.media.audio.common;
 /**
  * Structure providing dynamic information on a microphone. This information
  * changes between recording sessions.
+ *
+ * {@hide}
  */
 @JavaDerive(equals=true, toString=true)
 @VintfStability

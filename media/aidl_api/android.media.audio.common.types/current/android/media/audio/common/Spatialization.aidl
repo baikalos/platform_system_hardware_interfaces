@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +34,18 @@
 package android.media.audio.common;
 /* @hide */
 @JavaDerive(equals=true, toString=true) @VintfStability
-parcelable AudioHalAttributesGroup {
-  android.media.audio.common.AudioStreamType streamType = android.media.audio.common.AudioStreamType.INVALID;
-  @utf8InCpp String volumeGroupName;
-  android.media.audio.common.AudioAttributes[] attributes;
+parcelable Spatialization {
+  /* @hide */
+  @Backing(type="byte")
+  enum Level {
+    NONE = 0,
+    MULTICHANNEL = 1,
+    BED_PLUS_OBJECTS = 2,
+  }
+  /* @hide */
+  @Backing(type="byte")
+  enum Mode {
+    BINAURAL = 0,
+    TRANSAURAL = 1,
+  }
 }

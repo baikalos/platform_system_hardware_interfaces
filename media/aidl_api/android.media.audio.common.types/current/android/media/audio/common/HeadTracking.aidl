@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +34,24 @@
 package android.media.audio.common;
 /* @hide */
 @JavaDerive(equals=true, toString=true) @VintfStability
-parcelable AudioHalAttributesGroup {
-  android.media.audio.common.AudioStreamType streamType = android.media.audio.common.AudioStreamType.INVALID;
-  @utf8InCpp String volumeGroupName;
-  android.media.audio.common.AudioAttributes[] attributes;
+parcelable HeadTracking {
+  /* @hide */
+  @Backing(type="byte")
+  enum Mode {
+    OTHER = 0,
+    DISABLED = 1,
+    RELATIVE_WORLD = 2,
+    RELATIVE_SCREEN = 3,
+  }
+  /* @hide */
+  @Backing(type="byte")
+  enum ConnectionMode {
+    FRAMEWORK_PROCESSED = 0,
+    DIRECT_TO_SENSOR_SW = 1,
+    DIRECT_TO_SENSOR_TUNNEL = 2,
+  }
+  /* @hide */
+  union SensorData {
+    float[6] headToStage = {0f, 0f, 0f, 0f, 0f, 0f};
+  }
 }

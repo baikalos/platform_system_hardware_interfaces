@@ -19,6 +19,8 @@ package android.media.audio.common;
 /**
  * Defines the product strategies that are used by the default audio policy
  * engine to determine audio routing.
+ *
+ * {@hide}
  */
 @Backing(type="byte")
 @VintfStability

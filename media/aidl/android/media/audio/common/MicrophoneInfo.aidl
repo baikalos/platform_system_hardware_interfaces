@@ -24,6 +24,8 @@ import android.media.audio.common.AudioDevice;
  * The information presented in this structure indicates the location and
  * orientation of the microphone on the device as well as useful information
  * like frequency response and sensitivity.
+ *
+ * {@hide}
  */
 @JavaDerive(equals=true, toString=true)
 @VintfStability

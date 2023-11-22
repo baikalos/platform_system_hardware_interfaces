@@ -32,6 +32,7 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package android.media.audio.common;
+/* @hide */
 @JavaDerive(equals=true, toString=true) @SuppressWarnings(value={"redundant-name"}) @VintfStability
 parcelable AudioHalProductStrategy {
   int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
