@@ -43,4 +43,15 @@ parcelable HeadTracking {
     RELATIVE_WORLD = 2,
     RELATIVE_SCREEN = 3,
   }
+  /* @hide */
+  @Backing(type="byte")
+  enum ConnectionMode {
+    FRAMEWORK_PROCESSED = 0,
+    DIRECT_TO_SENSOR_SW = 1,
+    DIRECT_TO_SENSOR_TUNNEL = 2,
+  }
+  /* @hide */
+  union SensorData {
+    float[6] headToStage = {0f, 0f, 0f, 0f, 0f, 0f};
+  }
 }
