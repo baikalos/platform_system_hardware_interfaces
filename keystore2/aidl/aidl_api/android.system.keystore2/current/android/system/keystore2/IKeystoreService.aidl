@@ -47,4 +47,5 @@ interface IKeystoreService {
   void ungrant(in android.system.keystore2.KeyDescriptor key, in int granteeUid);
   int getNumberOfEntries(in android.system.keystore2.Domain domain, in long nspace);
   android.system.keystore2.KeyDescriptor[] listEntriesBatched(in android.system.keystore2.Domain domain, in long nspace, in @nullable String startingPastAlias);
+  void useCtsTestKeymintForSecurityLevel(in boolean useTestKeymint);
 }
