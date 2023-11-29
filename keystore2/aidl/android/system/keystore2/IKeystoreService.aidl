@@ -246,4 +246,11 @@ interface IKeystoreService {
     KeyDescriptor[] listEntriesBatched(in Domain domain, in long nspace,
             in @nullable String startingPastAlias);
 
+    /**
+     * Send signal to keystore2 that we are testing and want to use test implementation
+     * of the KeyMintDevice instead of the real one.
+     *
+     * @return None.
+     */
+    void useCtsTestKeymintForSecurityLevel(in boolean useTestKeymint);
 }
