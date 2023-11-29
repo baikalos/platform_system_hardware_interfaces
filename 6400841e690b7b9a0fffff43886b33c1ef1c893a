@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c82435d2_89aa1eea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2023-11-29T18:05:10Z",
+      "side": 1,
+      "message": "Please add the bug number",
+      "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9a27015_2222e772",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -32,6 +49,47 @@
       "side": 1,
       "message": "Completely fair, I\u0027d argue that it\u0027s really useful in development and testing while benign in production(being opt-in). I hope that it would help other developers out there, not just internally. But like you said, let\u0027s hear other opinions.",
       "parentUuid": "a9a27015_2222e772",
+      "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b238e5_7fede50b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2023-11-29T18:05:10Z",
+      "side": 1,
+      "message": "Ok with this as long as it\u0027s opt-in for your usecase. Please note there could be issues with log spam and additional delays in the autosuspend loop for dumping.",
+      "parentUuid": "b2312e71_32b16ed9",
+      "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba06124a_dfabcbef",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2023-11-29T18:05:10Z",
+      "side": 1,
+      "message": "How will this be controlled? Please add the sepolicy changes to go with this new property.\n\nhttps://source.android.com/docs/core/architecture/configuration/add-system-properties",
+      "range": {
+        "startLine": 417,
+        "startChar": 56,
+        "endLine": 417,
+        "endChar": 88
+      },
       "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
