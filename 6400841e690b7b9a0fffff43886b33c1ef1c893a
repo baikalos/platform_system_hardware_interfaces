@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e850cd4e_4734ff00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1949510
+      },
+      "writtenOn": "2023-12-01T18:50:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c82435d2_89aa1eea",
+      "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9a27015_2222e772",
@@ -71,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ceb1446_82328596",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949510
+      },
+      "writtenOn": "2023-12-01T18:50:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "04b238e5_7fede50b",
+      "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba06124a_dfabcbef",
@@ -84,6 +120,30 @@
       "writtenOn": "2023-11-29T18:05:10Z",
       "side": 1,
       "message": "How will this be controlled? Please add the sepolicy changes to go with this new property.\n\nhttps://source.android.com/docs/core/architecture/configuration/add-system-properties",
+      "range": {
+        "startLine": 417,
+        "startChar": 56,
+        "endLine": 417,
+        "endChar": 88
+      },
+      "revId": "6400841e690b7b9a0fffff43886b33c1ef1c893a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75df1461_f911a56d",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1949510
+      },
+      "writtenOn": "2023-12-01T18:50:38Z",
+      "side": 1,
+      "message": "Added sepolicy patch to topic.",
+      "parentUuid": "ba06124a_dfabcbef",
       "range": {
         "startLine": 417,
         "startChar": 56,
