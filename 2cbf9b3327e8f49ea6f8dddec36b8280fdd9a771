@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013f08c9_2841f829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2023-12-01T22:13:18Z",
+      "side": 1,
+      "message": "LGTM, but I defer to Kalesh and Steven for +2.",
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
