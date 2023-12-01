@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0d9c0a_7b626a14",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2023-12-01T19:20:25Z",
+      "side": 1,
+      "message": "I\u0027m curious about the placement here with the autosuspend lock held rather than just before it is re-acquired.  Is there a specific reason that it\u0027s necessary to call this after the lock is taken?\n\nI believe the side effect will be that no native or app/framework wakelocks can be acquired or released while `logKernelWakeLockStats()` is running.  Assuming I\u0027m correct about that, the duration of this function will block all app activity, all framework activity, and all native (e.g. HAL) activity that involves manipulating wakelocks.  And if there are other schedulable threads of equal or higher priority, this thread could just be sitting around waiting to run while blocking all those wakelock users.",
+      "range": {
+        "startLine": 411,
+        "startChar": 12,
+        "endLine": 411,
+        "endChar": 34
+      },
+      "revId": "5667b81e82ecbe31da7dca4726aec98b20f93fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
