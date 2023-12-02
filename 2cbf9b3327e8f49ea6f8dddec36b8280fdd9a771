@@ -16,6 +16,190 @@
       "message": "LGTM, but I defer to Kalesh and Steven for +2.",
       "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a3a302_bc8ed43d",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-02T06:52:08Z",
+      "side": 1,
+      "message": "[[clang::no_destroy]] is getting to be a bit more popular than the NoDesctructor\u003c\u003e stuff - I might consider avoiding the class",
+      "range": {
+        "startLine": 420,
+        "startChar": 11,
+        "endLine": 420,
+        "endChar": 23
+      },
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7983b1c7_fac77af6",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-02T06:52:08Z",
+      "side": 1,
+      "message": "case consistent with area",
+      "range": {
+        "startLine": 420,
+        "startChar": 40,
+        "endLine": 420,
+        "endChar": 54
+      },
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f767c6e_cd542c4b",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-02T06:52:08Z",
+      "side": 1,
+      "message": "declare as late as possible, where used",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 30
+      },
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88eaf302_ba24d6cd",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-02T06:52:08Z",
+      "side": 1,
+      "message": "CachedProperty has no nice GetBoolProperty API like we have in libbase? What\u0027s the reason to use it anyway? I haven\u0027t looked at it in a bit.",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 26
+      },
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e752ed_892157e5",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-02T06:52:08Z",
+      "side": 1,
+      "message": "this creates a copy of this every time, use \u0027const WakeLockInfo\u0026 wake\u0027?",
+      "range": {
+        "startLine": 430,
+        "startChar": 9,
+        "endLine": 430,
+        "endChar": 21
+      },
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009c3b8f_9b78ad10",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-02T06:52:08Z",
+      "side": 1,
+      "message": "nice, learned something new.",
+      "range": {
+        "startLine": 435,
+        "startChar": 18,
+        "endLine": 435,
+        "endChar": 33
+      },
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ff3fc2_5a7eceae",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-02T06:52:08Z",
+      "side": 1,
+      "message": "INFO",
+      "range": {
+        "startLine": 435,
+        "startChar": 8,
+        "endLine": 435,
+        "endChar": 13
+      },
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f521164_fe83fa30",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-02T06:52:08Z",
+      "side": 1,
+      "message": "this is not needed",
+      "range": {
+        "startLine": 435,
+        "startChar": 36,
+        "endLine": 435,
+        "endChar": 46
+      },
+      "revId": "2cbf9b3327e8f49ea6f8dddec36b8280fdd9a771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
