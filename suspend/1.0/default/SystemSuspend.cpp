@@ -351,13 +351,18 @@ void SystemSuspend::initAutosuspendLocked() {
                 auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
                 checkAutosuspendClientsLivenessLocked();
 
-                autosuspendLock.lock();
-                base::ScopedLockAssertion autosuspendLocked(mAutosuspendLock);
-
                 if (!hasAliveAutosuspendTokenLocked()) {
                     disableAutosuspendLocked();
                     continue;
                 }
+
+                // Sync all filesystems, before taking the autosuspend lock.
+                // We must always perform the sync since checking the counter without
+                // the lock held is inherently racy.
+                sync();
+
+                autosuspendLock.lock();
+                base::ScopedLockAssertion autosuspendLocked(mAutosuspendLock);
 
                 // Check suspend counter hasn't increased while checking client liveness
                 if (mSuspendCounter > 0) {
