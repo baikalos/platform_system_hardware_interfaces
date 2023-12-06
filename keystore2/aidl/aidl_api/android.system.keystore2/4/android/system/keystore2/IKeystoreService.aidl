@@ -1,11 +1,11 @@
 /*
- * Copyright 2020, The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -33,26 +33,18 @@
 
 package android.system.keystore2;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum ResponseCode {
-  LOCKED = 2,
-  UNINITIALIZED = 3,
-  SYSTEM_ERROR = 4,
-  PERMISSION_DENIED = 6,
-  KEY_NOT_FOUND = 7,
-  VALUE_CORRUPTED = 8,
-  KEY_PERMANENTLY_INVALIDATED = 17,
-  BACKEND_BUSY = 18,
-  OPERATION_BUSY = 19,
-  INVALID_ARGUMENT = 20,
-  TOO_MUCH_DATA = 21,
+@VintfStability
+interface IKeystoreService {
+  android.system.keystore2.IKeystoreSecurityLevel getSecurityLevel(in android.hardware.security.keymint.SecurityLevel securityLevel);
+  android.system.keystore2.KeyEntryResponse getKeyEntry(in android.system.keystore2.KeyDescriptor key);
+  void updateSubcomponent(in android.system.keystore2.KeyDescriptor key, in @nullable byte[] publicCert, in @nullable byte[] certificateChain);
   /**
-   * @deprecated replaced by other OUT_OF_KEYS_* errors below
+   * @deprecated use listEntriesBatched instead.
    */
-  OUT_OF_KEYS = 22,
-  OUT_OF_KEYS_REQUIRES_SYSTEM_UPGRADE = 23,
-  OUT_OF_KEYS_PENDING_INTERNET_CONNECTIVITY = 24,
-  OUT_OF_KEYS_TRANSIENT_ERROR = 25,
-  OUT_OF_KEYS_PERMANENT_ERROR = 26,
-  GET_ATTESTATION_APPLICATION_ID_FAILED = 27,
+  android.system.keystore2.KeyDescriptor[] listEntries(in android.system.keystore2.Domain domain, in long nspace);
+  void deleteKey(in android.system.keystore2.KeyDescriptor key);
+  android.system.keystore2.KeyDescriptor grant(in android.system.keystore2.KeyDescriptor key, in int granteeUid, in int accessVector);
+  void ungrant(in android.system.keystore2.KeyDescriptor key, in int granteeUid);
+  int getNumberOfEntries(in android.system.keystore2.Domain domain, in long nspace);
+  android.system.keystore2.KeyDescriptor[] listEntriesBatched(in android.system.keystore2.Domain domain, in long nspace, in @nullable String startingPastAlias);
 }

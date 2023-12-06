@@ -1,11 +1,11 @@
 /*
- * Copyright 2020, The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -33,26 +33,13 @@
 
 package android.system.keystore2;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum ResponseCode {
-  LOCKED = 2,
-  UNINITIALIZED = 3,
-  SYSTEM_ERROR = 4,
-  PERMISSION_DENIED = 6,
-  KEY_NOT_FOUND = 7,
-  VALUE_CORRUPTED = 8,
-  KEY_PERMANENTLY_INVALIDATED = 17,
-  BACKEND_BUSY = 18,
-  OPERATION_BUSY = 19,
-  INVALID_ARGUMENT = 20,
-  TOO_MUCH_DATA = 21,
-  /**
-   * @deprecated replaced by other OUT_OF_KEYS_* errors below
-   */
-  OUT_OF_KEYS = 22,
-  OUT_OF_KEYS_REQUIRES_SYSTEM_UPGRADE = 23,
-  OUT_OF_KEYS_PENDING_INTERNET_CONNECTIVITY = 24,
-  OUT_OF_KEYS_TRANSIENT_ERROR = 25,
-  OUT_OF_KEYS_PERMANENT_ERROR = 26,
-  GET_ATTESTATION_APPLICATION_ID_FAILED = 27,
+@SensitiveData @VintfStability
+interface IKeystoreSecurityLevel {
+  android.system.keystore2.CreateOperationResponse createOperation(in android.system.keystore2.KeyDescriptor key, in android.hardware.security.keymint.KeyParameter[] operationParameters, in boolean forced);
+  android.system.keystore2.KeyMetadata generateKey(in android.system.keystore2.KeyDescriptor key, in @nullable android.system.keystore2.KeyDescriptor attestationKey, in android.hardware.security.keymint.KeyParameter[] params, in int flags, in byte[] entropy);
+  android.system.keystore2.KeyMetadata importKey(in android.system.keystore2.KeyDescriptor key, in @nullable android.system.keystore2.KeyDescriptor attestationKey, in android.hardware.security.keymint.KeyParameter[] params, in int flags, in byte[] keyData);
+  android.system.keystore2.KeyMetadata importWrappedKey(in android.system.keystore2.KeyDescriptor key, in android.system.keystore2.KeyDescriptor wrappingKey, in @nullable byte[] maskingKey, in android.hardware.security.keymint.KeyParameter[] params, in android.system.keystore2.AuthenticatorSpec[] authenticators);
+  android.system.keystore2.EphemeralStorageKeyResponse convertStorageKeyToEphemeral(in android.system.keystore2.KeyDescriptor storageKey);
+  void deleteKey(in android.system.keystore2.KeyDescriptor key);
+  const int KEY_FLAG_AUTH_BOUND_WITHOUT_CRYPTOGRAPHIC_LSKF_BINDING = 0x1;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020, The Android Open Source Project
+ * Copyright 2021, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,26 +33,8 @@
 
 package android.system.keystore2;
 /* @hide */
-@Backing(type="int") @VintfStability
-enum ResponseCode {
-  LOCKED = 2,
-  UNINITIALIZED = 3,
-  SYSTEM_ERROR = 4,
-  PERMISSION_DENIED = 6,
-  KEY_NOT_FOUND = 7,
-  VALUE_CORRUPTED = 8,
-  KEY_PERMANENTLY_INVALIDATED = 17,
-  BACKEND_BUSY = 18,
-  OPERATION_BUSY = 19,
-  INVALID_ARGUMENT = 20,
-  TOO_MUCH_DATA = 21,
-  /**
-   * @deprecated replaced by other OUT_OF_KEYS_* errors below
-   */
-  OUT_OF_KEYS = 22,
-  OUT_OF_KEYS_REQUIRES_SYSTEM_UPGRADE = 23,
-  OUT_OF_KEYS_PENDING_INTERNET_CONNECTIVITY = 24,
-  OUT_OF_KEYS_TRANSIENT_ERROR = 25,
-  OUT_OF_KEYS_PERMANENT_ERROR = 26,
-  GET_ATTESTATION_APPLICATION_ID_FAILED = 27,
+@VintfStability
+parcelable EphemeralStorageKeyResponse {
+  byte[] ephemeralKey;
+  @nullable byte[] upgradedBlob;
 }
