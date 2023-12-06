@@ -129,4 +129,13 @@ enum ResponseCode {
      */
     OUT_OF_KEYS_PERMANENT_ERROR = 26,
 
+    /**
+     * Indicates that this device will never be able to provision attestation keys using
+     * the remote provsisioning server. This may be due to multiple causes, such as the
+     * device is not registered with the remote provisioning backend or the device has
+     * been permanently revoked. Clients who receive this error should not attempt to
+     * retry key creation.
+     */
+    SYSTEM_ERROR_RETRYABLE = 27,
+
 }
