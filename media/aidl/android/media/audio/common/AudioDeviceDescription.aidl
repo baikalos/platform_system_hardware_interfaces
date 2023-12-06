@@ -68,6 +68,9 @@ parcelable AudioDeviceDescription {
      */
     const @utf8InCpp String CONNECTION_BT_SCO = "bt-sco";
     /**
+     * @deprecated Bus devices are attached, and must be represented using
+     *             `{IN|OUT}_BUS` type + empty connection.
+     *
      * Bus connection. Mostly used in automotive scenarios.
      */
     const @utf8InCpp String CONNECTION_BUS = "bus";
