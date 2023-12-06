@@ -129,4 +129,12 @@ enum ResponseCode {
      */
     OUT_OF_KEYS_PERMANENT_ERROR = 26,
 
+    /**
+     * Indicates that the device had an error when getting the attestation application
+     * id. This is a temporary error that can be retried. This can happen if there is a 
+     * bad build or a problem with the system. The attestation can be retried as this
+     * can be seen as a warning.
+     */
+    GET_ATTESTATION_APPLICATION_ID_FAILED = 27,
+
 }
