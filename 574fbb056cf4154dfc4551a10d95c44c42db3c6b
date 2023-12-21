@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37af5c0_deb63366",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2023-12-21T00:25:40Z",
+      "side": 1,
+      "message": "There\u0027s an even easier fix -- just name your i2c devices in the kernel driver using `init_name` and that will be reflected in the wakesource name:",
+      "revId": "574fbb056cf4154dfc4551a10d95c44c42db3c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
