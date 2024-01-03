@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf768fb_5ea0e433",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-03T18:17:18Z",
+      "side": 1,
+      "message": "the presubmit failure this change is seeing is due to keystore2 not actually upgrading to V4 in presubmit.\n\nIn order to update this, it seems you should update the keystore2_use_latest_aidl_* entries in system/security/keystore2/aidl/Android.bp. That will cause keystore2 to be actually served and used on Cuttlefish, which is what hal_implementation_test is trying to test.\n\nThe frameworks/base change here only updates the client code.",
+      "revId": "cda60ed64fd751d11d8e4bd329baad8c7c388503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8bcc7b_9df1f20e",
+        "filename": "keystore2/aidl/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-03T18:17:18Z",
+      "side": 1,
+      "message": "first thing first - I would recommend you avoid freezing this interface. You can delete android.system.keystore2/4/ directory and mark below as \u0027frozen: false\u0027 instead of \u0027frozen: true\u0027.\n\nWe will freeze this interface for you soon. This should not affect any other file or any other aspect of the change, except on the \u0027-next\u0027 configuration, V4 APIs will pretend to be V3 according to the rules described at :\nhttps://source.android.com/docs/core/architecture/aidl/stable-aidl#flag-based-development",
+      "range": {
+        "startLine": 55,
+        "startChar": 23,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "cda60ed64fd751d11d8e4bd329baad8c7c388503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c270d2e_09812231",
+        "filename": "keystore2/aidl/aidl_api/android.system.keystore2/current/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-03T18:17:18Z",
+      "side": 1,
+      "message": "nice, this is really specific - it\u0027s not distinguishable before?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 45
+      },
+      "revId": "cda60ed64fd751d11d8e4bd329baad8c7c388503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
