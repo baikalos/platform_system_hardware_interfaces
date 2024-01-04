@@ -50,6 +50,46 @@
       "message": "note - may conflict with https://android-review.git.corp.google.com/c/platform/system/security/+/2894132",
       "revId": "01c01b7aa366fcfe301562187e54def332329ccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7124326e_47bbc0ff",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-01-04T07:33:14Z",
+      "side": 1,
+      "message": "pre-existing typo",
+      "range": {
+        "startLine": 125,
+        "startChar": 18,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "01c01b7aa366fcfe301562187e54def332329ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e1075b_971faaf9",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-01-04T07:33:14Z",
+      "side": 1,
+      "message": "Text is copy-pasted from above, need correct description.",
+      "revId": "01c01b7aa366fcfe301562187e54def332329ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
