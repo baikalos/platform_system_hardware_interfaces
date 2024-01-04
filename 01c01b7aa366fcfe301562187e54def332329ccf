@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a058968e_b53170d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-04T01:17:46Z",
+      "side": 1,
+      "message": "I\u0027m fine with it. FYI - Devin for late addition of a single enum - doesn\u0027t hurt",
+      "revId": "01c01b7aa366fcfe301562187e54def332329ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
