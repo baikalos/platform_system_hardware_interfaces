@@ -90,6 +90,29 @@
       "message": "Text is copy-pasted from above, need correct description.",
       "revId": "01c01b7aa366fcfe301562187e54def332329ccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297b4f85_a640d5a3",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1043663
+      },
+      "writtenOn": "2024-01-04T13:30:06Z",
+      "side": 1,
+      "message": "The comment doesn\u0027t match the error code name.  Getting attestation application ID is a matter of requesting data from PackageManager that it must have, so any error getting it is a transient failure.  The comment describes error conditions which are probably not transient.",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 47
+      },
+      "revId": "01c01b7aa366fcfe301562187e54def332329ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
