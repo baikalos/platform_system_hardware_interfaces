@@ -33,6 +33,23 @@
       "message": "+ Shawn/David for keystore2 familiarity",
       "revId": "01c01b7aa366fcfe301562187e54def332329ccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c90a8be_145986bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-04T01:56:27Z",
+      "side": 1,
+      "message": "note - may conflict with https://android-review.git.corp.google.com/c/platform/system/security/+/2894132",
+      "revId": "01c01b7aa366fcfe301562187e54def332329ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
