@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "636e4923_6717df84",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1857230
+      },
+      "writtenOn": "2024-01-11T16:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff35d44_badfa3a9",
+      "range": {
+        "startLine": 134,
+        "startChar": 87,
+        "endLine": 134,
+        "endChar": 88
+      },
+      "revId": "c32f732ec35f45a1a5afe003706c18bf3f756fe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03521d9e_a076b45e",
@@ -72,6 +96,30 @@
       "writtenOn": "2024-01-10T13:16:12Z",
       "side": 1,
       "message": "More accurate cause: \"a failure to make a binder call to the package manager from Keystore service\".",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "c32f732ec35f45a1a5afe003706c18bf3f756fe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "463273bb_9b51d49b",
+        "filename": "keystore2/aidl/android/system/keystore2/ResponseCode.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1857230
+      },
+      "writtenOn": "2024-01-11T16:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03521d9e_a076b45e",
       "range": {
         "startLine": 135,
         "startChar": 7,
