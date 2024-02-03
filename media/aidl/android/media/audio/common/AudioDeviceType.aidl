@@ -100,6 +100,19 @@ enum AudioDeviceType {
      */
     IN_DOCK = 14,
     /**
+     * An alias for "bus" devices. Must have an empty connection type.
+     *
+     * Note: Since bus devices are non-removable, they need to be represented by
+     * a dedicated type with an empty connection type. However, there has been a
+     * historic accident of defining them as an `{IN|OUT}_DEVICE` type with
+     * `CONNECTION_BUS`. It was fixed by reserving the pair of `{IN|OUT}_DEVICE`
+     * type + empty connection for bus devices. This alias is added for clarity.
+     *
+     * Important: since `{IN|OUT}_BUS` is an alias, always check the connection
+     * type, it must be empty.
+     */
+    IN_BUS = IN_DEVICE,
+    /**
      * The "default" device is used when the client does not have any
      * preference for a particular device.
      */
@@ -173,4 +186,10 @@ enum AudioDeviceType {
      * Output to a broadcast group.
      */
     OUT_BROADCAST = 146,
+    /**
+     * An alias for "bus" devices. Must have an empty connection type.
+     *
+     * See the note on `IN_BUS` for details.
+     */
+    OUT_BUS = OUT_DEVICE,
 }

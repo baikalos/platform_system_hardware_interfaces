@@ -122,11 +122,19 @@ enum ResponseCode {
 
     /**
      * Indicates that this device will never be able to provision attestation keys using
-     * the remote provsisioning server. This may be due to multiple causes, such as the
+     * the remote provisioning server. This may be due to multiple causes, such as the
      * device is not registered with the remote provisioning backend or the device has
      * been permanently revoked. Clients who receive this error should not attempt to
      * retry key creation.
      */
     OUT_OF_KEYS_PERMANENT_ERROR = 26,
+
+    /**
+     * Indicates that the device had an error when getting the attestation application
+     * id. This is a temporary error that can be retried. This can happen if there is a
+     * failure to make a binder call to the package manager from Keystore service.
+     * The attestation can be retried as this can be seen as a warning.
+     */
+    GET_ATTESTATION_APPLICATION_ID_FAILED = 27,
 
 }
