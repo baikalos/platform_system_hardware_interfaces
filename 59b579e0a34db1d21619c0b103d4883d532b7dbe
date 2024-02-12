@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "434c6227_d7a689e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3293905
+      },
+      "writtenOn": "2024-02-12T06:55:18Z",
+      "side": 1,
+      "message": "387576: Add .clang-format to hidl-gen. | https://android-review.googlesource.com/c/platform/system/hardware/interfaces/+/387576",
+      "revId": "59b579e0a34db1d21619c0b103d4883d532b7dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
