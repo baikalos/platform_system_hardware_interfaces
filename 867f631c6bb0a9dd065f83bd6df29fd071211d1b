@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96951e4_f82d3265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1467989
+      },
+      "writtenOn": "2024-02-12T21:39:27Z",
+      "side": 1,
+      "message": "+ for WifiKeystore test.",
+      "revId": "867f631c6bb0a9dd065f83bd6df29fd071211d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
