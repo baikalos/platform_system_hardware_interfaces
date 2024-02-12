@@ -16,6 +16,23 @@
       "message": "https://cs.android.com/android/_/android/platform/system/hardware/interfaces/+/6ba3483656fc91e42ff511d8998b756c218a1096:PREUPLOAD.cfg",
       "revId": "0376b8a9bb5e12fb6a4c3b67833a4f9e79d6536d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70cccfcb_d75baf48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3293905
+      },
+      "writtenOn": "2024-02-12T08:23:19Z",
+      "side": 1,
+      "message": "1144704: TEST_MAPPING +\u003d hidl_implementation_test | https://android-review.googlesource.com/c/platform/system/hardware/interfaces/+/1144704",
+      "revId": "0376b8a9bb5e12fb6a4c3b67833a4f9e79d6536d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
