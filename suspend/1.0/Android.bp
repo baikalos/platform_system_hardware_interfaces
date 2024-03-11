@@ -7,9 +7,6 @@ package {
 hidl_interface {
     name: "android.system.suspend@1.0",
     root: "android.system",
-    vndk: {
-        enabled: true,
-    },
     srcs: [
         "types.hal",
         "ISystemSuspend.hal",
