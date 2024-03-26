@@ -38,4 +38,6 @@ parcelable AudioHalCapCriterionType {
   @utf8InCpp String name;
   boolean isInclusive;
   @utf8InCpp String[] values;
+  @nullable long[] numericalValue;
+  @nullable String[] androidMappedValue;
 }

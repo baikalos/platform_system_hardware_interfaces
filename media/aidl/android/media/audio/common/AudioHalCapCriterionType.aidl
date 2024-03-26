@@ -45,4 +45,8 @@ parcelable AudioHalCapCriterionType {
      * and the client must never attempt to parse them.
      */
     @utf8InCpp String[] values;
+
+    @nullable long[] numericalValue;
+
+    @nullable String[] androidMappedValue;
 }
