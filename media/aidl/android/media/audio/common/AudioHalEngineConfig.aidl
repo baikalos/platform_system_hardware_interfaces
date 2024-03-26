@@ -18,6 +18,7 @@ package android.media.audio.common;
 
 import android.media.audio.common.AudioHalCapCriterion;
 import android.media.audio.common.AudioHalCapCriterionType;
+import android.media.audio.common.AudioHalCapDomain;
 import android.media.audio.common.AudioHalProductStrategy;
 import android.media.audio.common.AudioHalVolumeGroup;
 import android.media.audio.common.AudioProductStrategyType;
@@ -57,6 +58,13 @@ parcelable AudioHalEngineConfig {
     parcelable CapSpecificConfig {
         AudioHalCapCriterion[] criteria;
         AudioHalCapCriterionType[] criterionTypes;
+        /**
+         * AudioHalCapDomains defines the Configurable Audio Policy (CAP) engine configurable
+         * domains that are used by the parameter-framework to define a dynamic management of
+         * policy engine parameters (aka defining the values of the policy parameters according to
+         * the values of provided criteria).
+         */
+        @nullable AudioHalCapDomain[] domains;
     }
     /**
      * Specifies the configuration items that are specific to the Configurable
