@@ -69,6 +69,30 @@
       },
       "revId": "2ed1e2a71b80d7602a31b9048072a56639d802bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee01fb8d_4f9d51c4",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-27T23:03:46Z",
+      "side": 1,
+      "message": "We usually call these \"framework hals\" or \"system hals\". The system is providing this HAL for vendor processes to use (and maybe also system processes).\n\nWe can\u0027t stop providing it to vendor because they might have software that relies on it in upgrading devices. \n\nThe `max-level\u003d\"6\"` in [the manifest file](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/hardware/interfaces/suspend/1.0/default/android.system.suspend-service.xml) means that we stop serving this HIDL interface (it fails to register here) on devices targeting VINTF level 7+ (Android T+). Once we stop supporting upgrades from devices that launched before Android T, then we can remove it. We will create a bug for it at that time.",
+      "parentUuid": "88c78642_5c6ed08a",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 5
+      },
+      "revId": "2ed1e2a71b80d7602a31b9048072a56639d802bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
