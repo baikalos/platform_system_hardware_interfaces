@@ -144,7 +144,11 @@ int main() {
     }
 
     // Create non-HW binder threadpool for SuspendControlService.
+    constexpr size_t kMaxLibbinderThreads = 15;
     sp<android::ProcessState> ps{android::ProcessState::self()};
+    if (ps->setThreadPoolMaxThreadCount(kMaxLibbinderThreads) != android::OK) {
+        LOG(ERROR) << "Unable to set max thread count";
+    }
     ps->startThreadPool();
 
     sp<SystemSuspend> suspend = new SystemSuspend(
@@ -166,8 +170,11 @@ int main() {
     if (android::OK != hidlStatus) {
         LOG(INFO) << "system-suspend HIDL hal not supported, use the AIDL suspend hal for "
                      "requesting wakelocks";
+        // join the libbinder threadpool for the AIDL service instead
+        android::IPCThreadState::self()->joinThreadPool(true /* isMain */);
+        std::abort(); /* unreachable */
+    } else {
+        joinRpcThreadpool();
+        std::abort(); /* unreachable */
     }
-
-    joinRpcThreadpool();
-    std::abort(); /* unreachable */
 }
