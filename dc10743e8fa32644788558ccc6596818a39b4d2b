@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4267eb_d8dbc0ee",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-29T20:05:20Z",
+      "side": 1,
+      "message": "Please add comments explaining what these are.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828d574a_a9b82b54",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-29T20:05:20Z",
+      "side": 1,
+      "message": "Please add documentation.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f17848b_515c2110",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomains.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-29T20:05:20Z",
+      "side": 1,
+      "message": "Please add documentation.",
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8786f8ef_abf9e0c4",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-29T20:05:20Z",
+      "side": 1,
+      "message": "This looks relaxed and will cause problems. First, if `value` used to represent numbers, etc, it should not be a string as there is a possibility for an attack on the parser. Second, just having arbitrary \"parameters\" does not work with interface versioning. Can the list of parameters be defined explicitly like we do for Effects for example?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee2f263_051c6a39",
+        "filename": "media/aidl/android/media/audio/common/AudioHalEngineConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-29T20:05:20Z",
+      "side": 1,
+      "message": "Is there a benefit from defining a parcelable for the array of domains?",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
