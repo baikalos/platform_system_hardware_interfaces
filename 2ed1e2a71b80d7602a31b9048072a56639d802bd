@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f362bf7e_6053027f",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T00:33:54Z",
+      "side": 1,
+      "message": "This is kind of confusing now. WDYT:\n- set this as false\n- put conditional logic in configureRpcThreadpool instead (return if HIDL is not supported)\n- unconditionally join the AIDL thread\n\nTwo other reasons:\n- it is a device difference (however small, especially relative to not having HIDL) that the main thread is HIDL sometimes and AIDL other times. Sometimes, thread specific data can break this.\n- with the current logic, sometimes this process will have 15 threads and sometimes 16 in the AIDL threadpool, depending if the other one gets added.",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 55
+      },
+      "revId": "2ed1e2a71b80d7602a31b9048072a56639d802bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f01568de_d99ec452",
         "filename": "suspend/1.0/default/main.cpp",
         "patchSetId": 1
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "I think 8 maybe sufficient. These shouldn\u0027t be long operations unless it\u0027s blocked",
       "parentUuid": "f01568de_d99ec452",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "2ed1e2a71b80d7602a31b9048072a56639d802bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c32783d4_253ec2cb",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T00:33:54Z",
+      "side": 1,
+      "message": "Another thing though - these are lazy and this is a broad problem. I definitely wouldn\u0027t reduce it in the same change because it could cause a performance issue in extreme cases, and we don\u0027t have a good way to test this. If we have the API to dynamically stop threads fixed in the kernel binder driver, we could fix this across Android without having to worry about corner cases for this.",
+      "parentUuid": "7330648e_81a8a073",
       "range": {
         "startLine": 147,
         "startChar": 4,
