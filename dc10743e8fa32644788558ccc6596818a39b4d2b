@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0885b8fc_2d2f6b9a",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-04T12:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd4267eb_d8dbc0ee",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "828d574a_a9b82b54",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba03860_976c12a9",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-04T12:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "828d574a_a9b82b54",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f17848b_515c2110",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-03-29T20:05:20Z",
       "side": 1,
       "message": "Please add documentation.",
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a3ac4d_bb94c38d",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomains.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-04T12:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f17848b_515c2110",
       "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -113,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75acb4c9_422bca80",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-04T12:03:04Z",
+      "side": 1,
+      "message": "but string value is also one of acceptable type of value. The value list is however not know.",
+      "parentUuid": "a1b90f51_bd0ae689",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aee2f263_051c6a39",
         "filename": "media/aidl/android/media/audio/common/AudioHalEngineConfig.aidl",
         "patchSetId": 1
@@ -124,6 +214,30 @@
       "writtenOn": "2024-03-29T20:05:20Z",
       "side": 1,
       "message": "Is there a benefit from defining a parcelable for the array of domains?",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2724ce_5f1919c8",
+        "filename": "media/aidl/android/media/audio/common/AudioHalEngineConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-04T12:03:04Z",
+      "side": 1,
+      "message": "not really, it was to prevent managing an optional vect of optional domain.",
+      "parentUuid": "aee2f263_051c6a39",
       "range": {
         "startLine": 61,
         "startChar": 18,
