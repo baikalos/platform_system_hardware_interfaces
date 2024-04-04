@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "888e13d3_954fd6c7",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-04-04T22:58:41Z",
+      "side": 1,
+      "message": "Got it!\n\nHow about this? Unconditionally join AIDL, but only configure the hwbinder threadpool if the HIDL service is declared?",
+      "parentUuid": "f362bf7e_6053027f",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 55
+      },
+      "revId": "2ed1e2a71b80d7602a31b9048072a56639d802bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f01568de_d99ec452",
         "filename": "suspend/1.0/default/main.cpp",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Another thing though - these are lazy and this is a broad problem. I definitely wouldn\u0027t reduce it in the same change because it could cause a performance issue in extreme cases, and we don\u0027t have a good way to test this. If we have the API to dynamically stop threads fixed in the kernel binder driver, we could fix this across Android without having to worry about corner cases for this.",
       "parentUuid": "7330648e_81a8a073",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "2ed1e2a71b80d7602a31b9048072a56639d802bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8778d10f_82062418",
+        "filename": "suspend/1.0/default/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-04-04T22:58:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c32783d4_253ec2cb",
       "range": {
         "startLine": 147,
         "startChar": 4,
