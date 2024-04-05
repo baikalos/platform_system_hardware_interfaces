@@ -201,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e9d5e7_73719453",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-05T08:26:52Z",
+      "side": 1,
+      "message": "partial done: for param list. but for value, as string is part of them, quite stuck",
+      "parentUuid": "75acb4c9_422bca80",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "dc10743e8fa32644788558ccc6596818a39b4d2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aee2f263_051c6a39",
