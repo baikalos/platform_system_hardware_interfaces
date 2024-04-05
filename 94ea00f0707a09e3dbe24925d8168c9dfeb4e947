@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "495d67c7_b788b9ef",
+        "filename": "media/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-04-05T13:47:27Z",
+      "side": 1,
+      "message": "move before AudioHalCapCriterion to preserve alphabetical order",
+      "range": {
+        "startLine": 52,
+        "startChar": 41,
+        "endLine": 52,
+        "endChar": 65
+      },
+      "revId": "94ea00f0707a09e3dbe24925d8168c9dfeb4e947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e92c56_5b68c8c8",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-04-05T13:47:27Z",
+      "side": 1,
+      "message": "more than",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "94ea00f0707a09e3dbe24925d8168c9dfeb4e947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55267238_3c3124ba",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-04-05T13:47:27Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"paramters\" -- should it be \"parameters\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"paramters\" -- should it be \"parameters\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "94ea00f0707a09e3dbe24925d8168c9dfeb4e947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
