@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6641cb64_2b5f58f1",
+        "filename": "media/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-12T16:48:24Z",
+      "side": 1,
+      "message": "We need to switch `frozen` to `false` and update `latest_android_media_audio_common_types` to `V4`. Perhaps, it\u0027s better to do this as a separate change so that any side effects from it can be solved first.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 79
+      },
+      "revId": "f7acb2d02c8634af11387b8a037c01f796f54d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "757b9f2f_3b4c731a",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
         "patchSetId": 7
