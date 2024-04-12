@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91d999a_b21674ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-12T07:13:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "062bcc31_1647f912",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "f42f78ca7a6b877d536c8c247d01fa14eea7194d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ae65bb4_151631f0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-08T23:46:06Z",
       "side": 1,
       "message": "I envision a question from AIDL reviewer: how these rules are specified? Are they just names of some entities, or there is some syntax that rules must follow, and where is it defined in the latter case?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "f42f78ca7a6b877d536c8c247d01fa14eea7194d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1439b890_99ae2683",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-12T07:13:23Z",
+      "side": 1,
+      "message": "Rules have a specific syntax, and all criteria involved in the rule must be the one provisionned by the audio_policy_engine_criteria / criterion_types.\nWill update the comment and put an example",
+      "parentUuid": "5ae65bb4_151631f0",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2567e4c_4f98e31a",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-12T07:13:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ecd1a7_b5d87361",
+      "range": {
+        "startLine": 55,
+        "startChar": 54,
+        "endLine": 55,
+        "endChar": 61
+      },
+      "revId": "f42f78ca7a6b877d536c8c247d01fa14eea7194d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9626535c_ed718a82",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-04-08T23:46:06Z",
       "side": 1,
       "message": "settings?",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "f42f78ca7a6b877d536c8c247d01fa14eea7194d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad87304c_14c93146",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-12T07:13:23Z",
+      "side": 1,
+      "message": "vyes",
+      "parentUuid": "9626535c_ed718a82",
       "range": {
         "startLine": 45,
         "startChar": 27,
