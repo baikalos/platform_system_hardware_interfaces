@@ -33,9 +33,25 @@
 
 package android.media.audio.common;
 /* @hide */
-@JavaDerive(equals=true, toString=true) @VintfStability
+@JavaDerive(equals=true, toString=true) @SuppressWarnings(value={"redundant-name"}) @VintfStability
 parcelable AudioHalCapCriterionType {
   @utf8InCpp String name;
   boolean isInclusive;
   @utf8InCpp String[] values;
+  @nullable long[] numericalValue;
+  @nullable android.media.audio.common.AudioDeviceDescription[] androidMappedValue;
+  const @utf8InCpp String SUFFIX = "Type";
+  const @utf8InCpp String AVAILABLE_INPUT_DEVICES_TYPE = (android.media.audio.common.AudioHalCapCriterion.AVAILABLE_INPUT_DEVICES + SUFFIX) /* "AvailableInputDevicesType" */;
+  const @utf8InCpp String AVAILABLE_OUTPUT_DEVICES_TYPE = (android.media.audio.common.AudioHalCapCriterion.AVAILABLE_OUTPUT_DEVICES + SUFFIX) /* "AvailableOutputDevicesType" */;
+  const @utf8InCpp String AVAILABLE_INPUT_DEVICES_ADDRESSES_TYPE = (android.media.audio.common.AudioHalCapCriterion.AVAILABLE_INPUT_DEVICES_ADDRESSES + SUFFIX) /* "AvailableInputDevicesAddressesType" */;
+  const @utf8InCpp String AVAILABLE_OUTPUT_DEVICES_ADDRESSES_TYPE = (android.media.audio.common.AudioHalCapCriterion.AVAILABLE_OUTPUT_DEVICES_ADDRESSES + SUFFIX) /* "AvailableOutputDevicesAddressesType" */;
+  const @utf8InCpp String TELEPHONY_MODE_TYPE = (android.media.audio.common.AudioHalCapCriterion.TELEPHONY_MODE + SUFFIX) /* "TelephonyModeType" */;
+  const @utf8InCpp String FORCE_USE_FOR_COMMUNICATION_TYPE = (android.media.audio.common.AudioHalCapCriterion.FORCE_USE_FOR_COMMUNICATION + SUFFIX) /* "ForceUseForCommunicationType" */;
+  const @utf8InCpp String FORCE_USE_FOR_MEDIA_TYPE = (android.media.audio.common.AudioHalCapCriterion.FORCE_USE_FOR_MEDIA + SUFFIX) /* "ForceUseForMediaType" */;
+  const @utf8InCpp String FORCE_USE_FOR_RECORD_TYPE = (android.media.audio.common.AudioHalCapCriterion.FORCE_USE_FOR_RECORD + SUFFIX) /* "ForceUseForRecordType" */;
+  const @utf8InCpp String FORCE_USE_FOR_DOCK_TYPE = (android.media.audio.common.AudioHalCapCriterion.FORCE_USE_FOR_DOCK + SUFFIX) /* "ForceUseForDockType" */;
+  const @utf8InCpp String FORCE_USE_FOR_SYSTEM_TYPE = (android.media.audio.common.AudioHalCapCriterion.FORCE_USE_FOR_SYSTEM + SUFFIX) /* "ForceUseForSystemType" */;
+  const @utf8InCpp String FORCE_USE_FOR_HDMI_SYSTEM_AUDIO_TYPE = (android.media.audio.common.AudioHalCapCriterion.FORCE_USE_FOR_HDMI_SYSTEM_AUDIO + SUFFIX) /* "ForceUseForHdmiSystemAudioType" */;
+  const @utf8InCpp String FORCE_USE_FOR_ENCODED_SURROUND_TYPE = (android.media.audio.common.AudioHalCapCriterion.FORCE_USE_FOR_ENCODED_SURROUND + SUFFIX) /* "ForceUseForEncodedSurroundType" */;
+  const @utf8InCpp String FORCE_USE_FOR_VIBRATE_RINGING_TYPE = (android.media.audio.common.AudioHalCapCriterion.FORCE_USE_FOR_VIBRATE_RINGING + SUFFIX) /* "ForceUseForVibrateRingingType" */;
 }
