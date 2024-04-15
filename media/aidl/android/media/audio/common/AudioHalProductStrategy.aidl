@@ -34,6 +34,12 @@ parcelable AudioHalProductStrategy {
      */
     const int VENDOR_STRATEGY_ID_START = 1000;
     /**
+     * Define the end of the vendor-defined product strategies. This limitation is due to
+     * build time provision of the structure of Cap Engine Parameter-framework structure.
+     */
+    const int VENDOR_STRATEGY_ID_END = 1039;
+
+    /**
      * Identifies the product strategy with a predefined constant. Vendors
      * using the default audio policy engine must use AudioProductStrategyType.
      * Vendors using the Configurable Audio Policy (CAP) engine must number

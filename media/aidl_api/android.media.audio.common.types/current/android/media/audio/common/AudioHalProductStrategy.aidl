@@ -38,4 +38,5 @@ parcelable AudioHalProductStrategy {
   int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
   android.media.audio.common.AudioHalAttributesGroup[] attributesGroups;
   const int VENDOR_STRATEGY_ID_START = 1000;
+  const int VENDOR_STRATEGY_ID_END = 1039;
 }
