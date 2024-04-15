@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,15 +34,21 @@
 package android.media.audio.common;
 /* @hide */
 @JavaDerive(equals=true, toString=true) @VintfStability
-parcelable AudioHalEngineConfig {
-  int defaultProductStrategyId = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
-  android.media.audio.common.AudioHalProductStrategy[] productStrategies;
-  android.media.audio.common.AudioHalVolumeGroup[] volumeGroups;
-  @nullable android.media.audio.common.AudioHalEngineConfig.CapSpecificConfig capSpecificConfig;
+parcelable AudioHalCapSetting {
+  @utf8InCpp String configurationName;
+  android.media.audio.common.AudioHalCapSetting.ParameterSetting[] parameterSettings;
   @VintfStability
-  parcelable CapSpecificConfig {
-    android.media.audio.common.AudioHalCapCriterion[] criteria;
-    android.media.audio.common.AudioHalCapCriterionType[] criterionTypes;
-    @nullable android.media.audio.common.AudioHalCapDomain[] domains;
+  parcelable ParameterSetting {
+    @utf8InCpp String path;
+    android.media.audio.common.AudioHalCapParameter name = android.media.audio.common.AudioHalCapParameter.SYS_RESERVED_INVALID;
+    android.media.audio.common.AudioHalCapSetting.ParameterSetting.Value value;
+    @VintfStability
+    union Value {
+      boolean booleanType;
+      int integerType;
+      double doubleType;
+      float floatingPointType;
+      @utf8InCpp String stringType;
+    }
   }
 }
