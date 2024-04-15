@@ -24,8 +24,39 @@ package android.media.audio.common;
  * {@hide}
  */
 @JavaDerive(equals=true, toString=true)
+@SuppressWarnings(value={"redundant-name"})
 @VintfStability
 parcelable AudioHalCapCriterion {
+    /*
+     * Inclusive (aka Bitfield) criteria allowing to identify available (connected) input / output
+     * devices types.
+     */
+    const @utf8InCpp String AVAILABLE_INPUT_DEVICES = "AvailableInputDevices";
+    const @utf8InCpp String AVAILABLE_OUTPUT_DEVICES = "AvailableOutputDevices";
+    /*
+     * Inclusive (aka Bitfield) criteria allowing to identify available (connected) input /output
+     * devices referred by their addresses.
+     */
+    const @utf8InCpp String AVAILABLE_INPUT_DEVICES_ADDRESSES =
+            "AvailableOutputDevicesAddresses";
+    const @utf8InCpp String AVAILABLE_OUTPUT_DEVICES_ADDRESSES =
+            "AvailableInputDevicesAddresses";
+    /*
+     * Exclusive criterion allowing to identify current mode.
+     */
+    const @utf8InCpp String TELEPHONY_MODE = "TelephonyMode";
+    /*
+     * Exclusive criteria allowing to identify current forced usages.
+     */
+    const @utf8InCpp String FORCE_USE_FOR_COMMUNICATION = "ForceUseForCommunication";
+    const @utf8InCpp String FORCE_USE_FOR_MEDIA = "ForceUseForMedia";
+    const @utf8InCpp String FORCE_USE_FOR_RECORD = "ForceUseForRecord";
+    const @utf8InCpp String FORCE_USE_FOR_DOCK = "ForceUseForDock";
+    const @utf8InCpp String FORCE_USE_FOR_SYSTEM = "ForceUseForSystem";
+    const @utf8InCpp String FORCE_USE_FOR_HDMI_SYSTEM_AUDIO = "ForceUseForHdmiSystemAudio";
+    const @utf8InCpp String FORCE_USE_FOR_ENCODED_SURROUND = "ForceUseForEncodedSurround";
+    const @utf8InCpp String FORCE_USE_FOR_VIBRATE_RINGING = "ForceUseForVibrateRinging";
+
     @utf8InCpp String name;
     /**
      * Used to map the AudioHalCapCriterion to an AudioHalCapCriterionType with
