@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,17 +33,32 @@
 
 package android.media.audio.common;
 /* @hide */
-@JavaDerive(equals=true, toString=true) @VintfStability
-parcelable AudioHalEngineConfig {
-  int defaultProductStrategyId = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
-  android.media.audio.common.AudioHalProductStrategy[] productStrategies;
-  android.media.audio.common.AudioHalVolumeGroup[] volumeGroups;
-  @nullable android.media.audio.common.AudioHalEngineConfig.CapSpecificConfig capSpecificConfig;
+@VintfStability
+union AudioHalCapParameter {
+  android.media.audio.common.AudioHalCapParameter.StrategyDevice selectedStrategyDevice;
+  android.media.audio.common.AudioHalCapParameter.StrategyDeviceAddress strategyDeviceAddress;
+  android.media.audio.common.AudioHalCapParameter.InputSourceDevice selectedInputSourceDevice;
+  android.media.audio.common.AudioHalCapParameter.StreamVolumeProfile streamVolumeProfile;
   @VintfStability
-  parcelable CapSpecificConfig {
-    android.media.audio.common.AudioHalCapCriterion[] criteria;
-    android.media.audio.common.AudioHalCapCriterionType[] criterionTypes;
-    @nullable android.media.audio.common.AudioHalCapCriterionV2[] criteriaV2;
-    @nullable android.media.audio.common.AudioHalCapDomain[] domains;
+  parcelable StrategyDeviceAddress {
+    android.media.audio.common.AudioDeviceAddress deviceAddress;
+    int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
+  }
+  @VintfStability
+  parcelable StrategyDevice {
+    android.media.audio.common.AudioDeviceDescription device;
+    int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
+    boolean isSelected;
+  }
+  @VintfStability
+  parcelable InputSourceDevice {
+    android.media.audio.common.AudioDeviceDescription device;
+    android.media.audio.common.AudioSource inputSource = android.media.audio.common.AudioSource.DEFAULT;
+    boolean isSelected;
+  }
+  @VintfStability
+  parcelable StreamVolumeProfile {
+    android.media.audio.common.AudioStreamType stream = android.media.audio.common.AudioStreamType.INVALID;
+    android.media.audio.common.AudioStreamType profile = android.media.audio.common.AudioStreamType.INVALID;
   }
 }
