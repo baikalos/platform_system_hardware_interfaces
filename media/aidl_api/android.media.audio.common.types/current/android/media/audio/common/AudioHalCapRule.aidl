@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,16 +34,28 @@
 package android.media.audio.common;
 /* @hide */
 @JavaDerive(equals=true, toString=true) @VintfStability
-parcelable AudioHalEngineConfig {
-  int defaultProductStrategyId = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
-  android.media.audio.common.AudioHalProductStrategy[] productStrategies;
-  android.media.audio.common.AudioHalVolumeGroup[] volumeGroups;
-  @nullable android.media.audio.common.AudioHalEngineConfig.CapSpecificConfig capSpecificConfig;
+parcelable AudioHalCapRule {
+  android.media.audio.common.AudioHalCapRule.CompoundRule compoundRule = android.media.audio.common.AudioHalCapRule.CompoundRule.INVALID;
+  android.media.audio.common.AudioHalCapRule.CriterionRule[] criterionRules;
+  android.media.audio.common.AudioHalCapRule[] nestedRules;
   @VintfStability
-  parcelable CapSpecificConfig {
-    android.media.audio.common.AudioHalCapCriterion[] criteria;
-    android.media.audio.common.AudioHalCapCriterionType[] criterionTypes;
-    @nullable android.media.audio.common.AudioHalCapCriterionV2[] criteriaV2;
-    @nullable android.media.audio.common.AudioHalCapDomain[] domains;
+  enum CompoundRule {
+    INVALID = 0,
+    ANY,
+    ALL,
+  }
+  @VintfStability
+  enum MatchingRule {
+    INVALID = (-1) /* -1 */,
+    IS = 0,
+    IS_NOT,
+    INCLUDES,
+    EXCLUDES,
+  }
+  @VintfStability
+  parcelable CriterionRule {
+    android.media.audio.common.AudioHalCapRule.MatchingRule matchingRule = android.media.audio.common.AudioHalCapRule.MatchingRule.INVALID;
+    android.media.audio.common.AudioHalCapCriterionV2 criterion;
+    android.media.audio.common.AudioHalCapCriterionV2.Type criterionTypeValue;
   }
 }
