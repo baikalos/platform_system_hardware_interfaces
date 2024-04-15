@@ -41,8 +41,22 @@ parcelable AudioHalCapCriterionType {
     boolean isInclusive;
     /**
      * List of all possible criterion values represented as human-readable
-     * string literals. These strings must only contain alphanumeric characters,
+     * string literals. These strings must only contain ascii characters,
      * and the client must never attempt to parse them.
      */
     @utf8InCpp String[] values;
+    /**
+     * List of all possible criterion values represented as numerical value intented to be used
+     * by the parameter-framework for performance issue.
+     * Each human readable value shall have its associated numerical value.
+     */
+    @nullable long[] numericalValue;
+    /**
+     * Optional list of associated numerical value in Android to the numerical value used by the
+     * parameter framework.
+     * Android and parameter-framework representation may not be aligned (e.g. devices managed as
+     * bitfield by parameter-framework, but managed by device type by Android, the type may have
+     * more than one bit set.
+     */
+    @nullable int[] androidMappedValue;
 }

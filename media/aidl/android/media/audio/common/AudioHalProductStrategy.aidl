@@ -44,4 +44,8 @@ parcelable AudioHalProductStrategy {
      * This is the list of use cases that follow the same routing strategy.
      */
     AudioHalAttributesGroup[] attributesGroups;
+    /**
+     * Name of the strategy, must be unique for a given device configuration.
+     */
+    @nullable @utf8InCpp String name;
 }
