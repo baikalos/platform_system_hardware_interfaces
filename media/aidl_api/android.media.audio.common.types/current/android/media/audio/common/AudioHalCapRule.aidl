@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,10 +33,37 @@
 
 package android.media.audio.common;
 /* @hide */
-@JavaDerive(equals=true, toString=true) @SuppressWarnings(value={"redundant-name"}) @VintfStability
-parcelable AudioHalProductStrategy {
-  int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
-  android.media.audio.common.AudioHalAttributesGroup[] attributesGroups;
-  @nullable @utf8InCpp String name;
-  const int VENDOR_STRATEGY_ID_START = 1000;
+@JavaDerive(equals=true, toString=true) @VintfStability
+parcelable AudioHalCapRule {
+  android.media.audio.common.AudioHalCapRule.Operand[] operands;
+  @VintfStability
+  enum CompoundRule {
+    ANY = 0,
+    ALL,
+    INVALID,
+  }
+  @VintfStability
+  enum Delimiter {
+    END = 0,
+  }
+  @VintfStability
+  enum MatchingRule {
+    IS = 0,
+    ISNOT,
+    INCLUDES,
+    EXCLUDES,
+    INVALID,
+  }
+  @VintfStability
+  parcelable CriterionRule {
+    android.media.audio.common.AudioHalCapRule.MatchingRule matchingRule = android.media.audio.common.AudioHalCapRule.MatchingRule.INVALID;
+    @utf8InCpp String criterionName;
+    @utf8InCpp String criterionTypeValue;
+  }
+  @VintfStability
+  union Operand {
+    android.media.audio.common.AudioHalCapRule.CompoundRule compoundRule = android.media.audio.common.AudioHalCapRule.CompoundRule.INVALID;
+    android.media.audio.common.AudioHalCapRule.CriterionRule criterionRule;
+    android.media.audio.common.AudioHalCapRule.Delimiter delimiter = android.media.audio.common.AudioHalCapRule.Delimiter.END;
+  }
 }

@@ -33,9 +33,24 @@
 
 package android.media.audio.common;
 /* @hide */
-@JavaDerive(equals=true, toString=true) @VintfStability
+@JavaDerive(equals=true, toString=true) @SuppressWarnings(value={"redundant-name"}) @VintfStability
 parcelable AudioHalCapCriterionType {
   @utf8InCpp String name;
   boolean isInclusive;
   @utf8InCpp String[] values;
+  @nullable long[] numericalValue;
+  @nullable android.media.audio.common.AudioDeviceDescription[] androidMappedValue;
+  const @utf8InCpp String AVAILABLE_INPUT_DEVICES_TYPE = "InputDevicesMaskType";
+  const @utf8InCpp String AVAILABLE_OUTPUT_DEVICES_TYPE = "OutputDevicesMaskType";
+  const @utf8InCpp String AVAILABLE_INPUT_DEVICES_ADDRESSES_TYPE = "OutputDevicesAddressesType";
+  const @utf8InCpp String AVAILABLE_OUTPUT_DEVICES_ADDRESSES_TYPE = "InputDevicesAddressesType";
+  const @utf8InCpp String TELEPHONY_MODE_TYPE = "AndroidModeType";
+  const @utf8InCpp String FORCE_USE_FOR_COMMUNICATION_TYPE = "ForceUseForCommunicationType";
+  const @utf8InCpp String FORCE_USE_FOR_MEDIA_TYPE = "ForceUseForMediaType";
+  const @utf8InCpp String FORCE_USE_FOR_RECORD_TYPE = "ForceUseForRecordType";
+  const @utf8InCpp String FORCE_USE_FOR_DOCK_TYPE = "ForceUseForDockType";
+  const @utf8InCpp String FORCE_USE_FOR_SYSTEM_TYPE = "ForceUseForSystemType";
+  const @utf8InCpp String FORCE_USE_FOR_HDMI_SYSTEM_AUDIO_TYPE = "ForceUseForHdmiSystemAudioType";
+  const @utf8InCpp String FORCE_USE_FOR_ENCODED_SURROUND_TYPE = "ForceUseForEncodedSurroundType";
+  const @utf8InCpp String FORCE_USE_FOR_VIBRATE_RINGING_TYPE = "ForceUseForVibrateRingingType";
 }
