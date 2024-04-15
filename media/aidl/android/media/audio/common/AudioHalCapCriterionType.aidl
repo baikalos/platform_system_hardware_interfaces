@@ -16,6 +16,7 @@
 
 package android.media.audio.common;
 
+import android.media.audio.common.AudioDeviceDescription;
 import android.media.audio.common.AudioDeviceType;
 
 /**
@@ -26,8 +27,28 @@ import android.media.audio.common.AudioDeviceType;
  * {@hide}
  */
 @JavaDerive(equals=true, toString=true)
+@SuppressWarnings(value={"redundant-name"})
 @VintfStability
 parcelable AudioHalCapCriterionType {
+    const @utf8InCpp String AVAILABLE_INPUT_DEVICES_TYPE = "InputDevicesMaskType";
+    const @utf8InCpp String AVAILABLE_OUTPUT_DEVICES_TYPE = "OutputDevicesMaskType";
+    const @utf8InCpp String AVAILABLE_INPUT_DEVICES_ADDRESSES_TYPE =
+            "OutputDevicesAddressesType";
+    const @utf8InCpp String AVAILABLE_OUTPUT_DEVICES_ADDRESSES_TYPE =
+            "InputDevicesAddressesType";
+    const @utf8InCpp String TELEPHONY_MODE_TYPE = "AndroidModeType";
+    const @utf8InCpp String FORCE_USE_FOR_COMMUNICATION_TYPE = "ForceUseForCommunicationType";
+    const @utf8InCpp String FORCE_USE_FOR_MEDIA_TYPE = "ForceUseForMediaType";
+    const @utf8InCpp String FORCE_USE_FOR_RECORD_TYPE = "ForceUseForRecordType";
+    const @utf8InCpp String FORCE_USE_FOR_DOCK_TYPE = "ForceUseForDockType";
+    const @utf8InCpp String FORCE_USE_FOR_SYSTEM_TYPE = "ForceUseForSystemType";
+    const @utf8InCpp String FORCE_USE_FOR_HDMI_SYSTEM_AUDIO_TYPE
+            = "ForceUseForHdmiSystemAudioType";
+    const @utf8InCpp String FORCE_USE_FOR_ENCODED_SURROUND_TYPE
+            = "ForceUseForEncodedSurroundType";
+    const @utf8InCpp String FORCE_USE_FOR_VIBRATE_RINGING_TYPE
+            = "ForceUseForVibrateRingingType";
+
     /**
      * Name is used to associate an AudioHalCapCriterionType with an
      * AudioHalCapCriterion.
@@ -41,8 +62,21 @@ parcelable AudioHalCapCriterionType {
     boolean isInclusive;
     /**
      * List of all possible criterion values represented as human-readable
-     * string literals. These strings must only contain alphanumeric characters,
+     * string literals. These strings must only contain ascii characters,
      * and the client must never attempt to parse them.
      */
     @utf8InCpp String[] values;
+    /**
+     * List of all possible criterion values represented as numerical value intented to be used
+     * by the parameter-framework for performance issue.
+     * Each human readable value shall have its associated numerical value.
+     */
+    @nullable long[] numericalValue;
+    /**
+     * Optional list of associated numerical value in Android to the numerical value used by the
+     * parameter framework. It is only applicable for Device representation as a bitfield in
+     * parameter framework. Only one bit is expected to represent a device. A lookup table is
+     * hence required to translate android type to parameter framework device representation.
+     */
+    @nullable AudioDeviceDescription[] androidMappedValue;
 }
