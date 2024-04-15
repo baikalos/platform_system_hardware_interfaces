@@ -47,8 +47,12 @@ aidl_interface {
         "aidl/android/media/audio/common/AudioGainConfig.aidl",
         "aidl/android/media/audio/common/AudioGainMode.aidl",
         "aidl/android/media/audio/common/AudioHalAttributesGroup.aidl",
+        "aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
         "aidl/android/media/audio/common/AudioHalCapCriterion.aidl",
         "aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "aidl/android/media/audio/common/AudioHalCapParameter.aidl",
+        "aidl/android/media/audio/common/AudioHalCapSetting.aidl",
         "aidl/android/media/audio/common/AudioHalEngineConfig.aidl",
         "aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
         "aidl/android/media/audio/common/AudioHalVolumeCurve.aidl",
@@ -132,12 +136,12 @@ aidl_interface {
         // IMPORTANT: Update latest_android_media_audio_common_types every time
         // you add the latest frozen version to versions_with_info
     ],
-    frozen: true,
+    frozen: false,
 
 }
 
 // Note: This should always be one version ahead of the last frozen version
-latest_android_media_audio_common_types = "android.media.audio.common.types-V3"
+latest_android_media_audio_common_types = "android.media.audio.common.types-V4"
 
 // Modules that depend on android.media.audio.common.types directly can include
 // the following cc_defaults to avoid explicitly managing dependency versions
