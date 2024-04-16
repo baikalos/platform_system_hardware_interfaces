@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3a30448_ba0f6ed0",
+        "filename": "media/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-16T16:54:15Z",
+      "side": 1,
+      "message": "Francois, thank you very much for creating the CLs to update the AIDL types version! Could you please create a separate topic for it, and move your CAP-related changes on top of it. This is to allow us to land the version update first, look for any problems, and then land your CAP changes. From our experience, updating the version of a widely used types package can lead to various surprised so we need to deal with that first. Thank you for your patience!",
+      "parentUuid": "fc9176ba_adbc4c71",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 79
+      },
+      "revId": "f7acb2d02c8634af11387b8a037c01f796f54d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "757b9f2f_3b4c731a",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
         "patchSetId": 7
