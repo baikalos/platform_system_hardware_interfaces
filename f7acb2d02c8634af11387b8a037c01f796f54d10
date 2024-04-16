@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b7dc4e5_4f7c4326",
+        "filename": "media/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-16T16:59:04Z",
+      "side": 1,
+      "message": "Especially, considering merge conflicts shown on https://r.android.com/3027818, it seems that we will have to land the version bump downstream first.",
+      "parentUuid": "d3a30448_ba0f6ed0",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 79
+      },
+      "revId": "f7acb2d02c8634af11387b8a037c01f796f54d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "757b9f2f_3b4c731a",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
         "patchSetId": 7
