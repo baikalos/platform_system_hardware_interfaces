@@ -62,9 +62,6 @@ aidl_interface {
                 "com.android.btservices",
             ],
             min_sdk_version: "30",
-            vndk: {
-                enabled: true,
-            },
         },
     },
     frozen: true,
