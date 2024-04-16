@@ -38,5 +38,10 @@ parcelable AudioHalProductStrategy {
   int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
   android.media.audio.common.AudioHalAttributesGroup[] attributesGroups;
   @nullable @utf8InCpp String name;
+  int zoneId = android.media.audio.common.AudioHalProductStrategy.ZoneId.DEFAULT /* 0 */;
   const int VENDOR_STRATEGY_ID_START = 1000;
+  @Backing(type="int") @VintfStability
+  enum ZoneId {
+    DEFAULT = 0,
+  }
 }

@@ -29,6 +29,15 @@ import android.media.audio.common.AudioProductStrategyType;
 @JavaDerive(equals=true, toString=true)
 @VintfStability
 parcelable AudioHalProductStrategy {
+    @VintfStability
+    @Backing(type="int")
+    enum ZoneId {
+        /**
+         * Value indicating that there is no explicit zone associated to the product strategy
+         * It is the case for non-automotive products or for default zone for automotive.
+         */
+        DEFAULT = 0,
+    }
     /**
      * Defines the start of the vendor-defined product strategies
      */
@@ -45,4 +54,8 @@ parcelable AudioHalProductStrategy {
      */
     AudioHalAttributesGroup[] attributesGroups;
     @nullable @utf8InCpp String name;
+    /**
+     * Identifies the zone id applicable for this strategy.
+     */
+    int zoneId = ZoneId.DEFAULT;
 }
