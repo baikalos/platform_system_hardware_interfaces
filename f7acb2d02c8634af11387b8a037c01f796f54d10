@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10037939_e2b9d428",
+        "filename": "media/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-17T07:39:06Z",
+      "side": 1,
+      "message": "Sure, will do. And I have a question: shall I prepare also the \"freeze\" patches with associated versions_with_info for each future frozen versions?\n(Eric was not sure of this process yesterday when I asked)\n\n\nAlso, regarding merge conflicts, and reported failure, I do not see anything when I click on the \"checks tab\"... Seems info are hidden to non google user maybe?",
+      "parentUuid": "1b7dc4e5_4f7c4326",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 79
+      },
+      "revId": "f7acb2d02c8634af11387b8a037c01f796f54d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "757b9f2f_3b4c731a",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
         "patchSetId": 7
