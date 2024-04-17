@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "042599fa_85012f48",
+        "filename": "media/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-17T11:13:10Z",
+      "side": 1,
+      "message": "The tool prevent to do it without any minor change:\n\"if m.isExplicitlyUnFrozen() {\n+\t\t\t\t// Throw an error if checkapi returns with no differences\n+\t\t\t\tmsg :\u003d fmt.Sprintf(\"echo \\\"Interface %s can not be marked \\\\`frozen: false\\\\` if there are no changes \"+\n+\t\t\t\t\t\"between the current version and the last frozen version.\\\"\", m.properties.BaseName)\"",
+      "parentUuid": "10037939_e2b9d428",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 79
+      },
+      "revId": "f7acb2d02c8634af11387b8a037c01f796f54d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "757b9f2f_3b4c731a",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
         "patchSetId": 7
