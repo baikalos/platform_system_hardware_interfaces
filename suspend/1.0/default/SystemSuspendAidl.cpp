@@ -29,7 +29,6 @@ static inline int getCallingPid() {
 
 WakeLock::WakeLock(SystemSuspend* systemSuspend, const std::string& name, int pid)
     : mReleased(), mSystemSuspend(systemSuspend), mName(name), mPid(pid) {
-    mSystemSuspend->incSuspendCounter(mName);
 }
 
 WakeLock::~WakeLock() {
@@ -51,6 +50,21 @@ void WakeLock::releaseOnce() {
 SystemSuspendAidl::SystemSuspendAidl(SystemSuspend* systemSuspend)
     : mSystemSuspend(systemSuspend) {}
 
+ndk::ScopedAStatus SystemSuspendAidl::tryWakeLock(WakeLockType /* type */,
+                                                  const std::string& name, int timeout_ms,
+                                                  std::shared_ptr<IWakeLock>* _aidl_return) {
+    auto pid = getCallingPid();
+    if (_aidl_return == nullptr) {
+        return ndk::ScopedAStatus(AStatus_fromExceptionCode(EX_ILLEGAL_ARGUMENT));
+    }
+    if (mSystemSuspend->tryIncSuspendCounter(name, timeout_ms) == -1) {
+        return ndk::ScopedAStatus(AStatus_fromExceptionCode(EX_SERVICE_SPECIFIC));
+    }
+    *_aidl_return = ndk::SharedRefBase::make<WakeLock>(mSystemSuspend, name, pid);
+    mSystemSuspend->updateWakeLockStatOnAcquire(name, pid);
+    return ndk::ScopedAStatus::ok();
+}
+
 ndk::ScopedAStatus SystemSuspendAidl::acquireWakeLock(WakeLockType /* type */,
                                                       const std::string& name,
                                                       std::shared_ptr<IWakeLock>* _aidl_return) {
@@ -59,6 +73,7 @@ ndk::ScopedAStatus SystemSuspendAidl::acquireWakeLock(WakeLockType /* type */,
         return ndk::ScopedAStatus(AStatus_fromExceptionCode(EX_ILLEGAL_ARGUMENT));
     }
     *_aidl_return = ndk::SharedRefBase::make<WakeLock>(mSystemSuspend, name, pid);
+    mSystemSuspend->incSuspendCounter(name);
     mSystemSuspend->updateWakeLockStatOnAcquire(name, pid);
     return ndk::ScopedAStatus::ok();
 }
