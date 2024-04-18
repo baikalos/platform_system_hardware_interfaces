@@ -22,4 +22,5 @@ import android.system.suspend.WakeLockType;
 @VintfStability
 interface ISystemSuspend {
     IWakeLock acquireWakeLock(WakeLockType type, @utf8InCpp String name);
+    IWakeLock tryWakeLock(WakeLockType type, @utf8InCpp String name, int timeout_ms);
 }
