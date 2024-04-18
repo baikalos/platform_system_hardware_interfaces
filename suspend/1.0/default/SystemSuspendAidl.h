@@ -51,7 +51,10 @@ class SystemSuspendAidl : public BnSystemSuspend {
     SystemSuspendAidl(SystemSuspend* systemSuspend);
     ndk::ScopedAStatus acquireWakeLock(WakeLockType type, const std::string& name,
                                        std::shared_ptr<IWakeLock>* _aidl_return) override;
-
+    ndk::ScopedAStatus tryWakeLock(WakeLockType type, const std::string& name,
+                                   unsigned int timeout_ms,
+                                   std::shared_ptr<IWakeLock>* _aidl_return) override;
+ 
    private:
     SystemSuspend* mSystemSuspend;
 };
