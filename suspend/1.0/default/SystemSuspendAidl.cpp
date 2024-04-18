@@ -29,7 +29,6 @@ static inline int getCallingPid() {
 
 WakeLock::WakeLock(SystemSuspend* systemSuspend, const std::string& name, int pid)
     : mReleased(), mSystemSuspend(systemSuspend), mName(name), mPid(pid) {
-    mSystemSuspend->incSuspendCounter(mName);
 }
 
 WakeLock::~WakeLock() {
@@ -59,6 +58,7 @@ ndk::ScopedAStatus SystemSuspendAidl::acquireWakeLock(WakeLockType /* type */,
         return ndk::ScopedAStatus(AStatus_fromExceptionCode(EX_ILLEGAL_ARGUMENT));
     }
     *_aidl_return = ndk::SharedRefBase::make<WakeLock>(mSystemSuspend, name, pid);
+    mSystemSuspend->incSuspendCounter(name);
     mSystemSuspend->updateWakeLockStatOnAcquire(name, pid);
     return ndk::ScopedAStatus::ok();
 }
