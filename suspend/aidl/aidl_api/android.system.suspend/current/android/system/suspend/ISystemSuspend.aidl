@@ -34,5 +34,6 @@
 package android.system.suspend;
 @VintfStability
 interface ISystemSuspend {
+  android.system.suspend.IWakeLock tryWakeLock(android.system.suspend.WakeLockType type, @utf8InCpp String name, int timeout_ms);
   android.system.suspend.IWakeLock acquireWakeLock(android.system.suspend.WakeLockType type, @utf8InCpp String name);
 }
