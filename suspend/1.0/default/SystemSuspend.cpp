@@ -277,6 +277,21 @@ void SystemSuspend::incSuspendCounter(const string& name) {
     }
 }
 
+int SystemSuspend::tryIncSuspendCounter(const string& name, unsigned int timeout_ms) {
+    if (!mAutosuspendLock.try_lock_for(std::chrono::milliseconds(timeout_ms)) {
+        return -1;
+    }
+    if (mUseSuspendCounter) {
+        mSuspendCounter++;
+    } else {
+        if (!WriteStringToFd(name, mWakeLockFd)) {
+            PLOG(ERROR) << "error writing " << name << " to " << kSysPowerWakeLock;
+        }
+    }
+    mAutosuspendLock.unlock();
+    return 0;
+}
+
 void SystemSuspend::decSuspendCounter(const string& name) {
     auto l = std::lock_guard(mAutosuspendLock);
     if (mUseSuspendCounter) {
