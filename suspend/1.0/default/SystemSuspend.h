@@ -82,6 +82,7 @@ class SystemSuspend : public RefBase {
                   const sp<SuspendControlService>& controlService,
                   const sp<SuspendControlServiceInternal>& controlServiceInternal,
                   bool useSuspendCounter = true);
+    void tryIncSuspendCounter(const std::string& name, unsigned int timeout_ms);
     void incSuspendCounter(const std::string& name);
     void decSuspendCounter(const std::string& name);
     bool enableAutosuspend(const sp<IBinder>& token);
