@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43edae7d_7dbe30fc",
+        "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-02T12:10:29Z",
+      "side": 1,
+      "message": "I shall rename DEFAULT instead, since even for automotive, like we do in car_audio_configuration, no need to specify zone for the primary. For phone, the default will always match.",
+      "parentUuid": "e4785915_dd2f8977",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "33f7374a66c07c0ca4c94c6625fb75c1b303706a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6e520a5_345061f7",
         "filename": "media/aidl_api/android.media.audio.common.types/current/android/media/audio/common/AudioHalProductStrategy.aidl",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2024-04-30T23:34:54Z",
       "side": 1,
       "message": "-1, see my other comment on primary zone.",
+      "range": {
+        "startLine": 41,
+        "startChar": 81,
+        "endLine": 41,
+        "endChar": 82
+      },
+      "revId": "33f7374a66c07c0ca4c94c6625fb75c1b303706a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc6a31b0_39d97f9e",
+        "filename": "media/aidl_api/android.media.audio.common.types/current/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-02T12:10:29Z",
+      "side": 1,
+      "message": "it will be easier to manage for automotive: optional zone -\u003e primary (or default) as car_audio_configuration.xml)\nFor non automotive, no zone is the default, all matches without zone will use also the default value",
+      "parentUuid": "b6e520a5_345061f7",
       "range": {
         "startLine": 41,
         "startChar": 81,
