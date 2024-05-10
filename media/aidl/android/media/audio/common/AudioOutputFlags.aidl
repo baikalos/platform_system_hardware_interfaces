@@ -26,7 +26,7 @@ package android.media.audio.common;
  */
 @VintfStability
 @Backing(type="int")
-enum AudioOutputFlags{
+enum AudioOutputFlags {
     /**
      * Output must not be altered by the framework, it bypasses software mixers.
      */
@@ -108,7 +108,7 @@ enum AudioOutputFlags{
     /**
      * Output stream is bit perfect: the implementation guarantees that PCM
      * samples are carried untouched from audio HAL to hardware interface
-     * or DAC.
+     * or DAC. The volume command need to be sent to the hardware.
      */
     BIT_PERFECT = 18,
 }

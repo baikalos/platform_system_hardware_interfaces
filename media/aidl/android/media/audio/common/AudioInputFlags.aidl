@@ -63,4 +63,15 @@ enum AudioInputFlags {
      * Input is for capturing "ultrasound" audio commands.
      */
     ULTRASOUND = 8,
+    /**
+     * Input is for capturing audio directly from the hotword pipeline.
+     * Represents the same content as SoundTrigger streams associated with
+     * keyphrase models. Must not disrupt SoundTrigger recognition if set.
+     */
+    HOTWORD_TAP = 9,
+    /**
+     * Input is for capturing buffered audio from prior to stream open.
+     * Currently requires HOTWORD_TAP.
+     */
+    HW_LOOKBACK = 10,
 }

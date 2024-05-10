@@ -16,13 +16,15 @@
 
 package android.media.audio.common;
 
-import android.media.audio.common.AudioStreamType;
 import android.media.audio.common.AudioAttributes;
+import android.media.audio.common.AudioStreamType;
 
 /**
  * AudioHalAttributesGroup associates an AudioHalVolumeGroup with an
  * AudioStreamType and a collection of AudioAttributes. This is used in the
  * context of AudioHalProductStrategy.
+ *
+ * {@hide}
  */
 @JavaDerive(equals=true, toString=true)
 @VintfStability

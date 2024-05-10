@@ -19,6 +19,8 @@ package android.media.audio.common;
 /**
  * AudioHalVolumeCurve defines a set of curve points mapping a value from [0,100]
  * to an attenuation in millibels, and associates them with a device category.
+ *
+ * {@hide}
  */
 @JavaDerive(equals=true, toString=true)
 @VintfStability

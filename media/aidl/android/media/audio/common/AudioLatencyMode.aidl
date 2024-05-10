@@ -18,7 +18,10 @@ package android.media.audio.common;
 
 /**
  * The latency mode currently used by the spatializer mixer.
+ *
+ * {@hide}
  */
+@SuppressWarnings(value={"redundant-name"}) // for *_AUDIO_*
 @Backing(type="byte")
 @VintfStability
 enum AudioLatencyMode {
@@ -26,4 +29,8 @@ enum AudioLatencyMode {
     FREE = 0,
     /** A relatively low latency compatible with head tracking operation (e.g less than 100ms) */
     LOW = 1,
+    /** Dynamic Spatial Audio via software path */
+    DYNAMIC_SPATIAL_AUDIO_SOFTWARE = 2,
+    /** Dynamic Spatial Audio via hardware path */
+    DYNAMIC_SPATIAL_AUDIO_HARDWARE = 3
 }

@@ -40,6 +40,7 @@ package android.media.audio.common;
  *
  * {@hide}
  */
+@SuppressWarnings(value={"redundant-name"}) // for *CHANNEL*
 @JavaDerive(equals=true, toString=true)
 @VintfStability
 union AudioChannelLayout {

@@ -25,5 +25,4 @@ package android.media.audio.common;
 @JavaDerive(equals=true, toString=true)
 @VintfStability
 @FixedSize
-parcelable Void {
-}
+parcelable Void {}

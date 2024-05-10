@@ -46,7 +46,22 @@ aidl_interface {
             version: "2",
             imports: ["android.hardware.security.keymint-V3"],
         },
+        {
+            version: "3",
+            imports: ["android.hardware.security.keymint-V3"],
+        },
 
     ],
+    frozen: false,
 
+}
+
+// Note: This should always be one version ahead of the last frozen version
+latest_android_system_keystore = "android.system.keystore-V4"
+
+aidl_interface_defaults {
+    name: "latest_android_system_keystore_import_interface",
+    imports: [
+        latest_android_system_keystore,
+    ],
 }

@@ -14,12 +14,16 @@
  * limitations under the License.
  */
 
+#define ATRACE_TAG ATRACE_TAG_POWER
+#define ATRACE_TRACK_BACKOFF "suspend_backoff"
+
 #include "SystemSuspend.h"
 
 #include <aidl/android/system/suspend/ISystemSuspend.h>
 #include <aidl/android/system/suspend/IWakeLock.h>
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android/binder_manager.h>
@@ -28,6 +32,7 @@
 #include <sys/types.h>
 
 #include <chrono>
+#include <cstdlib>
 #include <string>
 #include <thread>
 using namespace std::chrono_literals;
@@ -35,8 +40,10 @@ using namespace std::chrono_literals;
 using ::aidl::android::system::suspend::ISystemSuspend;
 using ::aidl::android::system::suspend::IWakeLock;
 using ::aidl::android::system::suspend::WakeLockType;
+using ::android::base::CachedProperty;
 using ::android::base::Error;
 using ::android::base::ReadFdToString;
+using ::android::base::StringPrintf;
 using ::android::base::WriteStringToFd;
 using ::std::string;
 
@@ -240,6 +247,7 @@ SystemSuspend::~SystemSuspend(void) {
 }
 
 bool SystemSuspend::forceSuspend() {
+#ifndef FUZZ_MODE_SUSPEND_SERVICE
     //  We are forcing the system to suspend. This particular call ignores all
     //  existing wakelocks (full or partial). It does not cancel the wakelocks
     //  or reset mSuspendCounter, it just ignores them.  When the system
@@ -253,6 +261,9 @@ bool SystemSuspend::forceSuspend() {
         PLOG(VERBOSE) << "error writing to /sys/power/state for forceSuspend";
     }
     return success;
+#else
+    return false;
+#endif  // !FUZZ_MODE_SUSPEND_SERVICE
 }
 
 void SystemSuspend::incSuspendCounter(const string& name) {
@@ -345,8 +356,7 @@ void SystemSuspend::initAutosuspendLocked() {
             bool success;
             {
                 auto tokensLock = std::lock_guard(mAutosuspendClientTokensLock);
-                // TODO: Clean up client tokens after soaking the new approach
-                // checkAutosuspendClientsLivenessLocked();
+                checkAutosuspendClientsLivenessLocked();
 
                 autosuspendLock.lock();
                 base::ScopedLockAssertion autosuspendLocked(mAutosuspendLock);
@@ -393,6 +403,8 @@ void SystemSuspend::initAutosuspendLocked() {
 
             mControlService->notifyWakeup(success, wakeupReasons);
 
+            logKernelWakeLockStats();
+
             // Take the lock before returning to the start of the loop
             autosuspendLock.lock();
         }
@@ -400,6 +412,25 @@ void SystemSuspend::initAutosuspendLocked() {
     autosuspendThread.detach();
     mAutosuspendThreadCreated = true;
     LOG(INFO) << "automatic system suspend enabled";
+}
+
+void SystemSuspend::logKernelWakeLockStats() {
+    [[clang::no_destroy]] static CachedProperty logStatsProp("suspend.debug.wakestats_log.enabled");
+    std::string prop(logStatsProp.Get(NULL));
+
+    if ((prop.compare("true") != 0) && (prop.compare("1") != 0)) return;
+
+    std::stringstream klStats;
+    klStats << "Kernel wakesource stats: ";
+    std::vector<WakeLockInfo> wlStats;
+    mStatsList.getWakeLockStats(&wlStats);
+
+    for (const WakeLockInfo& wake : wlStats) {
+        if ((wake.isKernelWakelock) && (wake.activeCount > 0)) {
+            klStats << wake.name << "," << wake.totalTime << "," << wake.activeCount << ";";
+        }
+    }
+    LOG(INFO) << klStats.rdbuf();
 }
 
 /**
@@ -450,17 +481,22 @@ void SystemSuspend::updateSleepTime(bool success, const struct SuspendTime& susp
     }
 
     if (!badSuspend) {
+        ATRACE_INSTANT_FOR_TRACK(ATRACE_TRACK_BACKOFF, "good");
         mNumConsecutiveBadSuspends = 0;
         mSleepTime = kSleepTimeConfig.baseSleepTime;
         return;
     }
 
+    const char* backoffDecision = "defer";
+
     // Suspend attempt was bad (failed or short suspend)
     if (mNumConsecutiveBadSuspends >= kSleepTimeConfig.backoffThreshold) {
         if (mNumConsecutiveBadSuspends == kSleepTimeConfig.backoffThreshold) {
             mSuspendInfo.newBackoffCount++;
+            backoffDecision = "new";
         } else {
             mSuspendInfo.backoffContinueCount++;
+            backoffDecision = "continue";
         }
 
         mSleepTime = std::min(std::chrono::round<std::chrono::milliseconds>(
@@ -469,6 +505,11 @@ void SystemSuspend::updateSleepTime(bool success, const struct SuspendTime& susp
     }
 
     mNumConsecutiveBadSuspends++;
+
+    std::string msg =
+        base::StringPrintf("bad %s %s %d %lld", backoffDecision, shortSuspend ? "short" : "failed",
+                           mNumConsecutiveBadSuspends, mSleepTime.count());
+    ATRACE_INSTANT_FOR_TRACK(ATRACE_TRACK_BACKOFF, msg.c_str());
 }
 
 void SystemSuspend::updateWakeLockStatOnAcquire(const std::string& name, int pid) {

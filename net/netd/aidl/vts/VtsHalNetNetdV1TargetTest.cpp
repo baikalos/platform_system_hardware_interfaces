@@ -328,6 +328,7 @@ TEST_P(NetdAidlTest, TestForwarding) {
     EXPECT_EQ(0, countMatchingIpRules(regex2));
 }
 
+GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST(NetdAidlTest);
 INSTANTIATE_TEST_SUITE_P(PerInstance, NetdAidlTest,
                          testing::ValuesIn(::android::getAidlHalInstanceNames(INetd::descriptor)),
                          android::PrintInstanceNameToString);
