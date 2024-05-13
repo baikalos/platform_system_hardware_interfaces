@@ -22,6 +22,30 @@
       },
       "revId": "b659ae44a428792f2d2218f57b8c159cf9f3ef35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d42413e_9398cb2d",
+        "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T08:25:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63423fd1_4e433e34",
+      "range": {
+        "startLine": 37,
+        "startChar": 89,
+        "endLine": 37,
+        "endChar": 90
+      },
+      "revId": "b659ae44a428792f2d2218f57b8c159cf9f3ef35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
