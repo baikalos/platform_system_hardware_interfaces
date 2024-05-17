@@ -22,6 +22,30 @@
       },
       "revId": "be93ff465c7488abed20fc56432f78b2336cec7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc62e7b9_3d4bb7d0",
+        "filename": "media/aidl_api/android.media.audio.common.types/current/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-17T06:11:57Z",
+      "side": 1,
+      "message": "yes, I made the fixup on wrong patch, the zoneId is for the new feature flag \"multi_zone_audio\", removed.",
+      "parentUuid": "dc9b9bf9_81aea85d",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "be93ff465c7488abed20fc56432f78b2336cec7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
