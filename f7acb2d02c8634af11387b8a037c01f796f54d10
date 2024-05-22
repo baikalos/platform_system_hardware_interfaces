@@ -216,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ab46cf_581a561a",
+        "filename": "media/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-22T21:15:25Z",
+      "side": 1,
+      "message": "I have massaged the CLs to allow merging the version bump via AOSP. I have split the version bump into a topic `android.media.audio.common-V4` from the original topic `CAP_AIDL_AUDIO_HAL`. This way, we will be able to land the version bump independently from other CAP-related CLs, because the topic is complicated enough on its own.\n\nUnfortunately, we can\u0027t land these CLs effectively until mid-June due to internal branching policies to avoid clashing with the Android 15 Beta release. Until then, I will be keeping an eye on them and updating as necessary.",
+      "parentUuid": "b3413457_d167c19d",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 79
+      },
+      "revId": "f7acb2d02c8634af11387b8a037c01f796f54d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "757b9f2f_3b4c731a",
