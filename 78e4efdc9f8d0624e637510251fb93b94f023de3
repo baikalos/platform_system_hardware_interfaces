@@ -16,6 +16,23 @@
       "message": "The build in presubmit is failing due to a missing cherry-pick on one of intermediate internal branches. Working on that.",
       "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5520674_1fac55e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-24T17:09:36Z",
+      "side": 1,
+      "message": "Builds on some branches got fixed, but not on all of them, will continue checking what is missing downstream.",
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
