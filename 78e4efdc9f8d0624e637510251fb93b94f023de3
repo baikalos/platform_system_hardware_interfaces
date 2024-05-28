@@ -33,6 +33,23 @@
       "message": "Builds on some branches got fixed, but not on all of them, will continue checking what is missing downstream.",
       "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42959d89_4eed32f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-28T17:27:40Z",
+      "side": 1,
+      "message": "Hi Devin! These interfaces are for 202504 and we do not plan to submit them until Android 15 Beta is \"detached\" from main. However, since they are contributed by a partner, could you please provide any API feedback so that they can start addressing it.",
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
