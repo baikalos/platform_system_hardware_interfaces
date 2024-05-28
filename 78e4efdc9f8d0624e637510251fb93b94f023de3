@@ -50,6 +50,162 @@
       "message": "Hi Devin! These interfaces are for 202504 and we do not plan to submit them until Android 15 Beta is \"detached\" from main. However, since they are contributed by a partner, could you please provide any API feedback so that they can start addressing it.",
       "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e534fa_af0cd32c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-28T18:37:04Z",
+      "side": 1,
+      "message": "Sounds good, added some feedback!",
+      "parentUuid": "42959d89_4eed32f8",
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17837e5e_34d454b9",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-28T18:37:04Z",
+      "side": 1,
+      "message": "This seems pretty complicated for a string in an interface. We will always have to be backward compatible with any behavior we previously had for 7 years.\n\nIs this something we are already doing elsewhere in audio? Is there another way to handle this?",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca99df6c_d52592cd",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-28T18:37:04Z",
+      "side": 1,
+      "message": "How is this string supposed to map two different numerical values? Can you clarify the use of the values in this list?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b5d586_174afd5e",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-28T18:37:04Z",
+      "side": 1,
+      "message": "Does this have to be unique to the client? Or unique to the device?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6261d08_f962a987",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-28T18:37:04Z",
+      "side": 1,
+      "message": "is this info already in the `AudioHalCapSetting[] capSettings;`? Do we need it repeated here?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555a5944_78455f2c",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-28T18:37:04Z",
+      "side": 1,
+      "message": "How about we make a union with all of the different types in `AudioHalCapParameter` so we have the actual type of the value instead of a `String` that needs to be parsed?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e99ca3bf_79e347de",
+        "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-28T18:37:04Z",
+      "side": 1,
+      "message": "Can we have a comment for what this is used for? Is this supposed to match the name in the `AudioHalCapDomain`?",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
