@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e62dfb9_fcdee4e2",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-29T17:38:41Z",
+      "side": 1,
+      "message": "I think we need to understand how the evolution of the PFW rule language is handled. Is it actually developing, or is it pretty stable? If it is still developing, how is it ensured that updates to rule language are backwards-compatible? This is required to make sure that strings provided by the HAL will still work on an updated framework with a newer version of PFW.\n\nIn case when it\u0027s hard to guarantee that the language remains stable and its evolution process is not defined clearly, we may consider providing a structure-based form for encoding the rules, basically an abstract syntax tree expressed in AIDL.",
+      "parentUuid": "7bad51a0_f7e4abfe",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca99df6c_d52592cd",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 12
