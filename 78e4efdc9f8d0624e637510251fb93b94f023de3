@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bad51a0_f7e4abfe",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T12:13:19Z",
+      "side": 1,
+      "message": "the parameter framework is consuming a string as rule.  it could have been represented as a list of rule with keywords (Is / IsNot / Includes / Excludes) and Criteriom name / Criterion values (that can be int / float / bool / string).\n\nWould have been more complex to express in AIDL contract",
+      "parentUuid": "17837e5e_34d454b9",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca99df6c_d52592cd",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 12
@@ -106,6 +130,30 @@
       "writtenOn": "2024-05-28T18:37:04Z",
       "side": 1,
       "message": "How is this string supposed to map two different numerical values? Can you clarify the use of the values in this list?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13138f5_c1bfde89",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T12:13:19Z",
+      "side": 1,
+      "message": "Right, could be a long.",
+      "parentUuid": "ca99df6c_d52592cd",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -141,6 +189,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8041d936_f7a5f966",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T12:13:19Z",
+      "side": 1,
+      "message": "unique to the client",
+      "parentUuid": "a4b5d586_174afd5e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6261d08_f962a987",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
         "patchSetId": 12
@@ -152,6 +224,30 @@
       "writtenOn": "2024-05-28T18:37:04Z",
       "side": 1,
       "message": "is this info already in the `AudioHalCapSetting[] capSettings;`? Do we need it repeated here?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347cb4be_eb5d805a",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T12:13:19Z",
+      "side": 1,
+      "message": "it could have been avoided, all settings have to provide a value to each paths under a given domain. It helped to enforce to have it here.",
+      "parentUuid": "f6261d08_f962a987",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -187,6 +283,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a25b237_3a2f055f",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T12:13:19Z",
+      "side": 1,
+      "message": "I discovered the union after writing this aidl; sounds great idea",
+      "parentUuid": "555a5944_78455f2c",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e99ca3bf_79e347de",
         "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
         "patchSetId": 12
@@ -198,6 +318,30 @@
       "writtenOn": "2024-05-28T18:37:04Z",
       "side": 1,
       "message": "Can we have a comment for what this is used for? Is this supposed to match the name in the `AudioHalCapDomain`?",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1cb2f5_8e10d13a",
+        "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T12:13:19Z",
+      "side": 1,
+      "message": "no, it is independant name, it is the name of the strategy itself.",
+      "parentUuid": "e99ca3bf_79e347de",
       "range": {
         "startLine": 47,
         "startChar": 4,
