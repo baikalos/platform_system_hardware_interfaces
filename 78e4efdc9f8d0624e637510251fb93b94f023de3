@@ -143,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa11f7ce_336555b0",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T14:17:32Z",
+      "side": 1,
+      "message": "It is stable, equivalent of frozen for AIDL!\nMoreover, the API that registers the rule of the parameter framework is consuming a single string, so it was easier to use same pattern in AIDL.\n\nXSD generated parser has however structured the rule. Quite complex to express, but with the introduction of the union, could be possible to declared in AIDL.\n\nIn the end, the engine configurable would format however the \"final\" string representing the rule to be set to parameter-framework.\n\nIf it worths, and if we have time, I can try to improve this part.",
+      "parentUuid": "1e62dfb9_fcdee4e2",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca99df6c_d52592cd",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 12
