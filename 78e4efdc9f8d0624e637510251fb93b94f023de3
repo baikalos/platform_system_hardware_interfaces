@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4caef724_588018b0",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-30T15:59:21Z",
+      "side": 1,
+      "message": "That\u0027s good, thank you Francois! From my understanding, if the parser for these rules can be extracted into a library (or alternatively, we can use the PFW in a mode when it just checks the validity of the rule string), then we can validate all the rules provided by the HAL in VTS tests and this way guarantee that the framework will not choke on them.",
+      "parentUuid": "aa11f7ce_336555b0",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca99df6c_d52592cd",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 12
