@@ -70,6 +70,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad14b0b9_f4e04d82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-10T20:19:22Z",
+      "side": 1,
+      "message": "Hi Francois! Could you please plan addressing Devin\u0027s comments as this will be required once it will become possible to submit these CL.",
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17837e5e_34d454b9",
