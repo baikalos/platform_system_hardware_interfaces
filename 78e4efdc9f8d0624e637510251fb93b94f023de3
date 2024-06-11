@@ -318,6 +318,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cfc5617_4ff37016",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-11T10:00:29Z",
+      "side": 1,
+      "message": "comment updated",
+      "parentUuid": "8041d936_f7a5f966",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6261d08_f962a987",
@@ -355,6 +379,30 @@
       "side": 1,
       "message": "it could have been avoided, all settings have to provide a value to each paths under a given domain. It helped to enforce to have it here.",
       "parentUuid": "f6261d08_f962a987",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c21d8c88_2d7102bd",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-11T10:00:29Z",
+      "side": 1,
+      "message": "Done, removed this duplicated information of param paths",
+      "parentUuid": "347cb4be_eb5d805a",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -449,6 +497,30 @@
       "side": 1,
       "message": "no, it is independant name, it is the name of the strategy itself.",
       "parentUuid": "e99ca3bf_79e347de",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cf5386_9b364967",
+        "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-11T10:00:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf1cb2f5_8e10d13a",
       "range": {
         "startLine": 47,
         "startChar": 4,
