@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8d583ab_f61eebac",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-12T09:36:13Z",
+      "side": 1,
+      "message": "Today at runtime, PFW will validate the rule when added. It not valid, it will not start.\n\nVTS: I added already ValidateAudioHalConfigurationRule that mimic the validation of PFW.\n\nIs it enough so far or do I need to split the stream into the grammar of the rule?",
+      "parentUuid": "4caef724_588018b0",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca99df6c_d52592cd",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 12
