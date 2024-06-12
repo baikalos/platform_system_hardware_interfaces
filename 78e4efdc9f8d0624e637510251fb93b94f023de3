@@ -271,6 +271,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6251e7_fe9ab505",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-12T09:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b13138f5_c1bfde89",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4b5d586_174afd5e",
@@ -450,6 +474,30 @@
       "side": 1,
       "message": "I discovered the union after writing this aidl; sounds great idea",
       "parentUuid": "555a5944_78455f2c",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44bf0f45_fbedfb9a",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-12T09:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a25b237_3a2f055f",
       "range": {
         "startLine": 33,
         "startChar": 0,
