@@ -274,6 +274,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c380aefa_b3093648",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-06-12T19:36:20Z",
+      "side": 1,
+      "message": "Sorry, we don\u0027t want all of the vendors parsing and building complicated strings to communicate with the framework. That\u0027s a pretty big reason we have AIDL interfaces between system/vendor.\n\nWe want to have well typed interfaces without ambiguity. I think creating types in AIDL that match the operations/syntax would be less errorprone for all of the vendors that need to implement this system.\n\nWhere are the APIs that register these rules as strings? Are these SDK APIs that the API council approved?",
+      "parentUuid": "3c02b12c_f2fcd0a8",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca99df6c_d52592cd",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 12
@@ -333,6 +357,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b13138f5_c1bfde89",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0c9c62_55f6ac89",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-06-12T19:36:20Z",
+      "side": 1,
+      "message": "`int` in AIDL translates to 32-bit integer in the generated backends.\n`long` should be used here if we want 64 bits.\nIs int good enough?",
+      "parentUuid": "1e6251e7_fe9ab505",
       "range": {
         "startLine": 54,
         "startChar": 0,

@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "012e9cb7_e9ac7093",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-06-12T19:36:20Z",
+      "side": 1,
+      "message": "After rereading the comments, it\u0027s not clear to me how this list of numbers maps to anything else. Is the index number in this array associated with the same index in some of the other arrays?\n\nIts OK if it is, but needs to be clear to the user of this interface. Either through comments or the types themselves (like one parcelable with the value and the mapped value which might lead to better and less error prone use).",
+      "range": {
+        "startLine": 61,
+        "startChar": 20,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "34953dd44dc2bbb83caee5349745e7e0aad9b235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9ece3db_738e2577",
         "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
         "patchSetId": 13
