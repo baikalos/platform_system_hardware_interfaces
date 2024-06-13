@@ -298,6 +298,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97209a00_43d47d18",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-13T06:04:24Z",
+      "side": 1,
+      "message": "The API that takes complication strings is in external/parameter_frameworks\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:external/parameter-framework/upstream/parameter/include/ParameterMgrFullConnector.h;l\u003d164?q\u003dsetApplicationRule\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\n\nAs it is always time to do things well, let me try to break the string in aidl IF to define properly the grammar.\n\nThe Wrapper in the policy that consumes it will reformat the string until we rework the parameter framework api and consume same rule data model.",
+      "parentUuid": "c380aefa_b3093648",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca99df6c_d52592cd",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 12
@@ -381,6 +405,30 @@
       "side": 1,
       "message": "`int` in AIDL translates to 32-bit integer in the generated backends.\n`long` should be used here if we want 64 bits.\nIs int good enough?",
       "parentUuid": "1e6251e7_fe9ab505",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2744a622_972af3b3",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-13T06:04:24Z",
+      "side": 1,
+      "message": "int is enough. Numerical value is long as we had to migrate criterion on 64 bit. However, the translation value for some criteria in android (like device type) will always be stored on int.\nMainly because android may represent device type with bitfield with multiple bits, whereas Parameter framework bitfield are not expected to do so.\n\nHowever, for consistency I could all migrate to long to prevent from confusion, and in the end, checking the android mapped value provided.",
+      "parentUuid": "cb0c9c62_55f6ac89",
       "range": {
         "startLine": 54,
         "startChar": 0,
