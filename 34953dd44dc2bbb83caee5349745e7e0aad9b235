@@ -69,6 +69,30 @@
       },
       "revId": "34953dd44dc2bbb83caee5349745e7e0aad9b235",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf7983c_a53dbdf8",
+        "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-14T14:06:14Z",
+      "side": 1,
+      "message": "Nullable was required to have backward compat. If one name is null, all name must be null and uniqueness is enforced by id.",
+      "parentUuid": "f9ece3db_738e2577",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 76
+      },
+      "revId": "34953dd44dc2bbb83caee5349745e7e0aad9b235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
