@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b0c9cd_c87ddad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:31:17Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:system/hardware/interfaces/suspend/1.0/default/SuspendControlService.cpp;l\u003d34;drc\u003da26e721f50ade95dfdc74b7d453cb4fc89824cba",
+      "revId": "168a12933c91dcc392765d5095f7aeb1e05f2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
