@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3305a664_7912a609",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "what values is this expected to take?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8200db8b_716d7068",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "which code is expected to read and understand these? the client and the server and who writes it?\n\nWhat\u0027s an example value?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa92e723_594f10ae",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 14
@@ -19,6 +65,168 @@
         "startChar": 0,
         "endLine": 53,
         "endChar": 36
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97da0069_cbe59daf",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "also, how many could there be?\n\nWould this ever be {1, 2, 3, ... 100}?",
+      "parentUuid": "fa92e723_594f10ae",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a1e24a_e93351e7",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "nit: avoid a structure like \u0027rules\u0027. You can create a top-level union \u0027Rule\u0027 and then if people use \u0027Rule\u0027 they have one Rule and \u0027Rule[]\u0027 or \u0027@nullable Rule[]\u0027 they have many. It\u0027s more expressive.",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e05a00_bb30d72f",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "prefer comments before, for AIDL to be able to understand what it\u0027s a comment on",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0884d808_d536aadd",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "readers/writers of these as well, what are expected values?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd37ad5_20a54730",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "Any reason to avoid the Operand directly? A parcelable with one member is just that member?",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2a3fb9_cb2e5408",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "With the current definition of ...Rules, here are some examples of what this could contain:\n\n- [ CompoundRule::ANY, CompoundRule::ANY, CompoundRule::ANY ]\n- [ CompoundRule::ANY, Delimeter::END, Delimeter::END ]\n\nbut I don\u0027t think we want this? because it wouldn\u0027t make sense or would it?\n\nWhat is an example of the data you\u0027d like to have here?",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1ca93f_1d6a3ef0",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-15T01:28:00Z",
+      "side": 1,
+      "message": "readers and writers for these?",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 1
       },
       "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
