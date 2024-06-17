@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d407d2d2_05642de5",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-17T08:36:20Z",
+      "side": 1,
+      "message": "In the end, it will be a human readable tag to aggregate values of parameter in given conditions.\nFor example, it could be \"MusicWhileInCall\". An id could be enough, but for debugging purpose, it may be easier to get the meaning of the configuration.",
+      "parentUuid": "3305a664_7912a609",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8200db8b_716d7068",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 14
@@ -167,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3ed8a90_bcdc2d6c",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-17T08:36:20Z",
+      "side": 1,
+      "message": "the thing is that rule may be made of nested rules. Would need recursive aidl. I dont think it is supported.\nSo if i use union, the rule array will be an array of operand rather than an array of rule.\nSo may the name of this parcelable be misleading. I am tempted to rename as singular.",
+      "parentUuid": "67a1e24a_e93351e7",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80e05a00_bb30d72f",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
         "patchSetId": 14
@@ -178,6 +226,30 @@
       "writtenOn": "2024-06-15T01:28:00Z",
       "side": 1,
       "message": "prefer comments before, for AIDL to be able to understand what it\u0027s a comment on",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5935544_bac05e78",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-17T08:36:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80e05a00_bb30d72f",
       "range": {
         "startLine": 38,
         "startChar": 17,
@@ -213,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed41a6cd_9dd5b6d4",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-17T08:36:20Z",
+      "side": 1,
+      "message": "Writer is the audio policy engine configurable.\nReader is the parameter framework that is ensuring the provided name / value are matching the rule defined with name/value in each domain rule.",
+      "parentUuid": "0884d808_d536aadd",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fd37ad5_20a54730",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
         "patchSetId": 14
@@ -224,6 +320,30 @@
       "writtenOn": "2024-06-15T01:28:00Z",
       "side": 1,
       "message": "Any reason to avoid the Operand directly? A parcelable with one member is just that member?",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a53836_870c21da",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-17T08:36:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fd37ad5_20a54730",
       "range": {
         "startLine": 65,
         "startChar": 4,
@@ -247,6 +367,30 @@
       "writtenOn": "2024-06-15T01:28:00Z",
       "side": 1,
       "message": "With the current definition of ...Rules, here are some examples of what this could contain:\n\n- [ CompoundRule::ANY, CompoundRule::ANY, CompoundRule::ANY ]\n- [ CompoundRule::ANY, Delimeter::END, Delimeter::END ]\n\nbut I don\u0027t think we want this? because it wouldn\u0027t make sense or would it?\n\nWhat is an example of the data you\u0027d like to have here?",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdd4be5c_4418cfaa",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-17T08:36:20Z",
+      "side": 1,
+      "message": "CompoundRule::ALL, Delimeter::END make sense: it means always applicable\nCompoundRule::ANY, Delimeter::END, Delimeter::END does not, cardinality of one end per starting compound rule\n\nAlso, the leaf coumpound rule shall at least have one CriterionRule\n\nAn example of compound rule:\n\nCompoundRule::All CompoundRule::Any CompoundRule::All CriterionRule    CriterionRule  Delimiter::END   CriterionRule Delimiter::END   CriterionRule Delimiter::END",
+      "parentUuid": "8f2a3fb9_cb2e5408",
       "range": {
         "startLine": 74,
         "startChar": 17,
