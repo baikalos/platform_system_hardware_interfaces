@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f934ec1_7c105b26",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-17T07:33:43Z",
+      "side": 1,
+      "message": "Agree, good proposal",
+      "parentUuid": "ee6eb043_4ffe6196",
+      "range": {
+        "startLine": 61,
+        "startChar": 20,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "34953dd44dc2bbb83caee5349745e7e0aad9b235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9ece3db_738e2577",
