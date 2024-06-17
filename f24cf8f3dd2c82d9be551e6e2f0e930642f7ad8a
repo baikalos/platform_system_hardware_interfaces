@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1da1d8dd_b481bdc8",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-17T18:48:03Z",
+      "side": 1,
+      "message": "Please clarify this as the comment for the parcelable says \"The configuration is referred by its name and associated rule\" which implies that there are some requirements for these names to be unique, at least in my understanding.",
+      "parentUuid": "d407d2d2_05642de5",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8200db8b_716d7068",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 14

@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ccb12e_bb9b3f53",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterion.aidl",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-17T18:48:03Z",
+      "side": 1,
+      "message": "Are these values mixed up?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "0318fdd6bd1cd3e8a7d5676c74df0df43c54352a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf02b880_ddf88b2b",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapParameter.aidl",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-17T18:48:03Z",
+      "side": 1,
+      "message": "Since the enum list looks like a mixed bag of things, could you please expand the comment to explain the use of the \"Parameter\".",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "0318fdd6bd1cd3e8a7d5676c74df0df43c54352a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29463c8d_d56fd9db",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-17T18:48:03Z",
+      "side": 1,
+      "message": "`INVALID` should usually be first and have `-1` value.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "0318fdd6bd1cd3e8a7d5676c74df0df43c54352a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43585a7_1c0a123c",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 16
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-17T18:48:03Z",
+      "side": 1,
+      "message": "If there is only one kind of the delimiter, then we can just use `bool delimiter \u003d false`.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "0318fdd6bd1cd3e8a7d5676c74df0df43c54352a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
