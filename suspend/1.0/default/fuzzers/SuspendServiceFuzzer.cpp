@@ -23,6 +23,7 @@ using ::android::sp;
 using ::android::system::suspend::V1_0::SuspendControlService;
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+    signal(SIGPIPE, SIG_IGN);
     sp<SuspendControlService> suspendControlService = sp<SuspendControlService>::make();
     fuzzService(suspendControlService, FuzzedDataProvider(data, size));
     return 0;

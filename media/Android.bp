@@ -106,6 +106,9 @@ aidl_interface {
                 "//apex_available:platform",
                 "com.android.car.framework",
             ],
+            lint: {
+                baseline_filename: "lint-baseline.xml",
+            },
         },
         ndk: {
             min_sdk_version: "29",
@@ -252,7 +255,13 @@ aidl_interface {
             version: "1",
             imports: ["android.media.audio.common.types-V2"],
         },
+        {
+            version: "2",
+            imports: ["android.media.audio.common.types-V3"],
+        },
+
     ],
+    frozen: true,
 
 }
 
