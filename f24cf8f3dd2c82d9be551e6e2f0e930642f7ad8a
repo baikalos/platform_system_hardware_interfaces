@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73a4030a_44120e2a",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-18T00:54:36Z",
+      "side": 1,
+      "message": "but if they aren\u0027t defined, how can they be interpreted? where would it get the values?\n\nThis doesn\u0027t seem to standardize things as much as it seems to allow anything to go in here. This makes it hard to write generic code against the interface.",
+      "parentUuid": "924d4536_38a471be",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa92e723_594f10ae",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 14
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "the thing is that rule may be made of nested rules. Would need recursive aidl. I dont think it is supported.\nSo if i use union, the rule array will be an array of operand rather than an array of rule.\nSo may the name of this parcelable be misleading. I am tempted to rename as singular.",
       "parentUuid": "67a1e24a_e93351e7",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d0ece7_aa50ee5f",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-18T00:54:36Z",
+      "side": 1,
+      "message": "It is supported. You can use `@nullable(heap\u003dtrue)`:\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/tools/aidl/tests/android/aidl/tests/RecursiveList.aidl;l\u003d21?q\u003dsystem%2Ftools%2Faidl%2Ftests%2Fandroid%2Faidl%2Ftests%2FRecursiveList.aidl\n\nThis can encode a tree (but not a graph), but I think that\u0027s a good thing (and trees are isomorphic to graphs if you redefine the node values ...).",
+      "parentUuid": "c3ed8a90_bcdc2d6c",
       "range": {
         "startLine": 35,
         "startChar": 11,
