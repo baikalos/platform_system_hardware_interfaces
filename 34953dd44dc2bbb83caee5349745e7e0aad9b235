@@ -165,6 +165,30 @@
       },
       "revId": "34953dd44dc2bbb83caee5349745e7e0aad9b235",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3a0da8_7133fcae",
+        "filename": "media/aidl/android/media/audio/common/AudioHalProductStrategy.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-18T07:54:55Z",
+      "side": 1,
+      "message": "Sure, I replied to the gerrit comment and forgot to update the aidl comment...",
+      "parentUuid": "85f2052a_2ef0f09a",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 76
+      },
+      "revId": "34953dd44dc2bbb83caee5349745e7e0aad9b235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
