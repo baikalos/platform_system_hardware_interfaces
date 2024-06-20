@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0ee544_81024cac",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1da1d8dd_b481bdc8",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8200db8b_716d7068",
@@ -606,6 +630,30 @@
       "side": 1,
       "message": "Reader is audio policy configurable engine, in order to configure the parameter framework instance, which is the consumer. Writer is Audio HAL, new provider of all policy configuration (ex vendor files)",
       "parentUuid": "6c1ca93f_1d6a3ef0",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150c19df_ecf89e7a",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "I think, the general concern here is that there is no control via this interface over possible parameters and their values, it just defines a \"meta interface\" which can be used by vendors in an arbitrary manner. We had experience with this kind of interface in HIDL. The big problem is that once some parameters get established, it is expected that the framework and the HAL support them, but there is no indication of that on the interface. As a result, they are unmanageable.\n\nThus, if these settings must be read by the framework code, then we should come up with explicit parameters defined at the AIDL level, that is a field with a fixed type and name in a parcelable. If these settings must be read by vendor components in the framework, for example, forwarded by the framework to vendor-provided apps, or to components of the system that are vendor-specific (system extensions), then it must be something like https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/android/hardware/audio/core/VendorParameter.aidl which uses `ParcelableHolder` so that the AOSP framework can\u0027t look up these values in principle, and it\u0027s vendor responsibility to ensure backward compatibility and validity.",
+      "parentUuid": "016c1d70_963dca58",
       "range": {
         "startLine": 48,
         "startChar": 8,

@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba64600_1d10b1fe",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 17
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 50
+      },
+      "revId": "019932cc2295222bba86da2bfc3f950b492c14a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d06b3f_4f3da238",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "Why not `Available...` for consistency?",
+      "range": {
+        "startLine": 37,
+        "startChar": 60,
+        "endLine": 37,
+        "endChar": 80
+      },
+      "revId": "019932cc2295222bba86da2bfc3f950b492c14a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a81b5560_9cd0de5a",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "Same issue with `INPUT` and `Output` (and vice versa) as in `AudioHalCapCriterion`.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 40
+      },
+      "revId": "019932cc2295222bba86da2bfc3f950b492c14a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb08891e_2494bf8b",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "Did you mean `TelephonyModeType`?",
+      "range": {
+        "startLine": 50,
+        "startChar": 51,
+        "endLine": 50,
+        "endChar": 66
+      },
+      "revId": "019932cc2295222bba86da2bfc3f950b492c14a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1744c3c4_17a36084",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "Are these constants intended to be in sync with the constants from `AudioHalCapCriterion`? If true, would it make sense to put them all into one file so that it is easier to track that they follow each other?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 46
+      },
+      "revId": "019932cc2295222bba86da2bfc3f950b492c14a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "717ec0c9_33740aec",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "Since `AudioDeviceDescription` type is not entirely a \"numerical value\" I would suggest clarifying the comment:\n\n```\nOptional list of Android AIDL devices types which correspond to the numerical value used by the parameter framework.\n```\n\nI think, the rest of the comment does not directly correspond to the interface, but rather to the PFW implementation, so it can be omitted or moved to some other location, like the XSD schema.",
+      "range": {
+        "startLine": 100,
+        "startChar": 28,
+        "endLine": 100,
+        "endChar": 75
+      },
+      "revId": "019932cc2295222bba86da2bfc3f950b492c14a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3a711a_75fb452d",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "This needs to be updated, there are no delimiters anymore.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 81
+      },
+      "revId": "019932cc2295222bba86da2bfc3f950b492c14a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa61963b_b033fa10",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 17
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T23:03:09Z",
+      "side": 1,
+      "message": "`IS_NOT`",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 13
+      },
+      "revId": "019932cc2295222bba86da2bfc3f950b492c14a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
