@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87eb12bd_8d82f3dd",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterion.aidl",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-20T20:03:27Z",
+      "side": 1,
+      "message": "What I mean here is that the constant name says `INPUT` while the string says `Output`, and vice versa. All other constants have the name synchronized with the content.",
+      "parentUuid": "215e1289_d799cf11",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "0318fdd6bd1cd3e8a7d5676c74df0df43c54352a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf02b880_ddf88b2b",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapParameter.aidl",
         "patchSetId": 16
