@@ -50,9 +50,13 @@ aidl_interface {
             version: "3",
             imports: ["android.hardware.security.keymint-V3"],
         },
+        {
+            version: "4",
+            imports: ["android.hardware.security.keymint-V3"],
+        },
 
     ],
-    frozen: false,
+    frozen: true,
 
 }
 
