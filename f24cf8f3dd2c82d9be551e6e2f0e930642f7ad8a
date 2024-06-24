@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "803d67ea_c365b24d",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapConfiguration.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-24T14:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1da1d8dd_b481bdc8",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8200db8b_716d7068",
@@ -593,6 +617,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42696a2_9d43de65",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-24T14:10:58Z",
+      "side": 1,
+      "message": "Ambiguity fixed by recursivity I hope",
+      "parentUuid": "bdd4be5c_4418cfaa",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c1ca93f_1d6a3ef0",
@@ -654,6 +702,30 @@
       "side": 1,
       "message": "I think, the general concern here is that there is no control via this interface over possible parameters and their values, it just defines a \"meta interface\" which can be used by vendors in an arbitrary manner. We had experience with this kind of interface in HIDL. The big problem is that once some parameters get established, it is expected that the framework and the HAL support them, but there is no indication of that on the interface. As a result, they are unmanageable.\n\nThus, if these settings must be read by the framework code, then we should come up with explicit parameters defined at the AIDL level, that is a field with a fixed type and name in a parcelable. If these settings must be read by vendor components in the framework, for example, forwarded by the framework to vendor-provided apps, or to components of the system that are vendor-specific (system extensions), then it must be something like https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/android/hardware/audio/core/VendorParameter.aidl which uses `ParcelableHolder` so that the AOSP framework can\u0027t look up these values in principle, and it\u0027s vendor responsibility to ensure backward compatibility and validity.",
       "parentUuid": "016c1d70_963dca58",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd27d9b_1acb3790",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-24T14:10:58Z",
+      "side": 1,
+      "message": "I guess we are not in the pattern of since the final user is AudioPolicy Engine. No dispatch is expected to vendor provided apps. (as for effect for example, or custom setVendorParam / getVendorParam) where the parcelable placeholder is really the good approach to let vendor defining their contract..\n\nIt is as the ports, strategies, volume group retrieved by AIDL, Policy discovers it from getConfig. Behing parameterSettings, we will find the parameter (including strategies, device for strategy, device address for strategy) and the value selected.",
+      "parentUuid": "150c19df_ecf89e7a",
       "range": {
         "startLine": 48,
         "startChar": 8,
