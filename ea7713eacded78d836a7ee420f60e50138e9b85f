@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa38030_f82881e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-26T21:46:41Z",
+      "side": 1,
+      "message": "Francois, I have rebased the changes on top of the latest AOSP tree. Please download the CLs from Gerrit before addressing comments—there have been some fixups.",
+      "revId": "ea7713eacded78d836a7ee420f60e50138e9b85f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
