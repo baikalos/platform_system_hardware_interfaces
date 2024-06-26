@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea6a3eb_353624e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-26T19:04:46Z",
+      "side": 1,
+      "message": "Devin, could you please provide AIDL-API-Review. This is a CP of ag/28015221.",
+      "revId": "f17202f7ce81f293497ab5d073e67ffb3f343559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
