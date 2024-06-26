@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b71b51a5_d0e7a578",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-26T21:45:26Z",
+      "side": 1,
+      "message": "\u003e the value is linked to an enum value (Android mode, setForceUse, ...)\n\nThis sounds a lot like the parameters that we already have in AIDL. Can we have a `union` here referencing the corresponding AIDL type?\n\nIn my understanding, these AIDL-specifications should not reference enum values from C APIs 😊",
+      "parentUuid": "4be991ba_5eaaf4a7",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67a1e24a_e93351e7",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
         "patchSetId": 14
@@ -525,6 +549,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c25fab17_8f011883",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-26T21:45:26Z",
+      "side": 1,
+      "message": "I think, this is now documented:\n\n```\n        /*\n         * Must be one of the name defined by {@see AudioHalCapCriterion}.\n         */\n        @utf8InCpp String criterionName;\n        /*\n         * Must be one of the value defined by {@see AudioHalCapCriterionType} associated to the\n         * {@see AudioHalCapCriterion.criterionTypeName}.\n         */\n        @utf8InCpp String criterionTypeValue;\n```\n\nsmoreland@ Steven, are you OK with this approach?",
+      "parentUuid": "ed41a6cd_9dd5b6d4",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fd37ad5_20a54730",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
         "patchSetId": 14
@@ -726,6 +774,30 @@
       "side": 1,
       "message": "I guess we are not in the pattern of since the final user is AudioPolicy Engine. No dispatch is expected to vendor provided apps. (as for effect for example, or custom setVendorParam / getVendorParam) where the parcelable placeholder is really the good approach to let vendor defining their contract..\n\nIt is as the ports, strategies, volume group retrieved by AIDL, Policy discovers it from getConfig. Behing parameterSettings, we will find the parameter (including strategies, device for strategy, device address for strategy) and the value selected.",
       "parentUuid": "150c19df_ecf89e7a",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b54dcbbd_6005076e",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-26T21:45:26Z",
+      "side": 1,
+      "message": "OK, so the user of these parameters is the framework. How do we guarantee that in the case when a newer version of the framework which \"knows\" about more parameters works with an older version of the HAL, the framework does not fail when it receives an abridged set of parameters from it? When all the parameters are defined explicitly in AIDL, this problem is solved by having default values on each parameter.\n\nAlso, with the current approach, what prevents a parameter from changing its type? Again, with explicit specification in AIDL this is not possible—a new parameter must be defined.\n\nSo, the question is—is it possible to lay out all the parameters as explicit declarations in AIDL? If not, then we basically have to come up with versioning approach for this stuff.",
+      "parentUuid": "ecd27d9b_1acb3790",
       "range": {
         "startLine": 48,
         "startChar": 8,
