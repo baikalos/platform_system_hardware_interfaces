@@ -312,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9e47cbc_37f870d4",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-27T15:11:44Z",
+      "side": 1,
+      "message": "Definitely, I also saw the aidl\u0027isation of setForceUse but it is in libaudioclient and it is not frozen.\nAlso, string contract was already there, and changing to union if not compiling as breaking compat (it is a overkill to speak about compat since it has for sure never been used as aidl contract before!)\n\nIf I could force the compat break, i guess union would suit perfectly my needs.",
+      "parentUuid": "b71b51a5_d0e7a578",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67a1e24a_e93351e7",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapRules.aidl",
         "patchSetId": 14
@@ -798,6 +822,30 @@
       "side": 1,
       "message": "OK, so the user of these parameters is the framework. How do we guarantee that in the case when a newer version of the framework which \"knows\" about more parameters works with an older version of the HAL, the framework does not fail when it receives an abridged set of parameters from it? When all the parameters are defined explicitly in AIDL, this problem is solved by having default values on each parameter.\n\nAlso, with the current approach, what prevents a parameter from changing its type? Again, with explicit specification in AIDL this is not possible—a new parameter must be defined.\n\nSo, the question is—is it possible to lay out all the parameters as explicit declarations in AIDL? If not, then we basically have to come up with versioning approach for this stuff.",
       "parentUuid": "ecd27d9b_1acb3790",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33117cd3_038cf3d9",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-27T15:11:44Z",
+      "side": 1,
+      "message": "If Frameworks is update with new parameter, but loading older aidl contract, these parameters wont be provided, hence, wont be controlled. \nHowever, access to these param would need to be guarded or return default if not found. If any addition, need to be robust to unfound param and return default value.\n(Or versioning as you proposed to expect or not error if not found)\n\nThe biggest issue I see would be with crirerion/criterionType. If a new one is added, but as HAL is provided the list, this new one would not be recognized.\n\nDefinitely, if it heppens, we will need versionning to prevent Frameworks dealing with \"new\" criteria.",
+      "parentUuid": "b54dcbbd_6005076e",
       "range": {
         "startLine": 48,
         "startChar": 8,
