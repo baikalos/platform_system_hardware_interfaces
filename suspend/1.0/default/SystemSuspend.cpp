@@ -310,6 +310,7 @@ void SystemSuspend::initAutosuspendLocked() {
     std::thread autosuspendThread([this] {
         auto autosuspendLock = std::unique_lock(mAutosuspendLock);
         bool shouldSleep = true;
+        pthread_setname_np(pthread_self(), "autosuspend");
 
         while (true) {
             {
