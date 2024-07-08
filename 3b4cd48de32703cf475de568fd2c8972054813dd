@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd086b1_0f23f749",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241955
+      },
+      "writtenOn": "2024-07-08T17:36:36Z",
+      "side": 1,
+      "message": "This seems like a solid diagnosability improvement to me, and it would be beneficial for issues we encounter internally at times as well.\n\nAs long as there is no concern with the details of the implementation, this looks good to me.\n\nLeaving +2 to an owner in the Android team.",
+      "revId": "3b4cd48de32703cf475de568fd2c8972054813dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
