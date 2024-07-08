@@ -52,11 +52,11 @@ aidl_interface {
         },
         {
             version: "4",
-            imports: ["android.hardware.security.keymint-V3"],
+            imports: ["android.hardware.security.keymint-V4"],
         },
 
     ],
-    frozen: true,
+    frozen: false,
 
 }
 
