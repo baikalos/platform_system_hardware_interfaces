@@ -131,14 +131,21 @@ WakeLockEntryList::WakeLockEntryList(size_t capacity, unique_fd kernelWakelockSt
  * Evicts LRU from back of list if stats is at capacity.
  */
 void WakeLockEntryList::evictIfFull() {
+    static std::chrono::steady_clock::time_point lastWarningTime{};
+
     if (mStats.size() == mCapacity) {
         auto evictIt = mStats.end();
         std::advance(evictIt, -1);
         auto evictKey = std::make_pair(evictIt->name, evictIt->pid);
         mLookupTable.erase(evictKey);
         mStats.erase(evictIt);
-        LOG(ERROR) << "WakeLock Stats: Stats capacity met, consider adjusting capacity to "
-                      "avoid stats eviction.";
+
+        std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+        if (now - lastWarningTime >= std::chrono::seconds(5)) {
+            LOG(WARNING) << "WakeLock Stats: Stats capacity met, consider "
+                            "adjusting capacity to avoid stats eviction.";
+            lastWarningTime = now;
+        }
     }
 }
 
