@@ -902,6 +902,30 @@
       },
       "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979a94ff_0ebcf232",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-07-20T00:29:53Z",
+      "side": 1,
+      "message": "@VintfStability is the big difference here. \n\nThe backward compatibility requirements and the number of people/partners that need to use and implement these VINTF interfaces means that we need well defined interfaces.\n\nIf someone want unstable interfaces that are used between two pieces of code that they own, they can mostly do what they want because it\u0027s easy to change at any time.",
+      "parentUuid": "2d796cc8_1d230120",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
