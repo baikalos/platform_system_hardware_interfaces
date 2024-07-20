@@ -878,6 +878,30 @@
       },
       "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d796cc8_1d230120",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-07-20T00:17:34Z",
+      "side": 1,
+      "message": "smoreland@ Steven, I have noticed that https://cs.android.com/android/platform/superproject/main/+/main:trusty/user/base/interface/device_tree/com/android/trusty/device_tree/Property.aidl is basically the same thing as `ParameterSetting`, even more generic. What is the criteria for allowing such generic parameters in AIDL interfaces?",
+      "parentUuid": "33117cd3_038cf3d9",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
