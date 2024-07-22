@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68ea292_f3724767",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-07-22T17:45:06Z",
+      "side": 1,
+      "message": "nit: you might consider a timer to log once only every 5s, and print the count of how many times it would be logged. If we only have one log, it might be hard to tell how many times it\u0027s hitting capacity. Though, I\u0027m also not sure the implications of this - how important that is.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "3965565c8a929c21740850329bc94a1bc762781b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
