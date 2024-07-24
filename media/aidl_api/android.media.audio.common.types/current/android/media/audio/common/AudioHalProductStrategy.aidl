@@ -37,5 +37,6 @@ package android.media.audio.common;
 parcelable AudioHalProductStrategy {
   int id = android.media.audio.common.AudioProductStrategyType.SYS_RESERVED_NONE /* -1 */;
   android.media.audio.common.AudioHalAttributesGroup[] attributesGroups;
+  @nullable @utf8InCpp String name;
   const int VENDOR_STRATEGY_ID_START = 1000;
 }

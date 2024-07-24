@@ -44,4 +44,15 @@ parcelable AudioHalProductStrategy {
      * This is the list of use cases that follow the same routing strategy.
      */
     AudioHalAttributesGroup[] attributesGroups;
+    /**
+     * Name of the strategy. Nullable for backward compatibility. If null, id
+     * are assigned by the audio policy engine, ensuring uniqueness.
+     *
+     * With complete engine configuration AIDL migration, strategy ids are
+     * preallocated (from `VENDOR_STRATEGY_ID_START` to
+     * `VENDOR_STRATEGY_ID_START+39`). A human readable name must be
+     * defined uniquely (to make dump/debug easier) for all strategies and
+     * must not be null for any.
+     */
+    @nullable @utf8InCpp String name;
 }

@@ -50,6 +50,8 @@ cc_defaults {
     ],
     shared_libs: [
         "android.system.suspend-V1-ndk",
+    ],
+    static_libs: [
         "android.system.suspend.control-V1-cpp",
         "android.system.suspend.control.internal-cpp",
         "android.system.suspend@1.0",

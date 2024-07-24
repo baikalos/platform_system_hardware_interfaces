@@ -14,22 +14,21 @@
  * limitations under the License.
  */
 
+#include <SuspendProperties.sysprop.h>
 #include <android-base/logging.h>
 #include <android/binder_manager.h>
+#include <android/hidl/manager/1.2/IServiceManager.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/ProcessState.h>
 #include <cutils/native_handle.h>
+#include <fcntl.h>
 #include <hidl/HidlTransportSupport.h>
 #include <hwbinder/ProcessState.h>
-
-#include <fcntl.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
-
-#include <SuspendProperties.sysprop.h>
 
 #include "SuspendControlService.h"
 #include "SystemSuspend.h"
@@ -127,7 +126,8 @@ int main() {
             kDefaultShortSuspendBackoffEnabled),
     };
 
-    configureRpcThreadpool(1, true /* callerWillJoin */);
+    // Create non-HW binder threadpool for SuspendControlService.
+    android::ProcessState::self()->startThreadPool();
 
     sp<SuspendControlService> suspendControl = new SuspendControlService();
     auto controlStatus =
@@ -143,10 +143,6 @@ int main() {
         LOG(FATAL) << "Unable to register suspend_control_internal service: " << controlStatus;
     }
 
-    // Create non-HW binder threadpool for SuspendControlService.
-    sp<android::ProcessState> ps{android::ProcessState::self()};
-    ps->startThreadPool();
-
     sp<SystemSuspend> suspend = new SystemSuspend(
         std::move(wakeupCountFd), std::move(stateFd), std::move(suspendStatsFd), kStatsCapacity,
         std::move(kernelWakelockStatsFd), std::move(wakeupReasonsFd), std::move(suspendTimeFd),
@@ -161,13 +157,16 @@ int main() {
     CHECK_EQ(aidlStatus, STATUS_OK)
         << "Unable to register system-suspend AIDL service: " << aidlStatus;
 
-    sp<SystemSuspendHidl> suspendHidl = new SystemSuspendHidl(suspend.get());
-    status_t hidlStatus = suspendHidl->registerAsService();
-    if (android::OK != hidlStatus) {
-        LOG(INFO) << "system-suspend HIDL hal not supported, use the AIDL suspend hal for "
-                     "requesting wakelocks";
+    if (android::hidl::manager::V1_2::IServiceManager::Transport::HWBINDER ==
+        android::hardware::defaultServiceManager1_2()->getTransport(SystemSuspendHidl::descriptor,
+                                                                    "default")) {
+        configureRpcThreadpool(1, false /* callerWillJoin */);
+        sp<SystemSuspendHidl> suspendHidl = new SystemSuspendHidl(suspend.get());
+        status_t hidlStatus = suspendHidl->registerAsService();
+        CHECK_EQ(hidlStatus, android::OK)
+            << "Unable to register system-suspend HIDL hal" << hidlStatus;
     }
-
-    joinRpcThreadpool();
+    // join the libbinder threadpool
+    android::IPCThreadState::self()->joinThreadPool(true /* isMain */);
     std::abort(); /* unreachable */
 }
