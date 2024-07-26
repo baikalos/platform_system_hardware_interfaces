@@ -34,6 +34,23 @@
       "parentUuid": "0aa38030_f82881e7",
       "revId": "ea7713eacded78d836a7ee420f60e50138e9b85f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "290eff25_6e9c6189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-07-26T14:08:22Z",
+      "side": 1,
+      "message": "Hi Mikhail, what are the remaining action item to allow merging this CL?",
+      "revId": "ea7713eacded78d836a7ee420f60e50138e9b85f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

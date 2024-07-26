@@ -974,6 +974,30 @@
       },
       "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0e6c8f_9ef2a6ec",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapSetting.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-07-26T14:08:22Z",
+      "side": 1,
+      "message": "Mikhail, what are the remaining action item to allow merging this CL?",
+      "parentUuid": "d69bc551_fd19cc3a",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
