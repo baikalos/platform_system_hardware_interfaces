@@ -513,6 +513,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5db0c0aa_cd784151",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-07-26T12:56:34Z",
+      "side": 1,
+      "message": "Can we have a union of stable AIDL types here instead? Enum values from the C API should not be used here.",
+      "parentUuid": "2744a622_972af3b3",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "78e4efdc9f8d0624e637510251fb93b94f023de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4b5d586_174afd5e",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapDomain.aidl",
         "patchSetId": 12

@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5112c4d_32c5c7e4",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-07-26T12:56:34Z",
+      "side": 1,
+      "message": "These are used for binding of AudioHalCapRule.CriterionRule.criterionTypeValue.",
+      "parentUuid": "d0ddba3c_0bf92fc2",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "f24cf8f3dd2c82d9be551e6e2f0e930642f7ad8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa92e723_594f10ae",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionType.aidl",
         "patchSetId": 14
