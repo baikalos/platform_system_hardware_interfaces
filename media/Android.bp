@@ -63,6 +63,8 @@ aidl_interface {
         "aidl/android/media/audio/common/AudioOffloadInfo.aidl",
         "aidl/android/media/audio/common/AudioOutputFlags.aidl",
         "aidl/android/media/audio/common/AudioPlaybackRate.aidl",
+        "aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "aidl/android/media/audio/common/AudioPolicyForceUse.aidl",
         "aidl/android/media/audio/common/AudioPort.aidl",
         "aidl/android/media/audio/common/AudioPortConfig.aidl",
         "aidl/android/media/audio/common/AudioPortDeviceExt.aidl",
