@@ -309,7 +309,7 @@ void SystemSuspend::initAutosuspendLocked() {
 
     std::thread autosuspendThread([this] {
         auto autosuspendLock = std::unique_lock(mAutosuspendLock);
-        bool shouldSleep = true;
+        bool suspendAttemptInPrevIter = true;
 
         while (true) {
             {
@@ -321,7 +321,7 @@ void SystemSuspend::initAutosuspendLocked() {
                 }
                 // If we got here by a failed write to /sys/power/wakeup_count; don't sleep
                 // since we didn't attempt to suspend on the last cycle of this loop.
-                if (shouldSleep) {
+                if (suspendAttemptInPrevIter) {
                     mAutosuspendCondVar.wait_for(
                         autosuspendLock, mSleepTime,
                         [this]() REQUIRES(mAutosuspendLock) { return !mAutosuspendEnabled; });
@@ -343,7 +343,8 @@ void SystemSuspend::initAutosuspendLocked() {
                     continue;
                 }
 
-                shouldSleep = false;
+                // Update this only after a kernel suspend is attempted.
+                suspendAttemptInPrevIter = false;
 
                 mAutosuspendCondVar.wait(autosuspendLock, [this]() REQUIRES(mAutosuspendLock) {
                     return mSuspendCounter == 0 || !mAutosuspendEnabled;
@@ -380,7 +381,7 @@ void SystemSuspend::initAutosuspendLocked() {
                     continue;
                 }
                 success = WriteStringToFd(kSleepState, mStateFd);
-                shouldSleep = true;
+                suspendAttemptInPrevIter = true;
 
                 autosuspendLock.unlock();
             }
