@@ -1,0 +1,284 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91bcd3d_7963ee86",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:16Z",
+      "side": 1,
+      "message": "do you have a test if this is accidentally called multiple times?",
+      "range": {
+        "startLine": 890,
+        "startChar": 43,
+        "endLine": 890,
+        "endChar": 58
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6879547_9e65d520",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:16Z",
+      "side": 1,
+      "message": "this is going to be flaky, if L890 thread isn\u0027t run. You might want to add a condition variable, but easier in this case, delete the \u0027detach\u0027 and add \u0027releaseThread.join()\u0027 before doing this check, which will ensure it always finishes first.",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 904,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b3536693_b4d685f4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+              "range": {
+                "startLine": 890,
+                "startChar": 0,
+                "endLine": 892,
+                "endChar": 0
+              },
+              "replacement": "        std::thread releaseThread([wlA]() {\n          std::this_thread::sleep_for(10ms);\n          wlA-\u003erelease();\n        });\n        releaseThread.join();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe17094a_289df4ce",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:16Z",
+      "side": 1,
+      "message": "why is this sleep needed?",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 908,
+        "endChar": 42
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97509d74_d92a6a9b",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:16Z",
+      "side": 1,
+      "message": "nit: clear not needed? same below.",
+      "range": {
+        "startLine": 910,
+        "startChar": 5,
+        "endLine": 911,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ef8f24c7_6af5c19b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+              "range": {
+                "startLine": 910,
+                "startChar": 0,
+                "endLine": 911,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+              "range": {
+                "startLine": 936,
+                "startChar": 0,
+                "endLine": 937,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+              "range": {
+                "startLine": 946,
+                "startChar": 0,
+                "endLine": 947,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+              "range": {
+                "startLine": 957,
+                "startChar": 0,
+                "endLine": 958,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70127625_86e2e677",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:16Z",
+      "side": 1,
+      "message": "if you sleep 10ms here, would that ensure the next activeTime check is \u003e\u003d 20ms? or would it still only be guaranteed \u003e\u003d 10ms?",
+      "fixSuggestions": [
+        {
+          "fixId": "6bb413c7_7450e6a8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+              "range": {
+                "startLine": 932,
+                "startChar": 0,
+                "endLine": 932,
+                "endChar": 0
+              },
+              "replacement": "     std::this_thread::sleep_for(10ms);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29dfed91_30231cfb",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:16Z",
+      "side": 1,
+      "message": "if the activeCount is 0 here, this means there is an error, right?\n\ncould you log that case?",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 9
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "02050005_2bc69266",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/WakeLockEntryList.cpp",
+              "range": {
+                "startLine": 370,
+                "startChar": 0,
+                "endLine": 370,
+                "endChar": 0
+              },
+              "replacement": "        } else {\n            LOG(ERROR) \u003c\u003c \"WakeLock Stats: A stats entry for, \\\"\" \u003c\u003c name\n                       \u003c\u003c \"\\\" was not found. This is most likely due to it being evicted.\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "564a30b4_194b1d9d",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:16Z",
+      "side": 1,
+      "message": "Since this is derived information and cheap to compute, can you avoid storing it? Otherwise, it may go out of sync (e.g. \u0027bool isActive() { return activeCount \u003e 0; }\u0027)",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 63
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9d9983_8e0a08d4",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:16Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure if it matters here, but adding multiple timeDelta could lead to numerical instability (or small errors adding up).\n\nI would recommend storing:\n- activationTime\n- lastChangeTime\n\nthen activeTime can be computed on demand, like: (activeCount \u003e 0) ? (now-activationTime) : 0;",
+      "range": {
+        "startLine": 372,
+        "startChar": 35,
+        "endLine": 372,
+        "endChar": 44
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
