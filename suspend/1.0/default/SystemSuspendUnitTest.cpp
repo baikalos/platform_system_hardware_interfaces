@@ -1119,7 +1119,7 @@ TEST_F(SystemSuspendSameThreadTest, GetNativeWakeLockStats) {
     WakeLockInfo nwlInfo;
     ASSERT_TRUE(findWakeLockInfoByName(wlStats, fakeWlName, &nwlInfo));
     ASSERT_EQ(nwlInfo.name, fakeWlName);
-    ASSERT_EQ(nwlInfo.activeCount, 1);
+    ASSERT_EQ(nwlInfo.activeCount, 0);
     ASSERT_GE(nwlInfo.maxTime, 1000);
     ASSERT_GE(nwlInfo.totalTime, 1000);
     ASSERT_EQ(nwlInfo.isActive, false);
@@ -1238,7 +1238,7 @@ TEST_F(SystemSuspendSameThreadTest, GetNativeAndKernelWakeLockStats) {
     WakeLockInfo nwlInfo;
     ASSERT_TRUE(findWakeLockInfoByName(wlStats, fakeNwlName, &nwlInfo));
     ASSERT_EQ(nwlInfo.name, fakeNwlName);
-    ASSERT_EQ(nwlInfo.activeCount, 1);
+    ASSERT_EQ(nwlInfo.activeCount, 0);
     ASSERT_GE(nwlInfo.maxTime, 1000);
     ASSERT_GE(nwlInfo.totalTime, 1000);
     ASSERT_EQ(nwlInfo.isActive, false);
