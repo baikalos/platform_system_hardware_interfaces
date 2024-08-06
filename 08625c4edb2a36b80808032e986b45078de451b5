@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "842ac3e1_06c19c24",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-08-06T21:29:43Z",
+      "side": 1,
+      "message": "It should only change the accounting.\n\nIf you do acquire --\u003e acquire (even with same name) those are 2 distinct wakelock objects. (unless using libpower acquire_wake_lock())",
+      "parentUuid": "fdcb76ec_eb6ba158",
+      "range": {
+        "startLine": 367,
+        "startChar": 26,
+        "endLine": 369,
+        "endChar": 31
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29dfed91_30231cfb",
         "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
         "patchSetId": 4
