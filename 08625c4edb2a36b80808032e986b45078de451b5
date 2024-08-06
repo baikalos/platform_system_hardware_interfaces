@@ -196,6 +196,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdcb76ec_eb6ba158",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:17:57Z",
+      "side": 1,
+      "message": "oh - also, the other implication of this is that previously if people have:\n\n- acquire\n- acquire\n- release\n\nthat the wakelock will be released, right?\n\nDoes this change the reporting only or does it change the behavior?",
+      "range": {
+        "startLine": 367,
+        "startChar": 26,
+        "endLine": 369,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "467691c6_2eda836c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/WakeLockEntryList.cpp",
+              "range": {
+                "startLine": 367,
+                "startChar": 0,
+                "endLine": 368,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "suspend/1.0/default/WakeLockEntryList.cpp",
+              "range": {
+                "startLine": 372,
+                "startChar": 0,
+                "endLine": 376,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29dfed91_30231cfb",
         "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
         "patchSetId": 4
