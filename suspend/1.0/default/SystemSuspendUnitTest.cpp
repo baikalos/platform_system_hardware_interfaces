@@ -269,6 +269,29 @@ class SystemSuspendTest : public ::testing::Test {
         ASSERT_EQ(actual.count(), expected.count()) << "incorrect sleep time";
     }
 
+    /**
+     * Returns true if wake lock is found else false.
+     */
+    bool findWakeLockInfoByName(const std::vector<WakeLockInfo>& wlStats, const std::string& name,
+                                WakeLockInfo* info) {
+        auto it = std::find_if(wlStats.begin(), wlStats.end(),
+                               [&name](const auto& x) { return x.name == name; });
+        if (it != wlStats.end()) {
+            *info = *it;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Returns wakelock stats.
+     */
+    std::vector<WakeLockInfo> getWakelockStats() {
+        std::vector<WakeLockInfo> wlStats;
+        controlServiceInternal->getWakeLockStats(&wlStats);
+        return wlStats;
+    }
+
     std::shared_ptr<ISystemSuspend> suspendService;
     sp<ISuspendControlService> controlService;
     sp<ISuspendControlServiceInternal> controlServiceInternal;
@@ -855,6 +878,94 @@ TEST_F(SystemSuspendTest, CallbackNotifyWakelock) {
 
     cb1->disable();
     cb2->disable();
+}
+
+// Tests for a potential race condition in wakelock stats updates.
+// This checks wakelock accounting when a wakelock is acquired and released, and a re-acquire
+// happens immediately.
+TEST_F(SystemSuspendTest, WakeLockStatsRaceConditionTest) {
+    constexpr int kNumRetries = 100;
+
+    for (int i = 0; i < kNumRetries; i++) {
+        std::string testLockName = "RaceConditionLock" + std::to_string(i + 1);
+
+        std::shared_ptr<IWakeLock> wlA = acquireWakeLock(testLockName);
+        ASSERT_NE(wlA, nullptr);
+
+        // Release the wakelock asynchronously on a separate thread
+        std::thread releaseThread([wlA]() { wlA->release(); });
+        releaseThread.detach();
+
+        // Immediately re-acquire the wakelock.
+        std::shared_ptr<IWakeLock> wlB = acquireWakeLock(testLockName);
+        ASSERT_NE(wlB, nullptr);
+
+        // Allow the release operation to complete.
+        std::this_thread::sleep_for(10ms);
+
+        std::vector<WakeLockInfo> wlStats = getWakelockStats();
+        WakeLockInfo wlInfo;
+        ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+        EXPECT_TRUE(wlInfo.isActive);
+        EXPECT_EQ(wlInfo.activeCount, 1);
+        EXPECT_GE(wlInfo.activeTime, 10);  // WakeLock should have been active for at least 10ms.
+
+        wlB->release();
+        std::this_thread::sleep_for(10ms);
+
+        wlStats.clear();
+        wlStats = getWakelockStats();
+        ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+        EXPECT_FALSE(wlInfo.isActive);
+        EXPECT_EQ(wlInfo.activeCount, 0);
+        EXPECT_EQ(wlInfo.activeTime, 0);
+    }
+}
+
+// Tests for correctness of the wakelock active count, active status and active time when multiple
+// wakelocks of the same name are acquired sequentially and released sequentially.
+TEST_F(SystemSuspendTest, WakeLockActiveCountDecrementCheck) {
+    std::string testLockName = "testLock";
+
+    std::shared_ptr<IWakeLock> wlA = acquireWakeLock(testLockName);
+    ASSERT_NE(wlA, nullptr);
+
+    std::vector<WakeLockInfo> wlStats = getWakelockStats();
+    WakeLockInfo wlInfo;
+    ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+    EXPECT_TRUE(wlInfo.isActive);
+    EXPECT_EQ(wlInfo.activeCount, 1);
+
+    std::shared_ptr<IWakeLock> wlB = acquireWakeLock(testLockName);
+    ASSERT_NE(wlB, nullptr);
+
+    wlStats.clear();
+    wlStats = getWakelockStats();
+    ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+    EXPECT_TRUE(wlInfo.isActive);
+    EXPECT_EQ(wlInfo.activeCount, 2);
+
+    wlA->release();
+    // Allow the release operation to complete.
+    std::this_thread::sleep_for(10ms);
+
+    wlStats.clear();
+    wlStats = getWakelockStats();
+    ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+    // wlB of the same name is yet to be released.
+    EXPECT_TRUE(wlInfo.isActive);
+    EXPECT_EQ(wlInfo.activeCount, 1);
+    EXPECT_GE(wlInfo.activeTime, 10);
+
+    wlB->release();
+    std::this_thread::sleep_for(10ms);
+
+    wlStats.clear();
+    wlStats = getWakelockStats();
+    ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+    EXPECT_FALSE(wlInfo.isActive);
+    EXPECT_EQ(wlInfo.activeCount, 0);
+    EXPECT_EQ(wlInfo.activeTime, 0);
 }
 
 class SystemSuspendSameThreadTest : public ::testing::Test {
