@@ -67,6 +67,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1155e79_2bf8aea7",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-08-06T21:21:19Z",
+      "side": 1,
+      "message": "With the patch if the events happened like:\n\nacquire A --\u003e acquire B --\u003e release B (same name)\n\nThe active count will still be \"eventually\" correct?",
+      "range": {
+        "startLine": 888,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "453a0a6d_2e963b46",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+              "range": {
+                "startLine": 876,
+                "startChar": 0,
+                "endLine": 918,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe17094a_289df4ce",
         "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
         "patchSetId": 4
@@ -328,6 +369,47 @@
         "endLine": 372,
         "endChar": 44
       },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3aed0a_437a6010",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-08-06T21:21:19Z",
+      "side": 1,
+      "message": "nit: space",
+      "range": {
+        "startLine": 374,
+        "startChar": 55,
+        "endLine": 374,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6f724a67_6bf23842",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/WakeLockEntryList.cpp",
+              "range": {
+                "startLine": 374,
+                "startChar": 0,
+                "endLine": 375,
+                "endChar": 0
+              },
+              "replacement": "        updatedEntry.activeTime \u003d updatedEntry.isActive ? updatedEntry.activeTime : 0;\n"
+            }
+          ]
+        }
+      ],
       "revId": "08625c4edb2a36b80808032e986b45078de451b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
