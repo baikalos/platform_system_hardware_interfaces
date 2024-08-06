@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00dc9bc0_f53be3f3",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:21:04Z",
+      "side": 1,
+      "message": "it could be a suspend attempt several iterations ago?\n\nhow about \u0027suspendAttemptSinceLongSleep\u0027 ?",
+      "range": {
+        "startLine": 312,
+        "startChar": 27,
+        "endLine": 312,
+        "endChar": 37
+      },
+      "revId": "2945830a13b5fb72066d610652fe6c38aa0064f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c82453_64445d16",
+        "filename": "suspend/1.0/default/SystemSuspend.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-06T21:21:04Z",
+      "side": 1,
+      "message": "are you still considering a sleep of 10ms or similar in an else clause here?",
+      "range": {
+        "startLine": 328,
+        "startChar": 15,
+        "endLine": 328,
+        "endChar": 17
+      },
+      "revId": "2945830a13b5fb72066d610652fe6c38aa0064f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
