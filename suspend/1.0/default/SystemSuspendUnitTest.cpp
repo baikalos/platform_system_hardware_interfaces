@@ -1029,6 +1029,44 @@ TEST_F(SystemSuspendTest, WakeLockStatsAcquiredReleasedInLIFOOrder) {
     EXPECT_EQ(wlInfo.activeTime, 0);
 }
 
+// Ensures multiple releases on a wakelock have no effect on wakelock stats.
+TEST_F(SystemSuspendTest, MultipleReleasesNoEffectTest) {
+    std::string testLockName = "testLock";
+
+    std::shared_ptr<IWakeLock> wl = acquireWakeLock(testLockName);
+    ASSERT_NE(wl, nullptr);
+
+    std::vector<WakeLockInfo> wlStats = getWakelockStats();
+    WakeLockInfo wlInfo;
+    ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+    EXPECT_TRUE(wlInfo.isActive);
+    EXPECT_EQ(wlInfo.activeCount, 1);
+
+    wl->release();
+
+    EXPECT_TRUE(waitForActiveCount(testLockName, 0))
+        << "Timeout waiting for activeCount to reach 0";
+
+    wlStats = getWakelockStats();
+    ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+    EXPECT_FALSE(wlInfo.isActive);
+    EXPECT_EQ(wlInfo.activeCount, 0);
+
+    // Release the wakelock multiple times (should have no effect)
+    for (int i = 0; i < 5; i++) {
+        wl->release();
+    }
+
+    // Allow some time for any potential updates to propagate
+    std::this_thread::sleep_for(100ms);
+
+    wlStats = getWakelockStats();
+    ASSERT_TRUE(findWakeLockInfoByName(wlStats, testLockName, &wlInfo));
+    EXPECT_FALSE(wlInfo.isActive);
+    EXPECT_EQ(wlInfo.activeCount, 0);
+    EXPECT_EQ(wlInfo.activeTime, 0);
+}
+
 class SystemSuspendSameThreadTest : public ::testing::Test {
    public:
     std::shared_ptr<IWakeLock> acquireWakeLock(const std::string& name = "TestLock") {
