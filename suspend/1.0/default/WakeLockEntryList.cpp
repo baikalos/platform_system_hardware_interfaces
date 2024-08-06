@@ -365,10 +365,16 @@ void WakeLockEntryList::updateOnRelease(const std::string& name, int pid) {
 
         // Update entry
         TimestampType timeDelta = timeNow - updatedEntry.lastChange;
-        updatedEntry.isActive = false;
+        if (updatedEntry.activeCount > 0) {
+            updatedEntry.activeCount--;
+        } else {
+            LOG(ERROR) << "WakeLock Stats: Active count attempted to go below zero for "
+                       << "wakelock \"" << name << "\". This is unexpected.";
+        }
+        updatedEntry.isActive = (updatedEntry.activeCount > 0);
         updatedEntry.activeTime += timeDelta;
         updatedEntry.maxTime = std::max(updatedEntry.maxTime, updatedEntry.activeTime);
-        updatedEntry.activeTime = 0;  // No longer active
+        updatedEntry.activeTime = updatedEntry.isActive ? updatedEntry.activeTime : 0;
         updatedEntry.totalTime += timeDelta;
         updatedEntry.lastChange = timeNow;
 
