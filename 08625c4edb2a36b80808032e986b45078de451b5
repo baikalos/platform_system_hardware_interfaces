@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06077eb4_37d7460a",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "I dont see any test for this - but wakelock.release is marked as oneway https://cs.android.com/android/platform/superproject/main/+/main:system/hardware/interfaces/suspend/aidl/android/system/suspend/IWakeLock.aidl;l\u003d31\n\nWhich means it can be called only once. Subsequent calls would have no effect. \n\nI\u0027ll add a test for this but its kinda independent of what this CL is changing, so mind if I do it in a follow up CL?",
+      "parentUuid": "b91bcd3d_7963ee86",
+      "range": {
+        "startLine": 890,
+        "startChar": 43,
+        "endLine": 890,
+        "endChar": 58
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6879547_9e65d520",
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74cbffac_08766f24",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "wakelock.release() is marked oneway in https://cs.android.com/android/platform/superproject/main/+/main:system/hardware/interfaces/suspend/aidl/android/system/suspend/IWakeLock.aidl;l\u003d31\nwhich means its already async. So a join() wouldn\u0027t necessarily ensure its finished. \n\nThe `std::this_thread::sleep_for(10ms);` is to allow for this release to finish. Although, I guess its better to continuously poll for this instead of wasting 10ms. Introduced a `waitFor` function to do this.\n\nThis brought up another good point - wl-\u003erelease() is already async. I didn\u0027t need to do the release on a separate thread. Changed that.",
+      "parentUuid": "a6879547_9e65d520",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 904,
+        "endChar": 41
+      },
       "revId": "08625c4edb2a36b80808032e986b45078de451b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -106,6 +154,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a3a745_243303bb",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "Added a test case for this too, thanks!",
+      "parentUuid": "d1155e79_2bf8aea7",
+      "range": {
+        "startLine": 888,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 41
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe17094a_289df4ce",
@@ -119,6 +191,30 @@
       "writtenOn": "2024-08-06T21:17:16Z",
       "side": 1,
       "message": "why is this sleep needed?",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 908,
+        "endChar": 42
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f4fce78_611dca65",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "(Repeat from other comment reply) wl-\u003erelease() is async, so we need to wait for it to complete.",
+      "parentUuid": "fe17094a_289df4ce",
       "range": {
         "startLine": 908,
         "startChar": 0,
@@ -200,6 +296,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97420680_cc80b1f0",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "You\u0027re right - I dont know why I wanted to do this explicitly.",
+      "parentUuid": "97509d74_d92a6a9b",
+      "range": {
+        "startLine": 910,
+        "startChar": 5,
+        "endLine": 911,
+        "endChar": 19
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70127625_86e2e677",
@@ -231,6 +351,24 @@
           ]
         }
       ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0a89f6_6dc9ce4d",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "It would be 10ms. Its the active time since the \"latest\" wakelock of the same name being acquired.\n\nBut, I just changed the logic of this to remove any chance of flakiness.",
+      "parentUuid": "70127625_86e2e677",
       "revId": "08625c4edb2a36b80808032e986b45078de451b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -310,6 +448,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b60db4c_30412c6e",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "+1 to what Kalesh said. An acquire must always be matched with a release on the wakelock object.\n\nWakelock stats is just a list used for debug information about wakelocks in `dumpsys suspend_control_internal`. This is not used for any suspend decisions.\n\nSuspend wake lock counter is maintained separately: https://cs.android.com/android/platform/superproject/main/+/main:system/hardware/interfaces/suspend/1.0/default/SystemSuspend.cppl\u003d280\n\nIn the case you specified, with 2 acquires and 1 release, suspend counter would be +1 +1 -1 \u003d 1.",
+      "parentUuid": "842ac3e1_06c19c24",
+      "range": {
+        "startLine": 367,
+        "startChar": 26,
+        "endLine": 369,
+        "endChar": 31
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29dfed91_30231cfb",
@@ -351,6 +513,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a339488_02eeeab9",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "Done. If the implementation is correct (which I believe it is), this should never happen, but good to log in case someone makes modifications to this in the future.\n\nSince this is just accounting logic, I performed a LOG(ERROR) instead of LOG(FATAL) btw.",
+      "parentUuid": "29dfed91_30231cfb",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 9
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "564a30b4_194b1d9d",
@@ -374,6 +560,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "523ae968_9da31960",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "Good idea! I need to change WakeLockInfo to remove this field and compute it wherever `dumpsys suspend_control_internal` is called. Will do in a follow up CL!",
+      "parentUuid": "564a30b4_194b1d9d",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 63
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b9d9983_8e0a08d4",
@@ -387,6 +597,30 @@
       "writtenOn": "2024-08-06T21:17:16Z",
       "side": 1,
       "message": "nit: I\u0027m not sure if it matters here, but adding multiple timeDelta could lead to numerical instability (or small errors adding up).\n\nI would recommend storing:\n- activationTime\n- lastChangeTime\n\nthen activeTime can be computed on demand, like: (activeCount \u003e 0) ? (now-activationTime) : 0;",
+      "range": {
+        "startLine": 372,
+        "startChar": 35,
+        "endLine": 372,
+        "endChar": 44
+      },
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e173ed8e_514b0806",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "Good point. Its outside the scope of what I wanted to fix with this CL so will take it up in a follow-up CL.",
+      "parentUuid": "4b9d9983_8e0a08d4",
       "range": {
         "startLine": 372,
         "startChar": 35,
@@ -434,6 +668,30 @@
           ]
         }
       ],
+      "revId": "08625c4edb2a36b80808032e986b45078de451b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07b2c60_49267a93",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-11T23:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3aed0a_437a6010",
+      "range": {
+        "startLine": 374,
+        "startChar": 55,
+        "endLine": 374,
+        "endChar": 56
+      },
       "revId": "08625c4edb2a36b80808032e986b45078de451b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
