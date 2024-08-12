@@ -22,6 +22,30 @@
       },
       "revId": "3965565c8a929c21740850329bc94a1bc762781b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a217d57_15595052",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-12T16:27:33Z",
+      "side": 1,
+      "message": "Makes sense! WakeLockEntryList is maintained as an LRU list. The default limit is at 1000 right now https://cs.android.com/android/platform/superproject/main/+/main:system/hardware/interfaces/suspend/1.0/default/main.cpp;l\u003d55\n\nAlso, please check for results on a real device: http://b/223123241#comment6\n\nThis is just for accounting purposes, when someone tries to debug wakelock issues with `dumpsys suspend_control_internal`. Evicting very old entries ( \u003e 1000 wakelocks ago :P) is alright as it most likely wont be needed/used for debugging.\n\nInstead of logging overall eviction count though, I\u0027m logging eviction count since last log because that gives better indication of whether we need to change the stats capacity in the future.",
+      "parentUuid": "e68ea292_f3724767",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "3965565c8a929c21740850329bc94a1bc762781b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
