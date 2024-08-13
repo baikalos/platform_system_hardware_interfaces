@@ -396,8 +396,7 @@ void SystemSuspend::initAutosuspendLocked() {
             if (wakeupReasons == std::vector<std::string>({kUnknownWakeup})) {
                 LOG(INFO) << "Unknown/empty wakeup reason. Re-opening wakeup_reason file.";
 
-                mWakeupReasonsFd =
-                    std::move(reopenFileUsingFd(mWakeupReasonsFd.get(), O_CLOEXEC | O_RDONLY));
+                mWakeupReasonsFd = reopenFileUsingFd(mWakeupReasonsFd.get(), O_CLOEXEC | O_RDONLY);
             }
             mWakeupList.update(wakeupReasons);
 
