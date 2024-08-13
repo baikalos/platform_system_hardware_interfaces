@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5164cb_cb84ba9f",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-13T00:51:26Z",
+      "side": 1,
+      "message": "nit: btw, read this:\nhttps://2014.jsconf.eu/speakers/sebastian-markbage-minimal-api-surface-area-learning-patterns-instead-of-frameworks.html\n\n:D",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0c99de73_812b5048",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+              "range": {
+                "startLine": 300,
+                "startChar": 0,
+                "endLine": 306,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4412c666ceaa60521fb0f241b29e3d0d97ba9909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a133060_22289f6c",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-13T00:51:26Z",
+      "side": 1,
+      "message": "nit: this is subject to cumulative error. Better to store initial time, and subtract from now to get the time delta.",
+      "range": {
+        "startLine": 375,
+        "startChar": 32,
+        "endLine": 375,
+        "endChar": 44
+      },
+      "revId": "4412c666ceaa60521fb0f241b29e3d0d97ba9909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
