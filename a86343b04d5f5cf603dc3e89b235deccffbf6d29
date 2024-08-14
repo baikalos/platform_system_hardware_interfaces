@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71504673_574658a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-14T19:36:45Z",
+      "side": 1,
+      "message": "Test: m",
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518c5024_c9200e1e",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForceUse.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-14T19:36:45Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222e83ef_9c0cdb3b",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForceUse.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-14T19:36:45Z",
+      "side": 1,
+      "message": "Same note about the doc.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c735f2f_b2940403",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-14T19:36:45Z",
+      "side": 1,
+      "message": "Since it\u0027s technically a new file, this needs to be 2024.",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57383371_af79a1ce",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-14T19:36:45Z",
+      "side": 1,
+      "message": "Since it\u0027s now \"public API\", we need some docs here. Unfortunately, I don\u0027t see any to copy from. I would say that these are the values used to enforce certain audio routing behaviors.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195f6e74_dead9503",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-14T19:36:45Z",
+      "side": 1,
+      "message": "`/**` and place on the line above the value.",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfe16b3_044baf11",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-14T19:36:45Z",
+      "side": 1,
+      "message": "Please add a doc comment that this value is used to enforce audibility of sounds required by local laws, such as camera shutter sound.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
