@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a3a4b1d_8b90e846",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-08-16T17:19:43Z",
+      "side": 1,
+      "message": "Overall this is great! Thank you Francois! \n\nThere are a few cleanups and explanations in the open comments that should be addressed.",
+      "parentUuid": "339e221d_ccbdbb64",
+      "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccf50122_9d732286",
@@ -53,6 +71,53 @@
         "startChar": 8,
         "endLine": 36,
         "endChar": 16
+      },
+      "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121d8ea8_5f67daee",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-08-16T17:19:43Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ccf50122_9d732286",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11de534b_43167531",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 22
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-08-16T17:19:43Z",
+      "side": 1,
+      "message": "comments on all of these fields would be helpful. What does \"force\" mean in this context?",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 65
       },
       "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -94,6 +159,30 @@
       "writtenOn": "2024-08-14T19:48:59Z",
       "side": 1,
       "message": "A similar question about the semantic difference between a null array and an empty array.",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41d0967_eb80de23",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 22
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-08-16T17:19:43Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "b5a82fee_04fdf211",
       "range": {
         "startLine": 112,
         "startChar": 4,
