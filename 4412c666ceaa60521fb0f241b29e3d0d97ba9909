@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c4790b_d8bc9f74",
+        "filename": "suspend/1.0/default/SystemSuspendUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-19T01:02:35Z",
+      "side": 1,
+      "message": "Yea, I wasnt too sure of introducing this - but this exact function exists in the other classes in this file. Wanted to maintain consistency for now and clean up these anti-patterns together in the future if required.",
+      "parentUuid": "2e5164cb_cb84ba9f",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 5
+      },
+      "revId": "4412c666ceaa60521fb0f241b29e3d0d97ba9909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a133060_22289f6c",
@@ -55,6 +79,30 @@
       "writtenOn": "2024-08-13T00:51:26Z",
       "side": 1,
       "message": "nit: this is subject to cumulative error. Better to store initial time, and subtract from now to get the time delta.",
+      "range": {
+        "startLine": 375,
+        "startChar": 32,
+        "endLine": 375,
+        "endChar": 44
+      },
+      "revId": "4412c666ceaa60521fb0f241b29e3d0d97ba9909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb2576c_b3f70749",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1988540
+      },
+      "writtenOn": "2024-08-19T01:02:35Z",
+      "side": 1,
+      "message": "Will do in follow up CL!",
+      "parentUuid": "9a133060_22289f6c",
       "range": {
         "startLine": 375,
         "startChar": 32,
