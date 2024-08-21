@@ -1,0 +1,88 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6540a06_e8a948e7",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-21T23:47:25Z",
+      "side": 1,
+      "message": "if you have this series of eviction\n\n- t\u003d1s: evict, count \u003d 1\u003d\u003e0 (will log #1)\n- t\u003d2s: evict, count \u003d 1, delta \u003d 1s (no log)\n- t\u003d3s: evict, count \u003d 2, delta \u003d 4s (no log)\n- t\u003d200s: evict, count \u003d 3\u003d\u003e0, delta \u003d 199s (will log #2)\n\nThen, the log will say:\n1. \"Capacity met 1 times in the last 5 seconds\"\n2. \"Capacity met 3 times in the last 5 seconds\"\n\nbut (2) is actually wrong, because it was 3 times in the last 199 seconds.",
+      "range": {
+        "startLine": 147,
+        "startChar": 65,
+        "endLine": 147,
+        "endChar": 92
+      },
+      "revId": "c4383aa81a4096c5d01c3dbc69595bddede492c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a52ca9_07c07ea1",
+        "filename": "suspend/1.0/default/WakeLockEntryList.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-21T23:47:25Z",
+      "side": 1,
+      "message": "nit: prefer to put this on L142 and run it unconditionally, instead of also having the \"(count + 1)\" in the log.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1b31fcb8_9b99bea8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "suspend/1.0/default/WakeLockEntryList.cpp",
+              "range": {
+                "startLine": 145,
+                "startChar": 0,
+                "endLine": 145,
+                "endChar": 0
+              },
+              "replacement": "        evictionCountSinceLastLog++;\n"
+            },
+            {
+              "path": "suspend/1.0/default/WakeLockEntryList.cpp",
+              "range": {
+                "startLine": 147,
+                "startChar": 0,
+                "endLine": 148,
+                "endChar": 0
+              },
+              "replacement": "                         \u003c\u003c evictionCountSinceLastLog \u003c\u003c \" times in the last 5 seconds, \"\n"
+            },
+            {
+              "path": "suspend/1.0/default/WakeLockEntryList.cpp",
+              "range": {
+                "startLine": 151,
+                "startChar": 0,
+                "endLine": 153,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "c4383aa81a4096c5d01c3dbc69595bddede492c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
