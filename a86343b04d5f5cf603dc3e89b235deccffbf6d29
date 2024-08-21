@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8948d5f5_0f449d04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-21T08:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71504673_574658a6",
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "518c5024_c9200e1e",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-14T19:36:45Z",
       "side": 1,
       "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8040ef42_7c106492",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForceUse.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-21T08:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518c5024_c9200e1e",
       "range": {
         "startLine": 2,
         "startChar": 17,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5588b34_4f797683",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForceUse.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-21T08:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "222e83ef_9c0cdb3b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c735f2f_b2940403",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-08-14T19:36:45Z",
       "side": 1,
       "message": "Since it\u0027s technically a new file, this needs to be 2024.",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb0b469b_b97dab57",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-21T08:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c735f2f_b2940403",
       "range": {
         "startLine": 2,
         "startChar": 17,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f7b815_2e23d06e",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-21T08:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57383371_af79a1ce",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "195f6e74_dead9503",
@@ -133,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf29fda_0f41fb62",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-21T08:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195f6e74_dead9503",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbfe16b3_044baf11",
@@ -146,6 +284,30 @@
       "writtenOn": "2024-08-14T19:36:45Z",
       "side": 1,
       "message": "Please add a doc comment that this value is used to enforce audibility of sounds required by local laws, such as camera shutter sound.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "a86343b04d5f5cf603dc3e89b235deccffbf6d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d05dc040_765f8272",
+        "filename": "media/aidl/android/media/audio/common/AudioPolicyForcedConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-21T08:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbfe16b3_044baf11",
       "range": {
         "startLine": 36,
         "startChar": 4,
