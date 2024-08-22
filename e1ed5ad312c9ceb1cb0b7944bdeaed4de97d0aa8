@@ -100,6 +100,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7c42cb_56fefff4",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-22T09:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "121d8ea8_5f67daee",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11de534b_43167531",
@@ -123,6 +147,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a310630b_0e75b294",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 22
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-22T09:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11de534b_43167531",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 65
+      },
+      "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc0e927f_bbcf6161",
@@ -136,6 +184,30 @@
       "writtenOn": "2024-08-14T19:48:59Z",
       "side": 1,
       "message": "Could you please clarify what is the difference between a null array and an empty array? Also, since there is `AudioPolicyForcedConfig.NONE`, how does it differ from these two cases?",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255ca2e8_d764a5fc",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-22T09:21:27Z",
+      "side": 1,
+      "message": "nullability useless / removed.",
+      "parentUuid": "bc0e927f_bbcf6161",
       "range": {
         "startLine": 42,
         "startChar": 8,
@@ -183,6 +255,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "b5a82fee_04fdf211",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "e1ed5ad312c9ceb1cb0b7944bdeaed4de97d0aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "425a765a_a743d898",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 22
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-22T09:21:27Z",
+      "side": 1,
+      "message": "no semantic difference, so removing useless nullability attribute",
+      "parentUuid": "a41d0967_eb80de23",
       "range": {
         "startLine": 112,
         "startChar": 4,
