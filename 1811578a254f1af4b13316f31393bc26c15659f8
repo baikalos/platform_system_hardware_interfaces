@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47851ac9_a1250fec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-08-22T17:01:48Z",
+      "side": 1,
+      "message": "I\u0027ll let @smoreland@google.com take another look before AIDL-API-Review +1 since he had a few comments.",
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
