@@ -22,6 +22,30 @@
       },
       "revId": "c3e9fe661270165f624423464a2160af823a6b7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2edbc3f_93b7e413",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 23
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-08-22T15:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83ff62a_5842a090",
+      "range": {
+        "startLine": 60,
+        "startChar": 65,
+        "endLine": 60,
+        "endChar": 71
+      },
+      "revId": "c3e9fe661270165f624423464a2160af823a6b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
