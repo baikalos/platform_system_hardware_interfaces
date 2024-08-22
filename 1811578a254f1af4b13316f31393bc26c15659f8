@@ -16,6 +16,121 @@
       "message": "I\u0027ll let @smoreland@google.com take another look before AIDL-API-Review +1 since he had a few comments.",
       "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a32f5da_898a95dd",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-22T17:11:45Z",
+      "side": 1,
+      "message": "did you run the formatter on this? it should suggest to run aidl-format.sh when you upload",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "561167fb_824444dd",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-22T17:11:45Z",
+      "side": 1,
+      "message": "is the \u0027values\u0027 in here a parallel array with the first?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e61a4bb_38d0afd2",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-22T17:11:45Z",
+      "side": 1,
+      "message": "is this name here always the same as ForceConfigForUse.forceUse AudioPolicyForceUse field?",
+      "range": {
+        "startLine": 92,
+        "startChar": 33,
+        "endLine": 92,
+        "endChar": 38
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a555fc3_a08c06e2",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-22T17:11:45Z",
+      "side": 1,
+      "message": "nit: you might prefer INVALID values to be \u00270\u0027 since this is the default in some contexts",
+      "range": {
+        "startLine": 57,
+        "startChar": 18,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f3d9ec9_65e643e5",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-22T17:11:45Z",
+      "side": 1,
+      "message": "if both of these are specified, how does that interact with the CompoundRule?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
