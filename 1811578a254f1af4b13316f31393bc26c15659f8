@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eea4d438_d02bcffd",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-28T17:04:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure I fully understand the relationship between these, how a rule would involve the criterion, and which \u0027values\u0027 array you refer to, since there are multiple (AvailableDevices values OR AvailableDevicesAddresses values). Could you share an example, hopefully in the docs, which includes the fully qualified names of these?\n\nMaybe Mikhail or people directly familiar with audio would understand exactly how this works, so if so, please say so. It might be lack of familiarity with the domain. Thanks!",
+      "parentUuid": "4d30c82b_e474b779",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e61a4bb_38d0afd2",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
         "patchSetId": 24
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "yes, the MEDIA is the same as forceUse field, for others, forceUseForCommunication --\u003e forceUse is set to AudioPolicyForceUse.COMMUNICATION, and so on.\nIf the name is enougth, would you think we could avoid the forceUse field?",
       "parentUuid": "8e61a4bb_38d0afd2",
+      "range": {
+        "startLine": 92,
+        "startChar": 33,
+        "endLine": 92,
+        "endChar": 38
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9025180b_d5ed1d59",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-28T17:04:51Z",
+      "side": 1,
+      "message": "Can you use it like this, instead of 8 entries here with ForceConfigForUse, just put one entry:\n\n```\nForceConfigForUse forceUse;\n```\n\nThen, if the union is set to forcedUse, you can read ForceConfigForUse.forceUse to understand if it\u0027s communication/media/record/dock, etc...\n\nWe should avoid storing the same information twice - that has to be checked it\u0027s in sync. We should only store it once.",
+      "parentUuid": "b5f2793f_4ca9963a",
       "range": {
         "startLine": 92,
         "startChar": 33,

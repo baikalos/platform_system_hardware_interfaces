@@ -33,6 +33,23 @@
       "message": "@smoreland@google.com Steven, could you please check Francois\u0027 replies, I think he is asking for some clarifications.",
       "revId": "a896031e136caf8bd49d449284275955a6d88782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1713b483_36131cbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-28T17:04:51Z",
+      "side": 1,
+      "message": "Mikhail - are you covering the VTS tests for this, or are they being added by Francois?",
+      "revId": "a896031e136caf8bd49d449284275955a6d88782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
