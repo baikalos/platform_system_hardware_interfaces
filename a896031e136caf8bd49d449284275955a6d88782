@@ -50,6 +50,24 @@
       "message": "Mikhail - are you covering the VTS tests for this, or are they being added by Francois?",
       "revId": "a896031e136caf8bd49d449284275955a6d88782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5727196_fb47efad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-28T17:57:25Z",
+      "side": 1,
+      "message": "This CL adds parcelables only, there are no interfaces. Retrieval of these parcelables is tested in https://android-review.git.corp.google.com/c/platform/hardware/interfaces/+/3016651/34/audio/aidl/vts/VtsHalAudioCoreConfigTargetTest.cpp, part of the same topic.",
+      "parentUuid": "1713b483_36131cbb",
+      "revId": "a896031e136caf8bd49d449284275955a6d88782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

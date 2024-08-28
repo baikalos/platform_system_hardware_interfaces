@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed7444fe_231fc679",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-28T17:57:25Z",
+      "side": 1,
+      "message": "There is a diagram at the end of go/audio-cap-aidl-external document with relationship between these structures. Maybe we should convert it into ASCII drawing in one of the .aidl files.",
+      "parentUuid": "eea4d438_d02bcffd",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e61a4bb_38d0afd2",
         "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
         "patchSetId": 24
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "Can you use it like this, instead of 8 entries here with ForceConfigForUse, just put one entry:\n\n```\nForceConfigForUse forceUse;\n```\n\nThen, if the union is set to forcedUse, you can read ForceConfigForUse.forceUse to understand if it\u0027s communication/media/record/dock, etc...\n\nWe should avoid storing the same information twice - that has to be checked it\u0027s in sync. We should only store it once.",
       "parentUuid": "b5f2793f_4ca9963a",
+      "range": {
+        "startLine": 92,
+        "startChar": 33,
+        "endLine": 92,
+        "endChar": 38
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3150ab9_64696360",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapCriterionV2.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-28T17:57:25Z",
+      "side": 1,
+      "message": "I think what you mean is to use a nested union:\n\n```\nunion ForceUseFor {\n    ForceConfigForUse communication;\n    ForceConfigForUse media;\n    ForceConfigForUse record;\n    ForceConfigForUse dock;\n    ForceConfigForUse system;\n    ForceConfigForUse hdmiSystemAudio;\n    ForceConfigForUse encodedSurround;\n    ForceConfigForUse vibrateRinging;    \n}\nForceUseFor forceUseFor;\n```\n\nSo then you can access the content as `forceUseFor.media`.\n@smoreland@google.com Is that what you mean?\n\n@francois.gaffie@ampere.cars I think I\u0027m missing the reason why we use a separate entry per use (these 8 entries) because `ForceConfigForUse` already has a field \n`AudioPolicyForceUse forceUse` which specifies the use. Could you please clarify?",
+      "parentUuid": "9025180b_d5ed1d59",
       "range": {
         "startLine": 92,
         "startChar": 33,
@@ -291,6 +339,30 @@
       "side": 1,
       "message": "Compoound rule will apply to all criterionRules AND the nested rules:\nex:\n\nALL\n    CriterionRule1\n    CriterionRule2\n    CriterionRule3\n    AudioHalCapRule1\n    AudioHalCapRule2\n    \nIs the example in the header not clear enougth ? (I will improve it if not)",
       "parentUuid": "3f3d9ec9_65e643e5",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "1811578a254f1af4b13316f31393bc26c15659f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b7f1ba5_40621f8b",
+        "filename": "media/aidl/android/media/audio/common/AudioHalCapRule.aidl",
+        "patchSetId": 24
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-08-28T17:57:25Z",
+      "side": 1,
+      "message": "@smoreland@google.com Steve, please respond to this, too.",
+      "parentUuid": "b4345959_d2dee2eb",
       "range": {
         "startLine": 109,
         "startChar": 0,
