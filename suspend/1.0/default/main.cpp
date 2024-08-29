@@ -62,13 +62,13 @@ static constexpr char kSysPowerState[] = "/sys/power/state";
 static constexpr char kSysKernelWakeupReasons[] = "/sys/kernel/wakeup_reasons/last_resume_reason";
 static constexpr char kSysKernelSuspendTime[] = "/sys/kernel/wakeup_reasons/last_suspend_time";
 
-static constexpr uint32_t kDefaultMaxSleepTimeMillis = 60000;
-static constexpr uint32_t kDefaultBaseSleepTimeMillis = 100;
+static constexpr uint32_t kDefaultMaxSleepTimeMillis = 500;
+static constexpr uint32_t kDefaultBaseSleepTimeMillis = 10;
 static constexpr double kDefaultSleepTimeScaleFactor = 2.0;
-static constexpr uint32_t kDefaultBackoffThresholdCount = 0;
-static constexpr uint32_t kDefaultShortSuspendThresholdMillis = 0;
+static constexpr uint32_t kDefaultBackoffThresholdCount = 1;
+static constexpr uint32_t kDefaultShortSuspendThresholdMillis = 50;
 static constexpr bool kDefaultFailedSuspendBackoffEnabled = true;
-static constexpr bool kDefaultShortSuspendBackoffEnabled = false;
+static constexpr bool kDefaultShortSuspendBackoffEnabled = true;
 
 int main() {
     unique_fd wakeupCountFd{TEMP_FAILURE_RETRY(open(kSysPowerWakeupCount, O_CLOEXEC | O_RDWR))};

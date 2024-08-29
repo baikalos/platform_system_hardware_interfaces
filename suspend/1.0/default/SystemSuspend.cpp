@@ -56,6 +56,7 @@ static const char kSleepState[] = "mem";
 static constexpr char kSysPowerWakeLock[] = "/sys/power/wake_lock";
 static constexpr char kSysPowerWakeUnlock[] = "/sys/power/wake_unlock";
 static constexpr char kUnknownWakeup[] = "unknown";
+static constexpr char kErrorWakeup[] = "error";
 // This is used to disable autosuspend when zygote is restarted
 // it allows the system to make progress before autosuspend is kicked
 // NOTE: If the name of this wakelock is changed then also update the name
@@ -78,8 +79,14 @@ static std::vector<std::string> readWakeupReasons(int fd) {
     std::string reasonlines;
 
     lseek(fd, 0, SEEK_SET);
-    if (!ReadFdToString(fd, &reasonlines) || reasonlines.empty()) {
+    if (!ReadFdToString(fd, &reasonlines)) {
         PLOG(ERROR) << "failed to read wakeup reasons";
+        // Return unknown wakeup reason if we fail to read
+        return {kErrorWakeup};
+    }
+
+    if (reasonlines.empty()) {
+        LOG(ERROR) << "Unknown wakeup reasons";
         // Return unknown wakeup reason if we fail to read
         return {kUnknownWakeup};
     }
@@ -380,7 +387,7 @@ void SystemSuspend::initAutosuspendLocked() {
             updateSleepTime(success, suspendTime);
 
             std::vector<std::string> wakeupReasons = readWakeupReasons(mWakeupReasonsFd);
-            if (wakeupReasons == std::vector<std::string>({kUnknownWakeup})) {
+            if (wakeupReasons == std::vector<std::string>({kErrorWakeup})) {
                 LOG(INFO) << "Unknown/empty wakeup reason. Re-opening wakeup_reason file.";
 
                 mWakeupReasonsFd =
