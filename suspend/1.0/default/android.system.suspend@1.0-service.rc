@@ -3,3 +3,4 @@ service system_suspend /system/bin/hw/android.system.suspend@1.0-service
     user system
     group system wakelock
     capabilities BLOCK_SUSPEND
+    writepid /dev/cpuset/system-background/tasks
